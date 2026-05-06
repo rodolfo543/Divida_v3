@@ -8,7 +8,7 @@
     "indexer": "IPCA + 10,74%",
     "description": "Debenture AXSI11 com tres incorporacoes iniciais e amortizacao semestral.",
     "issuer": "AXS ENERGIA UNIDADE 11 S.A.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs11_v1.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs11_v1.py",
     "identity_fields": [
       {
         "label": "Codigo IF",
@@ -3137,8 +3137,8 @@
     "next_amortization_amount": 3194134.71,
     "last_event_date": "15/03/2026",
     "final_balance": 0.0,
-    "duration_years": 8.846187314160906,
-    "wal_years": 10.271955523848701
+    "duration_years": 8.843449463373771,
+    "wal_years": 10.26921767306157
   },
   "timeline": [
     {
@@ -3577,6 +3577,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "05/05/2026 14:28:21",
-  "generated_at_iso": "2026-05-05T14:28:21"
+  "generated_at": "06/05/2026 11:49:06",
+  "generated_at_iso": "2026-05-06T11:49:06"
 }

@@ -8,7 +8,7 @@
     "indexer": "IPCA + 9,3515%",
     "description": "Visualizacao isolada da 1a serie da AXS 01 Refi.",
     "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs01_refi_v1.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
     "identity_fields": [
       {
         "label": "Codigo IF",
@@ -3713,8 +3713,8 @@
     "next_amortization_amount": 710325.85,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 10.070966672779392,
-    "wal_years": 11.802380043328835
+    "duration_years": 10.068228821992259,
+    "wal_years": 11.799642192541702
   },
   "timeline": [
     {
@@ -4083,7 +4083,7 @@
         "indexer": "IPCA + 9,35% / 10,97%",
         "description": "Visao consolidada das duas series da AXS 01 Refi.",
         "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs01_refi_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -8524,8 +8524,8 @@
         "next_amortization_amount": 2106705.57,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.941781203062789,
-        "wal_years": 11.537504456962317
+        "duration_years": 9.939043352275656,
+        "wal_years": 11.534766606175186
       },
       "timeline": [
         {
@@ -8682,7 +8682,7 @@
         "indexer": "IPCA + 9,3515%",
         "description": "Visualizacao isolada da 1a serie da AXS 01 Refi.",
         "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs01_refi_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -12387,8 +12387,8 @@
         "next_amortization_amount": 710325.85,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 10.070966672779392,
-        "wal_years": 11.802380043328835
+        "duration_years": 10.068228821992259,
+        "wal_years": 11.799642192541702
       },
       "timeline": [
         {
@@ -12743,7 +12743,7 @@
         "indexer": "IPCA + 10,9659%",
         "description": "Visualizacao isolada da 2a serie da AXS 01 Refi.",
         "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs01_refi_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -16448,8 +16448,8 @@
         "next_amortization_amount": 1396379.72,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.422266481932791,
-        "wal_years": 10.468737326254443
+        "duration_years": 9.419528631145658,
+        "wal_years": 10.46599947546731
       },
       "timeline": [
         {
@@ -16942,6 +16942,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "05/05/2026 14:28:21",
-  "generated_at_iso": "2026-05-05T14:28:21"
+  "generated_at": "06/05/2026 11:49:06",
+  "generated_at_iso": "2026-05-06T11:49:06"
 }

@@ -249,9 +249,46 @@ function searchChunks(question, operationId, limit = 10) {
 function buildDocumentContext(chunks) {
   if (!chunks.length) return "Nenhum trecho relevante encontrado.";
   return chunks.map((chunk) => {
-    const content = String(chunk.conteudo || "").slice(0, 2200);
+    const content = String(chunk.conteudo || "").slice(0, 1200);
     return `[Documento: ${chunk.arquivo || "Documento sem nome"} | Posicao: ${chunk.posicao ?? "N/A"}]\n${content}`;
   }).join("\n\n---\n\n");
+}
+
+function buildTimeoutFallback(question, payload) {
+  const summary = payload.summary || {};
+  const operation = payload.operation || {};
+  const dateText = extractDate(question);
+  const lines = [
+    "A IA demorou mais do que o limite seguro da Vercel/NVIDIA para essa pergunta, entao vou te passar a leitura direta dos calculos do dashboard:",
+    "",
+    `Operacao: ${operation.full_name || operation.label || operation.id || "-"}`,
+    `Saldo atual: R$ ${money(summary.current_balance)}`,
+    `Principal atualizado: R$ ${money(summary.current_principal)}`,
+    `PU cheio atual: ${summary.current_pu_cheio ?? "-"}`,
+    `PU vazio atual: ${summary.current_pu_vazio ?? "-"}`,
+    `Proximo PMT: ${summary.next_payment_date || "-"} | R$ ${money(summary.next_payment_amount)}`,
+    `Juros do proximo PMT: R$ ${money(summary.next_interest_amount)}`,
+    `Amortizacao do proximo PMT: R$ ${money(summary.next_amortization_amount)}`,
+    `Duration: ${summary.duration_years ?? "-"} anos`,
+  ];
+
+  if (dateText) {
+    const exactRows = rowsOnDate(payload, dateText);
+    if (exactRows.length) {
+      lines.push("");
+      lines.push(`Linhas encontradas em ${dateText}:`);
+      for (const row of exactRows.slice(0, 6)) {
+        lines.push(`${row.component_label || row.label || "-"}: PMT R$ ${money(row.payment)}, juros R$ ${money(row.interest)}, amortizacao R$ ${money(row.amortization)}, saldo R$ ${money(row.balance)}.`);
+      }
+    } else {
+      lines.push("");
+      lines.push(`Nao encontrei PMT exatamente em ${dateText} nos dados calculados dessa selecao.`);
+    }
+  }
+
+  lines.push("");
+  lines.push("Se quiser a resposta interpretada com base nos contratos, tente perguntar de forma mais especifica, por exemplo citando uma emissao e uma data.");
+  return lines.join("\n");
 }
 
 async function callNvidia({ question, history, calcContext, docContext }) {
@@ -279,7 +316,7 @@ TRECHOS DOS DOCUMENTOS:
 ${docContext}`;
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 45000);
+  const timeout = setTimeout(() => controller.abort(), 52000);
 
   let response;
   try {
@@ -293,13 +330,13 @@ ${docContext}`;
       },
       body: JSON.stringify({
         model: process.env.NVIDIA_MODEL || "google/gemma-4-31b-it",
-        max_tokens: 1000,
+        max_tokens: 650,
         temperature: 0.2,
         top_p: 0.7,
         stream: false,
         messages: [
           { role: "system", content: system },
-          ...history.slice(-10),
+          ...history.slice(-4),
           { role: "user", content: question },
         ],
       }),
@@ -334,15 +371,24 @@ module.exports = async function handler(req, res) {
     const operationId = detectOperation(pergunta);
     const variantId = detectVariant(operationId, pergunta);
     const payload = loadPayload(operationId, variantId);
-    const chunks = searchChunks(pergunta, operationId, 7);
+    const chunks = searchChunks(pergunta, operationId, 4);
     const calcContext = buildCalculationContext(pergunta, payload);
     const docContext = buildDocumentContext(chunks);
-    const resposta = await callNvidia({
-      question: pergunta,
-      history: historico,
-      calcContext,
-      docContext,
-    });
+    let resposta;
+    try {
+      resposta = await callNvidia({
+        question: pergunta,
+        history: historico,
+        calcContext,
+        docContext,
+      });
+    } catch (aiError) {
+      if (aiError?.name !== "AbortError") {
+        throw aiError;
+      }
+      console.warn("NVIDIA demorou demais; retornando fallback calculado.", aiError);
+      resposta = buildTimeoutFallback(pergunta, payload);
+    }
     return res.status(200).json({ resposta });
   } catch (err) {
     console.error("Erro no /api/chat:", err);

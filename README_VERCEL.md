@@ -31,3 +31,7 @@ python .\servidor_dashboard.py build
 ```
 
 Depois suba novamente os arquivos alterados para o GitHub. A Vercel faz o redeploy automaticamente.
+
+## Observacao sobre tempo da IA
+
+Algumas perguntas podem demorar mais porque a funcao consulta a API da NVIDIA com trechos dos documentos e dados calculados. Se a NVIDIA passar do limite seguro, o chat devolve uma resposta parcial usando diretamente os calculos do dashboard em vez de quebrar com erro 500.

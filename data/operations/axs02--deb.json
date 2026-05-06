@@ -8,7 +8,7 @@
     "indexer": "IPCA + 11%",
     "description": "Visualizacao isolada da Debenture da operacao AXS 02.",
     "issuer": "AXS ENERGIA UNIDADE 02 S.A.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs02_v1.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs02_v1.py",
     "identity_fields": [
       {
         "label": "Codigo IF",
@@ -16929,8 +16929,8 @@
     "next_amortization_amount": 187951.68,
     "last_event_date": "15/04/2026",
     "final_balance": 0.0,
-    "duration_years": 5.583390615078216,
-    "wal_years": 6.3915714701806845
+    "duration_years": 5.580652764291084,
+    "wal_years": 6.388833619393552
   },
   "timeline": [
     {
@@ -17263,7 +17263,7 @@
         "indexer": "IPCA + 11%",
         "description": "Visao somada dos fluxos do CRI e da Debenture da AXS 02.",
         "issuer": "OPEA SECURITIZADORA S.A. / AXS ENERGIA UNIDADE 02 S.A.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs02_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs02_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -38048,8 +38048,8 @@
         "next_amortization_amount": 399513.86,
         "last_event_date": "15/04/2026",
         "final_balance": 0.0,
-        "duration_years": 5.583390613495474,
-        "wal_years": 6.391571469243581
+        "duration_years": 5.5806527627083415,
+        "wal_years": 6.388833618456449
       },
       "timeline": [
         {
@@ -38206,7 +38206,7 @@
         "indexer": "IPCA + 11%",
         "description": "Visualizacao isolada do CRI da operacao AXS 02.",
         "issuer": "OPEA SECURITIZADORA S.A.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs02_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs02_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -55127,8 +55127,8 @@
         "next_amortization_amount": 211562.18,
         "last_event_date": "15/04/2026",
         "final_balance": 0.0,
-        "duration_years": 5.583390612089367,
-        "wal_years": 6.391571468411058
+        "duration_years": 5.580652761302234,
+        "wal_years": 6.388833617623926
       },
       "timeline": [
         {
@@ -55447,7 +55447,7 @@
         "indexer": "IPCA + 11%",
         "description": "Visualizacao isolada da Debenture da operacao AXS 02.",
         "issuer": "AXS ENERGIA UNIDADE 02 S.A.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs02_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs02_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -72368,8 +72368,8 @@
         "next_amortization_amount": 187951.68,
         "last_event_date": "15/04/2026",
         "final_balance": 0.0,
-        "duration_years": 5.583390615078216,
-        "wal_years": 6.3915714701806845
+        "duration_years": 5.580652764291084,
+        "wal_years": 6.388833619393552
       },
       "timeline": [
         {
@@ -72826,6 +72826,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "05/05/2026 14:28:21",
-  "generated_at_iso": "2026-05-05T14:28:21"
+  "generated_at": "06/05/2026 11:49:06",
+  "generated_at_iso": "2026-05-06T11:49:06"
 }

@@ -8,7 +8,7 @@
     "indexer": "IPCA + 11%",
     "description": "Fluxo em valor total do CRI AXS 04 com visao executiva.",
     "issuer": "OPEA SECURITIZADORA S.A.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs04_v2.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs04_v2.py",
     "identity_fields": [
       {
         "label": "Codigo IF",
@@ -16593,8 +16593,8 @@
     "next_amortization_amount": 734376.96,
     "last_event_date": "15/04/2026",
     "final_balance": 0.0,
-    "duration_years": 5.874850474834582,
-    "wal_years": 6.8032994038913115
+    "duration_years": 5.87211262404745,
+    "wal_years": 6.800561553104179
   },
   "timeline": [
     {
@@ -17045,6 +17045,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "05/05/2026 14:28:21",
-  "generated_at_iso": "2026-05-05T14:28:21"
+  "generated_at": "06/05/2026 11:49:06",
+  "generated_at_iso": "2026-05-06T11:49:06"
 }

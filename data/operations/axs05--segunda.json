@@ -8,7 +8,7 @@
     "indexer": "IPCA + 10,9659%",
     "description": "Visualizacao isolada da 2a serie da AXS 05.",
     "issuer": "AXS ENERGIA UNIDADE 05 S.A.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs05_v1.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
     "identity_fields": [
       {
         "label": "Codigo IF",
@@ -3137,8 +3137,8 @@
     "next_amortization_amount": 2512048.13,
     "last_event_date": "15/08/2026",
     "final_balance": 0.0,
-    "duration_years": 6.004272762024816,
-    "wal_years": 6.279843966546617
+    "duration_years": 6.001534911237683,
+    "wal_years": 6.2771061157594845
   },
   "timeline": [
     {
@@ -3453,7 +3453,7 @@
         "indexer": "IPCA + 9,47% / 10,97%",
         "description": "Visao consolidada da AXS 05 com as duas series somadas.",
         "issuer": "AXS ENERGIA UNIDADE 05 S.A.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs05_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -7318,8 +7318,8 @@
         "next_amortization_amount": 2877121.7199999997,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.468758457460662,
-        "wal_years": 10.803311428578741
+        "duration_years": 9.46602060667353,
+        "wal_years": 10.80057357779161
       },
       "timeline": [
         {
@@ -7476,7 +7476,7 @@
         "indexer": "IPCA + 9,4659%",
         "description": "Visualizacao isolada da 1a serie da AXS 05.",
         "issuer": "AXS ENERGIA UNIDADE 05 S.A.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs05_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -10605,8 +10605,8 @@
         "next_amortization_amount": 365073.59,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 10.224946067962321,
-        "wal_years": 11.994188403006614
+        "duration_years": 10.222208217175188,
+        "wal_years": 11.991450552219483
       },
       "timeline": [
         {
@@ -10907,7 +10907,7 @@
         "indexer": "IPCA + 10,9659%",
         "description": "Visualizacao isolada da 2a serie da AXS 05.",
         "issuer": "AXS ENERGIA UNIDADE 05 S.A.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\Novo dashboard\\Code final prontos\\axs05_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
         "identity_fields": [
           {
             "label": "Codigo IF",
@@ -14036,8 +14036,8 @@
         "next_amortization_amount": 2512048.13,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 6.004272762024816,
-        "wal_years": 6.279843966546617
+        "duration_years": 6.001534911237683,
+        "wal_years": 6.2771061157594845
       },
       "timeline": [
         {
@@ -14476,6 +14476,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "05/05/2026 14:28:21",
-  "generated_at_iso": "2026-05-05T14:28:21"
+  "generated_at": "06/05/2026 11:49:06",
+  "generated_at_iso": "2026-05-06T11:49:06"
 }
