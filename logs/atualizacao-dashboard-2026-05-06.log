@@ -1,0 +1,19 @@
+﻿**********************
+Início da transcrição do Windows PowerShell
+Hora de início: 20260506125226
+Nome de Usuário: AXSENERGIA\rodolfo.crotti
+Executar como Usuário: AXSENERGIA\rodolfo.crotti
+Nome da Configuração: 
+Computador: AXS-97JWCD4 (Microsoft Windows NT 10.0.26200.0)
+Aplicativo Host: powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\rodolfo.crotti\OneDrive - AXS ENERGIA S A\Documents\Desenvolvimento\Cálculo da dívida\dash_v2\atualizar_dashboard.ps1
+ID do Processo: 15696
+PSVersion: 5.1.26100.8115
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8115
+BuildVersion: 10.0.26100.8115
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+[06/05/2026 12:52:26] Iniciando atualizacao do dashboard...
