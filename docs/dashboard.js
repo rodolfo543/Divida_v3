@@ -1,12 +1,12 @@
 const METRIC_HELP = {
   "Saldo atual": "Saldo devedor da linha mais recente aplicavel a data atual. Para visoes consolidadas, soma os saldos dos instrumentos ativos na mesma data.",
-  "Principal atualizado": "Base principal corrigida do fluxo na linha atual. Em geral corresponde ao VNA ou ao principal remanescente antes do proximo evento.",
-  Duration: "Prazo medio financeiro gerencial, ponderado pelos PMTs futuros. Formula usada: soma de (tempo em anos x PMT futuro) dividida pela soma dos PMTs futuros.",
-  "Vida media": "WAL da divida, ponderada apenas pelas amortizacoes futuras. Formula usada: soma de (tempo em anos x amortizacao futura) dividida pela soma das amortizacoes futuras.",
-  "PU cheio": "PU com juros corridos embutidos, arredondado apenas nos cards superiores para leitura rapida.",
-  "PU vazio": "PU base sem juros corridos, arredondado apenas nos cards superiores para leitura rapida.",
-  "Juros acumulados": "Soma de todos os juros projetados ou calculados ao longo do fluxo da selecao atual.",
-  "Amortizacao acumulada": "Soma de toda a amortizacao projetada ou calculada ao longo do fluxo da selecao atual.",
+  "Principal atualizado": "Base principal corrigida do fluxo na linha atual. Em geral corresponde ao VNA ou ao principal remanescente antes do próximo evento.",
+  Duration: "Prazo médio financeiro gerencial, ponderado pelos PMTs futuros. Fórmula usada: soma de (tempo em anos x PMT futuro) dividida pela soma dos PMTs futuros.",
+  "Vida media": "WAL da dívida, ponderada apenas pelas amortizações futuras. Fórmula usada: soma de (tempo em anos x amortização futura) dividida pela soma das amortizações futuras.",
+  "PU cheio": "PU com juros corridos embutidos, arredondado apenas nos cards superiores para leitura rápida.",
+  "PU vazio": "PU base sem juros corridos, arredondado apenas nos cards superiores para leitura rápida.",
+  "Juros acumulados": "Soma de todos os juros projetados ou calculados ao longo do fluxo da seleção atual.",
+  "Amortizacao acumulada": "Soma de toda a amortização projetada ou calculada ao longo do fluxo da seleção atual.",
 };
 
 const OPERATION_HINTS = [
@@ -67,6 +67,10 @@ const elements = {
   balanceTooltip: document.getElementById("balanceTooltip"),
   compositionTooltip: document.getElementById("compositionTooltip"),
   comparisonTooltip: document.getElementById("comparisonTooltip"),
+  downloadTableButton: document.getElementById("downloadTableButton"),
+  downloadTableOptions: document.getElementById("downloadTableOptions"),
+  downloadCsvButton: document.getElementById("downloadCsvButton"),
+  downloadExcelButton: document.getElementById("downloadExcelButton"),
   infoTabs: Array.from(document.querySelectorAll(".info-tab")),
 };
 
@@ -324,14 +328,14 @@ function renderMetrics(payload) {
   const summary = payload.summary;
   elements.metricsGrid.innerHTML = "";
   const cards = [
-    createMetricCard("Saldo atual", formatCompactCurrency(summary.current_balance), "Saldo na data corrente da selecao.", METRIC_HELP["Saldo atual"]),
+    createMetricCard("Saldo atual", formatCompactCurrency(summary.current_balance), "Saldo na data corrente da seleção.", METRIC_HELP["Saldo atual"]),
     createMetricCard("Principal atualizado", formatCompactCurrency(summary.current_principal), "Principal capturado na linha mais recente aplicavel.", METRIC_HELP["Principal atualizado"]),
     createMetricCard("Duration", formatYears(summary.duration_years), "Prazo medio ponderado pelos PMTs futuros.", METRIC_HELP.Duration),
     createMetricCard("Vida media", formatYears(summary.wal_years), "Prazo medio ponderado pelas amortizacoes futuras.", METRIC_HELP["Vida media"]),
     createMetricCard("PU cheio", summary.current_pu_cheio !== null ? formatNumber(summary.current_pu_cheio, 2) : "-", "Arredondado para leitura rapida.", METRIC_HELP["PU cheio"]),
     createMetricCard("PU vazio", summary.current_pu_vazio !== null ? formatNumber(summary.current_pu_vazio, 2) : "-", "Arredondado para leitura rapida.", METRIC_HELP["PU vazio"]),
     createMetricCard("Juros acumulados", formatCompactCurrency(summary.total_interest), "Soma dos juros do fluxo calculado.", METRIC_HELP["Juros acumulados"]),
-    createMetricCard("Amortizacao acumulada", formatCompactCurrency(summary.total_amortization), "Soma das amortizacoes do fluxo calculado.", METRIC_HELP["Amortizacao acumulada"]),
+    createMetricCard("Amortizacao acumulada", formatCompactCurrency(summary.total_amortization), "Soma das amortizações do fluxo calculado.", METRIC_HELP["Amortizacao acumulada"]),
   ];
   cards.forEach((card) => elements.metricsGrid.appendChild(card));
   applyTilt(elements.metricsGrid.querySelectorAll(".tilt-card"));
@@ -359,13 +363,13 @@ function variantHeaderText(payload) {
   const optionIds = options.map((item) => item.id);
   if (optionIds.includes("cri") || optionIds.includes("deb")) {
     return {
-      title: `Visao da ${payload.operation.label}`,
-      note: "Sem selecao extra, o dashboard mostra o total consolidado entre CRI e Debenture.",
+      title: `Visão da ${payload.operation.label}`,
+      note: "Sem seleção extra, o dashboard mostra o total consolidado entre CRI e Debenture.",
     };
   }
   return {
-    title: `Visao da ${payload.operation.label}`,
-    note: "Sem selecao extra, o dashboard mostra o consolidado somado das series da emissao.",
+    title: `Visão da ${payload.operation.label}`,
+    note: "Sem seleção extra, o dashboard mostra o consolidado somado das séries da emissão.",
   };
 }
 
@@ -435,7 +439,7 @@ function getFocusSlice(series, maxItems = 24) {
 
 function renderTable(payload) {
   const tableSeries = payload.table_series || payload.series;
-  const rows = getFocusSlice(tableSeries, 18);
+  const rows = tableSeries;
   elements.tableBody.innerHTML = rows.map((item) => `
     <tr>
       <td>${item.date || "-"}</td>
@@ -454,12 +458,123 @@ function renderTable(payload) {
   `).join("");
 }
 
+function getTableHeaders() {
+  return [
+    "Data",
+    "Tipo",
+    "Evento",
+    "PU cheio",
+    "PU vazio",
+    "PU juros",
+    "PU amort.",
+    "Juros R$",
+    "Amort. R$",
+    "PMT total",
+    "Principal",
+    "Saldo",
+  ];
+}
+
+function getTableRowsForExport(payload) {
+  const tableSeries = payload?.table_series || payload?.series || [];
+  return tableSeries.map((item) => [
+    item.date || "-",
+    item.component_label || "-",
+    item.label || "-",
+    item.pu_cheio !== null ? formatNumber(item.pu_cheio, 8) : "-",
+    item.pu_vazio !== null ? formatNumber(item.pu_vazio, 8) : "-",
+    item.pu_juros !== null ? formatNumber(item.pu_juros, 8) : "-",
+    item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-",
+    formatCurrency(item.interest),
+    formatCurrency(item.amortization),
+    formatCurrency(item.payment),
+    formatCurrency(item.principal),
+    formatCurrency(item.balance),
+  ]);
+}
+
+function safeFileName(text) {
+  return String(text || "tabela_financeira")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w.-]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .toLowerCase();
+}
+
+function escapeCsv(value) {
+  const text = String(value ?? "");
+  if (/[",;\n]/.test(text)) {
+    return `"${text.replaceAll('"', '""')}"`;
+  }
+  return text;
+}
+
+function downloadBlob(filename, content, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportTableAsCsv() {
+  if (!state.activePayload) {
+    return;
+  }
+  const lines = [
+    getTableHeaders().map(escapeCsv).join(";"),
+    ...getTableRowsForExport(state.activePayload).map((row) => row.map(escapeCsv).join(";")),
+  ];
+  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${state.activePayload.generated_at_iso || "export"}.csv`;
+  downloadBlob(fileName, `\uFEFF${lines.join("\r\n")}`, "text/csv;charset=utf-8;");
+}
+
+function exportTableAsExcel() {
+  if (!state.activePayload) {
+    return;
+  }
+  const headers = getTableHeaders();
+  const rows = getTableRowsForExport(state.activePayload);
+  const tableHtml = `
+    <table>
+      <thead>
+        <tr>${headers.map((item) => `<th>${escapeHtml(item)}</th>`).join("")}</tr>
+      </thead>
+      <tbody>
+        ${rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}
+      </tbody>
+    </table>
+  `;
+  const workbook = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+      <head>
+        <meta charset="utf-8">
+      </head>
+      <body>${tableHtml}</body>
+    </html>
+  `;
+  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${state.activePayload.generated_at_iso || "export"}.xls`;
+  downloadBlob(fileName, `\uFEFF${workbook}`, "application/vnd.ms-excel;charset=utf-8;");
+}
+
+function toggleDownloadMenu(forceState = null) {
+  const shouldOpen = typeof forceState === "boolean"
+    ? forceState
+    : elements.downloadTableOptions.classList.contains("hidden");
+  elements.downloadTableOptions.classList.toggle("hidden", !shouldOpen);
+}
+
 function renderSources(payload) {
   const meta = payload.meta || {};
   const lines = [
     `<div><strong>Fonte principal:</strong> ${escapeHtml(meta.primary_source || "-")}</div>`,
     meta.secondary_source ? `<div><strong>Fonte complementar:</strong> ${escapeHtml(meta.secondary_source)}</div>` : "",
-    meta.notes ? `<div><strong>Observacoes:</strong> ${escapeHtml(meta.notes)}</div>` : "",
+    meta.notes ? `<div><strong>Observações:</strong> ${escapeHtml(meta.notes)}</div>` : "",
     `<div><strong>Script:</strong> ${escapeHtml(payload.operation.script_path || "-")}</div>`,
   ].filter(Boolean);
   elements.sourceInfo.innerHTML = lines.join("");
@@ -817,7 +932,7 @@ async function loadOperation(operationId, refresh = false, variant = null) {
   setStatus(refresh ? "Atualizando dados..." : "Carregando dados...");
   const payload = await ensurePayload(operationId, state.activeVariant || null, refresh);
   renderPayload(payload);
-  setStatus(`Analise ${payload.operation.label} atualizada em ${payload.generated_at}`);
+  setStatus(`Análise ${payload.operation.label} atualizada em ${payload.generated_at}`);
 }
 
 function applyTilt(nodes) {
@@ -846,7 +961,7 @@ function buildAssistant() {
       <header class="assistant-header">
         <div>
           <strong>Assistente do dashboard</strong>
-          <small>Documentos + calculos da carteira</small>
+          <small>Documentos + cálculos da carteira</small>
         </div>
         <button id="assistantClose" class="assistant-close" type="button" aria-label="Fechar assistente">x</button>
       </header>
@@ -874,7 +989,7 @@ function buildAssistant() {
 
   addAssistantMessage(
     "assistant",
-    "Oie :) Sou o Assistente AXS. Posso ajudar com contratos, emissoes de divida e conceitos financeiros. Sou uma IA e posso cometer erros; para informacoes oficiais, acesse https://ri.axsenergia.com.br",
+    "Oie :) Sou o Assistente AXS. Posso ajudar com contratos, emissões de dívida e conceitos financeiros. Sou uma IA e posso cometer erros; para informações oficiais, acesse https://ri.axsenergia.com.br",
   );
 
   return assistant;
@@ -1050,19 +1165,19 @@ function buildCalculatedAnswer(intent, payload, dateText) {
       return `A vida media da <strong>${escapeHtml(operationName)}</strong> esta em <strong>${formatYears(summary.wal_years)}</strong>, ponderada pelas amortizacoes futuras.`;
     case "next_payment": {
       const nextDate = summary.next_payment_date || "-";
-      return `O proximo PMT da <strong>${escapeHtml(operationName)}</strong> esta previsto para <strong>${escapeHtml(nextDate)}</strong>, no valor de <strong>${formatCurrency(summary.next_payment_amount)}</strong>. Juros esperados: <strong>${formatCurrency(summary.next_interest_amount)}</strong>. Amortizacao esperada: <strong>${formatCurrency(summary.next_amortization_amount)}</strong>.`;
+      return `O próximo PMT da <strong>${escapeHtml(operationName)}</strong> está previsto para <strong>${escapeHtml(nextDate)}</strong>, no valor de <strong>${formatCurrency(summary.next_payment_amount)}</strong>. Juros esperados: <strong>${formatCurrency(summary.next_interest_amount)}</strong>. Amortização esperada: <strong>${formatCurrency(summary.next_amortization_amount)}</strong>.`;
     }
     case "payment_on_date": {
       const row = findExactRow(payload.series || [], dateText);
       if (!row) {
-        return `Nao ha PMT programado para <strong>${escapeHtml(dateText)}</strong> na <strong>${escapeHtml(operationName)}</strong>. Pela leitura do fluxo, o valor de PMT nessa data e <strong>${formatCurrency(0)}</strong>.`;
+        return `Não há PMT programado para <strong>${escapeHtml(dateText)}</strong> na <strong>${escapeHtml(operationName)}</strong>. Pela leitura do fluxo, o valor de PMT nessa data é <strong>${formatCurrency(0)}</strong>.`;
       }
-      return `Na data <strong>${escapeHtml(dateText)}</strong>, o PMT da <strong>${escapeHtml(operationName)}</strong> esta calculado em <strong>${formatCurrency(row.payment)}</strong>, sendo juros de <strong>${formatCurrency(row.interest)}</strong> e amortizacao de <strong>${formatCurrency(row.amortization)}</strong>.`;
+      return `Na data <strong>${escapeHtml(dateText)}</strong>, o PMT da <strong>${escapeHtml(operationName)}</strong> está calculado em <strong>${formatCurrency(row.payment)}</strong>, sendo juros de <strong>${formatCurrency(row.interest)}</strong> e amortização de <strong>${formatCurrency(row.amortization)}</strong>.`;
     }
     case "balance_on_date": {
       const row = findRowAtOrBefore(payload.series || [], dateText);
       if (!row) {
-        return `Nao encontrei uma linha aplicavel ate <strong>${escapeHtml(dateText)}</strong> para a <strong>${escapeHtml(operationName)}</strong>.`;
+        return `Não encontrei uma linha aplicável até <strong>${escapeHtml(dateText)}</strong> para a <strong>${escapeHtml(operationName)}</strong>.`;
       }
       return `O saldo devedor da <strong>${escapeHtml(operationName)}</strong> na referencia de <strong>${escapeHtml(dateText)}</strong> esta em <strong>${formatCurrency(row.balance)}</strong>.`;
     }
@@ -1071,7 +1186,7 @@ function buildCalculatedAnswer(intent, payload, dateText) {
     case "total_interest":
       return `Os juros acumulados da <strong>${escapeHtml(operationName)}</strong> somam <strong>${formatCurrency(summary.total_interest)}</strong>.`;
     case "total_amortization":
-      return `A amortizacao acumulada da <strong>${escapeHtml(operationName)}</strong> soma <strong>${formatCurrency(summary.total_amortization)}</strong>.`;
+      return `A amortização acumulada da <strong>${escapeHtml(operationName)}</strong> soma <strong>${formatCurrency(summary.total_amortization)}</strong>.`;
     case "pu_cheio":
       return `O PU cheio atual da <strong>${escapeHtml(operationName)}</strong> esta em <strong>${formatNumber(summary.current_pu_cheio, 8)}</strong>.`;
     case "pu_vazio":
@@ -1084,11 +1199,11 @@ function buildCalculatedAnswer(intent, payload, dateText) {
     }
     case "issue": {
       const field = getFieldByLabel(payload, "Data de emissao");
-      return `A data de emissao da <strong>${escapeHtml(operationName)}</strong> e <strong>${escapeHtml(field?.value || "-")}</strong>.`;
+      return `A data de emissão da <strong>${escapeHtml(operationName)}</strong> é <strong>${escapeHtml(field?.value || "-")}</strong>.`;
     }
     case "remuneration": {
       const field = getFieldByLabel(payload, "Remuneracao");
-      return `A remuneracao da <strong>${escapeHtml(operationName)}</strong> esta cadastrada como <strong>${escapeHtml(field?.value || payload.operation.indexer || "-")}</strong>.`;
+      return `A remuneração da <strong>${escapeHtml(operationName)}</strong> está cadastrada como <strong>${escapeHtml(field?.value || payload.operation.indexer || "-")}</strong>.`;
     }
     case "quantity": {
       const field = getFieldByLabel(payload, "Quantidade emitida");
@@ -1115,7 +1230,7 @@ async function loadKnowledgeChunks() {
     const chunks = await fetchJson(buildSiteUrl("data/chunks.json"));
     state.knowledgeChunks = Array.isArray(chunks) ? chunks : [];
   } catch (error) {
-    console.warn("Nao foi possivel carregar chunks.json", error);
+    console.warn("Não foi possível carregar chunks.json", error);
     state.knowledgeChunks = [];
   }
   return state.knowledgeChunks;
@@ -1213,11 +1328,11 @@ async function answerAssistantQuestion(question) {
   await loadKnowledgeChunks();
   const matches = findRelevantChunks(question, detectedOperation);
   if (matches.length) {
-    const intro = `Encontrei trechos da documentacao que podem ajudar sobre <strong>${escapeHtml(payload.operation.full_name || payload.operation.label)}</strong>:`; 
+    const intro = `Encontrei trechos da documentação que podem ajudar sobre <strong>${escapeHtml(payload.operation.full_name || payload.operation.label)}</strong>:`; 
     return `${intro}${matches.map((item) => formatChunkSnippet(item.chunk)).join("")}`;
   }
 
-  return "Nao encontrei uma resposta direta para essa pergunta. Tente citar a operacao e, se quiser valor calculado, informe tambem a data no formato dd/mm/aaaa.";
+  return "Não encontrei uma resposta direta para essa pergunta. Tente citar a operação e, se quiser valor calculado, informe também a data no formato dd/mm/aaaa.";
 }
 
 async function handleAssistantSubmit(event) {
@@ -1239,13 +1354,30 @@ async function handleAssistantSubmit(event) {
   } catch (error) {
     console.error(error);
     thinkingNode.remove();
-    addAssistantMessage("assistant", `Nao consegui responder agora. Erro: ${escapeHtml(error.message)}`);
+    addAssistantMessage("assistant", `Não consegui responder agora. Erro: ${escapeHtml(error.message)}`);
   }
 }
 
 async function bootstrap() {
   try {
     applyTilt(document.querySelectorAll(".tilt-card"));
+    elements.downloadTableButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleDownloadMenu();
+    });
+    elements.downloadCsvButton.addEventListener("click", () => {
+      toggleDownloadMenu(false);
+      exportTableAsCsv();
+    });
+    elements.downloadExcelButton.addEventListener("click", () => {
+      toggleDownloadMenu(false);
+      exportTableAsExcel();
+    });
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".download-menu")) {
+        toggleDownloadMenu(false);
+      }
+    });
     elements.infoTabs.forEach((button) => {
       button.addEventListener("click", () => {
         state.activeInfoTab = button.dataset.panel;

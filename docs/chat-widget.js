@@ -1,7 +1,7 @@
 (function () {
   const API_URL = "/api/chat";
   const MAX_HISTORY = 10;
-  const INITIAL_MESSAGE = "Oie :) Sou o Assistente AXS. Posso ajudar com contratos, emissoes de divida e conceitos financeiros. Sou uma IA e posso cometer erros; para informacoes oficiais, acesse https://ri.axsenergia.com.br";
+  const INITIAL_MESSAGE = "Oie :) Sou o Assistente AXS. Posso ajudar com contratos, emissões de dívida e conceitos financeiros. Sou uma IA e posso cometer erros; para informações oficiais, acesse https://ri.axsenergia.com.br";
 
   let history = [];
   let loading = false;
@@ -241,7 +241,7 @@
         <img src="./logo.png" alt="AXS Energia">
         <div id="axs-chat-title">
           <strong>Assistente AXS</strong>
-          <small>Perguntas sobre os contratos e emissoes</small>
+          <small>Perguntas sobre os contratos e emissões</small>
         </div>
         <button id="axs-chat-close" type="button" aria-label="Fechar">x</button>
       </header>
@@ -333,7 +333,7 @@
     input.value = "";
     input.style.height = "auto";
     addMessage(question, "user");
-    const typing = addMessage("Analisando documentos e calculos...", "assistant typing");
+    const typing = addMessage("Analisando documentos e cálculos...", "assistant typing");
 
     history.push({ role: "user", content: question });
     if (history.length > MAX_HISTORY) history = history.slice(-MAX_HISTORY);
@@ -347,12 +347,12 @@
       const data = await response.json();
       typing.remove();
       if (!response.ok) throw new Error(data.erro || data.error || `Erro ${response.status}`);
-      const answer = data.resposta || "Nao consegui montar uma resposta agora.";
+      const answer = data.resposta || "Não consegui montar uma resposta agora.";
       addMessage(answer, "assistant");
       history.push({ role: "assistant", content: answer });
     } catch (error) {
       typing.remove();
-      addMessage(`Nao consegui consultar a IA agora. Detalhe: ${error.message}`, "assistant");
+      addMessage(`Não consegui consultar a IA agora. Detalhe: ${error.message}`, "assistant");
       history.pop();
     } finally {
       loading = false;

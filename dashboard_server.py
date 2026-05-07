@@ -319,8 +319,8 @@ def metadata_value(config: OperationConfig, key: str, fallback: Any = None) -> A
 def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any | None) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
     summary = payload["summary"]
     identity_fields = [
-        {"label": "Codigo IF", "value": config.code_if or metadata_value(config, "code_if", "-")},
-        {"label": "Codigo ISIN", "value": config.isin or metadata_value(config, "isin", "-")},
+        {"label": "Código IF", "value": config.code_if or metadata_value(config, "code_if", "-")},
+        {"label": "Código ISIN", "value": config.isin or metadata_value(config, "isin", "-")},
         {"label": "Emissor", "value": metadata_value(config, "issuer", config.issuer)},
     ]
 
@@ -332,27 +332,27 @@ def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any |
     pu_issue = metadata_value(config, "pu_issue", number_or_none(getattr(module, "PU_INICIAL", None)) if module and hasattr(module, "PU_INICIAL") else None)
 
     overview_fields = [
-        {"label": "Remuneracao", "value": metadata_value(config, "remuneration_label", config.indexer)},
+        {"label": "Remuneração", "value": metadata_value(config, "remuneration_label", config.indexer)},
         {"label": "Volume emitido", "value": str(volume) if volume is not None else "-"},
         {"label": "Quantidade emitida", "value": str(quantity) if quantity is not None else "-"},
-        {"label": "PU de emissao", "value": str(pu_issue) if pu_issue is not None else "-"},
-        {"label": "Data de emissao", "value": issue_date},
-        {"label": "Inicio da rentabilidade", "value": start_date},
+        {"label": "PU de emissão", "value": str(pu_issue) if pu_issue is not None else "-"},
+        {"label": "Data de emissão", "value": issue_date},
+        {"label": "Início da rentabilidade", "value": start_date},
         {"label": "Data de vencimento", "value": maturity_date},
         {"label": "Pagamento de juros", "value": metadata_value(config, "payment_frequency", "-")},
-        {"label": "Amortizacao", "value": metadata_value(config, "amortization_frequency", "-")},
-        {"label": "Distribuicao", "value": metadata_value(config, "distribution", "-")},
+        {"label": "Amortização", "value": metadata_value(config, "amortization_frequency", "-")},
+        {"label": "Distribuição", "value": metadata_value(config, "distribution", "-")},
         {"label": "Tipo de risco", "value": metadata_value(config, "risk_type", "-")},
         {"label": "Garantias", "value": metadata_value(config, "guarantees", "-")},
         {"label": "Saldo atual", "value": str(summary["current_balance"]) if summary["current_balance"] is not None else "-"},
-        {"label": "Proximo PMT", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
+        {"label": "Próximo PMT", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
     ]
 
     pu_fields = [
         {"label": "PU cheio", "value": str(summary["current_pu_cheio"]) if summary["current_pu_cheio"] is not None else "-"},
         {"label": "PU vazio", "value": str(summary["current_pu_vazio"]) if summary["current_pu_vazio"] is not None else "-"},
         {"label": "PU juros", "value": str(summary["current_pu_juros"]) if summary["current_pu_juros"] is not None else "-"},
-        {"label": "PU amortizacao", "value": str(summary["current_pu_amort"]) if summary["current_pu_amort"] is not None else "-"},
+        {"label": "PU amortização", "value": str(summary["current_pu_amort"]) if summary["current_pu_amort"] is not None else "-"},
         {"label": "Principal atualizado", "value": str(summary["current_principal"]) if summary["current_principal"] is not None else "-"},
         {"label": "PMT da linha atual", "value": str(summary["current_payment"]) if summary["current_payment"] is not None else "-"},
     ]
@@ -1258,32 +1258,32 @@ def build_portfolio_payload() -> dict[str, Any]:
     total_volume = sum(item["current_balance"] for item in comparison)
     operation = {
         "id": PORTFOLIO_ID,
-        "label": "Visao Geral",
-        "full_name": "Carteira consolidada de dividas - AXS Energia",
+        "label": "Visão Geral",
+        "full_name": "Carteira consolidada de dívidas - AXS Energia",
         "badge": "Carteira",
-        "category": "Analise geral",
-        "indexer": "Multiplos indexadores",
-        "description": "Consolidado das emissoes para leitura executiva da carteira.",
+        "category": "Análise geral",
+        "indexer": "Múltiplos indexadores",
+        "description": "Consolidado das emissões para leitura executiva da carteira.",
         "issuer": "AXS Energia",
         "script_path": "Consolidado a partir dos scripts individuais",
         "identity_fields": [
-            {"label": "Emissoes ativas", "value": str(len(payloads))},
+            {"label": "Emissões ativas", "value": str(len(payloads))},
             {"label": "Tipos", "value": "CRI e Debenture"},
-            {"label": "Escopo", "value": "Todas as emissoes mapeadas"},
+            {"label": "Escopo", "value": "Todas as emissões mapeadas"},
         ],
         "overview_fields": [
             {"label": "Saldo consolidado", "value": str(summary["current_balance"]) if summary["current_balance"] is not None else "-"},
-            {"label": "Proximo PMT da carteira", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
-            {"label": "Data do proximo PMT", "value": summary["next_payment_date"] or "-"},
+            {"label": "Próximo PMT da carteira", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
+            {"label": "Data do próximo PMT", "value": summary["next_payment_date"] or "-"},
             {"label": "Juros acumulados", "value": str(summary["total_interest"])},
-            {"label": "Amortizacao acumulada", "value": str(summary["total_amortization"])},
-            {"label": "Saldo somado das emissoes", "value": str(total_volume)},
+            {"label": "Amortização acumulada", "value": str(summary["total_amortization"])},
+            {"label": "Saldo somado das emissões", "value": str(total_volume)},
         ],
         "pu_fields": [
-            {"label": "Emissao com maior saldo", "value": comparison[0]["label"] if comparison else "-"},
+            {"label": "Emissão com maior saldo", "value": comparison[0]["label"] if comparison else "-"},
             {"label": "Maior saldo atual", "value": str(comparison[0]["current_balance"]) if comparison else "-"},
             {"label": "Maior juros acumulados", "value": str(max((item["total_interest"] for item in comparison), default=0.0))},
-            {"label": "Maior amortizacao acumulada", "value": str(max((item["total_amortization"] for item in comparison), default=0.0))},
+            {"label": "Maior amortização acumulada", "value": str(max((item["total_amortization"] for item in comparison), default=0.0))},
         ],
     }
     return {

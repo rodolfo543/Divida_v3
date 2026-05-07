@@ -1,17 +1,17 @@
 {
   "operation": {
     "id": "geral",
-    "label": "Visao Geral",
-    "full_name": "Carteira consolidada de dividas - AXS Energia",
+    "label": "Visão Geral",
+    "full_name": "Carteira consolidada de dívidas - AXS Energia",
     "badge": "Carteira",
-    "category": "Analise geral",
-    "indexer": "Multiplos indexadores",
-    "description": "Consolidado das emissoes para leitura executiva da carteira.",
+    "category": "Análise geral",
+    "indexer": "Múltiplos indexadores",
+    "description": "Consolidado das emissões para leitura executiva da carteira.",
     "issuer": "AXS Energia",
     "script_path": "Consolidado a partir dos scripts individuais",
     "identity_fields": [
       {
-        "label": "Emissoes ativas",
+        "label": "Emissões ativas",
         "value": "12"
       },
       {
@@ -20,7 +20,7 @@
       },
       {
         "label": "Escopo",
-        "value": "Todas as emissoes mapeadas"
+        "value": "Todas as emissões mapeadas"
       }
     ],
     "overview_fields": [
@@ -29,11 +29,11 @@
         "value": "1196105857.31"
       },
       {
-        "label": "Proximo PMT da carteira",
+        "label": "Próximo PMT da carteira",
         "value": "10357943.31"
       },
       {
-        "label": "Data do proximo PMT",
+        "label": "Data do próximo PMT",
         "value": "15/05/2026"
       },
       {
@@ -41,17 +41,17 @@
         "value": "1716143651.44"
       },
       {
-        "label": "Amortizacao acumulada",
+        "label": "Amortização acumulada",
         "value": "2263481400.27"
       },
       {
-        "label": "Saldo somado das emissoes",
+        "label": "Saldo somado das emissões",
         "value": "1436660618.39"
       }
     ],
     "pu_fields": [
       {
-        "label": "Emissao com maior saldo",
+        "label": "Emissão com maior saldo",
         "value": "AXS Goiás"
       },
       {
@@ -63,7 +63,7 @@
         "value": "331968335.39"
       },
       {
-        "label": "Maior amortizacao acumulada",
+        "label": "Maior amortização acumulada",
         "value": "407554618.16"
       }
     ]
@@ -10116,6 +10116,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "07/05/2026 09:27:13",
-  "generated_at_iso": "2026-05-07T09:27:13"
+  "generated_at": "07/05/2026 12:49:57",
+  "generated_at_iso": "2026-05-07T12:49:57"
 }

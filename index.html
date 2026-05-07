@@ -19,12 +19,12 @@
         <p class="eyebrow">Controle executivo</p>
         <h1>Controle de d&iacute;vida - AXS Energia</h1>
         <p class="hero-text">
-          Dashboard visual para acompanhar cada emissao, consolidar a carteira e navegar
-          pelos calculos dos scripts Python com muito mais contexto financeiro.
+          Dashboard visual para acompanhar cada emissão, consolidar a carteira e navegar
+          pelos cálculos dos scripts Python com muito mais contexto financeiro.
         </p>
         <div class="hero-actions">
-          <button id="refreshButton" class="primary-button" type="button">Atualizar calculo</button>
-          <span id="statusPill" class="status-pill">Carregando operacoes...</span>
+          <button id="refreshButton" class="primary-button" type="button">Atualizar cálculo</button>
+          <span id="statusPill" class="status-pill">Carregando operações...</span>
         </div>
         <div id="heroMiniMetrics" class="hero-mini-metrics"></div>
       </div>
@@ -32,14 +32,14 @@
       <section class="instrument-panel tilt-card">
         <div class="instrument-header">
           <span id="operationBadge" class="badge-pill">Carteira</span>
-          <h2 id="activeOperationName">Selecionando operacao...</h2>
+          <h2 id="activeOperationName">Selecionando operação...</h2>
           <p id="activeOperationDescription" class="highlight-text">Preparando o dashboard.</p>
         </div>
 
         <div id="identityGrid" class="identity-grid"></div>
 
         <div class="info-tabs">
-          <button class="info-tab active" data-panel="overview" type="button">Informacoes</button>
+          <button class="info-tab active" data-panel="overview" type="button">Informações</button>
           <button class="info-tab" data-panel="pu" type="button">PU</button>
           <button class="info-tab" data-panel="sources" type="button">Fontes</button>
         </div>
@@ -53,15 +53,15 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Carteira</p>
-            <h2>Escolha a analise</h2>
+            <h2>Escolha a análise</h2>
           </div>
-          <p class="section-note">Use a visao geral para consolidado e cada aba individual para aprofundar a divida.</p>
+          <p class="section-note">Use a visão geral para consolidado e cada aba individual para aprofundar a dívida.</p>
         </div>
         <div id="operationTabs" class="operation-tabs"></div>
         <div id="variantSection" class="variant-section hidden">
           <div class="variant-header">
-            <span id="variantHeaderTitle">Visao consolidada</span>
-            <small id="variantHeaderNote">Sem selecao extra, o dashboard mostra o consolidado da emissao.</small>
+            <span id="variantHeaderTitle">Visão consolidada</span>
+            <small id="variantHeaderNote">Sem seleção extra, o dashboard mostra o consolidado da emissão.</small>
           </div>
           <div id="variantTabs" class="variant-tabs"></div>
         </div>
@@ -101,9 +101,9 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Composicao</p>
-            <h2>Juros x amortizacao</h2>
+            <h2>Juros x amortização</h2>
           </div>
-          <p class="section-note">Comparacao direta entre as duas pernas do fluxo.</p>
+          <p class="section-note">Comparação direta entre as duas pernas do fluxo.</p>
         </div>
         <div class="chart-wrap">
           <svg id="compositionChart" class="chart-svg" viewBox="0 0 760 320" preserveAspectRatio="none"></svg>
@@ -115,9 +115,9 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Comparativo</p>
-            <h2>Saldos por emissao</h2>
+            <h2>Saldos por emissão</h2>
           </div>
-          <p class="section-note">Radar da carteira inteira, mesmo quando uma divida especifica estiver selecionada.</p>
+          <p class="section-note">Radar da carteira inteira, mesmo quando uma dívida específica estiver selecionada.</p>
         </div>
         <div class="chart-wrap">
           <svg id="comparisonChart" class="chart-svg" viewBox="0 0 760 320" preserveAspectRatio="none"></svg>
@@ -131,7 +131,7 @@
             <p class="section-kicker">Radar</p>
             <h2>Carteira em destaque</h2>
           </div>
-          <p class="section-note">Cards com saldos e proximos PMTs para leitura rapida.</p>
+          <p class="section-note">Cards com saldos e próximos PMTs para leitura rápida.</p>
         </div>
         <div id="comparisonCards" class="comparison-cards"></div>
       </section>
@@ -142,7 +142,7 @@
             <p class="section-kicker">Agenda</p>
             <h2>Proximos eventos</h2>
           </div>
-          <p class="section-note">Linha do tempo operacional da selecao atual.</p>
+          <p class="section-note">Linha do tempo operacional da seleção atual.</p>
         </div>
         <div id="timeline" class="timeline"></div>
       </section>
@@ -154,7 +154,7 @@
             <h2>Tabela financeira</h2>
           </div>
           <div class="panel-actions">
-            <p class="section-note">Operacoes com variantes exibem linhas separadas por instrumento, serie ou emissao quando aplicavel.</p>
+            <p class="section-note">Operações com variantes exibem linhas separadas por instrumento, série ou emissão quando aplicável.</p>
             <div class="download-menu">
               <button id="downloadTableButton" class="secondary-button" type="button">Baixar</button>
               <div id="downloadTableOptions" class="download-options hidden">
@@ -191,7 +191,7 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Rastreabilidade</p>
-            <h2>Fontes e observacoes</h2>
+            <h2>Fontes e observações</h2>
           </div>
         </div>
         <div id="sourceInfo" class="source-info"></div>
