@@ -7,24 +7,39 @@ $LogFile = Join-Path $LogDir ("atualizacao-dashboard-{0}.log" -f (Get-Date -Form
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 Start-Transcript -Path $LogFile -Append | Out-Null
 
+function Invoke-Step {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Label,
+        [Parameter(Mandatory = $true)]
+        [scriptblock]$Command
+    )
+
+    Write-Host "Executando: $Label"
+    & $Command
+    if ($LASTEXITCODE -ne 0) {
+        throw "$Label falhou com codigo $LASTEXITCODE."
+    }
+}
+
 try {
     Set-Location $ProjectDir
 
     Write-Host "[$(Get-Date -Format 'dd/MM/yyyy HH:mm:ss')] Iniciando atualizacao do dashboard..."
 
-    python .\servidor_dashboard.py build
+    Invoke-Step "build do dashboard" { python .\servidor_dashboard.py build }
 
     $changes = git status --porcelain
     if ([string]::IsNullOrWhiteSpace($changes)) {
         Write-Host "Nenhuma alteracao detectada. Nada para enviar ao GitHub."
-        exit 0
+        return
     }
 
-    git add .
+    Invoke-Step "git add" { git add . }
 
     $message = "Atualiza calculos automaticos do dashboard - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
-    git commit -m $message
-    git push origin main
+    Invoke-Step "git commit" { git commit -m $message }
+    Invoke-Step "git push" { git push origin main }
 
     Write-Host "Atualizacao concluida e enviada ao GitHub."
 }
