@@ -153,7 +153,16 @@
             <p class="section-kicker">Detalhamento</p>
             <h2>Tabela financeira</h2>
           </div>
-          <p class="section-note">Operacoes com variantes exibem linhas separadas por instrumento, serie ou emissao quando aplicavel.</p>
+          <div class="panel-actions">
+            <p class="section-note">Operacoes com variantes exibem linhas separadas por instrumento, serie ou emissao quando aplicavel.</p>
+            <div class="download-menu">
+              <button id="downloadTableButton" class="secondary-button" type="button">Baixar</button>
+              <div id="downloadTableOptions" class="download-options hidden">
+                <button id="downloadCsvButton" type="button">CSV</button>
+                <button id="downloadExcelButton" type="button">Excel</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="table-shell">
           <table class="data-table">

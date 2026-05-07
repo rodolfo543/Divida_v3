@@ -329,7 +329,7 @@ ${docContext}`;
         Accept: "application/json",
       },
       body: JSON.stringify({
-        model: process.env.NVIDIA_MODEL || "google/gemma-4-31b-it",
+        model: process.env.NVIDIA_MODEL || "mistralai/mixtral-8x22b-instruct-v0.1",
         max_tokens: 650,
         temperature: 0.2,
         top_p: 0.7,

@@ -67,6 +67,10 @@ const elements = {
   balanceTooltip: document.getElementById("balanceTooltip"),
   compositionTooltip: document.getElementById("compositionTooltip"),
   comparisonTooltip: document.getElementById("comparisonTooltip"),
+  downloadTableButton: document.getElementById("downloadTableButton"),
+  downloadTableOptions: document.getElementById("downloadTableOptions"),
+  downloadCsvButton: document.getElementById("downloadCsvButton"),
+  downloadExcelButton: document.getElementById("downloadExcelButton"),
   infoTabs: Array.from(document.querySelectorAll(".info-tab")),
 };
 
@@ -435,7 +439,7 @@ function getFocusSlice(series, maxItems = 24) {
 
 function renderTable(payload) {
   const tableSeries = payload.table_series || payload.series;
-  const rows = getFocusSlice(tableSeries, 18);
+  const rows = tableSeries;
   elements.tableBody.innerHTML = rows.map((item) => `
     <tr>
       <td>${item.date || "-"}</td>
@@ -452,6 +456,117 @@ function renderTable(payload) {
       <td>${formatCurrency(item.balance)}</td>
     </tr>
   `).join("");
+}
+
+function getTableHeaders() {
+  return [
+    "Data",
+    "Tipo",
+    "Evento",
+    "PU cheio",
+    "PU vazio",
+    "PU juros",
+    "PU amort.",
+    "Juros R$",
+    "Amort. R$",
+    "PMT total",
+    "Principal",
+    "Saldo",
+  ];
+}
+
+function getTableRowsForExport(payload) {
+  const tableSeries = payload?.table_series || payload?.series || [];
+  return tableSeries.map((item) => [
+    item.date || "-",
+    item.component_label || "-",
+    item.label || "-",
+    item.pu_cheio !== null ? formatNumber(item.pu_cheio, 8) : "-",
+    item.pu_vazio !== null ? formatNumber(item.pu_vazio, 8) : "-",
+    item.pu_juros !== null ? formatNumber(item.pu_juros, 8) : "-",
+    item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-",
+    formatCurrency(item.interest),
+    formatCurrency(item.amortization),
+    formatCurrency(item.payment),
+    formatCurrency(item.principal),
+    formatCurrency(item.balance),
+  ]);
+}
+
+function safeFileName(text) {
+  return String(text || "tabela_financeira")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w.-]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .toLowerCase();
+}
+
+function escapeCsv(value) {
+  const text = String(value ?? "");
+  if (/[",;\n]/.test(text)) {
+    return `"${text.replaceAll('"', '""')}"`;
+  }
+  return text;
+}
+
+function downloadBlob(filename, content, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportTableAsCsv() {
+  if (!state.activePayload) {
+    return;
+  }
+  const lines = [
+    getTableHeaders().map(escapeCsv).join(";"),
+    ...getTableRowsForExport(state.activePayload).map((row) => row.map(escapeCsv).join(";")),
+  ];
+  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${state.activePayload.generated_at_iso || "export"}.csv`;
+  downloadBlob(fileName, `\uFEFF${lines.join("\r\n")}`, "text/csv;charset=utf-8;");
+}
+
+function exportTableAsExcel() {
+  if (!state.activePayload) {
+    return;
+  }
+  const headers = getTableHeaders();
+  const rows = getTableRowsForExport(state.activePayload);
+  const tableHtml = `
+    <table>
+      <thead>
+        <tr>${headers.map((item) => `<th>${escapeHtml(item)}</th>`).join("")}</tr>
+      </thead>
+      <tbody>
+        ${rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}
+      </tbody>
+    </table>
+  `;
+  const workbook = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+      <head>
+        <meta charset="utf-8">
+      </head>
+      <body>${tableHtml}</body>
+    </html>
+  `;
+  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${state.activePayload.generated_at_iso || "export"}.xls`;
+  downloadBlob(fileName, `\uFEFF${workbook}`, "application/vnd.ms-excel;charset=utf-8;");
+}
+
+function toggleDownloadMenu(forceState = null) {
+  const shouldOpen = typeof forceState === "boolean"
+    ? forceState
+    : elements.downloadTableOptions.classList.contains("hidden");
+  elements.downloadTableOptions.classList.toggle("hidden", !shouldOpen);
 }
 
 function renderSources(payload) {
@@ -1246,6 +1361,23 @@ async function handleAssistantSubmit(event) {
 async function bootstrap() {
   try {
     applyTilt(document.querySelectorAll(".tilt-card"));
+    elements.downloadTableButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleDownloadMenu();
+    });
+    elements.downloadCsvButton.addEventListener("click", () => {
+      toggleDownloadMenu(false);
+      exportTableAsCsv();
+    });
+    elements.downloadExcelButton.addEventListener("click", () => {
+      toggleDownloadMenu(false);
+      exportTableAsExcel();
+    });
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".download-menu")) {
+        toggleDownloadMenu(false);
+      }
+    });
     elements.infoTabs.forEach((button) => {
       button.addEventListener("click", () => {
         state.activeInfoTab = button.dataset.panel;
