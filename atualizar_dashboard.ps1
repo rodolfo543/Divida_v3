@@ -22,12 +22,45 @@ function Invoke-Step {
     }
 }
 
+function Invoke-StepWithRetry {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Label,
+        [Parameter(Mandatory = $true)]
+        [scriptblock]$Command,
+        [int]$MaxAttempts = 3,
+        [int]$DelaySeconds = 15
+    )
+
+    $attempt = 1
+    while ($attempt -le $MaxAttempts) {
+        try {
+            Invoke-Step "$Label (tentativa $attempt de $MaxAttempts)" $Command
+            return
+        }
+        catch {
+            if ($attempt -ge $MaxAttempts) {
+                throw
+            }
+            Write-Warning "$Label falhou na tentativa $attempt. Nova tentativa em $DelaySeconds segundos."
+            Start-Sleep -Seconds $DelaySeconds
+            $attempt++
+        }
+    }
+}
+
 try {
     Set-Location $ProjectDir
 
     Write-Host "[$(Get-Date -Format 'dd/MM/yyyy HH:mm:ss')] Iniciando atualizacao do dashboard..."
 
-    Invoke-Step "build do dashboard" { python .\servidor_dashboard.py build }
+    $env:GIT_TERMINAL_PROMPT = "0"
+
+    Invoke-Step "git config gc.auto" { git config --local gc.auto 0 }
+    Invoke-Step "git config gc.autoDetach" { git config --local gc.autoDetach false }
+    Invoke-Step "git fetch" { git fetch origin }
+
+    Invoke-StepWithRetry "build do dashboard" { python .\servidor_dashboard.py build } 3 20
 
     $changes = git status --porcelain
     if ([string]::IsNullOrWhiteSpace($changes)) {
@@ -39,7 +72,7 @@ try {
 
     $message = "Atualiza calculos automaticos do dashboard - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
     Invoke-Step "git commit" { git commit -m $message }
-    Invoke-Step "git push" { git push origin main }
+    Invoke-StepWithRetry "git push" { git push origin HEAD:main --force-with-lease } 3 15
 
     Write-Host "Atualizacao concluida e enviada ao GitHub."
 }
