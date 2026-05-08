@@ -316,7 +316,7 @@ TRECHOS DOS DOCUMENTOS:
 ${docContext}`;
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 52000);
+  const timeout = setTimeout(() => controller.abort(), 410000);
 
   let response;
   try {
