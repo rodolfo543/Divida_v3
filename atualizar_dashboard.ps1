@@ -58,21 +58,23 @@ try {
 
     Invoke-Step "git config gc.auto" { git config --local gc.auto 0 }
     Invoke-Step "git config gc.autoDetach" { git config --local gc.autoDetach false }
-    Invoke-Step "git fetch" { git fetch origin }
+    Invoke-Step "git config maintenance.auto" { git config --local maintenance.auto false }
+    Invoke-Step "git config fetch.writeCommitGraph" { git config --local fetch.writeCommitGraph false }
+    Invoke-Step "git fetch" { git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false -c fetch.writeCommitGraph=false fetch --no-auto-gc origin }
 
     Invoke-StepWithRetry "build do dashboard" { python .\servidor_dashboard.py build } 3 20
 
-    $changes = git status --porcelain
+    $changes = git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false status --porcelain
     if ([string]::IsNullOrWhiteSpace($changes)) {
         Write-Host "Nenhuma alteracao detectada. Nada para enviar ao GitHub."
         return
     }
 
-    Invoke-Step "git add" { git add . }
+    Invoke-Step "git add" { git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false add . }
 
     $message = "Atualiza calculos automaticos do dashboard - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
-    Invoke-Step "git commit" { git commit -m $message }
-    Invoke-StepWithRetry "git push" { git push origin HEAD:main --force-with-lease } 3 15
+    Invoke-Step "git commit" { git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false commit -m $message }
+    Invoke-StepWithRetry "git push" { git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false push origin HEAD:main --force-with-lease } 3 15
 
     Write-Host "Atualizacao concluida e enviada ao GitHub."
 }
