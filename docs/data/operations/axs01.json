@@ -4449,8 +4449,8 @@
     "next_amortization_amount": 2106019.4,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.917095394274874,
-    "wal_years": 11.512840684204393
+    "duration_years": 9.914357543487741,
+    "wal_years": 11.51010283341726
   },
   "timeline": [
     {
@@ -9062,8 +9062,8 @@
         "next_amortization_amount": 2106019.4,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.917095394274874,
-        "wal_years": 11.512840684204393
+        "duration_years": 9.914357543487741,
+        "wal_years": 11.51010283341726
       },
       "timeline": [
         {
@@ -12925,8 +12925,8 @@
         "next_amortization_amount": 710094.49,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 10.046288484669423,
-        "wal_years": 11.7777293965374
+        "duration_years": 10.043550633882289,
+        "wal_years": 11.774991545750268
       },
       "timeline": [
         {
@@ -16986,8 +16986,8 @@
         "next_amortization_amount": 1395924.91,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.39755265045273,
-        "wal_years": 10.444027976831876
+        "duration_years": 9.394814799665596,
+        "wal_years": 10.441290126044745
       },
       "timeline": [
         {
@@ -17363,7 +17363,7 @@
       "id": "axs04",
       "label": "AXS 04",
       "full_name": "AXS 4 - Emissao 139 / Serie UNICA",
-      "current_balance": 148838878.81,
+      "current_balance": 149414254.22,
       "next_payment_amount": 1983153.51,
       "total_interest": 161467868.64,
       "total_amortization": 212031346.65,
@@ -17399,7 +17399,7 @@
       "id": "axs03",
       "label": "AXS 03",
       "full_name": "AXS III - Emissao 78 / Serie UNICA",
-      "current_balance": 109776805.91,
+      "current_balance": 110377811.51,
       "next_payment_amount": 1286049.28,
       "total_interest": 125785440.82000001,
       "total_amortization": 157346340.5,
@@ -17420,6 +17420,18 @@
       "badge": "DEB"
     },
     {
+      "id": "axs02",
+      "label": "AXS 02",
+      "full_name": "AXS 02 - Consolidado CRI + Debenture",
+      "current_balance": 92282721.44,
+      "next_payment_amount": 1170761.27,
+      "total_interest": 102104743.33,
+      "total_amortization": 135996546.6,
+      "event_count": 168,
+      "indexer": "IPCA + 11%",
+      "badge": "Portfolio"
+    },
+    {
       "id": "axs05",
       "label": "AXS 05",
       "full_name": "AXS 05 - 2a Emissao / 2 Series",
@@ -17432,39 +17444,27 @@
       "badge": "DEB"
     },
     {
-      "id": "axs02",
-      "label": "AXS 02",
-      "full_name": "AXS 02 - Consolidado CRI + Debenture",
-      "current_balance": 91964403.34,
-      "next_payment_amount": 1170761.27,
-      "total_interest": 102104743.33,
-      "total_amortization": 135996546.6,
-      "event_count": 168,
-      "indexer": "IPCA + 11%",
-      "badge": "Portfolio"
-    },
-    {
-      "id": "axs10",
-      "label": "AXS 10",
-      "full_name": "AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
-      "current_balance": 76590551.97,
-      "next_payment_amount": 4060629.48,
-      "total_interest": 49946434.93,
-      "total_amortization": 76590551.96,
-      "event_count": 144,
-      "indexer": "CDI + 6,50%",
-      "badge": "DEB"
-    },
-    {
       "id": "axs07",
       "label": "AXS 07",
       "full_name": "AXS VII - Emissao 1 / Serie UNICA",
-      "current_balance": 74332108.11,
+      "current_balance": 74079410.34,
       "next_payment_amount": 1346098.66,
       "total_interest": 47213496.89,
       "total_amortization": 95499128.26,
       "event_count": 119,
       "indexer": "IPCA + 10,50%",
+      "badge": "DEB"
+    },
+    {
+      "id": "axs10",
+      "label": "AXS 10",
+      "full_name": "AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
+      "current_balance": 73747357.5,
+      "next_payment_amount": 4060629.48,
+      "total_interest": 49946434.93,
+      "total_amortization": 76590551.96,
+      "event_count": 144,
+      "indexer": "CDI + 6,50%",
       "badge": "DEB"
     },
     {
@@ -17480,6 +17480,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "14/05/2026 08:00:16",
-  "generated_at_iso": "2026-05-14T08:00:16"
+  "generated_at": "15/05/2026 08:06:56",
+  "generated_at_iso": "2026-05-15T08:06:56"
 }
