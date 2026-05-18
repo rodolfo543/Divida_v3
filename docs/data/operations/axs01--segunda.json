@@ -3713,8 +3713,8 @@
     "next_amortization_amount": 1395924.91,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.394814799665596,
-    "wal_years": 10.441290126044745
+    "duration_years": 9.3866012473042,
+    "wal_years": 10.433076573683348
   },
   "timeline": [
     {
@@ -8524,8 +8524,8 @@
         "next_amortization_amount": 2106019.4,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.914357543487741,
-        "wal_years": 11.51010283341726
+        "duration_years": 9.906143991126344,
+        "wal_years": 11.501889281055867
       },
       "timeline": [
         {
@@ -12387,8 +12387,8 @@
         "next_amortization_amount": 710094.49,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 10.043550633882289,
-        "wal_years": 11.774991545750268
+        "duration_years": 10.035337081520893,
+        "wal_years": 11.766777993388871
       },
       "timeline": [
         {
@@ -16448,8 +16448,8 @@
         "next_amortization_amount": 1395924.91,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.394814799665596,
-        "wal_years": 10.441290126044745
+        "duration_years": 9.3866012473042,
+        "wal_years": 10.433076573683348
       },
       "timeline": [
         {
@@ -16826,7 +16826,7 @@
       "label": "AXS 04",
       "full_name": "AXS 4 - Emissao 139 / Serie UNICA",
       "current_balance": 149414254.22,
-      "next_payment_amount": 1983153.51,
+      "next_payment_amount": 1990287.3,
       "total_interest": 161467868.64,
       "total_amortization": 212031346.65,
       "event_count": 168,
@@ -16862,7 +16862,7 @@
       "label": "AXS 03",
       "full_name": "AXS III - Emissao 78 / Serie UNICA",
       "current_balance": 110377811.51,
-      "next_payment_amount": 1286049.28,
+      "next_payment_amount": 1291621.72,
       "total_interest": 125785440.82000001,
       "total_amortization": 157346340.5,
       "event_count": 168,
@@ -16886,7 +16886,7 @@
       "label": "AXS 02",
       "full_name": "AXS 02 - Consolidado CRI + Debenture",
       "current_balance": 92282721.44,
-      "next_payment_amount": 1170761.27,
+      "next_payment_amount": 1174075.48,
       "total_interest": 102104743.33,
       "total_amortization": 135996546.6,
       "event_count": 168,
@@ -16910,7 +16910,7 @@
       "label": "AXS 07",
       "full_name": "AXS VII - Emissao 1 / Serie UNICA",
       "current_balance": 74079410.34,
-      "next_payment_amount": 1346098.66,
+      "next_payment_amount": 1345814.16,
       "total_interest": 47213496.89,
       "total_amortization": 95499128.26,
       "event_count": 119,
@@ -16922,7 +16922,7 @@
       "label": "AXS 10",
       "full_name": "AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
       "current_balance": 73747357.5,
-      "next_payment_amount": 4060629.48,
+      "next_payment_amount": 1319240.37,
       "total_interest": 49946434.93,
       "total_amortization": 76590551.96,
       "event_count": 144,
@@ -16942,6 +16942,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "15/05/2026 08:06:56",
-  "generated_at_iso": "2026-05-15T08:06:56"
+  "generated_at": "18/05/2026 08:00:42",
+  "generated_at_iso": "2026-05-18T08:00:42"
 }
