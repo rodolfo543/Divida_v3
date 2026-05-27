@@ -3139,8 +3139,8 @@
     "next_amortization_amount": 0.0,
     "last_event_date": "15/12/2025",
     "final_balance": 0.0,
-    "duration_years": 9.035563385976507,
-    "wal_years": 10.758076988823161
+    "duration_years": 9.032825535189374,
+    "wal_years": 10.755339138036028
   },
   "timeline": [
     {
@@ -3554,6 +3554,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "26/05/2026 08:03:54",
-  "generated_at_iso": "2026-05-26T08:03:54"
+  "generated_at": "27/05/2026 08:00:06",
+  "generated_at_iso": "2026-05-27T08:00:06"
 }
