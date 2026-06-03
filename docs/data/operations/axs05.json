@@ -3873,8 +3873,8 @@
     "next_amortization_amount": 2994455.73,
     "last_event_date": "15/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.392046367797091,
-    "wal_years": 10.726615041896578
+    "duration_years": 9.389308517009958,
+    "wal_years": 10.723877191109445
   },
   "timeline": [
     {
@@ -7910,8 +7910,8 @@
         "next_amortization_amount": 2994455.73,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.392046367797091,
-        "wal_years": 10.726615041896578
+        "duration_years": 9.389308517009958,
+        "wal_years": 10.723877191109445
       },
       "timeline": [
         {
@@ -11197,8 +11197,8 @@
         "next_amortization_amount": 379961.92,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 10.148251643853122,
-        "wal_years": 11.917522217453092
+        "duration_years": 10.145513793065993,
+        "wal_years": 11.91478436666596
       },
       "timeline": [
         {
@@ -14628,8 +14628,8 @@
         "next_amortization_amount": 2614493.81,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.92753022715378,
-        "wal_years": 6.203105303411918
+        "duration_years": 5.924792376366647,
+        "wal_years": 6.200367452624785
       },
       "timeline": [
         {
@@ -15068,6 +15068,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "02/06/2026 08:00:14",
-  "generated_at_iso": "2026-06-02T08:00:14"
+  "generated_at": "03/06/2026 08:00:15",
+  "generated_at_iso": "2026-06-03T08:00:15"
 }
