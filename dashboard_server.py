@@ -37,6 +37,11 @@ VARIANT_OPTIONS_MAP: dict[str, list[dict[str, str]]] = {
         {"id": "primeira", "label": "1a Serie"},
         {"id": "segunda", "label": "2a Serie"},
     ],
+    "axs06": [
+        {"id": "total", "label": "Total"},
+        {"id": "primeira", "label": "1a Emissao"},
+        {"id": "segunda", "label": "2a Emissao"},
+    ],
 }
 
 
@@ -133,9 +138,9 @@ def first_number(*values: Any) -> float | None:
 
 def slug_component(value: Any) -> str:
     text = text_or_default(value).strip().upper()
-    if "PRIMEIRA" in text or "1A SERIE" in text or "1ª SERIE" in text or "AXSA11" in text or "AXSC12" in text:
+    if "PRIMEIRA" in text or "1A SERIE" in text or "1ª SERIE" in text or "1A EMISSAO" in text or "AXSA11" in text or "AXSC12" in text or "AXSE11" in text:
         return "primeira"
-    if "SEGUNDA" in text or "2A SERIE" in text or "2ª SERIE" in text or "AXSA21" in text or "AXSC22" in text:
+    if "SEGUNDA" in text or "2A SERIE" in text or "2ª SERIE" in text or "2A EMISSAO" in text or "AXSA21" in text or "AXSC22" in text or "AXSE12" in text:
         return "segunda"
     if "DEB" in text:
         return "deb"
@@ -845,6 +850,111 @@ def load_axs05(module: Any) -> dict[str, Any]:
     }
 
 
+def load_axs06(module: Any) -> dict[str, Any]:
+    fluxos, fonte = module.calcular_fluxos_emissoes()
+    primeira_rows = normalize_series(fluxos["primeira"])
+    segunda_rows = normalize_series(fluxos["segunda"])
+    detailed_rows = normalize_series([linha for linhas in fluxos.values() for linha in linhas])
+    total_rows = aggregate_variant_series(detailed_rows, "Total 1a + 2a Emissao")
+    base_meta = {
+        "primary_source": f"Fonte IPCA: {fonte}",
+        "notes": "AXS 06 permite visualizar o consolidado ou cada emissao separadamente.",
+    }
+
+    return {
+        "module_ref": module,
+        "series": total_rows,
+        "table_series": detailed_rows,
+        "summary": build_summary(total_rows),
+        "timeline": build_timeline(total_rows),
+        "meta": base_meta,
+        "variant_options": variant_options_for("axs06"),
+        "variants": {
+            "total": make_variant_payload(
+                total_rows,
+                detailed_rows,
+                {
+                    "full_name": "AXS 06 - Consolidado / 1a + 2a Emissao",
+                    "badge": "DEB",
+                    "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
+                    "description": "Visao consolidada das duas emissoes da AXS 06.",
+                    "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
+                    "metadata": {
+                        "issue_date": "15/02/2024 / 06/03/2026",
+                        "maturity_date": "15/03/2043",
+                        "quantity_emitted": "185665",
+                        "volume_emitted": "185665000",
+                        "pu_issue": "1000",
+                        "payment_frequency": "Semestral",
+                        "amortization_frequency": "Semestral",
+                        "distribution": "Res CVM 160",
+                        "risk_type": "Duas emissoes",
+                        "guarantees": "Cessao Fiduciaria, Fianca e garantias compartilhadas pari passu entre as emissoes.",
+                        "remuneration_label": "13,90% ate 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%",
+                        "code_if": "AXSE11 / AXSE12",
+                        "isin": "- / BRAXSEDBS029",
+                    },
+                },
+                base_meta,
+            ),
+            "primeira": make_variant_payload(
+                primeira_rows,
+                primeira_rows,
+                {
+                    "full_name": "AXS 06 - 1a Emissao / Serie UNICA",
+                    "badge": "DEB",
+                    "indexer": "13,90% -> IPCA + 10,5607%",
+                    "description": "Visualizacao isolada da 1a emissao da AXS 06.",
+                    "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
+                    "metadata": {
+                        "issue_date": "15/02/2024",
+                        "maturity_date": "15/03/2043",
+                        "quantity_emitted": "155665",
+                        "volume_emitted": "155665000",
+                        "pu_issue": "1000",
+                        "payment_frequency": "Semestral",
+                        "amortization_frequency": "Semestral",
+                        "distribution": "Res CVM 160",
+                        "risk_type": "Corporativo",
+                        "guarantees": "Cessao Fiduciaria e Fianca, com compartilhamento pari passu das garantias reais.",
+                        "remuneration_label": "13,90% ate 14/03/2026; depois IPCA + 10,5607%",
+                        "code_if": "AXSE11",
+                        "isin": "-",
+                    },
+                },
+                base_meta,
+            ),
+            "segunda": make_variant_payload(
+                segunda_rows,
+                segunda_rows,
+                {
+                    "full_name": "AXS 06 - 2a Emissao / Serie UNICA",
+                    "badge": "DEB",
+                    "indexer": "IPCA + 10,3849%",
+                    "description": "Visualizacao isolada da 2a emissao da AXS 06.",
+                    "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
+                    "metadata": {
+                        "issue_date": "06/03/2026",
+                        "maturity_date": "15/03/2043",
+                        "quantity_emitted": "30000",
+                        "volume_emitted": "30000000",
+                        "pu_issue": "1000",
+                        "payment_frequency": "Semestral",
+                        "amortization_frequency": "Semestral",
+                        "distribution": "Res CVM 160",
+                        "risk_type": "Corporativo",
+                        "guarantees": "Garantias compartilhadas pari passu com a 1a emissao.",
+                        "remuneration_label": "IPCA + 10,3849%",
+                        "code_if": "AXSE12",
+                        "isin": "BRAXSEDBS029",
+                    },
+                },
+                base_meta,
+            ),
+        },
+    }
+
+
 def build_comparison_rows(payloads: list[dict[str, Any]]) -> list[dict[str, Any]]:
     rows = []
     for payload in payloads:
@@ -1060,28 +1170,28 @@ OPERATIONS: dict[str, OperationConfig] = {
     "axs06": OperationConfig(
         id="axs06",
         label="AXS 06",
-        full_name="AXS 06 - Emissao 2 / Serie UNICA",
+        full_name="AXS 06 - Consolidado / 1a + 2a Emissao",
         badge="DEB",
         category="Debenture",
-        indexer="IPCA + 10,38%",
-        description="Debenture AXSE12 com incorporacoes iniciais e amortizacao semestral longa.",
-        issuer="AXS ENERGIA UNIDADE 06 S.A.",
-        code_if="AXSE12",
-        isin="BRAXSEDBS029",
-        script_path=PROJECT_DIR / "Code final prontos" / "axs06_v1.py",
-        loader=lambda module: load_axs_internal_formula(module, "Fonte IPCA"),
+        indexer="13,90% -> IPCA + 10,5607% / IPCA + 10,38%",
+        description="Consolidado das duas emissoes da AXS 06, com abertura por emissao.",
+        issuer="AXS ENERGIA UFV 06 SPE LTDA.",
+        code_if="AXSE11 / AXSE12",
+        isin="- / BRAXSEDBS029",
+        script_path=PROJECT_DIR.parent / "AXS 06" / "axs06_v2.py",
+        loader=load_axs06,
         metadata={
-            "issue_date": "06/03/2026",
+            "issue_date": "15/02/2024 / 06/03/2026",
             "maturity_date": "15/03/2043",
-            "quantity_emitted": "30000",
-            "volume_emitted": "30000000",
+            "quantity_emitted": "185665",
+            "volume_emitted": "185665000",
             "pu_issue": "1000",
             "payment_frequency": "Semestral",
             "amortization_frequency": "Semestral",
             "distribution": "Res CVM 160",
-            "risk_type": "Corporativo",
-            "guarantees": "Conforme documentos da emissao.",
-            "remuneration_label": "IPCA + 10.3849%",
+            "risk_type": "Duas emissoes",
+            "guarantees": "Cessao Fiduciaria, Fianca e garantias compartilhadas pari passu entre as emissoes.",
+            "remuneration_label": "13,90% ate 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%",
         },
     ),
     "axs07": OperationConfig(
@@ -1402,7 +1512,7 @@ CHAT_OPERATION_ALIASES: dict[str, list[str]] = {
     "axs03": ["axs 03", "axs03", "axs iii", "emissao 78", "22k1397969"],
     "axs04": ["axs 04", "axs04", "axs 4", "emissao 139", "23f0046476"],
     "axs05": ["axs 05", "axs05", "axsc12", "axsc22", "unidade 05"],
-    "axs06": ["axs 06", "axs06", "axse12", "unidade 06"],
+    "axs06": ["axs 06", "axs06", "axse11", "axse12", "ufv 06", "unidade 06"],
     "axs07": ["axs 07", "axs07", "axsu11", "unidade 07"],
     "axs08": ["axs 08", "axs08", "axs811", "unidade 08"],
     "axs09": ["axs 09", "axs09", "axs911", "unidade 09"],

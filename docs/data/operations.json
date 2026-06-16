@@ -1,6 +1,6 @@
 {
-  "generated_at": "15/06/2026 08:00:19",
-  "generated_at_iso": "2026-06-15T08:00:19",
+  "generated_at": "16/06/2026 08:00:16",
+  "generated_at_iso": "2026-06-16T08:00:16",
   "operations": [
     {
       "id": "geral",
@@ -93,9 +93,22 @@
       "id": "axs06",
       "label": "AXS 06",
       "category": "Debenture",
-      "indexer": "IPCA + 10,38%",
+      "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,38%",
       "badge": "DEB",
-      "variant_options": []
+      "variant_options": [
+        {
+          "id": "total",
+          "label": "Total"
+        },
+        {
+          "id": "primeira",
+          "label": "1a Emissao"
+        },
+        {
+          "id": "segunda",
+          "label": "2a Emissao"
+        }
+      ]
     },
     {
       "id": "axs07",
