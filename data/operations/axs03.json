@@ -11,11 +11,11 @@
     "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs03_cri_v4.py",
     "identity_fields": [
       {
-        "label": "Código IF",
+        "label": "CÃ³digo IF",
         "value": "22K1397969"
       },
       {
-        "label": "Código ISIN",
+        "label": "CÃ³digo ISIN",
         "value": "BRRBRACRIFA9"
       },
       {
@@ -25,7 +25,7 @@
     ],
     "overview_fields": [
       {
-        "label": "Remuneração",
+        "label": "RemuneraÃ§Ã£o",
         "value": "IPCA + 11%"
       },
       {
@@ -37,15 +37,15 @@
         "value": "103000.0"
       },
       {
-        "label": "PU de emissão",
+        "label": "PU de emissÃ£o",
         "value": "1000.0"
       },
       {
-        "label": "Data de emissão",
+        "label": "Data de emissÃ£o",
         "value": "22/11/2022"
       },
       {
-        "label": "Início da rentabilidade",
+        "label": "InÃ­cio da rentabilidade",
         "value": "29/11/2022"
       },
       {
@@ -57,11 +57,11 @@
         "value": "Mensal"
       },
       {
-        "label": "Amortização",
+        "label": "AmortizaÃ§Ã£o",
         "value": "Mensal"
       },
       {
-        "label": "Distribuição",
+        "label": "DistribuiÃ§Ã£o",
         "value": "Res CVM 160"
       },
       {
@@ -77,7 +77,7 @@
         "value": "110749949.3"
       },
       {
-        "label": "Próximo PMT",
+        "label": "PrÃ³ximo PMT",
         "value": "1389109.79"
       }
     ],
@@ -95,7 +95,7 @@
         "value": "8.97239248"
       },
       {
-        "label": "PU amortização",
+        "label": "PU amortizaÃ§Ã£o",
         "value": "3.56762417"
       },
       {
@@ -16902,7 +16902,7 @@
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS Goiás",
+      "label": "AXS GoiÃ¡s",
       "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 13191950.84,
@@ -17045,6 +17045,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/06/2026 08:00:16",
-  "generated_at_iso": "2026-06-16T08:00:16"
+  "generated_at": "16/06/2026 09:17:53",
+  "generated_at_iso": "2026-06-16T09:17:53"
 }

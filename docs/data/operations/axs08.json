@@ -11,11 +11,11 @@
     "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs08_v2.py",
     "identity_fields": [
       {
-        "label": "Código IF",
+        "label": "CÃ³digo IF",
         "value": "AXS811"
       },
       {
-        "label": "Código ISIN",
+        "label": "CÃ³digo ISIN",
         "value": "BRAXS8DBS007"
       },
       {
@@ -25,7 +25,7 @@
     ],
     "overview_fields": [
       {
-        "label": "Remuneração",
+        "label": "RemuneraÃ§Ã£o",
         "value": "IPCA + 11%"
       },
       {
@@ -37,15 +37,15 @@
         "value": "120000"
       },
       {
-        "label": "PU de emissão",
+        "label": "PU de emissÃ£o",
         "value": "1000"
       },
       {
-        "label": "Data de emissão",
+        "label": "Data de emissÃ£o",
         "value": "01/07/2024"
       },
       {
-        "label": "Início da rentabilidade",
+        "label": "InÃ­cio da rentabilidade",
         "value": "10/07/2024"
       },
       {
@@ -57,11 +57,11 @@
         "value": "Semestral"
       },
       {
-        "label": "Amortização",
+        "label": "AmortizaÃ§Ã£o",
         "value": "Anual"
       },
       {
-        "label": "Distribuição",
+        "label": "DistribuiÃ§Ã£o",
         "value": "Res CVM 160"
       },
       {
@@ -77,7 +77,7 @@
         "value": "128255198.72"
       },
       {
-        "label": "Próximo PMT",
+        "label": "PrÃ³ximo PMT",
         "value": "7672291.57"
       }
     ],
@@ -95,7 +95,7 @@
         "value": "56.5168966"
       },
       {
-        "label": "PU amortização",
+        "label": "PU amortizaÃ§Ã£o",
         "value": "21.81210862"
       },
       {
@@ -3325,7 +3325,7 @@
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS Goiás",
+      "label": "AXS GoiÃ¡s",
       "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 13191950.84,
@@ -3468,6 +3468,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/06/2026 08:00:16",
-  "generated_at_iso": "2026-06-16T08:00:16"
+  "generated_at": "16/06/2026 09:17:53",
+  "generated_at_iso": "2026-06-16T09:17:53"
 }

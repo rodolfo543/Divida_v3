@@ -1,17 +1,17 @@
 {
   "operation": {
     "id": "geral",
-    "label": "Visão Geral",
-    "full_name": "Carteira consolidada de dívidas - AXS Energia",
+    "label": "VisÃ£o Geral",
+    "full_name": "Carteira consolidada de dÃ­vidas - AXS Energia",
     "badge": "Carteira",
-    "category": "Análise geral",
-    "indexer": "Múltiplos indexadores",
-    "description": "Consolidado das emissões para leitura executiva da carteira.",
+    "category": "AnÃ¡lise geral",
+    "indexer": "MÃºltiplos indexadores",
+    "description": "Consolidado das emissÃµes para leitura executiva da carteira.",
     "issuer": "AXS Energia",
     "script_path": "Consolidado a partir dos scripts individuais",
     "identity_fields": [
       {
-        "label": "Emissões ativas",
+        "label": "EmissÃµes ativas",
         "value": "12"
       },
       {
@@ -20,7 +20,7 @@
       },
       {
         "label": "Escopo",
-        "value": "Todas as emissões mapeadas"
+        "value": "Todas as emissÃµes mapeadas"
       }
     ],
     "overview_fields": [
@@ -29,11 +29,11 @@
         "value": "1336742870.8"
       },
       {
-        "label": "Próximo PMT da carteira",
+        "label": "PrÃ³ximo PMT da carteira",
         "value": "7721422.07"
       },
       {
-        "label": "Data do próximo PMT",
+        "label": "Data do prÃ³ximo PMT",
         "value": "15/07/2026"
       },
       {
@@ -41,18 +41,18 @@
         "value": "1989596117.23"
       },
       {
-        "label": "Amortização acumulada",
+        "label": "AmortizaÃ§Ã£o acumulada",
         "value": "2552020003.32"
       },
       {
-        "label": "Saldo somado das emissões",
+        "label": "Saldo somado das emissÃµes",
         "value": "1545410508.51"
       }
     ],
     "pu_fields": [
       {
-        "label": "Emissão com maior saldo",
-        "value": "AXS Goiás"
+        "label": "EmissÃ£o com maior saldo",
+        "value": "AXS GoiÃ¡s"
       },
       {
         "label": "Maior saldo atual",
@@ -63,7 +63,7 @@
         "value": "364633199.44"
       },
       {
-        "label": "Maior amortização acumulada",
+        "label": "Maior amortizaÃ§Ã£o acumulada",
         "value": "410320801.76"
       }
     ]
@@ -10013,7 +10013,7 @@
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS Goiás",
+      "label": "AXS GoiÃ¡s",
       "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 13191950.84,
@@ -10158,6 +10158,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "16/06/2026 08:00:16",
-  "generated_at_iso": "2026-06-16T08:00:16"
+  "generated_at": "16/06/2026 09:17:53",
+  "generated_at_iso": "2026-06-16T09:17:53"
 }

@@ -8,14 +8,14 @@
     "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
     "description": "Visao consolidada das duas emissoes da AXS 06.",
     "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\AXS 06\\axs06_v2.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs06_v2.py",
     "identity_fields": [
       {
-        "label": "Código IF",
+        "label": "CÃ³digo IF",
         "value": "AXSE11 / AXSE12"
       },
       {
-        "label": "Código ISIN",
+        "label": "CÃ³digo ISIN",
         "value": "- / BRAXSEDBS029"
       },
       {
@@ -25,7 +25,7 @@
     ],
     "overview_fields": [
       {
-        "label": "Remuneração",
+        "label": "RemuneraÃ§Ã£o",
         "value": "13,90% ate 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%"
       },
       {
@@ -37,15 +37,15 @@
         "value": "185665"
       },
       {
-        "label": "PU de emissão",
+        "label": "PU de emissÃ£o",
         "value": "1000"
       },
       {
-        "label": "Data de emissão",
+        "label": "Data de emissÃ£o",
         "value": "15/02/2024 / 06/03/2026"
       },
       {
-        "label": "Início da rentabilidade",
+        "label": "InÃ­cio da rentabilidade",
         "value": "-"
       },
       {
@@ -57,11 +57,11 @@
         "value": "Semestral"
       },
       {
-        "label": "Amortização",
+        "label": "AmortizaÃ§Ã£o",
         "value": "Semestral"
       },
       {
-        "label": "Distribuição",
+        "label": "DistribuiÃ§Ã£o",
         "value": "Res CVM 160"
       },
       {
@@ -77,7 +77,7 @@
         "value": "163613203.06"
       },
       {
-        "label": "Próximo PMT",
+        "label": "PrÃ³ximo PMT",
         "value": "12704840.92"
       }
     ],
@@ -95,7 +95,7 @@
         "value": "51.059667"
       },
       {
-        "label": "PU amortização",
+        "label": "PU amortizaÃ§Ã£o",
         "value": "-"
       },
       {
@@ -4559,14 +4559,14 @@
         "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
         "description": "Visao consolidada das duas emissoes da AXS 06.",
         "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\AXS 06\\axs06_v2.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs06_v2.py",
         "identity_fields": [
           {
-            "label": "Código IF",
+            "label": "CÃ³digo IF",
             "value": "AXSE11 / AXSE12"
           },
           {
-            "label": "Código ISIN",
+            "label": "CÃ³digo ISIN",
             "value": "- / BRAXSEDBS029"
           },
           {
@@ -4576,7 +4576,7 @@
         ],
         "overview_fields": [
           {
-            "label": "Remuneração",
+            "label": "RemuneraÃ§Ã£o",
             "value": "13,90% ate 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%"
           },
           {
@@ -4588,15 +4588,15 @@
             "value": "185665"
           },
           {
-            "label": "PU de emissão",
+            "label": "PU de emissÃ£o",
             "value": "1000"
           },
           {
-            "label": "Data de emissão",
+            "label": "Data de emissÃ£o",
             "value": "15/02/2024 / 06/03/2026"
           },
           {
-            "label": "Início da rentabilidade",
+            "label": "InÃ­cio da rentabilidade",
             "value": "-"
           },
           {
@@ -4608,11 +4608,11 @@
             "value": "Semestral"
           },
           {
-            "label": "Amortização",
+            "label": "AmortizaÃ§Ã£o",
             "value": "Semestral"
           },
           {
-            "label": "Distribuição",
+            "label": "DistribuiÃ§Ã£o",
             "value": "Res CVM 160"
           },
           {
@@ -4628,7 +4628,7 @@
             "value": "163613203.06"
           },
           {
-            "label": "Próximo PMT",
+            "label": "PrÃ³ximo PMT",
             "value": "12704840.92"
           }
         ],
@@ -4646,7 +4646,7 @@
             "value": "51.059667"
           },
           {
-            "label": "PU amortização",
+            "label": "PU amortizaÃ§Ã£o",
             "value": "-"
           },
           {
@@ -9096,14 +9096,14 @@
         "indexer": "13,90% -> IPCA + 10,5607%",
         "description": "Visualizacao isolada da 1a emissao da AXS 06.",
         "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\AXS 06\\axs06_v2.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs06_v2.py",
         "identity_fields": [
           {
-            "label": "Código IF",
+            "label": "CÃ³digo IF",
             "value": "AXSE11"
           },
           {
-            "label": "Código ISIN",
+            "label": "CÃ³digo ISIN",
             "value": "-"
           },
           {
@@ -9113,7 +9113,7 @@
         ],
         "overview_fields": [
           {
-            "label": "Remuneração",
+            "label": "RemuneraÃ§Ã£o",
             "value": "13,90% ate 14/03/2026; depois IPCA + 10,5607%"
           },
           {
@@ -9125,15 +9125,15 @@
             "value": "155665"
           },
           {
-            "label": "PU de emissão",
+            "label": "PU de emissÃ£o",
             "value": "1000"
           },
           {
-            "label": "Data de emissão",
+            "label": "Data de emissÃ£o",
             "value": "15/02/2024"
           },
           {
-            "label": "Início da rentabilidade",
+            "label": "InÃ­cio da rentabilidade",
             "value": "-"
           },
           {
@@ -9145,11 +9145,11 @@
             "value": "Semestral"
           },
           {
-            "label": "Amortização",
+            "label": "AmortizaÃ§Ã£o",
             "value": "Semestral"
           },
           {
-            "label": "Distribuição",
+            "label": "DistribuiÃ§Ã£o",
             "value": "Res CVM 160"
           },
           {
@@ -9165,7 +9165,7 @@
             "value": "163613203.06"
           },
           {
-            "label": "Próximo PMT",
+            "label": "PrÃ³ximo PMT",
             "value": "10765672.47"
           }
         ],
@@ -9183,7 +9183,7 @@
             "value": "51.059667"
           },
           {
-            "label": "PU amortização",
+            "label": "PU amortizaÃ§Ã£o",
             "value": "0.0"
           },
           {
@@ -13091,14 +13091,14 @@
         "indexer": "IPCA + 10,3849%",
         "description": "Visualizacao isolada da 2a emissao da AXS 06.",
         "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\AXS 06\\axs06_v2.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs06_v2.py",
         "identity_fields": [
           {
-            "label": "Código IF",
+            "label": "CÃ³digo IF",
             "value": "AXSE12"
           },
           {
-            "label": "Código ISIN",
+            "label": "CÃ³digo ISIN",
             "value": "BRAXSEDBS029"
           },
           {
@@ -13108,7 +13108,7 @@
         ],
         "overview_fields": [
           {
-            "label": "Remuneração",
+            "label": "RemuneraÃ§Ã£o",
             "value": "IPCA + 10,3849%"
           },
           {
@@ -13120,15 +13120,15 @@
             "value": "30000"
           },
           {
-            "label": "PU de emissão",
+            "label": "PU de emissÃ£o",
             "value": "1000"
           },
           {
-            "label": "Data de emissão",
+            "label": "Data de emissÃ£o",
             "value": "06/03/2026"
           },
           {
-            "label": "Início da rentabilidade",
+            "label": "InÃ­cio da rentabilidade",
             "value": "-"
           },
           {
@@ -13140,11 +13140,11 @@
             "value": "Semestral"
           },
           {
-            "label": "Amortização",
+            "label": "AmortizaÃ§Ã£o",
             "value": "Semestral"
           },
           {
-            "label": "Distribuição",
+            "label": "DistribuiÃ§Ã£o",
             "value": "Res CVM 160"
           },
           {
@@ -13160,7 +13160,7 @@
             "value": "32433468.52"
           },
           {
-            "label": "Próximo PMT",
+            "label": "PrÃ³ximo PMT",
             "value": "1939168.45"
           }
         ],
@@ -13178,7 +13178,7 @@
             "value": "52.51440873"
           },
           {
-            "label": "PU amortização",
+            "label": "PU amortizaÃ§Ã£o",
             "value": "0.0"
           },
           {
@@ -16705,7 +16705,7 @@
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS Goiás",
+      "label": "AXS GoiÃ¡s",
       "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 13191950.84,
@@ -16848,6 +16848,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/06/2026 08:00:16",
-  "generated_at_iso": "2026-06-16T08:00:16"
+  "generated_at": "16/06/2026 09:17:53",
+  "generated_at_iso": "2026-06-16T09:17:53"
 }

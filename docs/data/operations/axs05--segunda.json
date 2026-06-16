@@ -11,11 +11,11 @@
     "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
     "identity_fields": [
       {
-        "label": "Código IF",
+        "label": "CÃ³digo IF",
         "value": "AXSC22"
       },
       {
-        "label": "Código ISIN",
+        "label": "CÃ³digo ISIN",
         "value": "BRAXSCDBS023"
       },
       {
@@ -25,7 +25,7 @@
     ],
     "overview_fields": [
       {
-        "label": "Remuneração",
+        "label": "RemuneraÃ§Ã£o",
         "value": "IPCA + 10,9659%"
       },
       {
@@ -37,15 +37,15 @@
         "value": "22200"
       },
       {
-        "label": "PU de emissão",
+        "label": "PU de emissÃ£o",
         "value": "1000"
       },
       {
-        "label": "Data de emissão",
+        "label": "Data de emissÃ£o",
         "value": "24/02/2026"
       },
       {
-        "label": "Início da rentabilidade",
+        "label": "InÃ­cio da rentabilidade",
         "value": "13/03/2026"
       },
       {
@@ -57,11 +57,11 @@
         "value": "Semestral"
       },
       {
-        "label": "Amortização",
+        "label": "AmortizaÃ§Ã£o",
         "value": "Semestral"
       },
       {
-        "label": "Distribuição",
+        "label": "DistribuiÃ§Ã£o",
         "value": "Res CVM 160"
       },
       {
@@ -77,7 +77,7 @@
         "value": "23866439.1"
       },
       {
-        "label": "Próximo PMT",
+        "label": "PrÃ³ximo PMT",
         "value": "4042888.72"
       }
     ],
@@ -95,7 +95,7 @@
         "value": "46.46361584"
       },
       {
-        "label": "PU amortização",
+        "label": "PU amortizaÃ§Ã£o",
         "value": "0.0"
       },
       {
@@ -3456,11 +3456,11 @@
         "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
         "identity_fields": [
           {
-            "label": "Código IF",
+            "label": "CÃ³digo IF",
             "value": "AXSC12 / AXSC22"
           },
           {
-            "label": "Código ISIN",
+            "label": "CÃ³digo ISIN",
             "value": "BRAXSCDBS015 / BRAXSCDBS023"
           },
           {
@@ -3470,7 +3470,7 @@
         ],
         "overview_fields": [
           {
-            "label": "Remuneração",
+            "label": "RemuneraÃ§Ã£o",
             "value": "IPCA + 9,4659% / 10,9659%"
           },
           {
@@ -3482,15 +3482,15 @@
             "value": "86200"
           },
           {
-            "label": "PU de emissão",
+            "label": "PU de emissÃ£o",
             "value": "1000"
           },
           {
-            "label": "Data de emissão",
+            "label": "Data de emissÃ£o",
             "value": "24/02/2026"
           },
           {
-            "label": "Início da rentabilidade",
+            "label": "InÃ­cio da rentabilidade",
             "value": "13/03/2026"
           },
           {
@@ -3502,11 +3502,11 @@
             "value": "Semestral"
           },
           {
-            "label": "Amortização",
+            "label": "AmortizaÃ§Ã£o",
             "value": "Semestral"
           },
           {
-            "label": "Distribuição",
+            "label": "DistribuiÃ§Ã£o",
             "value": "Res CVM 160"
           },
           {
@@ -3522,7 +3522,7 @@
             "value": "92274129.74000001"
           },
           {
-            "label": "Próximo PMT",
+            "label": "PrÃ³ximo PMT",
             "value": "8115054.17"
           }
         ],
@@ -3540,7 +3540,7 @@
             "value": "86.73257347"
           },
           {
-            "label": "PU amortização",
+            "label": "PU amortizaÃ§Ã£o",
             "value": "-"
           },
           {
@@ -7479,11 +7479,11 @@
         "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
         "identity_fields": [
           {
-            "label": "Código IF",
+            "label": "CÃ³digo IF",
             "value": "AXSC12"
           },
           {
-            "label": "Código ISIN",
+            "label": "CÃ³digo ISIN",
             "value": "BRAXSCDBS015"
           },
           {
@@ -7493,7 +7493,7 @@
         ],
         "overview_fields": [
           {
-            "label": "Remuneração",
+            "label": "RemuneraÃ§Ã£o",
             "value": "IPCA + 9,4659%"
           },
           {
@@ -7505,15 +7505,15 @@
             "value": "64000"
           },
           {
-            "label": "PU de emissão",
+            "label": "PU de emissÃ£o",
             "value": "1000"
           },
           {
-            "label": "Data de emissão",
+            "label": "Data de emissÃ£o",
             "value": "24/02/2026"
           },
           {
-            "label": "Início da rentabilidade",
+            "label": "InÃ­cio da rentabilidade",
             "value": "13/03/2026"
           },
           {
@@ -7525,11 +7525,11 @@
             "value": "Semestral"
           },
           {
-            "label": "Amortização",
+            "label": "AmortizaÃ§Ã£o",
             "value": "Semestral"
           },
           {
-            "label": "Distribuição",
+            "label": "DistribuiÃ§Ã£o",
             "value": "Res CVM 160"
           },
           {
@@ -7545,7 +7545,7 @@
             "value": "68407690.64"
           },
           {
-            "label": "Próximo PMT",
+            "label": "PrÃ³ximo PMT",
             "value": "4072165.45"
           }
         ],
@@ -7563,7 +7563,7 @@
             "value": "40.26895763"
           },
           {
-            "label": "PU amortização",
+            "label": "PU amortizaÃ§Ã£o",
             "value": "0.0"
           },
           {
@@ -10910,11 +10910,11 @@
         "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs05_v1.py",
         "identity_fields": [
           {
-            "label": "Código IF",
+            "label": "CÃ³digo IF",
             "value": "AXSC22"
           },
           {
-            "label": "Código ISIN",
+            "label": "CÃ³digo ISIN",
             "value": "BRAXSCDBS023"
           },
           {
@@ -10924,7 +10924,7 @@
         ],
         "overview_fields": [
           {
-            "label": "Remuneração",
+            "label": "RemuneraÃ§Ã£o",
             "value": "IPCA + 10,9659%"
           },
           {
@@ -10936,15 +10936,15 @@
             "value": "22200"
           },
           {
-            "label": "PU de emissão",
+            "label": "PU de emissÃ£o",
             "value": "1000"
           },
           {
-            "label": "Data de emissão",
+            "label": "Data de emissÃ£o",
             "value": "24/02/2026"
           },
           {
-            "label": "Início da rentabilidade",
+            "label": "InÃ­cio da rentabilidade",
             "value": "13/03/2026"
           },
           {
@@ -10956,11 +10956,11 @@
             "value": "Semestral"
           },
           {
-            "label": "Amortização",
+            "label": "AmortizaÃ§Ã£o",
             "value": "Semestral"
           },
           {
-            "label": "Distribuição",
+            "label": "DistribuiÃ§Ã£o",
             "value": "Res CVM 160"
           },
           {
@@ -10976,7 +10976,7 @@
             "value": "23866439.1"
           },
           {
-            "label": "Próximo PMT",
+            "label": "PrÃ³ximo PMT",
             "value": "4042888.72"
           }
         ],
@@ -10994,7 +10994,7 @@
             "value": "46.46361584"
           },
           {
-            "label": "PU amortização",
+            "label": "PU amortizaÃ§Ã£o",
             "value": "0.0"
           },
           {
@@ -14333,7 +14333,7 @@
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS Goiás",
+      "label": "AXS GoiÃ¡s",
       "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 13191950.84,
@@ -14476,6 +14476,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/06/2026 08:00:16",
-  "generated_at_iso": "2026-06-16T08:00:16"
+  "generated_at": "16/06/2026 09:17:53",
+  "generated_at_iso": "2026-06-16T09:17:53"
 }

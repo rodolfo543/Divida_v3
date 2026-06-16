@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import importlib.util
 import json
@@ -138,9 +138,9 @@ def first_number(*values: Any) -> float | None:
 
 def slug_component(value: Any) -> str:
     text = text_or_default(value).strip().upper()
-    if "PRIMEIRA" in text or "1A SERIE" in text or "1ª SERIE" in text or "1A EMISSAO" in text or "AXSA11" in text or "AXSC12" in text or "AXSE11" in text:
+    if "PRIMEIRA" in text or "1A SERIE" in text or "1Âª SERIE" in text or "1A EMISSAO" in text or "AXSA11" in text or "AXSC12" in text or "AXSE11" in text:
         return "primeira"
-    if "SEGUNDA" in text or "2A SERIE" in text or "2ª SERIE" in text or "2A EMISSAO" in text or "AXSA21" in text or "AXSC22" in text or "AXSE12" in text:
+    if "SEGUNDA" in text or "2A SERIE" in text or "2Âª SERIE" in text or "2A EMISSAO" in text or "AXSA21" in text or "AXSC22" in text or "AXSE12" in text:
         return "segunda"
     if "DEB" in text:
         return "deb"
@@ -324,8 +324,8 @@ def metadata_value(config: OperationConfig, key: str, fallback: Any = None) -> A
 def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any | None) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
     summary = payload["summary"]
     identity_fields = [
-        {"label": "Código IF", "value": config.code_if or metadata_value(config, "code_if", "-")},
-        {"label": "Código ISIN", "value": config.isin or metadata_value(config, "isin", "-")},
+        {"label": "CÃ³digo IF", "value": config.code_if or metadata_value(config, "code_if", "-")},
+        {"label": "CÃ³digo ISIN", "value": config.isin or metadata_value(config, "isin", "-")},
         {"label": "Emissor", "value": metadata_value(config, "issuer", config.issuer)},
     ]
 
@@ -337,27 +337,27 @@ def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any |
     pu_issue = metadata_value(config, "pu_issue", number_or_none(getattr(module, "PU_INICIAL", None)) if module and hasattr(module, "PU_INICIAL") else None)
 
     overview_fields = [
-        {"label": "Remuneração", "value": metadata_value(config, "remuneration_label", config.indexer)},
+        {"label": "RemuneraÃ§Ã£o", "value": metadata_value(config, "remuneration_label", config.indexer)},
         {"label": "Volume emitido", "value": str(volume) if volume is not None else "-"},
         {"label": "Quantidade emitida", "value": str(quantity) if quantity is not None else "-"},
-        {"label": "PU de emissão", "value": str(pu_issue) if pu_issue is not None else "-"},
-        {"label": "Data de emissão", "value": issue_date},
-        {"label": "Início da rentabilidade", "value": start_date},
+        {"label": "PU de emissÃ£o", "value": str(pu_issue) if pu_issue is not None else "-"},
+        {"label": "Data de emissÃ£o", "value": issue_date},
+        {"label": "InÃ­cio da rentabilidade", "value": start_date},
         {"label": "Data de vencimento", "value": maturity_date},
         {"label": "Pagamento de juros", "value": metadata_value(config, "payment_frequency", "-")},
-        {"label": "Amortização", "value": metadata_value(config, "amortization_frequency", "-")},
-        {"label": "Distribuição", "value": metadata_value(config, "distribution", "-")},
+        {"label": "AmortizaÃ§Ã£o", "value": metadata_value(config, "amortization_frequency", "-")},
+        {"label": "DistribuiÃ§Ã£o", "value": metadata_value(config, "distribution", "-")},
         {"label": "Tipo de risco", "value": metadata_value(config, "risk_type", "-")},
         {"label": "Garantias", "value": metadata_value(config, "guarantees", "-")},
         {"label": "Saldo atual", "value": str(summary["current_balance"]) if summary["current_balance"] is not None else "-"},
-        {"label": "Próximo PMT", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
+        {"label": "PrÃ³ximo PMT", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
     ]
 
     pu_fields = [
         {"label": "PU cheio", "value": str(summary["current_pu_cheio"]) if summary["current_pu_cheio"] is not None else "-"},
         {"label": "PU vazio", "value": str(summary["current_pu_vazio"]) if summary["current_pu_vazio"] is not None else "-"},
         {"label": "PU juros", "value": str(summary["current_pu_juros"]) if summary["current_pu_juros"] is not None else "-"},
-        {"label": "PU amortização", "value": str(summary["current_pu_amort"]) if summary["current_pu_amort"] is not None else "-"},
+        {"label": "PU amortizaÃ§Ã£o", "value": str(summary["current_pu_amort"]) if summary["current_pu_amort"] is not None else "-"},
         {"label": "Principal atualizado", "value": str(summary["current_principal"]) if summary["current_principal"] is not None else "-"},
         {"label": "PMT da linha atual", "value": str(summary["current_payment"]) if summary["current_payment"] is not None else "-"},
     ]
@@ -1178,7 +1178,7 @@ OPERATIONS: dict[str, OperationConfig] = {
         issuer="AXS ENERGIA UFV 06 SPE LTDA.",
         code_if="AXSE11 / AXSE12",
         isin="- / BRAXSEDBS029",
-        script_path=PROJECT_DIR.parent / "AXS 06" / "axs06_v2.py",
+        script_path=PROJECT_DIR / "Code final prontos" / "axs06_v2.py",
         loader=load_axs06,
         metadata={
             "issue_date": "15/02/2024 / 06/03/2026",
@@ -1304,7 +1304,7 @@ OPERATIONS: dict[str, OperationConfig] = {
     ),
     "axsgoias": OperationConfig(
         id="axsgoias",
-        label="AXS Goiás",
+        label="AXS GoiÃ¡s",
         full_name="AXS Goias - Emissao 1 / Serie UNICA",
         badge="DEB",
         category="Debenture",
@@ -1368,32 +1368,32 @@ def build_portfolio_payload() -> dict[str, Any]:
     total_volume = sum(item["current_balance"] for item in comparison)
     operation = {
         "id": PORTFOLIO_ID,
-        "label": "Visão Geral",
-        "full_name": "Carteira consolidada de dívidas - AXS Energia",
+        "label": "VisÃ£o Geral",
+        "full_name": "Carteira consolidada de dÃ­vidas - AXS Energia",
         "badge": "Carteira",
-        "category": "Análise geral",
-        "indexer": "Múltiplos indexadores",
-        "description": "Consolidado das emissões para leitura executiva da carteira.",
+        "category": "AnÃ¡lise geral",
+        "indexer": "MÃºltiplos indexadores",
+        "description": "Consolidado das emissÃµes para leitura executiva da carteira.",
         "issuer": "AXS Energia",
         "script_path": "Consolidado a partir dos scripts individuais",
         "identity_fields": [
-            {"label": "Emissões ativas", "value": str(len(payloads))},
+            {"label": "EmissÃµes ativas", "value": str(len(payloads))},
             {"label": "Tipos", "value": "CRI e Debenture"},
-            {"label": "Escopo", "value": "Todas as emissões mapeadas"},
+            {"label": "Escopo", "value": "Todas as emissÃµes mapeadas"},
         ],
         "overview_fields": [
             {"label": "Saldo consolidado", "value": str(summary["current_balance"]) if summary["current_balance"] is not None else "-"},
-            {"label": "Próximo PMT da carteira", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
-            {"label": "Data do próximo PMT", "value": summary["next_payment_date"] or "-"},
+            {"label": "PrÃ³ximo PMT da carteira", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
+            {"label": "Data do prÃ³ximo PMT", "value": summary["next_payment_date"] or "-"},
             {"label": "Juros acumulados", "value": str(summary["total_interest"])},
-            {"label": "Amortização acumulada", "value": str(summary["total_amortization"])},
-            {"label": "Saldo somado das emissões", "value": str(total_volume)},
+            {"label": "AmortizaÃ§Ã£o acumulada", "value": str(summary["total_amortization"])},
+            {"label": "Saldo somado das emissÃµes", "value": str(total_volume)},
         ],
         "pu_fields": [
-            {"label": "Emissão com maior saldo", "value": comparison[0]["label"] if comparison else "-"},
+            {"label": "EmissÃ£o com maior saldo", "value": comparison[0]["label"] if comparison else "-"},
             {"label": "Maior saldo atual", "value": str(comparison[0]["current_balance"]) if comparison else "-"},
             {"label": "Maior juros acumulados", "value": str(max((item["total_interest"] for item in comparison), default=0.0))},
-            {"label": "Maior amortização acumulada", "value": str(max((item["total_amortization"] for item in comparison), default=0.0))},
+            {"label": "Maior amortizaÃ§Ã£o acumulada", "value": str(max((item["total_amortization"] for item in comparison), default=0.0))},
         ],
     }
     return {
@@ -1492,14 +1492,14 @@ def get_payload(operation_id: str, variant_id: str | None = None) -> dict[str, A
 def normalize_text(value: Any) -> str:
     text = text_or_default(value).lower()
     replacements = {
-        "á": "a", "à": "a", "â": "a", "ã": "a",
-        "é": "e", "ê": "e",
-        "í": "i",
-        "ó": "o", "ô": "o", "õ": "o",
-        "ú": "u",
-        "ç": "c",
-        "ª": "a",
-        "º": "o",
+        "Ã¡": "a", "Ã ": "a", "Ã¢": "a", "Ã£": "a",
+        "Ã©": "e", "Ãª": "e",
+        "Ã­": "i",
+        "Ã³": "o", "Ã´": "o", "Ãµ": "o",
+        "Ãº": "u",
+        "Ã§": "c",
+        "Âª": "a",
+        "Âº": "o",
     }
     for old, new in replacements.items():
         text = text.replace(old, new)
@@ -1854,3 +1854,4 @@ def run_server(port: int = 8000) -> None:
 
 if __name__ == "__main__":
     run_server()
+
