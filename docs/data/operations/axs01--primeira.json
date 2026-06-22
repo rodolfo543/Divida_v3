@@ -3713,8 +3713,8 @@
     "next_amortization_amount": 715585.99,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.947688884911807,
-    "wal_years": 11.679155522796362
+    "duration_years": 9.939475332550412,
+    "wal_years": 11.670941970434967
   },
   "timeline": [
     {
@@ -8524,8 +8524,8 @@
         "next_amortization_amount": 2122306.27,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.818488339251928,
-        "wal_years": 11.414254546314515
+        "duration_years": 9.810274786890533,
+        "wal_years": 11.40604099395312
       },
       "timeline": [
         {
@@ -12387,8 +12387,8 @@
         "next_amortization_amount": 715585.99,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.947688884911807,
-        "wal_years": 11.679155522796362
+        "duration_years": 9.939475332550412,
+        "wal_years": 11.670941970434967
       },
       "timeline": [
         {
@@ -16448,8 +16448,8 @@
         "next_amortization_amount": 1406720.28,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.298918067517674,
-        "wal_years": 10.345399013456001
+        "duration_years": 9.290704515156277,
+        "wal_years": 10.337185461094606
       },
       "timeline": [
         {
@@ -16934,14 +16934,14 @@
       "label": "AXS 10",
       "full_name": "AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
       "current_balance": 73593225.52,
-      "next_payment_amount": 1550107.43,
-      "total_interest": 49946434.93,
+      "next_payment_amount": 1538402.28,
+      "total_interest": 49417645.61,
       "total_amortization": 76590551.96,
       "event_count": 144,
       "indexer": "CDI + 6,50%",
       "badge": "DEB"
     }
   ],
-  "generated_at": "19/06/2026 08:00:05",
-  "generated_at_iso": "2026-06-19T08:00:05"
+  "generated_at": "22/06/2026 08:00:11",
+  "generated_at_iso": "2026-06-22T08:00:11"
 }
