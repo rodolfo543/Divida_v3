@@ -71,7 +71,7 @@ def build_operations_manifest(engine: Any, generated_at: str, generated_at_iso: 
     operations = [
         {
             "id": engine.PORTFOLIO_ID,
-            "label": "Visao Geral",
+            "label": "Visão Geral",
             "category": "Carteira",
             "indexer": "Consolidado",
             "badge": "Carteira",

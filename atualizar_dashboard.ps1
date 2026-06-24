@@ -63,6 +63,7 @@ try {
     Invoke-Step "git fetch" { git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false -c fetch.writeCommitGraph=false fetch --no-auto-gc origin }
 
     Invoke-StepWithRetry "build do dashboard" { python .\servidor_dashboard.py build } 3 20
+    Invoke-StepWithRetry "atualizacao da PMT.xlsx" { python .\export_pmt_excel.py } 3 20
 
     $changes = git -c gc.auto=0 -c gc.autoDetach=false -c maintenance.auto=false status --porcelain
     if ([string]::IsNullOrWhiteSpace($changes)) {

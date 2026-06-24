@@ -1,17 +1,17 @@
 {
   "operation": {
     "id": "geral",
-    "label": "VisÃ£o Geral",
-    "full_name": "Carteira consolidada de dÃ­vidas - AXS Energia",
+    "label": "Visão Geral",
+    "full_name": "Carteira consolidada de dívidas - AXS Energia",
     "badge": "Carteira",
-    "category": "AnÃ¡lise geral",
-    "indexer": "MÃºltiplos indexadores",
-    "description": "Consolidado das emissÃµes para leitura executiva da carteira.",
+    "category": "Análise geral",
+    "indexer": "Múltiplos indexadores",
+    "description": "Consolidado das emissões para leitura executiva da carteira.",
     "issuer": "AXS Energia",
     "script_path": "Consolidado a partir dos scripts individuais",
     "identity_fields": [
       {
-        "label": "EmissÃµes ativas",
+        "label": "Emissões ativas",
         "value": "12"
       },
       {
@@ -20,7 +20,7 @@
       },
       {
         "label": "Escopo",
-        "value": "Todas as emissÃµes mapeadas"
+        "value": "Todas as emissões mapeadas"
       }
     ],
     "overview_fields": [
@@ -29,11 +29,11 @@
         "value": "1336742870.8"
       },
       {
-        "label": "PrÃ³ximo PMT da carteira",
+        "label": "Próximo PMT da carteira",
         "value": "7709690.3100000005"
       },
       {
-        "label": "Data do prÃ³ximo PMT",
+        "label": "Data do próximo PMT",
         "value": "15/07/2026"
       },
       {
@@ -41,18 +41,18 @@
         "value": "1905275705.71"
       },
       {
-        "label": "AmortizaÃ§Ã£o acumulada",
+        "label": "Amortização acumulada",
         "value": "2436960819.26"
       },
       {
-        "label": "Saldo somado das emissÃµes",
-        "value": "1545364961.26"
+        "label": "Saldo somado das emissões",
+        "value": "1576170030.88"
       }
     ],
     "pu_fields": [
       {
-        "label": "EmissÃ£o com maior saldo",
-        "value": "AXS GoiÃ¡s"
+        "label": "Emissão com maior saldo",
+        "value": "AXS Goiás"
       },
       {
         "label": "Maior saldo atual",
@@ -63,7 +63,7 @@
         "value": "347975874.97"
       },
       {
-        "label": "Maior amortizaÃ§Ã£o acumulada",
+        "label": "Maior amortização acumulada",
         "value": "389698672.21"
       }
     ]
@@ -10007,20 +10007,32 @@
     }
   ],
   "meta": {
-    "primary_source": "Consolidado gerado a partir dos scripts individuais de calculo.",
+    "primary_source": "Consolidado gerado a partir dos scripts individuais de cálculo.",
     "notes": "A visao geral soma eventos, saldos e metricas das operacoes individuais."
   },
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS GoiÃ¡s",
-      "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
+      "label": "AXS Goiás",
+      "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 12530115.26,
       "total_interest": 317394139.74,
       "total_amortization": 389698672.21,
       "event_count": 35,
       "indexer": "IPCA + 10,40%",
+      "badge": "DEB"
+    },
+    {
+      "id": "axs06",
+      "label": "AXS 06",
+      "full_name": "AXS 06 - Consolidado / 1ª + 2ª Emissão",
+      "current_balance": 194418272.68,
+      "next_payment_amount": 12065222.879999999,
+      "total_interest": 347975874.97,
+      "total_amortization": 379387174.96,
+      "event_count": 38,
+      "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
       "badge": "DEB"
     },
     {
@@ -10033,18 +10045,6 @@
       "total_amortization": 307050098.72,
       "event_count": 32,
       "indexer": "IPCA + 10,74%",
-      "badge": "DEB"
-    },
-    {
-      "id": "axs06",
-      "label": "AXS 06",
-      "full_name": "AXS 06 - Consolidado / 1a + 2a Emissao",
-      "current_balance": 163613203.06,
-      "next_payment_amount": 12065222.879999999,
-      "total_interest": 347975874.97,
-      "total_amortization": 379387174.96,
-      "event_count": 38,
-      "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
       "badge": "DEB"
     },
     {
@@ -10158,6 +10158,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "24/06/2026 08:00:12",
-  "generated_at_iso": "2026-06-24T08:00:12"
+  "generated_at": "24/06/2026 09:39:15",
+  "generated_at_iso": "2026-06-24T09:39:15"
 }

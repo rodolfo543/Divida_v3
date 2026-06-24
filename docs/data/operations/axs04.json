@@ -11,11 +11,11 @@
     "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs04_v2.py",
     "identity_fields": [
       {
-        "label": "CÃ³digo IF",
+        "label": "Código IF",
         "value": "23F0046476"
       },
       {
-        "label": "CÃ³digo ISIN",
+        "label": "Código ISIN",
         "value": "BRRBRACRIHB3"
       },
       {
@@ -25,7 +25,7 @@
     ],
     "overview_fields": [
       {
-        "label": "RemuneraÃ§Ã£o",
+        "label": "Remuneração",
         "value": "IPCA + 11%"
       },
       {
@@ -37,15 +37,15 @@
         "value": "144000"
       },
       {
-        "label": "PU de emissÃ£o",
+        "label": "PU de emissão",
         "value": "1000"
       },
       {
-        "label": "Data de emissÃ£o",
+        "label": "Data de emissão",
         "value": "15/06/2023"
       },
       {
-        "label": "InÃ­cio da rentabilidade",
+        "label": "Início da rentabilidade",
         "value": "30/06/2023"
       },
       {
@@ -57,11 +57,11 @@
         "value": "Mensal"
       },
       {
-        "label": "AmortizaÃ§Ã£o",
+        "label": "Amortização",
         "value": "Mensal"
       },
       {
-        "label": "DistribuiÃ§Ã£o",
+        "label": "Distribuição",
         "value": "Res CVM 160"
       },
       {
@@ -77,7 +77,7 @@
         "value": "149676135.02"
       },
       {
-        "label": "PrÃ³ximo PMT",
+        "label": "Próximo PMT",
         "value": "2121534.38"
       }
     ],
@@ -95,7 +95,7 @@
         "value": "8.6874686"
       },
       {
-        "label": "PU amortizaÃ§Ã£o",
+        "label": "PU amortização",
         "value": "5.13397099"
       },
       {
@@ -16902,14 +16902,26 @@
   "comparison": [
     {
       "id": "axsgoias",
-      "label": "AXS GoiÃ¡s",
-      "full_name": "AXS Goias - Emissao 1 / Serie UNICA",
+      "label": "AXS Goiás",
+      "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
       "current_balance": 253708430.26,
       "next_payment_amount": 12530115.26,
       "total_interest": 317394139.74,
       "total_amortization": 389698672.21,
       "event_count": 35,
       "indexer": "IPCA + 10,40%",
+      "badge": "DEB"
+    },
+    {
+      "id": "axs06",
+      "label": "AXS 06",
+      "full_name": "AXS 06 - Consolidado / 1ª + 2ª Emissão",
+      "current_balance": 194418272.68,
+      "next_payment_amount": 12065222.879999999,
+      "total_interest": 347975874.97,
+      "total_amortization": 379387174.96,
+      "event_count": 38,
+      "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
       "badge": "DEB"
     },
     {
@@ -16922,18 +16934,6 @@
       "total_amortization": 307050098.72,
       "event_count": 32,
       "indexer": "IPCA + 10,74%",
-      "badge": "DEB"
-    },
-    {
-      "id": "axs06",
-      "label": "AXS 06",
-      "full_name": "AXS 06 - Consolidado / 1a + 2a Emissao",
-      "current_balance": 163613203.06,
-      "next_payment_amount": 12065222.879999999,
-      "total_interest": 347975874.97,
-      "total_amortization": 379387174.96,
-      "event_count": 38,
-      "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
       "badge": "DEB"
     },
     {
@@ -17045,6 +17045,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "24/06/2026 08:00:12",
-  "generated_at_iso": "2026-06-24T08:00:12"
+  "generated_at": "24/06/2026 09:39:15",
+  "generated_at_iso": "2026-06-24T09:39:15"
 }

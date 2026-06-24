@@ -4,6 +4,7 @@ import importlib.util
 import json
 import os
 import sys
+import unicodedata
 from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import date, datetime
@@ -24,8 +25,8 @@ DEFAULT_VARIANT_ID = "total"
 VARIANT_OPTIONS_MAP: dict[str, list[dict[str, str]]] = {
     "axs01": [
         {"id": "total", "label": "Total"},
-        {"id": "primeira", "label": "1a Serie"},
-        {"id": "segunda", "label": "2a Serie"},
+        {"id": "primeira", "label": "1ª Série"},
+        {"id": "segunda", "label": "2ª Série"},
     ],
     "axs02": [
         {"id": "total", "label": "Total"},
@@ -34,13 +35,13 @@ VARIANT_OPTIONS_MAP: dict[str, list[dict[str, str]]] = {
     ],
     "axs05": [
         {"id": "total", "label": "Total"},
-        {"id": "primeira", "label": "1a Serie"},
-        {"id": "segunda", "label": "2a Serie"},
+        {"id": "primeira", "label": "1ª Série"},
+        {"id": "segunda", "label": "2ª Série"},
     ],
     "axs06": [
         {"id": "total", "label": "Total"},
-        {"id": "primeira", "label": "1a Emissao"},
-        {"id": "segunda", "label": "2a Emissao"},
+        {"id": "primeira", "label": "1ª Emissão"},
+        {"id": "segunda", "label": "2ª Emissão"},
     ],
 }
 
@@ -154,8 +155,8 @@ def pretty_component(value: str) -> str:
         "cri": "CRI",
         "deb": "Debenture",
         "total": "Total",
-        "primeira": "1a Serie",
-        "segunda": "2a Serie",
+        "primeira": "1ª Série",
+        "segunda": "2ª Série",
     }.get(value, value or "-")
 
 
@@ -324,8 +325,8 @@ def metadata_value(config: OperationConfig, key: str, fallback: Any = None) -> A
 def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any | None) -> tuple[list[dict[str, str]], list[dict[str, str]], list[dict[str, str]]]:
     summary = payload["summary"]
     identity_fields = [
-        {"label": "CÃ³digo IF", "value": config.code_if or metadata_value(config, "code_if", "-")},
-        {"label": "CÃ³digo ISIN", "value": config.isin or metadata_value(config, "isin", "-")},
+        {"label": "Código IF", "value": config.code_if or metadata_value(config, "code_if", "-")},
+        {"label": "Código ISIN", "value": config.isin or metadata_value(config, "isin", "-")},
         {"label": "Emissor", "value": metadata_value(config, "issuer", config.issuer)},
     ]
 
@@ -337,27 +338,27 @@ def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any |
     pu_issue = metadata_value(config, "pu_issue", number_or_none(getattr(module, "PU_INICIAL", None)) if module and hasattr(module, "PU_INICIAL") else None)
 
     overview_fields = [
-        {"label": "RemuneraÃ§Ã£o", "value": metadata_value(config, "remuneration_label", config.indexer)},
+        {"label": "Remuneração", "value": metadata_value(config, "remuneration_label", config.indexer)},
         {"label": "Volume emitido", "value": str(volume) if volume is not None else "-"},
         {"label": "Quantidade emitida", "value": str(quantity) if quantity is not None else "-"},
-        {"label": "PU de emissÃ£o", "value": str(pu_issue) if pu_issue is not None else "-"},
-        {"label": "Data de emissÃ£o", "value": issue_date},
-        {"label": "InÃ­cio da rentabilidade", "value": start_date},
+        {"label": "PU de emissão", "value": str(pu_issue) if pu_issue is not None else "-"},
+        {"label": "Data de emissão", "value": issue_date},
+        {"label": "Início da rentabilidade", "value": start_date},
         {"label": "Data de vencimento", "value": maturity_date},
         {"label": "Pagamento de juros", "value": metadata_value(config, "payment_frequency", "-")},
-        {"label": "AmortizaÃ§Ã£o", "value": metadata_value(config, "amortization_frequency", "-")},
-        {"label": "DistribuiÃ§Ã£o", "value": metadata_value(config, "distribution", "-")},
+        {"label": "Amortização", "value": metadata_value(config, "amortization_frequency", "-")},
+        {"label": "Distribuição", "value": metadata_value(config, "distribution", "-")},
         {"label": "Tipo de risco", "value": metadata_value(config, "risk_type", "-")},
         {"label": "Garantias", "value": metadata_value(config, "guarantees", "-")},
         {"label": "Saldo atual", "value": str(summary["current_balance"]) if summary["current_balance"] is not None else "-"},
-        {"label": "PrÃ³ximo PMT", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
+        {"label": "Próximo PMT", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
     ]
 
     pu_fields = [
         {"label": "PU cheio", "value": str(summary["current_pu_cheio"]) if summary["current_pu_cheio"] is not None else "-"},
         {"label": "PU vazio", "value": str(summary["current_pu_vazio"]) if summary["current_pu_vazio"] is not None else "-"},
         {"label": "PU juros", "value": str(summary["current_pu_juros"]) if summary["current_pu_juros"] is not None else "-"},
-        {"label": "PU amortizaÃ§Ã£o", "value": str(summary["current_pu_amort"]) if summary["current_pu_amort"] is not None else "-"},
+        {"label": "PU amortização", "value": str(summary["current_pu_amort"]) if summary["current_pu_amort"] is not None else "-"},
         {"label": "Principal atualizado", "value": str(summary["current_principal"]) if summary["current_principal"] is not None else "-"},
         {"label": "PMT da linha atual", "value": str(summary["current_payment"]) if summary["current_payment"] is not None else "-"},
     ]
@@ -487,6 +488,37 @@ def aggregate_variant_series(rows: list[dict[str, Any]], total_label: str = "Tot
         bucket.append(row)
     flush_bucket()
     return finalize_series(grouped)
+
+
+def weighted_average(pairs: list[tuple[float | None, float | None]]) -> float | None:
+    valid_pairs = [(value, weight) for value, weight in pairs if value is not None and weight is not None and weight > 0]
+    if not valid_pairs:
+        return None
+    total_weight = sum(weight for _, weight in valid_pairs)
+    if total_weight <= 0:
+        return None
+    return sum(value * weight for value, weight in valid_pairs) / total_weight
+
+
+def merge_variant_summaries(base_summary: dict[str, Any], variant_summaries: list[dict[str, Any]]) -> dict[str, Any]:
+    merged = dict(base_summary)
+    current_balance = sum(item.get("current_balance") or 0.0 for item in variant_summaries)
+    current_principal = sum(item.get("current_principal") or 0.0 for item in variant_summaries)
+    principal_weights = [((item.get("current_pu_cheio")), (item.get("current_principal") or 0.0)) for item in variant_summaries]
+
+    merged["current_balance"] = current_balance if current_balance > 0 else base_summary.get("current_balance")
+    merged["current_principal"] = current_principal if current_principal > 0 else base_summary.get("current_principal")
+    merged["current_pu_cheio"] = weighted_average(principal_weights) or base_summary.get("current_pu_cheio")
+    merged["current_pu_vazio"] = weighted_average(
+        [((item.get("current_pu_vazio")), (item.get("current_principal") or 0.0)) for item in variant_summaries]
+    ) or base_summary.get("current_pu_vazio")
+    merged["current_pu_juros"] = weighted_average(
+        [((item.get("current_pu_juros")), (item.get("current_principal") or 0.0)) for item in variant_summaries]
+    ) or base_summary.get("current_pu_juros")
+    merged["current_pu_amort"] = weighted_average(
+        [((item.get("current_pu_amort")), (item.get("current_principal") or 0.0)) for item in variant_summaries]
+    ) or base_summary.get("current_pu_amort")
+    return merged
 
 
 def variant_options_for(operation_id: str) -> list[dict[str, str]]:
@@ -855,29 +887,34 @@ def load_axs06(module: Any) -> dict[str, Any]:
     primeira_rows = normalize_series(fluxos["primeira"])
     segunda_rows = normalize_series(fluxos["segunda"])
     detailed_rows = normalize_series([linha for linhas in fluxos.values() for linha in linhas])
-    total_rows = aggregate_variant_series(detailed_rows, "Total 1a + 2a Emissao")
+    total_rows = aggregate_variant_series(detailed_rows, "Total 1ª + 2ª Emissão")
+    primeira_summary = build_summary(primeira_rows)
+    segunda_summary = build_summary(segunda_rows)
+    total_summary = merge_variant_summaries(build_summary(total_rows), [primeira_summary, segunda_summary])
     base_meta = {
         "primary_source": f"Fonte IPCA: {fonte}",
-        "notes": "AXS 06 permite visualizar o consolidado ou cada emissao separadamente.",
+        "notes": "AXS 06 permite visualizar o consolidado ou cada emissão separadamente.",
     }
 
     return {
         "module_ref": module,
         "series": total_rows,
         "table_series": detailed_rows,
-        "summary": build_summary(total_rows),
+        "summary": total_summary,
         "timeline": build_timeline(total_rows),
         "meta": base_meta,
         "variant_options": variant_options_for("axs06"),
         "variants": {
-            "total": make_variant_payload(
-                total_rows,
-                detailed_rows,
-                {
-                    "full_name": "AXS 06 - Consolidado / 1a + 2a Emissao",
+            "total": {
+                "series": total_rows,
+                "table_series": detailed_rows,
+                "summary": total_summary,
+                "timeline": build_timeline(total_rows),
+                "operation_overrides": {
+                    "full_name": "AXS 06 - Consolidado / 1ª + 2ª Emissão",
                     "badge": "DEB",
                     "indexer": "13,90% -> IPCA + 10,5607% / IPCA + 10,3849%",
-                    "description": "Visao consolidada das duas emissoes da AXS 06.",
+                    "description": "Visão consolidada das duas emissões da AXS 06.",
                     "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
                     "metadata": {
                         "issue_date": "15/02/2024 / 06/03/2026",
@@ -888,23 +925,23 @@ def load_axs06(module: Any) -> dict[str, Any]:
                         "payment_frequency": "Semestral",
                         "amortization_frequency": "Semestral",
                         "distribution": "Res CVM 160",
-                        "risk_type": "Duas emissoes",
-                        "guarantees": "Cessao Fiduciaria, Fianca e garantias compartilhadas pari passu entre as emissoes.",
-                        "remuneration_label": "13,90% ate 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%",
+                        "risk_type": "Duas emissões",
+                        "guarantees": "Cessão Fiduciária, fiança e garantias compartilhadas pari passu entre as emissões.",
+                        "remuneration_label": "13,90% até 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%",
                         "code_if": "AXSE11 / AXSE12",
                         "isin": "- / BRAXSEDBS029",
                     },
                 },
-                base_meta,
-            ),
+                "meta": base_meta,
+            },
             "primeira": make_variant_payload(
                 primeira_rows,
                 primeira_rows,
                 {
-                    "full_name": "AXS 06 - 1a Emissao / Serie UNICA",
+                    "full_name": "AXS 06 - 1ª Emissão / Série ÚNICA",
                     "badge": "DEB",
                     "indexer": "13,90% -> IPCA + 10,5607%",
-                    "description": "Visualizacao isolada da 1a emissao da AXS 06.",
+                    "description": "Visualização isolada da 1ª emissão da AXS 06.",
                     "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
                     "metadata": {
                         "issue_date": "15/02/2024",
@@ -916,8 +953,8 @@ def load_axs06(module: Any) -> dict[str, Any]:
                         "amortization_frequency": "Semestral",
                         "distribution": "Res CVM 160",
                         "risk_type": "Corporativo",
-                        "guarantees": "Cessao Fiduciaria e Fianca, com compartilhamento pari passu das garantias reais.",
-                        "remuneration_label": "13,90% ate 14/03/2026; depois IPCA + 10,5607%",
+                        "guarantees": "Cessão Fiduciária e fiança, com compartilhamento pari passu das garantias reais.",
+                        "remuneration_label": "13,90% até 14/03/2026; depois IPCA + 10,5607%",
                         "code_if": "AXSE11",
                         "isin": "-",
                     },
@@ -928,10 +965,10 @@ def load_axs06(module: Any) -> dict[str, Any]:
                 segunda_rows,
                 segunda_rows,
                 {
-                    "full_name": "AXS 06 - 2a Emissao / Serie UNICA",
+                    "full_name": "AXS 06 - 2ª Emissão / Série ÚNICA",
                     "badge": "DEB",
                     "indexer": "IPCA + 10,3849%",
-                    "description": "Visualizacao isolada da 2a emissao da AXS 06.",
+                    "description": "Visualização isolada da 2ª emissão da AXS 06.",
                     "issuer": "AXS ENERGIA UFV 06 SPE LTDA.",
                     "metadata": {
                         "issue_date": "06/03/2026",
@@ -943,7 +980,7 @@ def load_axs06(module: Any) -> dict[str, Any]:
                         "amortization_frequency": "Semestral",
                         "distribution": "Res CVM 160",
                         "risk_type": "Corporativo",
-                        "guarantees": "Garantias compartilhadas pari passu com a 1a emissao.",
+                        "guarantees": "Garantias compartilhadas pari passu com a 1ª emissão.",
                         "remuneration_label": "IPCA + 10,3849%",
                         "code_if": "AXSE12",
                         "isin": "BRAXSEDBS029",
@@ -1304,12 +1341,12 @@ OPERATIONS: dict[str, OperationConfig] = {
     ),
     "axsgoias": OperationConfig(
         id="axsgoias",
-        label="AXS GoiÃ¡s",
-        full_name="AXS Goias - Emissao 1 / Serie UNICA",
+        label="AXS Goiás",
+        full_name="AXS Goiás - Emissão 1 / Série ÚNICA",
         badge="DEB",
         category="Debenture",
         indexer="IPCA + 10,40%",
-        description="Debenture senior da operacao AXS Goias com carencia inicial e amortizacao semestral longa.",
+        description="Debênture sênior da operação AXS Goiás com carência inicial e amortização semestral longa.",
         issuer="AXS ENERGIA UFV GOIAS SPE S.A.",
         code_if="AXS311",
         isin="",
@@ -1326,7 +1363,7 @@ OPERATIONS: dict[str, OperationConfig] = {
             "amortization_frequency": "Semestral",
             "distribution": "Res CVM 160",
             "risk_type": "Senior",
-            "guarantees": "Conforme documentos da emissao e aditamentos da operacao AXS Goias.",
+            "guarantees": "Conforme documentos da emissão e aditamentos da operação AXS Goiás.",
             "remuneration_label": "IPCA + 10,40%",
         },
     ),
@@ -1368,32 +1405,32 @@ def build_portfolio_payload() -> dict[str, Any]:
     total_volume = sum(item["current_balance"] for item in comparison)
     operation = {
         "id": PORTFOLIO_ID,
-        "label": "VisÃ£o Geral",
-        "full_name": "Carteira consolidada de dÃ­vidas - AXS Energia",
+        "label": "Visão Geral",
+        "full_name": "Carteira consolidada de dívidas - AXS Energia",
         "badge": "Carteira",
-        "category": "AnÃ¡lise geral",
-        "indexer": "MÃºltiplos indexadores",
-        "description": "Consolidado das emissÃµes para leitura executiva da carteira.",
+        "category": "Análise geral",
+        "indexer": "Múltiplos indexadores",
+        "description": "Consolidado das emissões para leitura executiva da carteira.",
         "issuer": "AXS Energia",
         "script_path": "Consolidado a partir dos scripts individuais",
         "identity_fields": [
-            {"label": "EmissÃµes ativas", "value": str(len(payloads))},
+            {"label": "Emissões ativas", "value": str(len(payloads))},
             {"label": "Tipos", "value": "CRI e Debenture"},
-            {"label": "Escopo", "value": "Todas as emissÃµes mapeadas"},
+            {"label": "Escopo", "value": "Todas as emissões mapeadas"},
         ],
         "overview_fields": [
             {"label": "Saldo consolidado", "value": str(summary["current_balance"]) if summary["current_balance"] is not None else "-"},
-            {"label": "PrÃ³ximo PMT da carteira", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
-            {"label": "Data do prÃ³ximo PMT", "value": summary["next_payment_date"] or "-"},
+            {"label": "Próximo PMT da carteira", "value": str(summary["next_payment_amount"]) if summary["next_payment_amount"] is not None else "-"},
+            {"label": "Data do próximo PMT", "value": summary["next_payment_date"] or "-"},
             {"label": "Juros acumulados", "value": str(summary["total_interest"])},
-            {"label": "AmortizaÃ§Ã£o acumulada", "value": str(summary["total_amortization"])},
-            {"label": "Saldo somado das emissÃµes", "value": str(total_volume)},
+            {"label": "Amortização acumulada", "value": str(summary["total_amortization"])},
+            {"label": "Saldo somado das emissões", "value": str(total_volume)},
         ],
         "pu_fields": [
-            {"label": "EmissÃ£o com maior saldo", "value": comparison[0]["label"] if comparison else "-"},
+            {"label": "Emissão com maior saldo", "value": comparison[0]["label"] if comparison else "-"},
             {"label": "Maior saldo atual", "value": str(comparison[0]["current_balance"]) if comparison else "-"},
             {"label": "Maior juros acumulados", "value": str(max((item["total_interest"] for item in comparison), default=0.0))},
-            {"label": "Maior amortizaÃ§Ã£o acumulada", "value": str(max((item["total_amortization"] for item in comparison), default=0.0))},
+            {"label": "Maior amortização acumulada", "value": str(max((item["total_amortization"] for item in comparison), default=0.0))},
         ],
     }
     return {
@@ -1403,7 +1440,7 @@ def build_portfolio_payload() -> dict[str, Any]:
         "summary": summary,
         "timeline": build_timeline(series),
         "meta": {
-            "primary_source": "Consolidado gerado a partir dos scripts individuais de calculo.",
+            "primary_source": "Consolidado gerado a partir dos scripts individuais de cálculo.",
             "notes": "A visao geral soma eventos, saldos e metricas das operacoes individuais.",
         },
         "comparison": comparison,
@@ -1491,19 +1528,8 @@ def get_payload(operation_id: str, variant_id: str | None = None) -> dict[str, A
 
 def normalize_text(value: Any) -> str:
     text = text_or_default(value).lower()
-    replacements = {
-        "Ã¡": "a", "Ã ": "a", "Ã¢": "a", "Ã£": "a",
-        "Ã©": "e", "Ãª": "e",
-        "Ã­": "i",
-        "Ã³": "o", "Ã´": "o", "Ãµ": "o",
-        "Ãº": "u",
-        "Ã§": "c",
-        "Âª": "a",
-        "Âº": "o",
-    }
-    for old, new in replacements.items():
-        text = text.replace(old, new)
-    return text
+    normalized = unicodedata.normalize("NFD", text)
+    return "".join(char for char in normalized if unicodedata.category(char) != "Mn")
 
 
 CHAT_OPERATION_ALIASES: dict[str, list[str]] = {
@@ -1727,7 +1753,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
             operations = [
                 {
                     "id": PORTFOLIO_ID,
-                    "label": "Visao Geral",
+                    "label": "Visão Geral",
                     "category": "Carteira",
                     "indexer": "Consolidado",
                     "badge": "Carteira",

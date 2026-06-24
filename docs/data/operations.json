@@ -1,10 +1,10 @@
 {
-  "generated_at": "24/06/2026 08:00:12",
-  "generated_at_iso": "2026-06-24T08:00:12",
+  "generated_at": "24/06/2026 09:39:15",
+  "generated_at_iso": "2026-06-24T09:39:15",
   "operations": [
     {
       "id": "geral",
-      "label": "Visao Geral",
+      "label": "Visão Geral",
       "category": "Carteira",
       "indexer": "Consolidado",
       "badge": "Carteira",
@@ -23,11 +23,11 @@
         },
         {
           "id": "primeira",
-          "label": "1a Serie"
+          "label": "1ª Série"
         },
         {
           "id": "segunda",
-          "label": "2a Serie"
+          "label": "2ª Série"
         }
       ]
     },
@@ -81,11 +81,11 @@
         },
         {
           "id": "primeira",
-          "label": "1a Serie"
+          "label": "1ª Série"
         },
         {
           "id": "segunda",
-          "label": "2a Serie"
+          "label": "2ª Série"
         }
       ]
     },
@@ -102,11 +102,11 @@
         },
         {
           "id": "primeira",
-          "label": "1a Emissao"
+          "label": "1ª Emissão"
         },
         {
           "id": "segunda",
-          "label": "2a Emissao"
+          "label": "2ª Emissão"
         }
       ]
     },
@@ -144,7 +144,7 @@
     },
     {
       "id": "axsgoias",
-      "label": "AXS GoiÃ¡s",
+      "label": "AXS Goiás",
       "category": "Debenture",
       "indexer": "IPCA + 10,40%",
       "badge": "DEB",

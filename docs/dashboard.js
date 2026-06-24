@@ -1,5 +1,5 @@
-const METRIC_HELP = {
-  "Saldo atual": "Saldo devedor da linha mais recente aplicavel a data atual. Para visoes consolidadas, soma os saldos dos instrumentos ativos na mesma data.",
+﻿const METRIC_HELP = {
+  "Saldo atual": "Saldo devedor da linha mais recente aplicável à data atual. Para visões consolidadas, soma os saldos dos instrumentos ativos na mesma data.",
   "Principal atualizado": "Base principal corrigida do fluxo na linha atual. Em geral corresponde ao VNA ou ao principal remanescente antes do próximo evento.",
   Duration: "Prazo médio financeiro gerencial, ponderado pelos PMTs futuros. Fórmula usada: soma de (tempo em anos x PMT futuro) dividida pela soma dos PMTs futuros.",
   "Vida media": "WAL da dívida, ponderada apenas pelas amortizações futuras. Fórmula usada: soma de (tempo em anos x amortização futura) dividida pela soma das amortizações futuras.",
@@ -16,13 +16,13 @@ const OPERATION_HINTS = [
   { id: "axs03", aliases: ["axs 03", "axs03", "axs iii", "22k1397969", "emissao 78"] },
   { id: "axs04", aliases: ["axs 04", "axs04", "axs 4", "23f0046476", "emissao 139"] },
   { id: "axs05", aliases: ["axs 05", "axs05", "axsc12", "axsc22", "unidade 05"] },
-  { id: "axs06", aliases: ["axs 06", "axs06", "axse12", "unidade 06"] },
+  { id: "axs06", aliases: ["axs 06", "axs06", "axse11", "axse12", "unidade 06"] },
   { id: "axs07", aliases: ["axs 07", "axs07", "axsu11", "unidade 07"] },
   { id: "axs08", aliases: ["axs 08", "axs08", "axs811", "unidade 08"] },
   { id: "axs09", aliases: ["axs 09", "axs09", "axs911", "unidade 09"] },
   { id: "axs10", aliases: ["axs 10", "axs10", "axs411", "unidade 10"] },
   { id: "axs11", aliases: ["axs 11", "axs11", "axsi11", "unidade 11"] },
-  { id: "axsgoias", aliases: ["axs goias", "goias", "goias spe", "axs311"] },
+  { id: "axsgoias", aliases: ["axs goias", "axs goiás", "goias", "goiás", "goias spe", "goiás spe", "axs311"] },
 ];
 
 const state = {
@@ -1413,3 +1413,6 @@ elements.refreshButton.addEventListener("click", async () => {
 });
 
 bootstrap();
+
+
+
