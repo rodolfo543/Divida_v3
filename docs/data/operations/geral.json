@@ -9875,8 +9875,8 @@
     "next_amortization_amount": 2545658.0,
     "last_event_date": "15/06/2026",
     "final_balance": 171681333.87,
-    "duration_years": 8.139879996429817,
-    "wal_years": 9.368209384517261
+    "duration_years": 8.134404294855553,
+    "wal_years": 9.362733682942995
   },
   "timeline": [
     {
@@ -10158,6 +10158,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "27/06/2026 18:12:03",
-  "generated_at_iso": "2026-06-27T18:12:03"
+  "generated_at": "29/06/2026 08:23:01",
+  "generated_at_iso": "2026-06-29T08:23:01"
 }
