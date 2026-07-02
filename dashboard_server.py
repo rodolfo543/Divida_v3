@@ -2,7 +2,9 @@
 
 import importlib.util
 import json
+import math
 import os
+import re
 import sys
 import unicodedata
 from copy import deepcopy
@@ -44,6 +46,9 @@ VARIANT_OPTIONS_MAP: dict[str, list[dict[str, str]]] = {
         {"id": "segunda", "label": "2ª Emissão"},
     ],
 }
+
+PERCENT_PATTERN = re.compile(r"(\d+(?:[.,]\d+)?)\s*%")
+DATE_PATTERN = re.compile(r"(\d{2}/\d{2}/\d{4})")
 
 
 @dataclass(frozen=True)
@@ -103,6 +108,10 @@ def number_or_none(value: Any) -> float | None:
         return float(text)
     except ValueError:
         return None
+
+
+def format_decimal_br(value: float, digits: int = 2) -> str:
+    return f"{value:.{digits}f}".replace(".", ",")
 
 
 def text_or_default(value: Any, default: str = "") -> str:
@@ -380,6 +389,347 @@ def get_current_row(series: list[dict[str, Any]]) -> dict[str, Any] | None:
     return series[-1]
 
 
+def normalize_simple_text(value: Any) -> str:
+    text = text_or_default(value).lower()
+    normalized = unicodedata.normalize("NFD", text)
+    return "".join(char for char in normalized if unicodedata.category(char) != "Mn")
+
+
+def find_last_row_before(series: list[dict[str, Any]], target: date) -> dict[str, Any] | None:
+    eligible = [item for item in series if item.get("parsed_date") and item["parsed_date"] < target]
+    return eligible[-1] if eligible else None
+
+
+def extract_dates_from_text(value: Any) -> list[date]:
+    dates: list[date] = []
+    for match in DATE_PATTERN.findall(text_or_default(value)):
+        parsed = parse_date(match)
+        if parsed is not None:
+            dates.append(parsed)
+    return dates
+
+
+def normalize_rate_label(value: Any) -> str:
+    label = text_or_default(value, "-").strip()
+    if not label:
+        return "-"
+    if "%" in label and "a.a" not in normalize_simple_text(label):
+        return f"{label} a.a."
+    return label
+
+
+def active_rate_label(label: Any, as_of: date | None = None) -> str:
+    text = text_or_default(label).strip()
+    if not text:
+        return "-"
+    normalized = normalize_simple_text(text)
+    if "depois" not in normalized or "ate" not in normalized:
+        return text
+
+    cutoff_match = DATE_PATTERN.search(text)
+    cutoff_date = parse_date(cutoff_match.group(1)) if cutoff_match else None
+    if cutoff_date is None:
+        return text
+
+    parts = re.split(r";\s*depois\s*", text, maxsplit=1, flags=re.IGNORECASE)
+    if len(parts) != 2:
+        return text
+    return parts[1].strip() if (as_of or datetime.now().date()) > cutoff_date else parts[0].strip()
+
+
+def extract_rate_percent(label: Any, as_of: date | None = None) -> float | None:
+    active_label = active_rate_label(label, as_of)
+    values = [number_or_none(match.replace(",", ".")) for match in PERCENT_PATTERN.findall(active_label)]
+    values = [value for value in values if value is not None]
+    if len(values) == 1:
+        return values[0]
+    return None
+
+
+def derive_quantity_value(config: OperationConfig, module: Any | None) -> float | None:
+    quantity = metadata_value(config, "quantity_emitted", derive_quantity(module) if module else None)
+    return number_or_none(quantity)
+
+
+def derive_issue_dates(config: OperationConfig, module: Any | None) -> list[date]:
+    dates = extract_dates_from_text(metadata_value(config, "issue_date", ""))
+    if dates:
+        return dates
+    fallback = metadata_value(
+        config,
+        "start_date",
+        text_or_default(getattr(module, "DATA_INICIO_RENTABILIDADE", None) or getattr(module, "DATA_EMISSAO", None), ""),
+    )
+    return extract_dates_from_text(fallback)
+
+
+def compress_cashflows(cashflows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    buckets: dict[str, float] = {}
+    for item in cashflows:
+        cash_date = text_or_default(item.get("date"))
+        amount = number_or_none(item.get("amount")) or 0.0
+        if not cash_date:
+            continue
+        buckets[cash_date] = buckets.get(cash_date, 0.0) + amount
+    compressed = [{"date": cash_date, "amount": amount} for cash_date, amount in buckets.items() if abs(amount) > 1e-9]
+    compressed.sort(key=lambda item: parse_date(item["date"]) or date.max)
+    return compressed
+
+
+def xnpv(rate: float, cashflows: list[tuple[date, float]]) -> float:
+    if rate <= -0.999999999:
+        return math.inf
+    base_date = cashflows[0][0]
+    total = 0.0
+    for cash_date, amount in cashflows:
+        days = (cash_date - base_date).days / 365.25
+        total += amount / ((1.0 + rate) ** days)
+    return total
+
+
+def xirr(cashflows: list[dict[str, Any]]) -> float | None:
+    parsed = [
+        (parsed_date, number_or_none(item.get("amount")) or 0.0)
+        for item in compress_cashflows(cashflows)
+        if (parsed_date := parse_date(item.get("date"))) is not None
+    ]
+    if len(parsed) < 2:
+        return None
+    has_positive = any(amount > 0 for _, amount in parsed)
+    has_negative = any(amount < 0 for _, amount in parsed)
+    if not has_positive or not has_negative:
+        return None
+
+    grid = [-0.95, -0.75, -0.5, -0.25, -0.1, 0.0, 0.05, 0.1, 0.15, 0.25, 0.4, 0.6, 0.85, 1.2, 1.8, 2.6, 4.0, 6.0]
+    bracket_low: float | None = None
+    bracket_high: float | None = None
+    previous_rate = grid[0]
+    previous_value = xnpv(previous_rate, parsed)
+    for current_rate in grid[1:]:
+        current_value = xnpv(current_rate, parsed)
+        if previous_value == 0:
+            return previous_rate
+        if current_value == 0:
+            return current_rate
+        if previous_value * current_value < 0:
+            bracket_low = previous_rate
+            bracket_high = current_rate
+            break
+        previous_rate = current_rate
+        previous_value = current_value
+
+    if bracket_low is None or bracket_high is None:
+        return None
+
+    low = bracket_low
+    high = bracket_high
+    low_value = xnpv(low, parsed)
+    for _ in range(120):
+        mid = (low + high) / 2.0
+        mid_value = xnpv(mid, parsed)
+        if abs(mid_value) < 1e-8:
+            return mid
+        if low_value * mid_value <= 0:
+            high = mid
+        else:
+            low = mid
+            low_value = mid_value
+    return (low + high) / 2.0
+
+
+def build_return_cashflows(config: OperationConfig, series: list[dict[str, Any]], module: Any | None) -> list[dict[str, Any]]:
+    quantity = derive_quantity_value(config, module)
+    pu_issue = number_or_none(metadata_value(config, "pu_issue", number_or_none(getattr(module, "PU_INICIAL", None)) if module else None))
+    issue_dates = derive_issue_dates(config, module)
+    if quantity is None or quantity <= 0 or pu_issue is None or pu_issue <= 0 or not issue_dates:
+        return []
+
+    cashflows = [{"date": issue_dates[0].strftime("%d/%m/%Y"), "amount": -(pu_issue * quantity)}]
+    base_pu = pu_issue
+    for row in series:
+        payment_date = row.get("parsed_date")
+        if payment_date is None:
+            continue
+        raw = row.get("raw", {})
+        factor = first_number(raw.get("Fator_Spread"), raw.get("Fator_Juros"))
+        interest_unit = None
+        if factor is not None and factor > 0:
+            interest_unit = base_pu * (factor - 1.0)
+        else:
+            pu_reference = first_number(raw.get("PU_VNa_Atualizado"), raw.get("PU_VNa_Ini"), base_pu) or base_pu
+            interest_ratio = (row.get("pu_juros") or 0.0) / pu_reference if pu_reference else 0.0
+            interest_unit = base_pu * interest_ratio
+
+        amort_ratio = first_number(raw.get("TAI_Amort"), raw.get("Perc_Amort"))
+        if amort_ratio is None:
+            pu_reference = first_number(raw.get("PU_VNa_Atualizado"), raw.get("PU_VNa_Ini"), base_pu) or base_pu
+            amort_ratio = ((row.get("pu_amort") or 0.0) / pu_reference) if pu_reference else 0.0
+        amort_unit = base_pu * max(amort_ratio or 0.0, 0.0)
+
+        capitalizes_interest = (
+            text_or_default(raw.get("Incorpora_Ate_Data")).strip().upper() == "SIM"
+            or (first_number(raw.get("Juros_Capitalizado_R$")) or 0.0) > 0
+            or (first_number(raw.get("Juros_Incorporado_R$")) or 0.0) > 0
+            or (first_number(raw.get("PU_Juros_Capitalizado")) or 0.0) > 0
+            or (first_number(raw.get("PU_Juros_Incorporado")) or 0.0) > 0
+        )
+
+        payment_amount = 0.0
+        if capitalizes_interest:
+            base_pu += interest_unit
+        else:
+            payment_amount += interest_unit
+        if amort_unit > 0:
+            payment_amount += amort_unit
+            base_pu = max(base_pu - amort_unit, 0.0)
+
+        if payment_amount > 1e-9:
+            cashflows.append({"date": payment_date.strftime("%d/%m/%Y"), "amount": payment_amount * quantity})
+    return compress_cashflows(cashflows)
+
+
+def capitalized_interest_amount(row: dict[str, Any], quantity: float | None) -> float:
+    raw = row.get("raw", {})
+    amount = first_number(
+        raw.get("Juros_Capitalizado_R$"),
+        raw.get("Juros_Incorporado_R$"),
+    )
+    if amount is not None:
+        return amount
+    pu_amount = first_number(
+        raw.get("PU_Juros_Capitalizado"),
+        raw.get("PU_Juros_Incorporado"),
+    )
+    if pu_amount is not None and quantity:
+        return pu_amount * quantity
+    return 0.0
+
+
+def build_monthly_balance_summary(
+    config: OperationConfig,
+    series: list[dict[str, Any]],
+    daily_pu_series: list[dict[str, Any]],
+    module: Any | None,
+) -> dict[str, Any]:
+    current_daily = get_current_row(daily_pu_series)
+    if current_daily is None or current_daily.get("parsed_date") is None:
+        return {
+            "monthly_balance_variation": None,
+            "monthly_balance_update": None,
+            "monthly_balance_interest": None,
+            "monthly_balance_amortization": None,
+            "monthly_balance_reference_date": None,
+            "monthly_balance_current_date": None,
+            "monthly_balance_update_label": "Atualização indexador",
+        }
+
+    current_date = current_daily["parsed_date"]
+    month_start = date(current_date.year, current_date.month, 1)
+    previous_daily = find_last_row_before(daily_pu_series, month_start)
+    update_label = "Atualização indexador"
+    normalized_indexer = normalize_simple_text(config.indexer)
+    if "ipca" in normalized_indexer:
+        update_label = "Atualização IPCA"
+    elif "cdi" in normalized_indexer:
+        update_label = "Atualização CDI"
+
+    if previous_daily is None:
+        return {
+            "monthly_balance_variation": None,
+            "monthly_balance_update": None,
+            "monthly_balance_interest": None,
+            "monthly_balance_amortization": None,
+            "monthly_balance_reference_date": None,
+            "monthly_balance_current_date": current_date.strftime("%d/%m/%Y"),
+            "monthly_balance_update_label": update_label,
+        }
+
+    quantity = derive_quantity_value(config, module)
+    period_rows = [
+        item for item in series
+        if item.get("parsed_date") and month_start <= item["parsed_date"] <= current_date
+    ]
+    total_variation = (current_daily.get("balance") or 0.0) - (previous_daily.get("balance") or 0.0)
+    accrued_previous = (previous_daily.get("balance") or 0.0) - (previous_daily.get("principal") or 0.0)
+    accrued_current = (current_daily.get("balance") or 0.0) - (current_daily.get("principal") or 0.0)
+    capitalized_interest = sum(capitalized_interest_amount(item, quantity) for item in period_rows)
+    interest_component = capitalized_interest + (accrued_current - accrued_previous)
+    amortization_component = sum(item.get("amortization") or 0.0 for item in period_rows)
+    update_component = total_variation - interest_component + amortization_component
+
+    return {
+        "monthly_balance_variation": total_variation,
+        "monthly_balance_update": update_component,
+        "monthly_balance_interest": interest_component,
+        "monthly_balance_amortization": amortization_component,
+        "monthly_balance_reference_date": previous_daily["date"],
+        "monthly_balance_current_date": current_daily["date"],
+        "monthly_balance_update_label": update_label,
+    }
+
+
+def build_return_summary(config: OperationConfig, series: list[dict[str, Any]], module: Any | None) -> dict[str, Any]:
+    contracted_label = metadata_value(config, "remuneration_label", config.indexer)
+    cashflows = build_return_cashflows(config, series, module)
+    annual_rate = xirr(cashflows)
+    monthly_rate = ((1.0 + annual_rate) ** (1.0 / 12.0) - 1.0) if annual_rate is not None and annual_rate > -1 else None
+    contracted_rate = extract_rate_percent(contracted_label)
+    annual_pct = annual_rate * 100.0 if annual_rate is not None else None
+    monthly_pct = monthly_rate * 100.0 if monthly_rate is not None else None
+    spread_pct = (annual_pct - contracted_rate) if annual_pct is not None and contracted_rate is not None else None
+    return {
+        "tir_annual_pct": annual_pct,
+        "tir_monthly_pct": monthly_pct,
+        "contracted_rate_label": text_or_default(contracted_label, "-"),
+        "contracted_rate_display": normalize_rate_label(active_rate_label(contracted_label)),
+        "contracted_rate_annual_pct": contracted_rate,
+        "effective_spread_annual_pct": spread_pct,
+        "tir_cashflows": cashflows,
+    }
+
+
+def weighted_average_rate(rate_weights: list[tuple[float | None, float]]) -> float | None:
+    valid = [(rate, weight) for rate, weight in rate_weights if rate is not None and weight > 0]
+    if not valid:
+        return None
+    total_weight = sum(weight for _, weight in valid)
+    if total_weight <= 0:
+        return None
+    return sum(rate * weight for rate, weight in valid) / total_weight
+
+
+def merge_return_metrics_from_components(
+    summary: dict[str, Any],
+    component_summaries: list[dict[str, Any]],
+    contracted_label: str | None = None,
+) -> dict[str, Any]:
+    merged = dict(summary)
+    cashflows: list[dict[str, Any]] = []
+    for component in component_summaries:
+        cashflows.extend(component.get("tir_cashflows", []))
+    cashflows = compress_cashflows(cashflows)
+    annual_rate = xirr(cashflows)
+    monthly_rate = ((1.0 + annual_rate) ** (1.0 / 12.0) - 1.0) if annual_rate is not None and annual_rate > -1 else None
+    contracted_rate = weighted_average_rate([
+        (component.get("contracted_rate_annual_pct"), component.get("current_balance") or 0.0)
+        for component in component_summaries
+    ])
+    annual_pct = annual_rate * 100.0 if annual_rate is not None else None
+    monthly_pct = monthly_rate * 100.0 if monthly_rate is not None else None
+    merged["tir_annual_pct"] = annual_pct
+    merged["tir_monthly_pct"] = monthly_pct
+    merged["contracted_rate_annual_pct"] = contracted_rate
+    merged["effective_spread_annual_pct"] = (annual_pct - contracted_rate) if annual_pct is not None and contracted_rate is not None else None
+    merged["tir_cashflows"] = cashflows
+    if contracted_label:
+        merged["contracted_rate_label"] = contracted_label
+        if contracted_rate is not None:
+            merged["contracted_rate_display"] = f"Média ponderada: {format_decimal_br(contracted_rate, 2)}% a.a."
+        else:
+            merged["contracted_rate_display"] = normalize_rate_label(contracted_label)
+    return merged
+
+
 def build_summary(series: list[dict[str, Any]]) -> dict[str, Any]:
     current_row = get_current_row(series)
     today = datetime.now().date()
@@ -506,10 +856,16 @@ def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any |
 
 
 def build_operation_view(config: OperationConfig, payload: dict[str, Any], module: Any | None) -> dict[str, Any]:
-    identity_fields, overview_fields, pu_fields = build_fields(config, payload, module)
     daily_pu_series = payload.get("daily_pu_series")
     if daily_pu_series is None:
         daily_pu_series = build_synthetic_daily_pu_series(payload["series"], module)
+    summary = dict(payload["summary"])
+    summary.update(build_return_summary(config, payload["series"], module))
+    summary.update(build_monthly_balance_summary(config, payload["series"], daily_pu_series, module))
+    enriched_payload = dict(payload)
+    enriched_payload["summary"] = summary
+    enriched_payload["daily_pu_series"] = daily_pu_series
+    identity_fields, overview_fields, pu_fields = build_fields(config, enriched_payload, module)
     operation = {
         "id": config.id,
         "label": config.label,
@@ -526,12 +882,12 @@ def build_operation_view(config: OperationConfig, payload: dict[str, Any], modul
     }
     return {
         "operation": operation,
-        "series": payload["series"],
-        "table_series": payload.get("table_series", payload["series"]),
+        "series": enriched_payload["series"],
+        "table_series": enriched_payload.get("table_series", enriched_payload["series"]),
         "daily_pu_series": daily_pu_series,
-        "summary": payload["summary"],
-        "timeline": payload["timeline"],
-        "meta": payload["meta"],
+        "summary": summary,
+        "timeline": enriched_payload["timeline"],
+        "meta": enriched_payload["meta"],
     }
 
 
@@ -1629,6 +1985,21 @@ def build_portfolio_payload() -> dict[str, Any]:
     comparison = build_comparison_rows(payloads)
     series = build_portfolio_series(payloads)
     summary = build_summary(series)
+    summary = merge_return_metrics_from_components(summary, [payload["summary"] for payload in payloads], "Média ponderada da carteira")
+    monthly_fields = (
+        "monthly_balance_variation",
+        "monthly_balance_update",
+        "monthly_balance_interest",
+        "monthly_balance_amortization",
+    )
+    for field in monthly_fields:
+        values = [payload["summary"].get(field) for payload in payloads if payload["summary"].get(field) is not None]
+        summary[field] = sum(values) if values else None
+    reference_dates = [payload["summary"].get("monthly_balance_reference_date") for payload in payloads if payload["summary"].get("monthly_balance_reference_date")]
+    current_dates = [payload["summary"].get("monthly_balance_current_date") for payload in payloads if payload["summary"].get("monthly_balance_current_date")]
+    summary["monthly_balance_reference_date"] = max(reference_dates, key=lambda item: parse_date(item) or date.min) if reference_dates else None
+    summary["monthly_balance_current_date"] = max(current_dates, key=lambda item: parse_date(item) or date.min) if current_dates else None
+    summary["monthly_balance_update_label"] = "Atualização indexadores"
     total_volume = sum(item["current_balance"] for item in comparison)
     operation = {
         "id": PORTFOLIO_ID,
@@ -1698,6 +2069,7 @@ def compute_operation(operation_id: str) -> dict[str, Any]:
             "variant_options": variant_options,
             "variants": {},
         }
+        component_variant_summaries: list[dict[str, Any]] = []
         for variant_id, variant_payload in base_payload["variants"].items():
             overrides = variant_payload["operation_overrides"]
             merged_config = OperationConfig(
@@ -1715,7 +2087,20 @@ def compute_operation(operation_id: str) -> dict[str, Any]:
                 isin=overrides.get("metadata", {}).get("isin", config.isin),
                 metadata={**config.metadata, **overrides.get("metadata", {})},
             )
-            payload["variants"][variant_id] = build_operation_view(merged_config, variant_payload, module)
+            variant_view = build_operation_view(merged_config, variant_payload, module)
+            payload["variants"][variant_id] = variant_view
+            if variant_id != "total":
+                component_variant_summaries.append(variant_view["summary"])
+        if "total" in payload["variants"] and component_variant_summaries:
+            total_view = deepcopy(payload["variants"]["total"])
+            total_view["summary"] = merge_return_metrics_from_components(
+                total_view["summary"],
+                component_variant_summaries,
+                total_view["summary"].get("contracted_rate_label"),
+            )
+            payload["variants"]["total"] = total_view
+            if default_variant == "total":
+                payload["summary"] = total_view["summary"]
         payload["selected_variant"] = default_variant
     else:
         payload = build_operation_view(config, base_payload, module)
@@ -1860,6 +2245,10 @@ def build_calculation_context(question: str, payload: dict[str, Any]) -> str:
         f"PU vazio atual: {summary.get('current_pu_vazio')}",
         f"Juros acumulados: {summary.get('total_interest')}",
         f"Amortizacao acumulada: {summary.get('total_amortization')}",
+        f"TIR anual (%): {summary.get('tir_annual_pct')}",
+        f"TIR mensal (%): {summary.get('tir_monthly_pct')}",
+        f"Taxa contratada (%): {summary.get('contracted_rate_annual_pct')}",
+        f"Spread efetivo (%): {summary.get('effective_spread_annual_pct')}",
         f"Duration em anos: {summary.get('duration_years')}",
         f"Vida media em anos: {summary.get('wal_years')}",
         f"Proximo PMT em {summary.get('next_payment_date')}: {summary.get('next_payment_amount')}",

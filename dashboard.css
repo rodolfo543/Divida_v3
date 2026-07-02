@@ -410,6 +410,88 @@ body {
   line-height: 1.5;
 }
 
+.metric-card-wide {
+  grid-column: span 2;
+  min-height: 198px;
+}
+
+.metric-feature-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 22px;
+  height: 100%;
+}
+
+.metric-feature-main,
+.metric-feature-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-feature-side {
+  gap: 18px;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 22px;
+}
+
+.metric-feature-block {
+  display: grid;
+  gap: 6px;
+}
+
+.metric-feature-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.metric-feature-value {
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.metric-breakdown {
+  gap: 0;
+}
+
+.metric-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+.metric-breakdown-row:last-child {
+  border-bottom: 0;
+}
+
+.metric-breakdown-total {
+  margin-top: 6px;
+  padding-top: 14px;
+  font-weight: 700;
+}
+
+.metric-trend.positive,
+.metric-breakdown-row.positive strong,
+.metric-breakdown-total.positive strong {
+  color: #6ee7b7;
+}
+
+.metric-trend.negative,
+.metric-breakdown-row.negative strong,
+.metric-breakdown-total.negative strong {
+  color: #ff7d7d;
+}
+
+.metric-trend.neutral,
+.metric-breakdown-row.neutral strong,
+.metric-breakdown-total.neutral strong {
+  color: var(--text);
+}
+
 .panel-header {
   display: flex;
   justify-content: space-between;
@@ -850,6 +932,21 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .metric-card-wide {
+    grid-column: span 2;
+  }
+
+  .metric-feature-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-feature-side {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 0;
+    padding-top: 18px;
+  }
+
   .instrument-panel {
     max-width: none;
   }
@@ -873,6 +970,10 @@ body {
   .info-grid,
   .metrics-grid {
     grid-template-columns: 1fr;
+  }
+
+  .metric-card-wide {
+    grid-column: span 1;
   }
 
   .chart-panel {

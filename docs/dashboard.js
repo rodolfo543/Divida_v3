@@ -7,6 +7,8 @@
   "PU vazio": "PU base sem juros corridos, arredondado apenas nos cards superiores para leitura rápida.",
   "Juros acumulados": "Soma de todos os juros projetados ou calculados ao longo do fluxo da seleção atual.",
   "Amortizacao acumulada": "Soma de toda a amortização projetada ou calculada ao longo do fluxo da seleção atual.",
+  "TIR (Taxa Interna de Retorno)": "Retorno anual efetivo da operação a partir do desembolso de emissão e dos PMTs projetados no fluxo. A leitura mensal abaixo mostra a taxa equivalente.",
+  "Variação Mensal do Saldo": "Variação do fechamento diário do saldo bruto em relação ao fechamento do mês anterior. O detalhamento separa atualização do indexador, juros retidos no saldo e amortização.",
 };
 
 const OPERATION_HINTS = [
@@ -163,12 +165,53 @@ function formatNumber(value, digits = 2) {
   }).format(number);
 }
 
+function formatPercent(value, digits = 2) {
+  const number = toNumber(value);
+  if (number === null) {
+    return "-";
+  }
+  return `${formatNumber(number, digits)}%`;
+}
+
 function formatYears(value) {
   const number = toNumber(value);
   if (number === null) {
     return "-";
   }
   return `${formatNumber(number, 2)} anos`;
+}
+
+function formatSignedCompactCurrency(value) {
+  const number = toNumber(value);
+  if (number === null) {
+    return "-";
+  }
+  if (number === 0) {
+    return formatCompactCurrency(0);
+  }
+  const sign = number > 0 ? "+" : "-";
+  return `${sign}${formatCompactCurrency(Math.abs(number))}`;
+}
+
+function formatSignedPercent(value, digits = 2, suffix = "") {
+  const number = toNumber(value);
+  if (number === null) {
+    return "-";
+  }
+  const sign = number > 0 ? "+" : number < 0 ? "-" : "";
+  return `${sign}${formatNumber(Math.abs(number), digits)}%${suffix}`;
+}
+
+function trendClass(value) {
+  const number = toNumber(value);
+  if (number === null || number === 0) {
+    return "neutral";
+  }
+  return number > 0 ? "positive" : "negative";
+}
+
+function contractRateLabel(summary) {
+  return summary.contracted_rate_display || summary.contracted_rate_label || "-";
 }
 
 function setStatus(text, kind = "default") {
@@ -264,6 +307,106 @@ function createMetricCard(title, value, subtitle, tooltip) {
   return card;
 }
 
+function createTirMetricCard(summary) {
+  const card = document.createElement("article");
+  card.className = "metric-card metric-card-wide metric-card-feature tilt-card";
+  const annualValue = summary.tir_annual_pct !== null && summary.tir_annual_pct !== undefined
+    ? `${formatPercent(summary.tir_annual_pct, 2)} a.a.`
+    : "-";
+  const monthlyValue = summary.tir_monthly_pct !== null && summary.tir_monthly_pct !== undefined
+    ? `${formatPercent(summary.tir_monthly_pct, 2)} a.m.`
+    : "-";
+  const spreadClass = trendClass(summary.effective_spread_annual_pct);
+  const spreadValue = summary.effective_spread_annual_pct !== null && summary.effective_spread_annual_pct !== undefined
+    ? `${formatSignedPercent(summary.effective_spread_annual_pct, 2)} a.a.`
+    : "-";
+  card.innerHTML = `
+    <div class="metric-feature-layout">
+      <div class="metric-feature-main">
+        <div class="metric-head">
+          <p class="metric-title">TIR (Taxa Interna de Retorno)</p>
+          <div class="metric-help">
+            <button class="metric-help-button" type="button" aria-label="Explicar TIR">i</button>
+            <div class="metric-help-bubble">${escapeHtml(METRIC_HELP["TIR (Taxa Interna de Retorno)"])}</div>
+          </div>
+        </div>
+        <h3 class="metric-value">${annualValue}</h3>
+        <p class="metric-subtitle">Equivalente mensal: <strong>${monthlyValue}</strong>.</p>
+      </div>
+      <div class="metric-feature-side">
+        <div class="metric-feature-block">
+          <span class="metric-feature-label">Taxa contratada</span>
+          <strong class="metric-feature-value">${escapeHtml(contractRateLabel(summary))}</strong>
+        </div>
+        <div class="metric-feature-block">
+          <span class="metric-feature-label">Spread efetivo (TIR - contratada)</span>
+          <strong class="metric-feature-value metric-trend ${spreadClass}">${spreadValue}</strong>
+        </div>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function createMonthlyVariationCard(summary) {
+  const card = document.createElement("article");
+  card.className = "metric-card metric-card-wide metric-card-feature tilt-card";
+  const referenceDate = summary.monthly_balance_reference_date || "-";
+  const currentDate = summary.monthly_balance_current_date || "-";
+  const totalClass = trendClass(summary.monthly_balance_variation);
+  const breakdown = [
+    {
+      label: summary.monthly_balance_update_label || "Atualização indexador",
+      value: summary.monthly_balance_update,
+      displayValue: formatSignedCompactCurrency(summary.monthly_balance_update),
+      className: trendClass(summary.monthly_balance_update),
+    },
+    {
+      label: "Juros",
+      value: summary.monthly_balance_interest,
+      displayValue: formatSignedCompactCurrency(summary.monthly_balance_interest),
+      className: trendClass(summary.monthly_balance_interest),
+    },
+    {
+      label: "Amortização",
+      value: summary.monthly_balance_amortization !== null && summary.monthly_balance_amortization !== undefined ? -Math.abs(summary.monthly_balance_amortization) : null,
+      displayValue: summary.monthly_balance_amortization !== null && summary.monthly_balance_amortization !== undefined ? formatSignedCompactCurrency(-Math.abs(summary.monthly_balance_amortization)) : "-",
+      className: summary.monthly_balance_amortization !== null && summary.monthly_balance_amortization !== undefined ? trendClass(-Math.abs(summary.monthly_balance_amortization)) : "neutral",
+    },
+  ];
+  const totalValue = summary.monthly_balance_variation !== null && summary.monthly_balance_variation !== undefined
+    ? formatSignedCompactCurrency(summary.monthly_balance_variation)
+    : "-";
+  card.innerHTML = `
+    <div class="metric-feature-layout">
+      <div class="metric-feature-main">
+        <div class="metric-head">
+          <p class="metric-title">Variação Mensal do Saldo</p>
+          <div class="metric-help">
+            <button class="metric-help-button" type="button" aria-label="Explicar Variação Mensal do Saldo">i</button>
+            <div class="metric-help-bubble">${escapeHtml(METRIC_HELP["Variação Mensal do Saldo"])}</div>
+          </div>
+        </div>
+        <h3 class="metric-value metric-trend ${totalClass}">${totalValue}</h3>
+        <p class="metric-subtitle">Fechamento de <strong>${escapeHtml(currentDate)}</strong> contra <strong>${escapeHtml(referenceDate)}</strong>.</p>
+      </div>
+      <div class="metric-feature-side metric-breakdown">
+        ${breakdown.map((item) => `
+          <div class="metric-breakdown-row ${item.className}">
+            <span>${escapeHtml(item.label)}</span>
+            <strong>${item.displayValue}</strong>
+          </div>
+        `).join("")}
+        <div class="metric-breakdown-row metric-breakdown-total ${totalClass}">
+          <span>Variação total</span>
+          <strong>${totalValue}</strong>
+        </div>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
 function renderHeroMiniMetrics(payload) {
   const summary = payload.summary;
   const metrics = [
@@ -341,6 +484,8 @@ function renderMetrics(payload) {
     createMetricCard("PU vazio", summary.current_pu_vazio !== null ? formatNumber(summary.current_pu_vazio, 2) : "-", "Arredondado para leitura rapida.", METRIC_HELP["PU vazio"]),
     createMetricCard("Juros acumulados", formatCompactCurrency(summary.total_interest), "Soma dos juros do fluxo calculado.", METRIC_HELP["Juros acumulados"]),
     createMetricCard("Amortizacao acumulada", formatCompactCurrency(summary.total_amortization), "Soma das amortizações do fluxo calculado.", METRIC_HELP["Amortizacao acumulada"]),
+    createTirMetricCard(summary),
+    createMonthlyVariationCard(summary),
   ];
   cards.forEach((card) => elements.metricsGrid.appendChild(card));
   applyTilt(elements.metricsGrid.querySelectorAll(".tilt-card"));
