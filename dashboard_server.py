@@ -227,6 +227,146 @@ def normalize_series(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return finalize_series([normalize_base_row(row) for row in rows])
 
 
+def is_business_day(dt: date, module: Any | None) -> bool:
+    if module is not None and hasattr(module, "eh_dia_util"):
+        try:
+            return bool(module.eh_dia_util(dt))
+        except Exception:
+            pass
+    return dt.weekday() < 5
+
+
+def iter_business_days(start: date, end: date, module: Any | None) -> list[date]:
+    days: list[date] = []
+    current = start
+    while current <= end:
+        if is_business_day(current, module):
+            days.append(current)
+        current = current.fromordinal(current.toordinal() + 1)
+    return days
+
+
+def geometric_progress(start_value: float | None, end_value: float | None, progress: float) -> float | None:
+    if start_value is None or end_value is None:
+        return None
+    if start_value <= 0 or end_value <= 0:
+        return start_value + ((end_value - start_value) * progress)
+    return start_value * ((end_value / start_value) ** progress)
+
+
+def derive_daily_type(row: dict[str, Any], is_last_day: bool) -> str:
+    if not is_last_day:
+        return "Acumulação"
+    raw = row.get("raw", {})
+    incorpora = text_or_default(raw.get("Incorpora_Ate_Data") or raw.get("Paga_Juros_Contrato")).upper() == "SIM"
+    payment = row.get("payment") or 0.0
+    if payment > 0:
+        return "Pagamento"
+    if incorpora:
+        return "Capitalização"
+    return "Fechamento"
+
+
+def build_synthetic_daily_pu_series(series: list[dict[str, Any]], module: Any | None) -> list[dict[str, Any]]:
+    quantity = number_or_none(getattr(module, "QUANTIDADE", None))
+    if quantity is None:
+        quantity = number_or_none(getattr(module, "QUANTIDADE_EQUIVALENTE", None))
+    quantity = quantity or 1.0
+
+    daily_rows: list[dict[str, Any]] = []
+    previous_end_date: date | None = None
+    for item in series:
+        raw = item.get("raw", {})
+        start_date = parse_date(raw.get("Data_Inicio_Periodo"))
+        end_date = item.get("parsed_date")
+        if start_date is None:
+            start_date = previous_end_date
+        if start_date is None:
+            start_date = parse_date(getattr(module, "DATA_INICIO_RENTABILIDADE", None))
+        if start_date is None:
+            start_date = parse_date(getattr(module, "DATA_EMISSAO", None))
+        if start_date is None or end_date is None or end_date <= start_date:
+            previous_end_date = end_date
+            continue
+
+        business_days = iter_business_days(start_date.fromordinal(start_date.toordinal() + 1), end_date, module)
+        if not business_days:
+            previous_end_date = end_date
+            continue
+
+        pu_inicial = first_number(
+            raw.get("PU_VNa_Ini"),
+            raw.get("PU_Saldo_Inicial"),
+            raw.get("PU_VNe_Ini"),
+            raw.get("PU_Antes_IPCA"),
+            item.get("pu_vazio"),
+        )
+        pu_vazio_final = first_number(
+            raw.get("PU_VNa_Atualizado"),
+            raw.get("PU_Saldo_Apos_Juros"),
+            raw.get("PU_VNe_Atualizado"),
+            raw.get("PU_Apos_IPCA"),
+            item.get("pu_vazio"),
+        )
+        pu_cheio_final = first_number(
+            raw.get("PU_Cheio"),
+            raw.get("PU_Valor_Bruto"),
+            (pu_vazio_final + (item.get("pu_juros") or 0.0)) if pu_vazio_final is not None else None,
+            item.get("pu_cheio"),
+        )
+        pu_amort_final = item.get("pu_amort") or 0.0
+        pu_total_final = item.get("pu_total") or 0.0
+        juros_pago_final = item.get("interest") or 0.0
+        amort_pago_final = item.get("amortization") or 0.0
+
+        total_days = len(business_days)
+        for index, current_date in enumerate(business_days, start=1):
+            progress = index / total_days
+            valor_nominal = geometric_progress(pu_inicial, pu_vazio_final, progress)
+            pu_cheio = geometric_progress(pu_inicial, pu_cheio_final, progress)
+            if valor_nominal is None or pu_cheio is None:
+                continue
+
+            valor_juros = pu_cheio - valor_nominal
+            juros_pct = (valor_juros / valor_nominal * 100) if valor_nominal else None
+            is_last_day = index == total_days
+            pu_amort = pu_amort_final if is_last_day else 0.0
+            pu_total = pu_total_final if is_last_day else 0.0
+            payment = item.get("payment") if is_last_day else 0.0
+            interest = juros_pago_final if is_last_day else 0.0
+            amortization = amort_pago_final if is_last_day else 0.0
+            pu_vazio = pu_cheio if not is_last_day else (pu_cheio_final if pu_cheio_final is not None else pu_cheio)
+
+            daily_rows.append({
+                "date": current_date.strftime("%d/%m/%Y"),
+                "label": "PU diário",
+                "component": item.get("component") or "diario",
+                "component_label": derive_daily_type(item, is_last_day),
+                "payment": payment,
+                "interest": interest,
+                "amortization": amortization,
+                "balance": (pu_vazio * quantity) if pu_vazio is not None else 0.0,
+                "principal": (valor_nominal * quantity) if valor_nominal is not None else 0.0,
+                "pu_cheio": pu_cheio,
+                "pu_vazio": pu_vazio,
+                "pu_juros": valor_juros,
+                "pu_amort": pu_amort,
+                "pu_total": pu_total,
+                "valor_nominal": valor_nominal,
+                "valor_juros": valor_juros,
+                "juros_pct": juros_pct,
+                "taxa_cdi_pct_ad": None,
+                "data_ref_cdi": "",
+                "parsed_date": current_date,
+                "sort_key": f"daily-{item.get('sort_key', '')}",
+                "raw": raw,
+            })
+
+        previous_end_date = end_date
+
+    return finalize_series(daily_rows)
+
+
 def get_current_row(series: list[dict[str, Any]]) -> dict[str, Any] | None:
     if not series:
         return None
@@ -367,6 +507,9 @@ def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any |
 
 def build_operation_view(config: OperationConfig, payload: dict[str, Any], module: Any | None) -> dict[str, Any]:
     identity_fields, overview_fields, pu_fields = build_fields(config, payload, module)
+    daily_pu_series = payload.get("daily_pu_series")
+    if daily_pu_series is None:
+        daily_pu_series = build_synthetic_daily_pu_series(payload["series"], module)
     operation = {
         "id": config.id,
         "label": config.label,
@@ -385,7 +528,7 @@ def build_operation_view(config: OperationConfig, payload: dict[str, Any], modul
         "operation": operation,
         "series": payload["series"],
         "table_series": payload.get("table_series", payload["series"]),
-        "daily_pu_series": payload.get("daily_pu_series", []),
+        "daily_pu_series": daily_pu_series,
         "summary": payload["summary"],
         "timeline": payload["timeline"],
         "meta": payload["meta"],
@@ -457,6 +600,7 @@ def load_axs10(module: Any) -> dict[str, Any]:
         pu_cheio = first_number(row.get("PU_Valor_Bruto"), row.get("PU_Saldo_Fechamento_Dia")) or 0.0
         pu_vazio = first_number(row.get("PU_Saldo_Fechamento_Dia"), row.get("PU_Valor_Bruto")) or pu_cheio
         valor_juros = pu_cheio - valor_nominal
+        juros_pct = (valor_juros / valor_nominal * 100) if valor_nominal else None
         pu_amort = first_number(row.get("PU_Amort_Dia")) or 0.0
         pu_total = first_number(row.get("PU_Total_Pago_Dia")) or 0.0
         tipo_dia = format_daily_pu_type(row.get("Tipo_Dia"))
@@ -478,6 +622,7 @@ def load_axs10(module: Any) -> dict[str, Any]:
             "pu_total": pu_total,
             "valor_nominal": valor_nominal,
             "valor_juros": valor_juros,
+            "juros_pct": juros_pct,
             "taxa_cdi_pct_ad": first_number(row.get("Taxa_CDI_Pct_AD")),
             "data_ref_cdi": text_or_default(row.get("Data_Ref_CDI"), ""),
             "parsed_date": parse_date(row.get("Data")),

@@ -462,6 +462,10 @@ function getAvailableDetailViews(payload) {
   return views;
 }
 
+function dailyViewHasCdiColumns(payload) {
+  return Boolean((payload?.daily_pu_series || []).some((item) => item.taxa_cdi_pct_ad !== null && item.taxa_cdi_pct_ad !== undefined));
+}
+
 function getActiveDetailView(payload) {
   const views = getAvailableDetailViews(payload);
   const active = views.find((item) => item.id === state.activeDetailView);
@@ -510,18 +514,21 @@ function renderDetailViewTabs(payload) {
 function getTableHeaders(payload) {
   const activeView = getActiveDetailView(payload);
   if (activeView?.id === "daily_pu") {
-    return [
+    const headers = [
       "Data",
       "Tipo",
       "Valor nominal",
       "Valor dos juros",
       "PU cheio",
       "PU vazio",
-      "Taxa CDI (% a.d.)",
-      "Data ref. CDI",
+      "Juros (%)",
       "Amortização",
       "Total",
     ];
+    if (dailyViewHasCdiColumns(payload)) {
+      headers.splice(6, 0, "Taxa CDI (% a.d.)", "Data ref. CDI");
+    }
+    return headers;
   }
   return [
     "Data",
@@ -543,18 +550,29 @@ function getTableRowsForExport(payload) {
   const activeView = getActiveDetailView(payload);
   if (activeView?.id === "daily_pu") {
     const dailySeries = payload?.daily_pu_series || [];
-    return dailySeries.map((item) => [
-      item.date || "-",
-      item.component_label || "-",
-      item.valor_nominal !== null && item.valor_nominal !== undefined ? formatNumber(item.valor_nominal, 8) : "-",
-      item.valor_juros !== null && item.valor_juros !== undefined ? formatNumber(item.valor_juros, 8) : "-",
-      item.pu_cheio !== null ? formatNumber(item.pu_cheio, 8) : "-",
-      item.pu_vazio !== null ? formatNumber(item.pu_vazio, 8) : "-",
-      item.taxa_cdi_pct_ad !== null && item.taxa_cdi_pct_ad !== undefined ? `${formatNumber(item.taxa_cdi_pct_ad, 6)}%` : "-",
-      item.data_ref_cdi || "-",
-      item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-",
-      item.pu_total !== null ? formatNumber(item.pu_total, 8) : "-",
-    ]);
+    const includeCdi = dailyViewHasCdiColumns(payload);
+    return dailySeries.map((item) => {
+      const row = [
+        item.date || "-",
+        item.component_label || "-",
+        item.valor_nominal !== null && item.valor_nominal !== undefined ? formatNumber(item.valor_nominal, 8) : "-",
+        item.valor_juros !== null && item.valor_juros !== undefined ? formatNumber(item.valor_juros, 8) : "-",
+        item.pu_cheio !== null ? formatNumber(item.pu_cheio, 8) : "-",
+        item.pu_vazio !== null ? formatNumber(item.pu_vazio, 8) : "-",
+      ];
+      if (includeCdi) {
+        row.push(
+          item.taxa_cdi_pct_ad !== null && item.taxa_cdi_pct_ad !== undefined ? `${formatNumber(item.taxa_cdi_pct_ad, 6)}%` : "-",
+          item.data_ref_cdi || "-",
+        );
+      }
+      row.push(
+        item.juros_pct !== null && item.juros_pct !== undefined ? `${formatNumber(item.juros_pct, 4)}%` : "-",
+        item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-",
+        item.pu_total !== null ? formatNumber(item.pu_total, 8) : "-",
+      );
+      return row;
+    });
   }
 
   const tableSeries = payload?.table_series || payload?.series || [];
