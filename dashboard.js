@@ -30,6 +30,7 @@ const state = {
   activeId: null,
   activePayload: null,
   activeInfoTab: "overview",
+  activeDetailView: "financial",
   activeVariant: "",
   cacheBust: "",
   payloadCache: new Map(),
@@ -49,6 +50,10 @@ const elements = {
   metricsGrid: document.getElementById("metricsGrid"),
   timeline: document.getElementById("timeline"),
   comparisonCards: document.getElementById("comparisonCards"),
+  detailViewTitle: document.getElementById("detailViewTitle"),
+  detailViewTabs: document.getElementById("detailViewTabs"),
+  detailViewNote: document.getElementById("detailViewNote"),
+  tableHeadRow: document.querySelector(".data-table thead tr"),
   tableBody: document.getElementById("eventsTableBody"),
   sourceInfo: document.getElementById("sourceInfo"),
   refreshButton: document.getElementById("refreshButton"),
@@ -437,28 +442,87 @@ function getFocusSlice(series, maxItems = 24) {
   return series.slice(start, start + maxItems);
 }
 
-function renderTable(payload) {
-  const tableSeries = payload.table_series || payload.series;
-  const rows = tableSeries;
-  elements.tableBody.innerHTML = rows.map((item) => `
-    <tr>
-      <td>${item.date || "-"}</td>
-      <td>${item.component_label || "-"}</td>
-      <td>${item.label || "-"}</td>
-      <td>${item.pu_cheio !== null ? formatNumber(item.pu_cheio, 8) : "-"}</td>
-      <td>${item.pu_vazio !== null ? formatNumber(item.pu_vazio, 8) : "-"}</td>
-      <td>${item.pu_juros !== null ? formatNumber(item.pu_juros, 8) : "-"}</td>
-      <td>${item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-"}</td>
-      <td>${formatCurrency(item.interest)}</td>
-      <td>${formatCurrency(item.amortization)}</td>
-      <td>${formatCurrency(item.payment)}</td>
-      <td>${formatCurrency(item.principal)}</td>
-      <td>${formatCurrency(item.balance)}</td>
-    </tr>
-  `).join("");
+function getAvailableDetailViews(payload) {
+  const views = [
+    {
+      id: "financial",
+      label: "Tabela financeira",
+      title: "Tabela financeira",
+      note: "Operações com variantes exibem linhas separadas por instrumento, série ou emissão quando aplicável.",
+    },
+  ];
+  if (payload?.daily_pu_series?.length) {
+    views.push({
+      id: "daily_pu",
+      label: "PU diário",
+      title: "PU diário",
+      note: "Histórico diário em dias úteis, inspirado na leitura operacional da Vórtx e com taxa CDI por data de referência.",
+    });
+  }
+  return views;
 }
 
-function getTableHeaders() {
+function getActiveDetailView(payload) {
+  const views = getAvailableDetailViews(payload);
+  const active = views.find((item) => item.id === state.activeDetailView);
+  if (active) {
+    return active;
+  }
+  state.activeDetailView = views[0]?.id || "financial";
+  return views[0] || null;
+}
+
+function renderDetailViewTabs(payload) {
+  const views = getAvailableDetailViews(payload);
+  if (!views.length) {
+    elements.detailViewTabs.classList.add("hidden");
+    elements.detailViewTabs.innerHTML = "";
+    return;
+  }
+
+  const activeView = getActiveDetailView(payload);
+  elements.detailViewTitle.textContent = activeView?.title || "Tabela financeira";
+  elements.detailViewNote.textContent = activeView?.note || "";
+
+  if (views.length === 1) {
+    elements.detailViewTabs.classList.add("hidden");
+    elements.detailViewTabs.innerHTML = "";
+    return;
+  }
+
+  elements.detailViewTabs.classList.remove("hidden");
+  elements.detailViewTabs.innerHTML = views.map((view) => `
+    <button class="detail-view-tab ${view.id === activeView?.id ? "active" : ""}" data-detail-view="${view.id}" type="button">
+      ${view.label}
+    </button>
+  `).join("");
+
+  elements.detailViewTabs.querySelectorAll("[data-detail-view]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeDetailView = button.dataset.detailView;
+      if (state.activePayload) {
+        renderTable(state.activePayload);
+      }
+    });
+  });
+}
+
+function getTableHeaders(payload) {
+  const activeView = getActiveDetailView(payload);
+  if (activeView?.id === "daily_pu") {
+    return [
+      "Data",
+      "Tipo",
+      "Valor nominal",
+      "Valor dos juros",
+      "PU cheio",
+      "PU vazio",
+      "Taxa CDI (% a.d.)",
+      "Data ref. CDI",
+      "Amortização",
+      "Total",
+    ];
+  }
   return [
     "Data",
     "Tipo",
@@ -476,6 +540,23 @@ function getTableHeaders() {
 }
 
 function getTableRowsForExport(payload) {
+  const activeView = getActiveDetailView(payload);
+  if (activeView?.id === "daily_pu") {
+    const dailySeries = payload?.daily_pu_series || [];
+    return dailySeries.map((item) => [
+      item.date || "-",
+      item.component_label || "-",
+      item.valor_nominal !== null && item.valor_nominal !== undefined ? formatNumber(item.valor_nominal, 8) : "-",
+      item.valor_juros !== null && item.valor_juros !== undefined ? formatNumber(item.valor_juros, 8) : "-",
+      item.pu_cheio !== null ? formatNumber(item.pu_cheio, 8) : "-",
+      item.pu_vazio !== null ? formatNumber(item.pu_vazio, 8) : "-",
+      item.taxa_cdi_pct_ad !== null && item.taxa_cdi_pct_ad !== undefined ? `${formatNumber(item.taxa_cdi_pct_ad, 6)}%` : "-",
+      item.data_ref_cdi || "-",
+      item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-",
+      item.pu_total !== null ? formatNumber(item.pu_total, 8) : "-",
+    ]);
+  }
+
   const tableSeries = payload?.table_series || payload?.series || [];
   return tableSeries.map((item) => [
     item.date || "-",
@@ -491,6 +572,16 @@ function getTableRowsForExport(payload) {
     formatCurrency(item.principal),
     formatCurrency(item.balance),
   ]);
+}
+
+function renderTable(payload) {
+  renderDetailViewTabs(payload);
+  const headers = getTableHeaders(payload);
+  const rows = getTableRowsForExport(payload);
+  elements.tableHeadRow.innerHTML = headers.map((header) => `<th>${header}</th>`).join("");
+  elements.tableBody.innerHTML = rows.map((row) => `
+    <tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>
+  `).join("");
 }
 
 function safeFileName(text) {
@@ -526,11 +617,12 @@ function exportTableAsCsv() {
   if (!state.activePayload) {
     return;
   }
+  const activeView = getActiveDetailView(state.activePayload);
   const lines = [
-    getTableHeaders().map(escapeCsv).join(";"),
+    getTableHeaders(state.activePayload).map(escapeCsv).join(";"),
     ...getTableRowsForExport(state.activePayload).map((row) => row.map(escapeCsv).join(";")),
   ];
-  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${state.activePayload.generated_at_iso || "export"}.csv`;
+  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${safeFileName(activeView?.label || "tabela_financeira")}_${state.activePayload.generated_at_iso || "export"}.csv`;
   downloadBlob(fileName, `\uFEFF${lines.join("\r\n")}`, "text/csv;charset=utf-8;");
 }
 
@@ -538,7 +630,8 @@ function exportTableAsExcel() {
   if (!state.activePayload) {
     return;
   }
-  const headers = getTableHeaders();
+  const activeView = getActiveDetailView(state.activePayload);
+  const headers = getTableHeaders(state.activePayload);
   const rows = getTableRowsForExport(state.activePayload);
   const tableHtml = `
     <table>
@@ -558,7 +651,7 @@ function exportTableAsExcel() {
       <body>${tableHtml}</body>
     </html>
   `;
-  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${state.activePayload.generated_at_iso || "export"}.xls`;
+  const fileName = `${safeFileName(state.activePayload.operation.full_name)}_${safeFileName(activeView?.label || "tabela_financeira")}_${state.activePayload.generated_at_iso || "export"}.xls`;
   downloadBlob(fileName, `\uFEFF${workbook}`, "application/vnd.ms-excel;charset=utf-8;");
 }
 

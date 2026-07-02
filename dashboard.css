@@ -426,6 +426,35 @@ body {
   flex-wrap: wrap;
 }
 
+.detail-view-tabs {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.detail-view-tabs.hidden {
+  display: none;
+}
+
+.detail-view-tab {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.detail-view-tab:hover,
+.detail-view-tab.active {
+  transform: translateY(-2px);
+  background: rgba(115, 240, 197, 0.08);
+  border-color: rgba(115, 240, 197, 0.35);
+}
+
 .download-menu {
   position: relative;
 }

@@ -385,6 +385,7 @@ def build_operation_view(config: OperationConfig, payload: dict[str, Any], modul
         "operation": operation,
         "series": payload["series"],
         "table_series": payload.get("table_series", payload["series"]),
+        "daily_pu_series": payload.get("daily_pu_series", []),
         "summary": payload["summary"],
         "timeline": payload["timeline"],
         "meta": payload["meta"],
@@ -415,6 +416,87 @@ def load_axs_standard(module: Any, primary_source_label: str, secondary_source_l
         "summary": build_summary(series),
         "timeline": build_timeline(series),
         "meta": meta,
+    }
+
+
+def format_daily_pu_type(value: Any) -> str:
+    text = text_or_default(value, "ACUMULACAO").strip().upper()
+    return {
+        "ACUMULACAO": "Acumulação",
+        "DATA_PAGAMENTO": "Pagamento",
+        "PAGAMENTO_JUROS_E_AMORTIZACAO": "Pagamento",
+        "CAPITALIZACAO": "Capitalização",
+        "FECHAMENTO_PERIODO": "Fechamento",
+    }.get(text, text.title() or "-")
+
+
+def load_axs10(module: Any) -> dict[str, Any]:
+    if not hasattr(module, "calcular_fluxo"):
+        raise RuntimeError("Modulo sem calcular_fluxo().")
+
+    result = module.calcular_fluxo()
+    if len(result) != 3:
+        raise RuntimeError("Retorno inesperado do calculo da AXS 10.")
+
+    rows, daily_rows, primary_source = result
+    series = normalize_series(rows)
+    for item in series:
+        raw = item.get("raw", {})
+        incorpora = text_or_default(raw.get("Incorpora_Ate_Data")).upper() == "SIM"
+        payment = item.get("payment") or 0.0
+        item["label"] = "Capitalização" if incorpora else ("Pagamento" if payment > 0 else "Fluxo")
+
+    daily_pu_rows: list[dict[str, Any]] = []
+    for row in daily_rows:
+        if text_or_default(row.get("Dia_Util")).upper() != "SIM":
+            continue
+
+        pu_abertura = first_number(row.get("PU_VNa_Abertura_Periodo")) or 0.0
+        fator_di_acumulado = first_number(row.get("Fator_DI_Acumulado")) or 1.0
+        valor_nominal = pu_abertura * fator_di_acumulado
+        pu_cheio = first_number(row.get("PU_Valor_Bruto"), row.get("PU_Saldo_Fechamento_Dia")) or 0.0
+        pu_vazio = first_number(row.get("PU_Saldo_Fechamento_Dia"), row.get("PU_Valor_Bruto")) or pu_cheio
+        valor_juros = pu_cheio - valor_nominal
+        pu_amort = first_number(row.get("PU_Amort_Dia")) or 0.0
+        pu_total = first_number(row.get("PU_Total_Pago_Dia")) or 0.0
+        tipo_dia = format_daily_pu_type(row.get("Tipo_Dia"))
+
+        daily_pu_rows.append({
+            "date": text_or_default(row.get("Data"), "-"),
+            "label": "PU diário",
+            "component": "diario",
+            "component_label": tipo_dia,
+            "payment": pu_total,
+            "interest": first_number(row.get("PU_Juros_Pago_Dia")) or 0.0,
+            "amortization": pu_amort,
+            "balance": first_number(row.get("Saldo_Fechamento_R$")) or 0.0,
+            "principal": first_number(row.get("Saldo_Bruto_R$")) or 0.0,
+            "pu_cheio": pu_cheio,
+            "pu_vazio": pu_vazio,
+            "pu_juros": valor_juros,
+            "pu_amort": pu_amort,
+            "pu_total": pu_total,
+            "valor_nominal": valor_nominal,
+            "valor_juros": valor_juros,
+            "taxa_cdi_pct_ad": first_number(row.get("Taxa_CDI_Pct_AD")),
+            "data_ref_cdi": text_or_default(row.get("Data_Ref_CDI"), ""),
+            "parsed_date": parse_date(row.get("Data")),
+            "sort_key": "1-pu-diario",
+            "raw": decimal_to_float(row),
+        })
+
+    daily_pu_rows = finalize_series(daily_pu_rows)
+    return {
+        "module_ref": module,
+        "series": series,
+        "table_series": series,
+        "daily_pu_series": daily_pu_rows,
+        "summary": build_summary(series),
+        "timeline": build_timeline(series),
+        "meta": {
+            "primary_source": f"Fonte CDI: {primary_source}",
+            "notes": "AXS 10 inclui uma aba de PU diário em dias úteis, inspirada no histórico operacional da Vórtx.",
+        },
     }
 
 
@@ -1324,7 +1406,7 @@ OPERATIONS: dict[str, OperationConfig] = {
         code_if="AXS411",
         isin="BRAXS4DBS006",
         script_path=PROJECT_DIR / "Code final prontos" / "axs10_v15.py",
-        loader=lambda module: load_axs_standard(module, "Fonte CDI"),
+        loader=load_axs10,
         metadata={
             "issue_date": "15/09/2024",
             "maturity_date": "15/09/2036",

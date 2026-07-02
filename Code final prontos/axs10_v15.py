@@ -55,6 +55,8 @@ DEFASAGEM_CDI_DU = 2
 
 ARQUIVO_SAIDA = BASE_DIR / "controle_divida_axs10_v6_cdi_fluxo.csv"
 ARQUIVO_SAIDA_XLSX = BASE_DIR / "controle_divida_axs10_v6_cdi_fluxo.xlsx"
+ARQUIVO_SAIDA_DIARIA = BASE_DIR / "controle_divida_axs10_v6_cdi_diario.csv"
+ARQUIVO_SAIDA_DIARIA_XLSX = BASE_DIR / "controle_divida_axs10_v6_cdi_diario.xlsx"
 
 # Anexo IV do 1o Aditamento a Escritura de Emissao.
 # Campos: data, % do saldo do VNU a ser amortizado, paga juros remuneratorios.
@@ -221,6 +223,13 @@ def iter_dias_uteis_periodo(inicio: date, fim: date) -> Iterable[date]:
         dt += timedelta(days=1)
 
 
+def iter_dias_periodo(inicio: date, fim: date) -> Iterable[date]:
+    dt = inicio + timedelta(days=1)
+    while dt <= fim:
+        yield dt
+        dt += timedelta(days=1)
+
+
 def obter_json_url(url: str, timeout: int = 45) -> object:
     ctx = ssl.create_default_context()
     req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -293,6 +302,76 @@ def fator_spread_periodo(du: int) -> Decimal:
     return round_dec(bruto, 9)
 
 
+def detalhar_periodo_diario(
+    numero_evento: int,
+    data_inicio_periodo: date,
+    data_ref_evento: date,
+    data_pagto_evento: date,
+    pu_vna_ini: Decimal,
+    cdi: Dict[date, Decimal],
+) -> Tuple[Decimal, int, str, date | None, date | None, List[Dict[str, object]]]:
+    acc_di = Decimal("1.0000000000000000")
+    du = 0
+    fontes: set[str] = set()
+    primeira_ref: date | None = None
+    ultima_ref: date | None = None
+    linhas: List[Dict[str, object]] = []
+
+    for data_corrente in iter_dias_periodo(data_inicio_periodo, data_pagto_evento):
+        eh_util_dia = eh_dia_util(data_corrente)
+        ref_cdi_txt = ""
+        fonte_cdi_dia = ""
+        taxa_cdi_pct: Decimal | str = ""
+        fator_di_dia: Decimal | str = ""
+
+        if eh_util_dia:
+            ref_cdi, taxa_dia, fonte_cdi_dia = taxa_cdi_para_data_calculo(data_corrente, cdi)
+            fator_di_dia = round_dec(Decimal("1") + (taxa_dia * PERCENTUAL_CDI), 8)
+            taxa_cdi_pct = round_dec(taxa_dia * Decimal("100"), 6)
+            acc_di = trunc_dec(acc_di * fator_di_dia, 16)
+            du += 1
+            fontes.add(fonte_cdi_dia)
+            primeira_ref = ref_cdi if primeira_ref is None else min(primeira_ref, ref_cdi)
+            ultima_ref = ref_cdi if ultima_ref is None else max(ultima_ref, ref_cdi)
+            ref_cdi_txt = ref_cdi.strftime("%d/%m/%Y")
+
+        fator_di_acumulado = round_dec(acc_di, 8)
+        fator_spread_acumulado = fator_spread_periodo(du)
+        fator_juros_acumulado = round_dec(fator_di_acumulado * fator_spread_acumulado, 9)
+        pu_juros_acumulado = trunc_dec(pu_vna_ini * (fator_juros_acumulado - Decimal("1")), 8)
+        pu_valor_bruto = trunc_dec(pu_vna_ini + pu_juros_acumulado, 8)
+
+        linhas.append({
+            "Evento": numero_evento,
+            "Data": data_corrente.strftime("%d/%m/%Y"),
+            "Data_Ref_Evento": data_ref_evento.strftime("%d/%m/%Y"),
+            "Data_Pgto_Evento": data_pagto_evento.strftime("%d/%m/%Y"),
+            "Data_Inicio_Periodo": data_inicio_periodo.strftime("%d/%m/%Y"),
+            "Dia_Util": "SIM" if eh_util_dia else "NAO",
+            "DU_Acumulado": du,
+            "Data_Ref_CDI": ref_cdi_txt,
+            "Taxa_CDI_Pct_AD": taxa_cdi_pct,
+            "Fator_DI_Dia": fator_di_dia,
+            "Fator_DI_Acumulado": fator_di_acumulado,
+            "Fator_Spread_Acumulado": fator_spread_acumulado,
+            "Fator_Juros_Acumulado": fator_juros_acumulado,
+            "PU_VNa_Abertura_Periodo": pu_vna_ini,
+            "PU_Juros_Acumulado": pu_juros_acumulado,
+            "PU_Valor_Bruto": pu_valor_bruto,
+            "PU_Juros_Pago_Dia": Decimal("0.00000000"),
+            "PU_Juros_Capitalizado_Dia": Decimal("0.00000000"),
+            "PU_Amort_Dia": Decimal("0.00000000"),
+            "PU_Total_Pago_Dia": Decimal("0.00000000"),
+            "PU_Saldo_Fechamento_Dia": pu_valor_bruto,
+            "Saldo_Bruto_R$": round_dec(pu_valor_bruto * QUANTIDADE, 2),
+            "Saldo_Fechamento_R$": round_dec(pu_valor_bruto * QUANTIDADE, 2),
+            "Tipo_Dia": "DATA_PAGAMENTO" if data_corrente == data_pagto_evento else "ACUMULACAO",
+            "Fonte_CDI_Dia": fonte_cdi_dia,
+        })
+
+    return round_dec(acc_di, 8), du, " + ".join(sorted(fontes)), primeira_ref, ultima_ref, linhas
+
+
 def caminho_alternativo(caminho: str | Path) -> Path:
     path = Path(caminho)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -314,20 +393,28 @@ def houve_incorporacao_ate(data_pagto: date) -> bool:
     return data_pagto <= DATA_LIMITE_INCORPORACAO
 
 
-def calcular_fluxo() -> Tuple[List[Dict[str, object]], str]:
+def calcular_fluxo() -> Tuple[List[Dict[str, object]], List[Dict[str, object]], str]:
     data_fim_cdi = max(date.today(), DATA_INICIO_RENTABILIDADE)
     cdi, fonte_base = obter_cdi_sgs12(DATA_INICIO_RENTABILIDADE - timedelta(days=10), data_fim_cdi)
 
     saldo_pu = trunc_dec(PU_INICIAL, 8)
     data_ref_juros = DATA_INICIO_RENTABILIDADE
     linhas: List[Dict[str, object]] = []
+    linhas_diarias: List[Dict[str, object]] = []
 
     for idx, (data_ref, perc_amort, paga_juros) in enumerate(CRONOGRAMA, start=1):
         data_pagto = proximo_dia_util(data_ref)
         pu_vna_ini = trunc_dec(saldo_pu, 8)
         incorpora_periodo = houve_incorporacao_ate(data_pagto)
 
-        fator_di, du, fonte_cdi, primeira_ref, ultima_ref = fator_di_periodo(data_ref_juros, data_pagto, cdi)
+        fator_di, du, fonte_cdi, primeira_ref, ultima_ref, linhas_periodo = detalhar_periodo_diario(
+            idx,
+            data_ref_juros,
+            data_ref,
+            data_pagto,
+            pu_vna_ini,
+            cdi,
+        )
         fator_spread = fator_spread_periodo(du)
         fator_juros = round_dec(fator_di * fator_spread, 9)
 
@@ -348,6 +435,7 @@ def calcular_fluxo() -> Tuple[List[Dict[str, object]], str]:
         saldo_rs = round_dec(pu_vna_fim * QUANTIDADE, 2)
 
         linhas.append({
+            "Evento": idx,
             "Data_Ref": data_ref.strftime("%d/%m/%Y"),
             "Data_Pgto": data_pagto.strftime("%d/%m/%Y"),
             "DU_Juros": du,
@@ -378,10 +466,24 @@ def calcular_fluxo() -> Tuple[List[Dict[str, object]], str]:
             "Fonte_CDI": f"{fonte_base} | {fonte_cdi}",
         })
 
+        if linhas_periodo:
+            linhas_periodo[-1]["PU_Juros_Pago_Dia"] = pu_juros_pago
+            linhas_periodo[-1]["PU_Juros_Capitalizado_Dia"] = pu_juros_capitalizado
+            linhas_periodo[-1]["PU_Amort_Dia"] = pu_amort
+            linhas_periodo[-1]["PU_Total_Pago_Dia"] = trunc_dec(pu_juros_pago + pu_amort, 8)
+            linhas_periodo[-1]["PU_Saldo_Fechamento_Dia"] = pu_vna_fim
+            linhas_periodo[-1]["Saldo_Fechamento_R$"] = saldo_rs
+            linhas_periodo[-1]["Tipo_Dia"] = (
+                "CAPITALIZACAO"
+                if incorpora_periodo
+                else ("PAGAMENTO_JUROS_E_AMORTIZACAO" if pu_juros_pago or pu_amort else "FECHAMENTO_PERIODO")
+            )
+        linhas_diarias.extend(linhas_periodo)
+
         saldo_pu = pu_vna_fim
         data_ref_juros = data_pagto
 
-    return linhas, fonte_base
+    return linhas, linhas_diarias, fonte_base
 
 
 def salvar_csv(linhas: List[Dict[str, object]], caminho: str | Path) -> None:
@@ -440,9 +542,11 @@ def imprimir_linha(data_txt: str, linhas: List[Dict[str, object]]) -> None:
 
 
 def main() -> None:
-    linhas, fonte = calcular_fluxo()
+    linhas, linhas_diarias, fonte = calcular_fluxo()
     csv_gerado, csv_fallback = salvar_com_fallback(salvar_csv, linhas, ARQUIVO_SAIDA)
     xlsx_gerado, xlsx_fallback = salvar_com_fallback(salvar_xlsx, linhas, ARQUIVO_SAIDA_XLSX)
+    csv_diario_gerado, csv_diario_fallback = salvar_com_fallback(salvar_csv, linhas_diarias, ARQUIVO_SAIDA_DIARIA)
+    xlsx_diario_gerado, xlsx_diario_fallback = salvar_com_fallback(salvar_xlsx, linhas_diarias, ARQUIVO_SAIDA_DIARIA_XLSX)
 
     print("Fonte CDI historica:", fonte)
     if csv_fallback:
@@ -453,6 +557,14 @@ def main() -> None:
         print(f"XLSX padrao estava aberto/bloqueado. Arquivo alternativo gerado: {xlsx_gerado}")
     else:
         print(f"XLSX gerado: {xlsx_gerado}")
+    if csv_diario_fallback:
+        print(f"CSV diario padrao estava aberto/bloqueado. Arquivo alternativo gerado: {csv_diario_gerado}")
+    else:
+        print(f"CSV diario gerado: {csv_diario_gerado}")
+    if xlsx_diario_fallback:
+        print(f"XLSX diario padrao estava aberto/bloqueado. Arquivo alternativo gerado: {xlsx_diario_gerado}")
+    else:
+        print(f"XLSX diario gerado: {xlsx_diario_gerado}")
     imprimir_linha("15/10/2024", linhas)
     imprimir_linha("15/04/2026", linhas)
     imprimir_linha("15/09/2036", linhas)
