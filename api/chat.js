@@ -1,6 +1,3 @@
-const fs = require("fs");
-const path = require("path");
-
 let chunksCache = null;
 let manifestCache = null;
 const payloadCache = new Map();
@@ -21,14 +18,6 @@ const OPERATIONS = {
   axsgoias: ["axs goias", "axs goiás", "goias", "goiás", "axs311", "ufv goias"],
 };
 
-function repoRoot() {
-  return path.join(__dirname, "..");
-}
-
-function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
-}
-
 function loadChunks() {
   if (!chunksCache) {
     chunksCache = require("./chunks.json");
@@ -36,9 +25,29 @@ function loadChunks() {
   return chunksCache;
 }
 
-function loadManifest() {
+function siteBaseUrl(req) {
+  const protocol = req.headers["x-forwarded-proto"] || "https";
+  const host = req.headers["x-forwarded-host"] || req.headers.host;
+  if (!host) {
+    throw new Error("Host da requisicao nao encontrado para carregar dados estaticos.");
+  }
+  return `${protocol}://${host}`;
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: { Accept: "application/json" },
+  });
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(`Falha ao carregar ${url}: ${response.status} ${body.slice(0, 300)}`);
+  }
+  return response.json();
+}
+
+async function loadManifest(req) {
   if (!manifestCache) {
-    manifestCache = readJson(path.join(repoRoot(), "data", "operations.json"));
+    manifestCache = await fetchJson(`${siteBaseUrl(req)}/data/operations.json`);
   }
   return manifestCache;
 }
@@ -84,11 +93,10 @@ function payloadFilename(operationId, variantId) {
   return `${operationId}.json`;
 }
 
-function loadPayload(operationId, variantId) {
+async function loadPayload(req, operationId, variantId) {
   const fileName = payloadFilename(operationId, variantId);
   if (payloadCache.has(fileName)) return payloadCache.get(fileName);
-  const filePath = path.join(repoRoot(), "data", "operations", fileName);
-  const payload = readJson(filePath);
+  const payload = await fetchJson(`${siteBaseUrl(req)}/data/operations/${fileName}`);
   payloadCache.set(fileName, payload);
   return payload;
 }
@@ -361,7 +369,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ erro: "Metodo nao permitido. Use POST." });
 
   try {
-    loadManifest();
+    await loadManifest(req);
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
     const { pergunta, historico = [] } = body;
     if (!pergunta || String(pergunta).trim().length < 1) {
@@ -370,7 +378,7 @@ module.exports = async function handler(req, res) {
 
     const operationId = detectOperation(pergunta);
     const variantId = detectVariant(operationId, pergunta);
-    const payload = loadPayload(operationId, variantId);
+    const payload = await loadPayload(req, operationId, variantId);
     const chunks = searchChunks(pergunta, operationId, 4);
     const calcContext = buildCalculationContext(pergunta, payload);
     const docContext = buildDocumentContext(chunks);
