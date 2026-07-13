@@ -9875,8 +9875,8 @@
     "next_amortization_amount": 2543838.56,
     "last_event_date": "15/06/2026",
     "final_balance": 179968664.17,
-    "duration_years": 8.116020512143931,
-    "wal_years": 9.347810716554344,
+    "duration_years": 8.110544810569667,
+    "wal_years": 9.34233501498008,
     "tir_annual_pct": 10.472869311197142,
     "tir_monthly_pct": 0.8334521860843047,
     "contracted_rate_annual_pct": 10.417195741161137,
@@ -10829,12 +10829,12 @@
     ],
     "contracted_rate_label": "Média ponderada da carteira",
     "contracted_rate_display": "Média ponderada: 10,42% a.a.",
-    "monthly_balance_variation": 4277313.72772355,
-    "monthly_balance_update": 1552514.3680818058,
-    "monthly_balance_interest": 2724799.3596417448,
+    "monthly_balance_variation": 4813429.350932716,
+    "monthly_balance_update": 1746901.9406797285,
+    "monthly_balance_interest": 3066527.4102529874,
     "monthly_balance_amortization": 0,
     "monthly_balance_reference_date": "30/06/2026",
-    "monthly_balance_current_date": "10/07/2026",
+    "monthly_balance_current_date": "13/07/2026",
     "monthly_balance_update_label": "Atualização indexadores"
   },
   "timeline": [
@@ -11117,6 +11117,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "11/07/2026 20:04:45",
-  "generated_at_iso": "2026-07-11T20:04:45"
+  "generated_at": "13/07/2026 08:00:16",
+  "generated_at_iso": "2026-07-13T08:00:16"
 }
