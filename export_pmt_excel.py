@@ -1,16 +1,22 @@
 ﻿from __future__ import annotations
 
 import json
+from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
 from openpyxl import Workbook, load_workbook
-from openpyxl.styles import Font, PatternFill
+from openpyxl.chart import BarChart, LineChart, Reference
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.table import Table, TableStyleInfo
 
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data" / "operations"
 TARGET_XLSX = Path(r"C:\Users\rodolfo.crotti\AXS ENERGIA S A\Financeiro - Documentos\000 - FD\Rodolfo relatórios\PMT.xlsx")
+CHART_SHEET_NAME = "Graficos PPT"
+CHART_DATA_SHEET_NAME = "_Base Graficos"
 EXPORT_FILES = [
     ("axs01--primeira.json", "1ª Emissão"),
     ("axs01--segunda.json", "2ª Emissão"),
@@ -126,6 +132,322 @@ def collect_rows() -> list[dict]:
     return rows
 
 
+def to_millions(value: float | int | None) -> float:
+    return round((value or 0) / 1_000_000, 4)
+
+
+def month_label(value) -> str:
+    if hasattr(value, "strftime"):
+        return value.strftime("%Y-%m")
+    return str(value)
+
+
+def parse_series_date(item: dict):
+    value = item.get("date")
+    if not value:
+        return None
+    return parse_br_date(value).date()
+
+
+def focus_slice(series: list[dict], limit: int = 24) -> list[dict]:
+    today = datetime.now().date()
+    dated = [item for item in series if parse_series_date(item)]
+    if not dated:
+        return series[:limit]
+    first_future = next((index for index, item in enumerate(dated) if parse_series_date(item) >= today), None)
+    if first_future is None:
+        return dated[-limit:]
+    start = max(0, first_future - 2)
+    return dated[start:start + limit]
+
+
+def load_portfolio_payload() -> dict:
+    path = DATA_DIR / "geral.json"
+    return load_json(path) if path.exists() else {}
+
+
+def load_operation_payloads() -> list[dict]:
+    payloads = []
+    for filename, _ in EXPORT_FILES:
+        path = DATA_DIR / filename
+        if path.exists():
+            payloads.append(load_json(path))
+    return payloads
+
+
+def build_chart_data(rows: list[dict]) -> dict[str, list[list]]:
+    portfolio = load_portfolio_payload()
+    payloads = load_operation_payloads()
+    today = datetime.now().date()
+    series = focus_slice(portfolio.get("series", []), 24)
+
+    event_rows = [["Data", "PMT", "Juros", "Amortização", "Saldo"]]
+    for item in series:
+        event_rows.append([
+            item.get("date", "-"),
+            to_millions(item.get("payment")),
+            to_millions(item.get("interest")),
+            to_millions(item.get("amortization")),
+            to_millions(item.get("balance")),
+        ])
+
+    comparison = portfolio.get("comparison", [])
+    if not comparison:
+        comparison = [
+            {
+                "label": payload.get("operation", {}).get("label", "-"),
+                "current_balance": payload.get("summary", {}).get("current_balance") or 0,
+                "indexer": payload.get("operation", {}).get("indexer", "-"),
+            }
+            for payload in payloads
+        ]
+    comparison = sorted(comparison, key=lambda item: item.get("current_balance") or 0, reverse=True)
+    balance_rows = [["Operação", "Saldo atual"]]
+    for item in comparison[:12]:
+        balance_rows.append([item.get("label", "-"), to_millions(item.get("current_balance"))])
+
+    pmt_12m_by_operation: dict[str, float] = defaultdict(float)
+    monthly_totals: dict[str, dict[str, float]] = defaultdict(lambda: {"PMT": 0.0, "Juros": 0.0, "Amortização": 0.0})
+    cutoff = today.replace(year=today.year + 1)
+    for item in rows:
+        payment_date = item["date"]
+        if payment_date > cutoff:
+            continue
+        operation = item.get("operation") or "-"
+        pmt_12m_by_operation[operation] += item.get("payment") or 0
+        month = month_label(payment_date)
+        monthly_totals[month]["PMT"] += item.get("payment") or 0
+        monthly_totals[month]["Juros"] += item.get("interest") or 0
+        monthly_totals[month]["Amortização"] += item.get("amortization") or 0
+
+    pmt_operation_rows = [["Operação", "PMT 12 meses"]]
+    for operation, amount in sorted(pmt_12m_by_operation.items(), key=lambda pair: pair[1], reverse=True)[:12]:
+        pmt_operation_rows.append([operation, to_millions(amount)])
+
+    monthly_rows = [["Mês", "PMT", "Juros", "Amortização"]]
+    for month, amounts in sorted(monthly_totals.items())[:12]:
+        monthly_rows.append([month, to_millions(amounts["PMT"]), to_millions(amounts["Juros"]), to_millions(amounts["Amortização"])])
+
+    indexer_totals: dict[str, float] = defaultdict(float)
+    for item in comparison:
+        indexer = item.get("indexer") or "-"
+        indexer_totals[indexer] += item.get("current_balance") or 0
+    indexer_rows = [["Indexador", "Saldo atual"]]
+    for indexer, amount in sorted(indexer_totals.items(), key=lambda pair: pair[1], reverse=True):
+        indexer_rows.append([indexer, to_millions(amount)])
+
+    return_rows = [["Operação", "TIR", "Taxa contratada", "Spread"]]
+    for payload in payloads:
+        summary = payload.get("summary", {})
+        operation = payload.get("operation", {}).get("label", "-")
+        tir = summary.get("tir_annual_pct")
+        contracted = summary.get("contracted_rate_annual_pct")
+        spread = summary.get("effective_spread_annual_pct")
+        if tir is None:
+            continue
+        return_rows.append([
+            operation,
+            (tir or 0) / 100,
+            (contracted or 0) / 100 if contracted is not None else None,
+            (spread or 0) / 100 if spread is not None else None,
+        ])
+
+    summary = portfolio.get("summary", {})
+    kpis = [
+        ["Indicador", "Valor"],
+        ["Saldo atual carteira", to_millions(summary.get("current_balance"))],
+        ["PMT próximos 12 meses", to_millions(sum(item.get("payment") or 0 for item in rows if item["date"] <= cutoff))],
+        ["Juros próximos 12 meses", to_millions(sum(item.get("interest") or 0 for item in rows if item["date"] <= cutoff))],
+        ["Amortização próximos 12 meses", to_millions(sum(item.get("amortization") or 0 for item in rows if item["date"] <= cutoff))],
+        ["TIR carteira", (summary.get("tir_annual_pct") or 0) / 100 if summary.get("tir_annual_pct") is not None else None],
+        ["Spread efetivo carteira", (summary.get("effective_spread_annual_pct") or 0) / 100 if summary.get("effective_spread_annual_pct") is not None else None],
+        ["Atualizado em", datetime.now().strftime("%d/%m/%Y %H:%M:%S")],
+    ]
+
+    return {
+        "event_rows": event_rows,
+        "balance_rows": balance_rows,
+        "pmt_operation_rows": pmt_operation_rows,
+        "monthly_rows": monthly_rows,
+        "indexer_rows": indexer_rows,
+        "return_rows": return_rows,
+        "kpis": kpis,
+    }
+
+
+def write_matrix(sheet, start_row: int, start_col: int, values: list[list]) -> tuple[int, int, int, int]:
+    for row_offset, row in enumerate(values):
+        for col_offset, value in enumerate(row):
+            sheet.cell(row=start_row + row_offset, column=start_col + col_offset, value=value)
+    end_row = start_row + len(values) - 1
+    end_col = start_col + len(values[0]) - 1 if values else start_col
+    return start_row, start_col, end_row, end_col
+
+
+def style_table(sheet, bounds: tuple[int, int, int, int], table_name: str | None = None) -> None:
+    start_row, start_col, end_row, end_col = bounds
+    header_fill = PatternFill(fill_type="solid", fgColor="12324D")
+    header_font = Font(color="FFFFFF", bold=True)
+    thin = Side(style="thin", color="D9E2EC")
+    for row in sheet.iter_rows(min_row=start_row, max_row=end_row, min_col=start_col, max_col=end_col):
+        for cell in row:
+            cell.border = Border(bottom=thin)
+            cell.alignment = Alignment(vertical="center")
+    for cell in sheet.iter_rows(min_row=start_row, max_row=start_row, min_col=start_col, max_col=end_col).__next__():
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+    if table_name and end_row > start_row:
+        ref = f"{get_column_letter(start_col)}{start_row}:{get_column_letter(end_col)}{end_row}"
+        table = Table(displayName=table_name, ref=ref)
+        table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=True, showColumnStripes=False)
+        sheet.add_table(table)
+
+
+def clear_generated_sheets(workbook: Workbook) -> None:
+    for name in (CHART_SHEET_NAME, CHART_DATA_SHEET_NAME):
+        if name in workbook.sheetnames:
+            del workbook[name]
+
+
+def setup_dashboard_sheet(sheet) -> None:
+    sheet.sheet_view.showGridLines = False
+    sheet.freeze_panes = None
+    for col in range(1, 18):
+        sheet.column_dimensions[get_column_letter(col)].width = 13
+    for row in range(1, 72):
+        sheet.row_dimensions[row].height = 22
+    sheet.merge_cells("A1:Q2")
+    sheet["A1"] = "Painel executivo de PMTs e dívida"
+    sheet["A1"].font = Font(size=22, bold=True, color="FFFFFF")
+    sheet["A1"].fill = PatternFill(fill_type="solid", fgColor="0B1F33")
+    sheet["A1"].alignment = Alignment(horizontal="left", vertical="center")
+    sheet["A3"] = "Fonte: mesmos dados gerados diariamente para o dashboard web e para a PMT.xlsx."
+    sheet["A3"].font = Font(size=10, color="607D95")
+
+
+def write_kpi_cards(sheet, chart_data: dict[str, list[list]]) -> None:
+    kpi_map = {row[0]: row[1] for row in chart_data["kpis"][1:]}
+    cards = [
+        ("Saldo atual carteira", kpi_map.get("Saldo atual carteira"), "R$ mi"),
+        ("PMT próximos 12 meses", kpi_map.get("PMT próximos 12 meses"), "R$ mi"),
+        ("Juros próximos 12 meses", kpi_map.get("Juros próximos 12 meses"), "R$ mi"),
+        ("Amortização próximos 12 meses", kpi_map.get("Amortização próximos 12 meses"), "R$ mi"),
+        ("TIR carteira", kpi_map.get("TIR carteira"), "% a.a."),
+        ("Spread efetivo carteira", kpi_map.get("Spread efetivo carteira"), "% a.a."),
+    ]
+    anchors = ["A5", "D5", "G5", "J5", "M5", "P5"]
+    for anchor, (label, value, unit) in zip(anchors, cards):
+        cell = sheet[anchor]
+        row = cell.row
+        col = cell.column
+        sheet.merge_cells(start_row=row, start_column=col, end_row=row + 2, end_column=col + 1)
+        target = sheet.cell(row=row, column=col)
+        if value is None:
+            display = "-"
+        elif unit.startswith("%"):
+            display = f"{value:.2%}"
+        else:
+            display = f"{value:,.1f}"
+        target.value = f"{label}\n{display} {unit}"
+        target.fill = PatternFill(fill_type="solid", fgColor="EAF3F8")
+        target.font = Font(color="0B1F33", bold=True, size=11)
+        target.alignment = Alignment(wrap_text=True, horizontal="center", vertical="center")
+        target.border = Border(
+            left=Side(style="thin", color="BFD4E5"),
+            right=Side(style="thin", color="BFD4E5"),
+            top=Side(style="thin", color="BFD4E5"),
+            bottom=Side(style="thin", color="BFD4E5"),
+        )
+
+
+def set_chart_common(chart, title: str, width: float = 16, height: float = 8.5) -> None:
+    chart.title = title
+    chart.width = width
+    chart.height = height
+    chart.legend.position = "b"
+    chart.style = 13
+    chart.y_axis.majorGridlines = None
+
+
+def color_series(chart, colors: list[str]) -> None:
+    for series, color in zip(chart.series, colors):
+        series.graphicalProperties.solidFill = color
+        series.graphicalProperties.line.solidFill = color
+
+
+def add_line_chart(sheet, data_sheet, bounds, anchor: str, title: str, value_col: int, color: str, number_format: str = "#,##0.0") -> None:
+    start_row, start_col, end_row, _ = bounds
+    chart = LineChart()
+    data = Reference(data_sheet, min_col=start_col + value_col - 1, min_row=start_row, max_row=end_row)
+    cats = Reference(data_sheet, min_col=start_col, min_row=start_row + 1, max_row=end_row)
+    chart.add_data(data, titles_from_data=True)
+    chart.set_categories(cats)
+    set_chart_common(chart, title)
+    chart.y_axis.numFmt = number_format
+    chart.x_axis.tickLblSkip = 3
+    chart.x_axis.tickMarkSkip = 3
+    color_series(chart, [color])
+    sheet.add_chart(chart, anchor)
+
+
+def add_bar_chart(sheet, data_sheet, bounds, anchor: str, title: str, min_col_offset: int, max_col_offset: int, colors: list[str], chart_type: str = "col", number_format: str = "#,##0.0") -> None:
+    start_row, start_col, end_row, _ = bounds
+    chart = BarChart()
+    chart.type = chart_type
+    data = Reference(data_sheet, min_col=start_col + min_col_offset - 1, max_col=start_col + max_col_offset - 1, min_row=start_row, max_row=end_row)
+    cats = Reference(data_sheet, min_col=start_col, min_row=start_row + 1, max_row=end_row)
+    chart.add_data(data, titles_from_data=True)
+    chart.set_categories(cats)
+    set_chart_common(chart, title)
+    chart.y_axis.numFmt = number_format
+    if chart_type == "bar":
+        chart.x_axis.numFmt = number_format
+    color_series(chart, colors)
+    sheet.add_chart(chart, anchor)
+
+
+def build_chart_sheets(workbook: Workbook, rows: list[dict]) -> None:
+    clear_generated_sheets(workbook)
+    data_sheet = workbook.create_sheet(CHART_DATA_SHEET_NAME)
+    dashboard = workbook.create_sheet(CHART_SHEET_NAME, 0)
+    data_sheet.sheet_state = "hidden"
+    setup_dashboard_sheet(dashboard)
+
+    chart_data = build_chart_data(rows)
+    write_kpi_cards(dashboard, chart_data)
+
+    sections = {
+        "event": write_matrix(data_sheet, 1, 1, chart_data["event_rows"]),
+        "balance": write_matrix(data_sheet, 1, 7, chart_data["balance_rows"]),
+        "pmt_operation": write_matrix(data_sheet, 1, 11, chart_data["pmt_operation_rows"]),
+        "monthly": write_matrix(data_sheet, 1, 15, chart_data["monthly_rows"]),
+        "indexer": write_matrix(data_sheet, 1, 20, chart_data["indexer_rows"]),
+        "returns": write_matrix(data_sheet, 1, 24, chart_data["return_rows"]),
+        "kpis": write_matrix(data_sheet, 1, 30, chart_data["kpis"]),
+    }
+
+    for index, (name, bounds) in enumerate(sections.items(), start=1):
+        style_table(data_sheet, bounds, f"tbl_{name}_{index}")
+
+    for row in data_sheet.iter_rows():
+        for cell in row:
+            if isinstance(cell.value, float):
+                cell.number_format = "0.0000"
+    for col in range(1, data_sheet.max_column + 1):
+        data_sheet.column_dimensions[get_column_letter(col)].width = 18
+
+    add_line_chart(dashboard, data_sheet, sections["event"], "A10", "PMT por evento (R$ mi)", 2, "5EEAD4")
+    add_line_chart(dashboard, data_sheet, sections["event"], "J10", "Curva do saldo devedor (R$ mi)", 5, "F4A261")
+    add_bar_chart(dashboard, data_sheet, sections["event"], "A30", "Juros x amortização por evento (R$ mi)", 3, 4, ["7DB4FF", "5EEAD4"])
+    add_bar_chart(dashboard, data_sheet, sections["balance"], "J30", "Saldos por emissão (R$ mi)", 2, 2, ["4F7CAC"], chart_type="bar")
+    add_bar_chart(dashboard, data_sheet, sections["pmt_operation"], "A50", "PMT próximos 12 meses por operação (R$ mi)", 2, 2, ["2A9D8F"], chart_type="bar")
+    add_bar_chart(dashboard, data_sheet, sections["returns"], "J50", "TIR x taxa contratada (% a.a.)", 2, 3, ["0B5CAD", "94A3B8"], number_format="0.0%")
+
+    dashboard.sheet_properties.tabColor = "0B5CAD"
+    data_sheet.sheet_properties.tabColor = "94A3B8"
+
+
 def ensure_workbook() -> Workbook:
     if TARGET_XLSX.exists():
         return load_workbook(TARGET_XLSX)
@@ -160,7 +482,19 @@ def format_sheet(sheet) -> None:
             cell.number_format = 'R$ #,##0.00'
 
 
-def write_rows(rows: list[dict]) -> None:
+def save_workbook_with_fallback(workbook: Workbook) -> tuple[Path, bool]:
+    try:
+        workbook.save(TARGET_XLSX)
+        return TARGET_XLSX, False
+    except PermissionError:
+        fallback = TARGET_XLSX.with_name(
+            f"{TARGET_XLSX.stem}_atualizado_{datetime.now().strftime('%Y%m%d_%H%M%S')}{TARGET_XLSX.suffix}"
+        )
+        workbook.save(fallback)
+        return fallback, True
+
+
+def write_rows(rows: list[dict]) -> tuple[Path, bool]:
     workbook = ensure_workbook()
     sheet = workbook["Plan1"] if "Plan1" in workbook.sheetnames else workbook.active
     sheet.title = "Plan1"
@@ -185,13 +519,17 @@ def write_rows(rows: list[dict]) -> None:
             ]
         )
     format_sheet(sheet)
-    workbook.save(TARGET_XLSX)
+    build_chart_sheets(workbook, rows)
+    return save_workbook_with_fallback(workbook)
 
 
 def main() -> None:
     rows = collect_rows()
-    write_rows(rows)
-    print(f"PMT.xlsx atualizada com {len(rows)} linhas futuras em {TARGET_XLSX}")
+    saved_path, fallback = write_rows(rows)
+    if fallback:
+        print(f"PMT.xlsx estava aberta/bloqueada. Cópia atualizada gerada em {saved_path}")
+    else:
+        print(f"PMT.xlsx atualizada com {len(rows)} linhas futuras em {TARGET_XLSX}")
 
 
 if __name__ == "__main__":
