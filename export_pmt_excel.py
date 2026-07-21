@@ -7,9 +7,14 @@ from pathlib import Path
 
 from openpyxl import Workbook, load_workbook
 from openpyxl.chart import BarChart, LineChart, Reference
+from openpyxl.chart.axis import ChartLines
+from openpyxl.chart.label import DataLabelList
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.properties import PageSetupProperties
 from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl.chart.shapes import GraphicalProperties
+from openpyxl.drawing.line import LineProperties
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -179,17 +184,29 @@ def build_chart_data(rows: list[dict]) -> dict[str, list[list]]:
     portfolio = load_portfolio_payload()
     payloads = load_operation_payloads()
     today = datetime.now().date()
-    series = focus_slice(portfolio.get("series", []), 24)
+    series = focus_slice(portfolio.get("series", []), 16)
 
-    event_rows = [["Data", "PMT", "Juros", "Amortização", "Saldo"]]
+    event_points = []
     for item in series:
-        event_rows.append([
+        event_points.append([
             item.get("date", "-"),
             to_millions(item.get("payment")),
             to_millions(item.get("interest")),
             to_millions(item.get("amortization")),
             to_millions(item.get("balance")),
         ])
+    pmt_values = [point[1] for point in event_points if point[1]]
+    balance_values = [point[4] for point in event_points if point[4]]
+    pmt_average = round(sum(pmt_values) / len(pmt_values), 4) if pmt_values else 0
+    balance_average = round(sum(balance_values) / len(balance_values), 4) if balance_values else 0
+    event_rows = [["Data", "PMT", "Juros", "Amortização", "Saldo", "PMT médio", "Saldo médio"]]
+    for point in event_points:
+        event_rows.append(point + [pmt_average, balance_average])
+    event_pmt_rows = [["Data", "PMT", "PMT médio"]]
+    event_balance_rows = [["Data", "Saldo", "Saldo médio"]]
+    for point in event_points:
+        event_pmt_rows.append([point[0], point[1], pmt_average])
+        event_balance_rows.append([point[0], point[4], balance_average])
 
     comparison = portfolio.get("comparison", [])
     if not comparison:
@@ -266,6 +283,8 @@ def build_chart_data(rows: list[dict]) -> dict[str, list[list]]:
 
     return {
         "event_rows": event_rows,
+        "event_pmt_rows": event_pmt_rows,
+        "event_balance_rows": event_balance_rows,
         "balance_rows": balance_rows,
         "pmt_operation_rows": pmt_operation_rows,
         "monthly_rows": monthly_rows,
@@ -313,16 +332,30 @@ def clear_generated_sheets(workbook: Workbook) -> None:
 def setup_dashboard_sheet(sheet) -> None:
     sheet.sheet_view.showGridLines = False
     sheet.freeze_panes = None
-    for col in range(1, 18):
-        sheet.column_dimensions[get_column_letter(col)].width = 13
-    for row in range(1, 72):
-        sheet.row_dimensions[row].height = 22
-    sheet.merge_cells("A1:Q2")
-    sheet["A1"] = "Painel executivo de PMTs e dívida"
+    sheet.sheet_view.zoomScale = 80
+    sheet.print_area = "A1:T76"
+    if sheet.sheet_properties.pageSetUpPr is None:
+        sheet.sheet_properties.pageSetUpPr = PageSetupProperties()
+    sheet.sheet_properties.pageSetUpPr.fitToPage = True
+    sheet.page_setup.orientation = "landscape"
+    sheet.page_setup.paperSize = sheet.PAPERSIZE_A3
+    sheet.page_setup.fitToWidth = 1
+    sheet.page_setup.fitToHeight = 2
+    sheet.page_margins.left = 0.25
+    sheet.page_margins.right = 0.25
+    sheet.page_margins.top = 0.35
+    sheet.page_margins.bottom = 0.35
+    for col in range(1, 21):
+        sheet.column_dimensions[get_column_letter(col)].width = 12
+    for row in range(1, 96):
+        sheet.row_dimensions[row].height = 21
+    sheet.merge_cells("A1:T2")
+    sheet["A1"] = "Painel executivo de PMTs e dívida | visão para PPT"
     sheet["A1"].font = Font(size=22, bold=True, color="FFFFFF")
     sheet["A1"].fill = PatternFill(fill_type="solid", fgColor="0B1F33")
     sheet["A1"].alignment = Alignment(horizontal="left", vertical="center")
-    sheet["A3"] = "Fonte: mesmos dados gerados diariamente para o dashboard web e para a PMT.xlsx."
+    sheet.merge_cells("A3:T3")
+    sheet["A3"] = "Fonte: mesmos dados gerados diariamente para o dashboard web e para a PMT.xlsx. Valores em R$ milhões, exceto taxas."
     sheet["A3"].font = Font(size=10, color="607D95")
 
 
@@ -361,25 +394,59 @@ def write_kpi_cards(sheet, chart_data: dict[str, list[list]]) -> None:
         )
 
 
-def set_chart_common(chart, title: str, width: float = 16, height: float = 8.5) -> None:
+def make_gridlines() -> ChartLines:
+    gridlines = ChartLines()
+    gridlines.spPr = GraphicalProperties(
+        ln=LineProperties(solidFill="D9E5EF", w=7000)
+    )
+    return gridlines
+
+
+def set_chart_common(chart, title: str, width: float = 15.6, height: float = 8.4) -> None:
     chart.title = title
     chart.width = width
     chart.height = height
     chart.legend.position = "b"
-    chart.style = 13
-    chart.y_axis.majorGridlines = None
+    chart.style = 10
+    chart.y_axis.majorGridlines = make_gridlines()
+    chart.y_axis.majorTickMark = "out"
+    chart.x_axis.majorTickMark = "none"
 
 
 def color_series(chart, colors: list[str]) -> None:
     for series, color in zip(chart.series, colors):
         series.graphicalProperties.solidFill = color
         series.graphicalProperties.line.solidFill = color
+        series.graphicalProperties.line.width = 25000
+        if hasattr(series, "marker"):
+            series.marker.symbol = "circle"
+            series.marker.size = 6
 
 
-def add_line_chart(sheet, data_sheet, bounds, anchor: str, title: str, value_col: int, color: str, number_format: str = "#,##0.0") -> None:
+def style_reference_series(series, color: str = "7A869A") -> None:
+    series.graphicalProperties.line.solidFill = color
+    series.graphicalProperties.line.dashStyle = "dash"
+    series.graphicalProperties.line.width = 18000
+    if hasattr(series, "marker"):
+        series.marker.symbol = "none"
+
+
+def add_data_labels(chart, number_format: str, position: str = "bestFit", show_series_name: bool = False) -> None:
+    chart.dLbls = DataLabelList()
+    chart.dLbls.showVal = True
+    chart.dLbls.showSerName = show_series_name
+    chart.dLbls.showLegendKey = False
+    chart.dLbls.numFmt = number_format
+    chart.dLbls.position = position
+
+
+def add_line_chart(sheet, data_sheet, bounds, anchor: str, title: str, value_col: int, color: str, number_format: str = "#,##0.0", level_col: int | None = None, show_labels: bool = False) -> None:
     start_row, start_col, end_row, _ = bounds
     chart = LineChart()
-    data = Reference(data_sheet, min_col=start_col + value_col - 1, min_row=start_row, max_row=end_row)
+    if level_col:
+        data = Reference(data_sheet, min_col=start_col + value_col - 1, max_col=start_col + level_col - 1, min_row=start_row, max_row=end_row)
+    else:
+        data = Reference(data_sheet, min_col=start_col + value_col - 1, min_row=start_row, max_row=end_row)
     cats = Reference(data_sheet, min_col=start_col, min_row=start_row + 1, max_row=end_row)
     chart.add_data(data, titles_from_data=True)
     chart.set_categories(cats)
@@ -387,11 +454,15 @@ def add_line_chart(sheet, data_sheet, bounds, anchor: str, title: str, value_col
     chart.y_axis.numFmt = number_format
     chart.x_axis.tickLblSkip = 3
     chart.x_axis.tickMarkSkip = 3
-    color_series(chart, [color])
+    color_series(chart, [color, "7A869A"] if level_col else [color])
+    if level_col and len(chart.series) > 1:
+        style_reference_series(chart.series[-1])
+    if show_labels:
+        add_data_labels(chart, number_format, position="t")
     sheet.add_chart(chart, anchor)
 
 
-def add_bar_chart(sheet, data_sheet, bounds, anchor: str, title: str, min_col_offset: int, max_col_offset: int, colors: list[str], chart_type: str = "col", number_format: str = "#,##0.0") -> None:
+def add_bar_chart(sheet, data_sheet, bounds, anchor: str, title: str, min_col_offset: int, max_col_offset: int, colors: list[str], chart_type: str = "col", number_format: str = "#,##0.0", show_legend: bool = True, show_labels: bool = True) -> None:
     start_row, start_col, end_row, _ = bounds
     chart = BarChart()
     chart.type = chart_type
@@ -400,10 +471,16 @@ def add_bar_chart(sheet, data_sheet, bounds, anchor: str, title: str, min_col_of
     chart.add_data(data, titles_from_data=True)
     chart.set_categories(cats)
     set_chart_common(chart, title)
+    chart.overlap = 0
+    chart.gapWidth = 65 if chart_type == "bar" else 95
     chart.y_axis.numFmt = number_format
     if chart_type == "bar":
         chart.x_axis.numFmt = number_format
     color_series(chart, colors)
+    if not show_legend:
+        chart.legend = None
+    if show_labels:
+        add_data_labels(chart, number_format, position="outEnd")
     sheet.add_chart(chart, anchor)
 
 
@@ -419,12 +496,14 @@ def build_chart_sheets(workbook: Workbook, rows: list[dict]) -> None:
 
     sections = {
         "event": write_matrix(data_sheet, 1, 1, chart_data["event_rows"]),
-        "balance": write_matrix(data_sheet, 1, 7, chart_data["balance_rows"]),
-        "pmt_operation": write_matrix(data_sheet, 1, 11, chart_data["pmt_operation_rows"]),
-        "monthly": write_matrix(data_sheet, 1, 15, chart_data["monthly_rows"]),
-        "indexer": write_matrix(data_sheet, 1, 20, chart_data["indexer_rows"]),
-        "returns": write_matrix(data_sheet, 1, 24, chart_data["return_rows"]),
-        "kpis": write_matrix(data_sheet, 1, 30, chart_data["kpis"]),
+        "balance": write_matrix(data_sheet, 1, 10, chart_data["balance_rows"]),
+        "pmt_operation": write_matrix(data_sheet, 1, 14, chart_data["pmt_operation_rows"]),
+        "monthly": write_matrix(data_sheet, 1, 18, chart_data["monthly_rows"]),
+        "indexer": write_matrix(data_sheet, 1, 23, chart_data["indexer_rows"]),
+        "returns": write_matrix(data_sheet, 1, 27, chart_data["return_rows"]),
+        "kpis": write_matrix(data_sheet, 1, 33, chart_data["kpis"]),
+        "event_pmt": write_matrix(data_sheet, 1, 37, chart_data["event_pmt_rows"]),
+        "event_balance": write_matrix(data_sheet, 1, 41, chart_data["event_balance_rows"]),
     }
 
     for index, (name, bounds) in enumerate(sections.items(), start=1):
@@ -437,12 +516,25 @@ def build_chart_sheets(workbook: Workbook, rows: list[dict]) -> None:
     for col in range(1, data_sheet.max_column + 1):
         data_sheet.column_dimensions[get_column_letter(col)].width = 18
 
-    add_line_chart(dashboard, data_sheet, sections["event"], "A10", "PMT por evento (R$ mi)", 2, "5EEAD4")
-    add_line_chart(dashboard, data_sheet, sections["event"], "J10", "Curva do saldo devedor (R$ mi)", 5, "F4A261")
-    add_bar_chart(dashboard, data_sheet, sections["event"], "A30", "Juros x amortização por evento (R$ mi)", 3, 4, ["7DB4FF", "5EEAD4"])
-    add_bar_chart(dashboard, data_sheet, sections["balance"], "J30", "Saldos por emissão (R$ mi)", 2, 2, ["4F7CAC"], chart_type="bar")
-    add_bar_chart(dashboard, data_sheet, sections["pmt_operation"], "A50", "PMT próximos 12 meses por operação (R$ mi)", 2, 2, ["2A9D8F"], chart_type="bar")
-    add_bar_chart(dashboard, data_sheet, sections["returns"], "J50", "TIR x taxa contratada (% a.a.)", 2, 3, ["0B5CAD", "94A3B8"], number_format="0.0%")
+    add_line_chart(dashboard, data_sheet, sections["event_pmt"], "A10", "PMT por evento com linha média (R$ mi)", 2, "1B998B", level_col=3)
+    add_line_chart(dashboard, data_sheet, sections["event_balance"], "K10", "Saldo devedor projetado com nível médio (R$ mi)", 2, "F2994A", level_col=3)
+    add_bar_chart(dashboard, data_sheet, sections["monthly"], "A32", "Composição mensal: juros x amortização (R$ mi)", 3, 4, ["4F83CC", "22C55E"], show_labels=False)
+    add_bar_chart(dashboard, data_sheet, sections["balance"], "K32", "Ranking de saldo atual por emissão (R$ mi)", 2, 2, ["3B82F6"], chart_type="bar", show_legend=False)
+    add_bar_chart(dashboard, data_sheet, sections["pmt_operation"], "A54", "PMT acumulado dos próximos 12 meses por operação (R$ mi)", 2, 2, ["0F766E"], chart_type="bar", show_legend=False)
+    add_bar_chart(dashboard, data_sheet, sections["returns"], "K54", "TIR efetiva versus taxa contratada (% a.a.)", 2, 3, ["0B5CAD", "94A3B8"], number_format="0.0%")
+
+    notes = [
+        ("A29", "Linha pontilhada: média do período exibido. Rótulos em R$ mi para facilitar recorte direto em PPT."),
+        ("K29", "Saldo em R$ mi; linha pontilhada mostra o nível médio da janela selecionada."),
+        ("A51", "Barras mostram a abertura mensal dos próximos 12 meses entre juros e amortização."),
+        ("K51", "Ranking em ordem decrescente, útil para destacar concentrações da carteira."),
+        ("A75", "Janela móvel de 12 meses a partir da data de atualização diária."),
+        ("K75", "Taxas anuais; comparar TIR efetiva contra taxa contratada por operação."),
+    ]
+    for cell_ref, text in notes:
+        cell = dashboard[cell_ref]
+        cell.value = text
+        cell.font = Font(size=9, italic=True, color="607D95")
 
     dashboard.sheet_properties.tabColor = "0B5CAD"
     data_sheet.sheet_properties.tabColor = "94A3B8"
