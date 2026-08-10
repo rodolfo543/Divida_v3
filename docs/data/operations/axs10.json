@@ -155,7 +155,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 57409957.05,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -206,7 +206,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 58281904.07,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -257,7 +257,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 59029980.0,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -308,7 +308,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 59868109.91,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -359,7 +359,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 60870261.35,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -410,7 +410,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 61686643.68,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -461,7 +461,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 62690144.79,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -512,7 +512,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 63624587.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -563,7 +563,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 64743484.44,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -614,7 +614,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 65786829.13,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -665,7 +665,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 67010142.85,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -716,7 +716,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 68146936.95,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -767,7 +767,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 69358554.39,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -818,7 +818,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 70648284.76,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -869,7 +869,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 71731783.73,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -920,7 +920,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 72948678.15,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -971,7 +971,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 74245668.08,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -1022,7 +1022,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 75323975.11,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -1073,7 +1073,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 76590551.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -1124,7 +1124,7 @@
         "Amort_R$": 2843194.47,
         "PMT_Total": 4060629.48,
         "Saldo_Devedor_R$": 73747357.5,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 1217435.01,
       "total_amortization_running": 2843194.47
@@ -1175,7 +1175,7 @@
         "Amort_R$": 154131.98,
         "PMT_Total": 1319240.37,
         "Saldo_Devedor_R$": 73593225.52,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 2382543.4,
       "total_amortization_running": 2997326.45
@@ -1226,7 +1226,7 @@
         "Amort_R$": 270160.73,
         "PMT_Total": 1538402.28,
         "Saldo_Devedor_R$": 73323064.79,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 3650784.95,
       "total_amortization_running": 3267487.18
@@ -1277,7 +1277,7 @@
         "Amort_R$": 668486.38,
         "PMT_Total": 1983413.39,
         "Saldo_Devedor_R$": 72654578.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs + ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs + ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 4965711.96,
       "total_amortization_running": 3935973.56
@@ -1328,7 +1328,7 @@
         "Amort_R$": 1012804.82,
         "PMT_Total": 2134983.41,
         "Saldo_Devedor_R$": 71641773.59,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 6087890.55,
       "total_amortization_running": 4948778.38
@@ -1379,7 +1379,7 @@
         "Amort_R$": 769719.22,
         "PMT_Total": 1932028.33,
         "Saldo_Devedor_R$": 70872054.37,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 7250199.66,
       "total_amortization_running": 5718497.6
@@ -1430,7 +1430,7 @@
         "Amort_R$": 1336788.69,
         "PMT_Total": 2486609.95,
         "Saldo_Devedor_R$": 69535265.68,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 8400020.92,
       "total_amortization_running": 7055286.289999999
@@ -1481,7 +1481,7 @@
         "Amort_R$": 1113746.35,
         "PMT_Total": 2187745.93,
         "Saldo_Devedor_R$": 68421519.33,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 9474020.5,
       "total_amortization_running": 8169032.639999999
@@ -1532,7 +1532,7 @@
         "Amort_R$": 972817.16,
         "PMT_Total": 2082881.18,
         "Saldo_Devedor_R$": 67448702.17,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 10584084.52,
       "total_amortization_running": 9141849.799999999
@@ -1583,7 +1583,7 @@
         "Amort_R$": 882296.47,
         "PMT_Total": 1871599.84,
         "Saldo_Devedor_R$": 66566405.7,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 11573387.889999999,
       "total_amortization_running": 10024146.27
@@ -1634,7 +1634,7 @@
         "Amort_R$": 1337119.39,
         "PMT_Total": 2365263.75,
         "Saldo_Devedor_R$": 65229286.31,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 12601532.249999998,
       "total_amortization_running": 11361265.66
@@ -1685,7 +1685,7 @@
         "Amort_R$": 1154688.83,
         "PMT_Total": 2263782.25,
         "Saldo_Devedor_R$": 64074597.48,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 13710625.669999998,
       "total_amortization_running": 12515954.49
@@ -1736,7 +1736,7 @@
         "Amort_R$": 1199668.69,
         "PMT_Total": 2239208.68,
         "Saldo_Devedor_R$": 62874928.8,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 14750165.659999998,
       "total_amortization_running": 13715623.18
@@ -1787,7 +1787,7 @@
         "Amort_R$": 5449118.58,
         "PMT_Total": 6420246.63,
         "Saldo_Devedor_R$": 57425810.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 15721293.709999999,
       "total_amortization_running": 19164741.759999998
@@ -1838,7 +1838,7 @@
         "Amort_R$": 1121009.24,
         "PMT_Total": 2097420.18,
         "Saldo_Devedor_R$": 56304800.98,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 16697704.649999999,
       "total_amortization_running": 20285750.999999996
@@ -1889,7 +1889,7 @@
         "Amort_R$": 1119508.36,
         "PMT_Total": 2076858.78,
         "Saldo_Devedor_R$": 55185292.62,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 17655055.07,
       "total_amortization_running": 21405259.359999996
@@ -1940,7 +1940,7 @@
         "Amort_R$": 1202156.41,
         "PMT_Total": 2097477.19,
         "Saldo_Devedor_R$": 53983136.2,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 18550375.85,
       "total_amortization_running": 22607415.769999996
@@ -1991,7 +1991,7 @@
         "Amort_R$": 1256349.53,
         "PMT_Total": 2132166.64,
         "Saldo_Devedor_R$": 52726786.67,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 19426192.96,
       "total_amortization_running": 23863765.299999997
@@ -2042,7 +2042,7 @@
         "Amort_R$": 1409070.65,
         "PMT_Total": 2223456.64,
         "Saldo_Devedor_R$": 51317716.03,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 20240578.95,
       "total_amortization_running": 25272835.949999996
@@ -2093,7 +2093,7 @@
         "Amort_R$": 1697487.41,
         "PMT_Total": 2530061.01,
         "Saldo_Devedor_R$": 49620228.62,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 21073152.55,
       "total_amortization_running": 26970323.359999996
@@ -2144,7 +2144,7 @@
         "Amort_R$": 1260155.33,
         "PMT_Total": 2142536.47,
         "Saldo_Devedor_R$": 48360073.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 21955533.69,
       "total_amortization_running": 28230478.689999998
@@ -2195,7 +2195,7 @@
         "Amort_R$": 1256781.58,
         "PMT_Total": 2041370.67,
         "Saldo_Devedor_R$": 47103291.71,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 22740122.78,
       "total_amortization_running": 29487260.269999996
@@ -2246,7 +2246,7 @@
         "Amort_R$": 1327700.48,
         "PMT_Total": 2018587.68,
         "Saldo_Devedor_R$": 45775591.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 23431009.98,
       "total_amortization_running": 30814960.749999996
@@ -2297,7 +2297,7 @@
         "Amort_R$": 1158351.34,
         "PMT_Total": 1936673.63,
         "Saldo_Devedor_R$": 44617239.89,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 24209332.27,
       "total_amortization_running": 31973312.089999996
@@ -2348,7 +2348,7 @@
         "Amort_R$": 1200605.31,
         "PMT_Total": 1820346.76,
         "Saldo_Devedor_R$": 43416634.58,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 24829073.72,
       "total_amortization_running": 33173917.399999995
@@ -2399,7 +2399,7 @@
         "Amort_R$": 1090191.69,
         "PMT_Total": 1862256.24,
         "Saldo_Devedor_R$": 42326442.89,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 25601138.27,
       "total_amortization_running": 34264109.089999996
@@ -2450,7 +2450,7 @@
         "Amort_R$": 1147893.13,
         "PMT_Total": 1834593.19,
         "Saldo_Devedor_R$": 41178549.76,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 26287838.33,
       "total_amortization_running": 35412002.22
@@ -2501,7 +2501,7 @@
         "Amort_R$": 1144269.54,
         "PMT_Total": 1812346.3,
         "Saldo_Devedor_R$": 40034280.21,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 26955915.09,
       "total_amortization_running": 36556271.76
@@ -2552,7 +2552,7 @@
         "Amort_R$": 1220685.24,
         "PMT_Total": 1901388.03,
         "Saldo_Devedor_R$": 38813594.98,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 27636617.88,
       "total_amortization_running": 37776957.0
@@ -2603,7 +2603,7 @@
         "Amort_R$": 1024368.4,
         "PMT_Total": 1623859.67,
         "Saldo_Devedor_R$": 37789226.58,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 28236109.15,
       "total_amortization_running": 38801325.4
@@ -2654,7 +2654,7 @@
         "Amort_R$": 1156954.96,
         "PMT_Total": 1770043.67,
         "Saldo_Devedor_R$": 36632271.62,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 28849197.86,
       "total_amortization_running": 39958280.36
@@ -2705,7 +2705,7 @@
         "Amort_R$": 1243299.3,
         "PMT_Total": 1809099.17,
         "Saldo_Devedor_R$": 35388972.32,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 29414997.73,
       "total_amortization_running": 41201579.66
@@ -2756,7 +2756,7 @@
         "Amort_R$": 1020865.68,
         "PMT_Total": 1539933.18,
         "Saldo_Devedor_R$": 34368106.64,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 29934065.23,
       "total_amortization_running": 42222445.339999996
@@ -2807,7 +2807,7 @@
         "Amort_R$": 1018636.31,
         "PMT_Total": 1576221.1,
         "Saldo_Devedor_R$": 33349470.32,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 30491650.02,
       "total_amortization_running": 43241081.65
@@ -2858,7 +2858,7 @@
         "Amort_R$": 1081156.48,
         "PMT_Total": 1596252.19,
         "Saldo_Devedor_R$": 32268313.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 31006745.73,
       "total_amortization_running": 44322238.129999995
@@ -2909,7 +2909,7 @@
         "Amort_R$": 935684.3,
         "PMT_Total": 1459202.26,
         "Saldo_Devedor_R$": 31332629.55,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 31530263.69,
       "total_amortization_running": 45257922.42999999
@@ -2960,7 +2960,7 @@
         "Amort_R$": 973316.8,
         "PMT_Total": 1457261.61,
         "Saldo_Devedor_R$": 30359312.74,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 32014208.5,
       "total_amortization_running": 46231239.22999999
@@ -3011,7 +3011,7 @@
         "Amort_R$": 874530.36,
         "PMT_Total": 1390729.69,
         "Saldo_Devedor_R$": 29484782.38,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 32530407.83,
       "total_amortization_running": 47105769.58999999
@@ -3062,7 +3062,7 @@
         "Amort_R$": 923404.41,
         "PMT_Total": 1401762.63,
         "Saldo_Devedor_R$": 28561377.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 33008766.049999997,
       "total_amortization_running": 48029173.999999985
@@ -3113,7 +3113,7 @@
         "Amort_R$": 921418.61,
         "PMT_Total": 1407047.66,
         "Saldo_Devedor_R$": 27639959.35,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 33494395.099999998,
       "total_amortization_running": 48950592.609999985
@@ -3164,7 +3164,7 @@
         "Amort_R$": 990477.94,
         "PMT_Total": 1460440.11,
         "Saldo_Devedor_R$": 26649481.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 33964357.269999996,
       "total_amortization_running": 49941070.54999998
@@ -3215,7 +3215,7 @@
         "Amort_R$": 665704.05,
         "PMT_Total": 1056585.13,
         "Saldo_Devedor_R$": 25983777.37,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 34355238.349999994,
       "total_amortization_running": 50606774.59999998
@@ -3266,7 +3266,7 @@
         "Amort_R$": 777356.67,
         "PMT_Total": 1219158.78,
         "Saldo_Devedor_R$": 25206420.7,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 34797040.45999999,
       "total_amortization_running": 51384131.26999998
@@ -3317,7 +3317,7 @@
         "Amort_R$": 794304.73,
         "PMT_Total": 1183627.83,
         "Saldo_Devedor_R$": 24412115.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 35186363.559999995,
       "total_amortization_running": 52178435.99999998
@@ -3368,7 +3368,7 @@
         "Amort_R$": 663203.95,
         "PMT_Total": 1021268.49,
         "Saldo_Devedor_R$": 23748912.01,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 35544428.099999994,
       "total_amortization_running": 52841639.94999998
@@ -3419,7 +3419,7 @@
         "Amort_R$": 663520.85,
         "PMT_Total": 1085840.39,
         "Saldo_Devedor_R$": 23085391.16,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 35966747.63999999,
       "total_amortization_running": 53505160.79999998
@@ -3470,7 +3470,7 @@
         "Amort_R$": 718348.12,
         "PMT_Total": 1039008.34,
         "Saldo_Devedor_R$": 22367043.05,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 36287407.85999999,
       "total_amortization_running": 54223508.91999998
@@ -3521,7 +3521,7 @@
         "Amort_R$": 592145.1,
         "PMT_Total": 955025.81,
         "Saldo_Devedor_R$": 21774897.95,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 36650288.56999999,
       "total_amortization_running": 54815654.01999998
@@ -3572,7 +3572,7 @@
         "Amort_R$": 612614.98,
         "PMT_Total": 948936.86,
         "Saldo_Devedor_R$": 21162282.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 36986610.449999996,
       "total_amortization_running": 55428268.99999998
@@ -3623,7 +3623,7 @@
         "Amort_R$": 499091.28,
         "PMT_Total": 875413.6,
         "Saldo_Devedor_R$": 20663191.69,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 37362932.769999996,
       "total_amortization_running": 55927360.27999998
@@ -3674,7 +3674,7 @@
         "Amort_R$": 529804.23,
         "PMT_Total": 832881.45,
         "Saldo_Devedor_R$": 20133387.45,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 37666009.989999995,
       "total_amortization_running": 56457164.509999976
@@ -3725,7 +3725,7 @@
         "Amort_R$": 531924.1,
         "PMT_Total": 889949.89,
         "Saldo_Devedor_R$": 19601463.36,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38024035.779999994,
       "total_amortization_running": 56989088.60999998
@@ -3776,7 +3776,7 @@
         "Amort_R$": 589553.21,
         "PMT_Total": 922836.85,
         "Saldo_Devedor_R$": 19011910.14,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38357319.419999994,
       "total_amortization_running": 57578641.81999998
@@ -3827,7 +3827,7 @@
         "Amort_R$": 570148.17,
         "PMT_Total": 878595.54,
         "Saldo_Devedor_R$": 18441761.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38665766.78999999,
       "total_amortization_running": 58148789.98999998
@@ -3878,7 +3878,7 @@
         "Amort_R$": 663737.45,
         "PMT_Total": 991681.59,
         "Saldo_Devedor_R$": 17778024.52,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38993710.92999999,
       "total_amortization_running": 58812527.43999998
@@ -3929,7 +3929,7 @@
         "Amort_R$": 684933.95,
         "PMT_Total": 945693.0,
         "Saldo_Devedor_R$": 17093090.57,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 39254469.97999999,
       "total_amortization_running": 59497461.389999986
@@ -3980,7 +3980,7 @@
         "Amort_R$": 247730.16,
         "PMT_Total": 511739.68,
         "Saldo_Devedor_R$": 16845360.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 39518479.49999999,
       "total_amortization_running": 59745191.54999998
@@ -4031,7 +4031,7 @@
         "Amort_R$": 247727.87,
         "PMT_Total": 547283.69,
         "Saldo_Devedor_R$": 16597632.54,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 39818035.31999999,
       "total_amortization_running": 59992919.41999998
@@ -4082,7 +4082,7 @@
         "Amort_R$": 247719.67,
         "PMT_Total": 478263.76,
         "Saldo_Devedor_R$": 16349912.87,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40048579.41,
       "total_amortization_running": 60240639.08999998
@@ -4133,7 +4133,7 @@
         "Amort_R$": 247733.88,
         "PMT_Total": 500264.73,
         "Saldo_Devedor_R$": 16102178.99,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40301110.26,
       "total_amortization_running": 60488372.969999984
@@ -4184,7 +4184,7 @@
         "Amort_R$": 247732.02,
         "PMT_Total": 496436.52,
         "Saldo_Devedor_R$": 15854446.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40549814.76,
       "total_amortization_running": 60736104.98999999
@@ -4235,7 +4235,7 @@
         "Amort_R$": 247725.73,
         "PMT_Total": 504946.72,
         "Saldo_Devedor_R$": 15606721.23,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40807035.75,
       "total_amortization_running": 60983830.719999984
@@ -4286,7 +4286,7 @@
         "Amort_R$": 247725.49,
         "PMT_Total": 500927.41,
         "Saldo_Devedor_R$": 15358995.75,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41060237.67,
       "total_amortization_running": 61231556.209999986
@@ -4337,7 +4337,7 @@
         "Amort_R$": 247725.24,
         "PMT_Total": 520849.5,
         "Saldo_Devedor_R$": 15111270.51,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41333361.93,
       "total_amortization_running": 61479281.44999999
@@ -4388,7 +4388,7 @@
         "Amort_R$": 247719.06,
         "PMT_Total": 492882.83,
         "Saldo_Devedor_R$": 14863551.45,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41578525.7,
       "total_amortization_running": 61727000.50999999
@@ -4439,7 +4439,7 @@
         "Amort_R$": 247730.81,
         "PMT_Total": 500455.75,
         "Saldo_Devedor_R$": 14615820.64,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41831250.64,
       "total_amortization_running": 61974731.31999999
@@ -4490,7 +4490,7 @@
         "Amort_R$": 247723.54,
         "PMT_Total": 507632.15,
         "Saldo_Devedor_R$": 14368097.09,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42091159.25,
       "total_amortization_running": 62222454.85999999
@@ -4541,7 +4541,7 @@
         "Amort_R$": 247720.36,
         "PMT_Total": 458464.32,
         "Saldo_Devedor_R$": 14120376.73,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42301903.21,
       "total_amortization_running": 62470175.21999999
@@ -4592,7 +4592,7 @@
         "Amort_R$": 247727.89,
         "PMT_Total": 476815.5,
         "Saldo_Devedor_R$": 13872648.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42530990.82,
       "total_amortization_running": 62717903.10999999
@@ -4643,7 +4643,7 @@
         "Amort_R$": 247723.89,
         "PMT_Total": 461992.42,
         "Saldo_Devedor_R$": 13624924.95,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42745259.35,
       "total_amortization_running": 62965626.99999999
@@ -4694,7 +4694,7 @@
         "Amort_R$": 247728.39,
         "PMT_Total": 458170.72,
         "Saldo_Devedor_R$": 13377196.57,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42955701.68,
       "total_amortization_running": 63213355.38999999
@@ -4745,7 +4745,7 @@
         "Amort_R$": 247732.3,
         "PMT_Total": 475184.75,
         "Saldo_Devedor_R$": 13129464.26,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43183154.13,
       "total_amortization_running": 63461087.68999999
@@ -4796,7 +4796,7 @@
         "Amort_R$": 247726.73,
         "PMT_Total": 460737.87,
         "Saldo_Devedor_R$": 12881737.53,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43396165.27,
       "total_amortization_running": 63708814.41999999
@@ -4847,7 +4847,7 @@
         "Amort_R$": 247728.69,
         "PMT_Total": 446692.2,
         "Saldo_Devedor_R$": 12634008.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43595128.78,
       "total_amortization_running": 63956543.109999985
@@ -4898,7 +4898,7 @@
         "Amort_R$": 247727.65,
         "PMT_Total": 462543.68,
         "Saldo_Devedor_R$": 12386281.19,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43809944.81,
       "total_amortization_running": 64204270.75999998
@@ -4949,7 +4949,7 @@
         "Amort_R$": 247725.62,
         "PMT_Total": 458329.53,
         "Saldo_Devedor_R$": 12138555.57,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44020548.72,
       "total_amortization_running": 64451996.37999998
@@ -5000,7 +5000,7 @@
         "Amort_R$": 247723.64,
         "PMT_Total": 444658.38,
         "Saldo_Devedor_R$": 11890831.93,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44217483.46,
       "total_amortization_running": 64699720.01999998
@@ -5051,7 +5051,7 @@
         "Amort_R$": 247721.7,
         "PMT_Total": 440637.39,
         "Saldo_Devedor_R$": 11643110.23,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44410399.15,
       "total_amortization_running": 64947441.719999984
@@ -5102,7 +5102,7 @@
         "Amort_R$": 247730.46,
         "PMT_Total": 427562.88,
         "Saldo_Devedor_R$": 11395379.77,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44590231.57,
       "total_amortization_running": 65195172.179999985
@@ -5153,7 +5153,7 @@
         "Amort_R$": 247724.16,
         "PMT_Total": 432601.68,
         "Saldo_Devedor_R$": 11147655.61,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44775109.09,
       "total_amortization_running": 65442896.33999998
@@ -5204,7 +5204,7 @@
         "Amort_R$": 247723.2,
         "PMT_Total": 445958.5,
         "Saldo_Devedor_R$": 10899932.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44973344.39,
       "total_amortization_running": 65690619.539999984
@@ -5255,7 +5255,7 @@
         "Amort_R$": 247722.76,
         "PMT_Total": 424562.2,
         "Saldo_Devedor_R$": 10652209.64,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45150183.83,
       "total_amortization_running": 65938342.29999998
@@ -5306,7 +5306,7 @@
         "Amort_R$": 247727.79,
         "PMT_Total": 395688.89,
         "Saldo_Devedor_R$": 10404481.86,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45298144.93,
       "total_amortization_running": 66186070.08999998
@@ -5357,7 +5357,7 @@
         "Amort_R$": 247730.71,
         "PMT_Total": 432750.38,
         "Saldo_Devedor_R$": 10156751.14,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45483164.6,
       "total_amortization_running": 66433800.79999998
@@ -5408,7 +5408,7 @@
         "Amort_R$": 247723.16,
         "PMT_Total": 396697.24,
         "Saldo_Devedor_R$": 9909027.98,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45632138.68,
       "total_amortization_running": 66681523.95999998
@@ -5459,7 +5459,7 @@
         "Amort_R$": 247725.7,
         "PMT_Total": 416208.88,
         "Saldo_Devedor_R$": 9661302.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45800621.86,
       "total_amortization_running": 66929249.65999998
@@ -5510,7 +5510,7 @@
         "Amort_R$": 247725.45,
         "PMT_Total": 404469.47,
         "Saldo_Devedor_R$": 9413576.83,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45957365.88,
       "total_amortization_running": 67176975.10999998
@@ -5561,7 +5561,7 @@
         "Amort_R$": 247727.69,
         "PMT_Total": 400452.64,
         "Saldo_Devedor_R$": 9165849.15,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46110090.830000006,
       "total_amortization_running": 67424702.79999998
@@ -5612,7 +5612,7 @@
         "Amort_R$": 247725.4,
         "PMT_Total": 403572.31,
         "Saldo_Devedor_R$": 8918123.74,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46265937.74,
       "total_amortization_running": 67672428.19999999
@@ -5663,7 +5663,7 @@
         "Amort_R$": 247727.64,
         "PMT_Total": 392414.41,
         "Saldo_Devedor_R$": 8670396.1,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46410624.510000005,
       "total_amortization_running": 67920155.83999999
@@ -5714,7 +5714,7 @@
         "Amort_R$": 247721.89,
         "PMT_Total": 381639.57,
         "Saldo_Devedor_R$": 8422674.21,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46544542.190000005,
       "total_amortization_running": 68167877.72999999
@@ -5765,7 +5765,7 @@
         "Amort_R$": 247727.69,
         "PMT_Total": 384376.33,
         "Saldo_Devedor_R$": 8174946.52,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46681190.830000006,
       "total_amortization_running": 68415605.41999999
@@ -5816,7 +5816,7 @@
         "Amort_R$": 247725.4,
         "PMT_Total": 386724.0,
         "Saldo_Devedor_R$": 7927221.12,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46820189.43000001,
       "total_amortization_running": 68663330.82
@@ -5867,7 +5867,7 @@
         "Amort_R$": 247725.66,
         "PMT_Total": 382512.18,
         "Saldo_Devedor_R$": 7679495.46,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46954975.95000001,
       "total_amortization_running": 68911056.47999999
@@ -5918,7 +5918,7 @@
         "Amort_R$": 247725.16,
         "PMT_Total": 354394.73,
         "Saldo_Devedor_R$": 7431770.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47061645.52000001,
       "total_amortization_running": 69158781.63999999
@@ -5969,7 +5969,7 @@
         "Amort_R$": 247723.2,
         "PMT_Total": 374085.57,
         "Saldo_Devedor_R$": 7184047.09,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47188007.89000001,
       "total_amortization_running": 69406504.83999999
@@ -6020,7 +6020,7 @@
         "Amort_R$": 247727.5,
         "PMT_Total": 347515.2,
         "Saldo_Devedor_R$": 6936319.6,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47287795.59000001,
       "total_amortization_running": 69654232.33999999
@@ -6071,7 +6071,7 @@
         "Amort_R$": 247723.72,
         "PMT_Total": 365661.95,
         "Saldo_Devedor_R$": 6688595.88,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47405733.82000001,
       "total_amortization_running": 69901956.05999999
@@ -6122,7 +6122,7 @@
         "Amort_R$": 247725.53,
         "PMT_Total": 361451.71,
         "Saldo_Devedor_R$": 6440870.35,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47519460.00000001,
       "total_amortization_running": 70149681.58999999
@@ -6173,7 +6173,7 @@
         "Amort_R$": 247728.76,
         "PMT_Total": 352224.81,
         "Saldo_Devedor_R$": 6193141.6,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47623956.050000004,
       "total_amortization_running": 70397410.35
@@ -6224,7 +6224,7 @@
         "Amort_R$": 247725.66,
         "PMT_Total": 353027.63,
         "Saldo_Devedor_R$": 5945415.94,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47729258.02,
       "total_amortization_running": 70645136.00999999
@@ -6275,7 +6275,7 @@
         "Amort_R$": 247727.65,
         "PMT_Total": 339556.94,
         "Saldo_Devedor_R$": 5697688.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47821087.31,
       "total_amortization_running": 70892863.66
@@ -6326,7 +6326,7 @@
         "Amort_R$": 247724.09,
         "PMT_Total": 340162.83,
         "Saldo_Devedor_R$": 5449964.2,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47913526.050000004,
       "total_amortization_running": 71140587.75
@@ -6377,7 +6377,7 @@
         "Amort_R$": 247728.12,
         "PMT_Total": 331904.96,
         "Saldo_Devedor_R$": 5202236.08,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47997702.89000001,
       "total_amortization_running": 71388315.87
@@ -6428,7 +6428,7 @@
         "Amort_R$": 247725.28,
         "PMT_Total": 324029.04,
         "Saldo_Devedor_R$": 4954510.8,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48074006.650000006,
       "total_amortization_running": 71636041.15
@@ -6479,7 +6479,7 @@
         "Amort_R$": 247725.54,
         "PMT_Total": 328107.04,
         "Saldo_Devedor_R$": 4706785.26,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48154388.150000006,
       "total_amortization_running": 71883766.69000001
@@ -6530,7 +6530,7 @@
         "Amort_R$": 247727.52,
         "PMT_Total": 320425.67,
         "Saldo_Devedor_R$": 4459057.74,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48227086.300000004,
       "total_amortization_running": 72131494.21000001
@@ -6581,7 +6581,7 @@
         "Amort_R$": 247727.41,
         "PMT_Total": 320070.73,
         "Saldo_Devedor_R$": 4211330.32,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48299429.620000005,
       "total_amortization_running": 72379221.62
@@ -6632,7 +6632,7 @@
         "Amort_R$": 247727.29,
         "PMT_Total": 312772.95,
         "Saldo_Devedor_R$": 3963603.03,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48364475.28,
       "total_amortization_running": 72626948.91000001
@@ -6683,7 +6683,7 @@
         "Amort_R$": 247725.19,
         "PMT_Total": 315118.32,
         "Saldo_Devedor_R$": 3715877.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48431868.410000004,
       "total_amortization_running": 72874674.10000001
@@ -6734,7 +6734,7 @@
         "Amort_R$": 247726.43,
         "PMT_Total": 308012.47,
         "Saldo_Devedor_R$": 3468151.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48492154.45,
       "total_amortization_running": 73122400.53000002
@@ -6785,7 +6785,7 @@
         "Amort_R$": 247726.59,
         "PMT_Total": 306695.56,
         "Saldo_Devedor_R$": 3220424.83,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48551123.42,
       "total_amortization_running": 73370127.12000002
@@ -6836,7 +6836,7 @@
         "Amort_R$": 247724.74,
         "PMT_Total": 302481.62,
         "Saldo_Devedor_R$": 2972700.09,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48605880.300000004,
       "total_amortization_running": 73617851.86000001
@@ -6887,7 +6887,7 @@
         "Amort_R$": 247724.02,
         "PMT_Total": 291326.08,
         "Saldo_Devedor_R$": 2724976.07,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48649482.36000001,
       "total_amortization_running": 73865575.88000001
@@ -6938,7 +6938,7 @@
         "Amort_R$": 247724.85,
         "PMT_Total": 294057.61,
         "Saldo_Devedor_R$": 2477251.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48695815.120000005,
       "total_amortization_running": 74113300.73
@@ -6989,7 +6989,7 @@
         "Amort_R$": 247725.12,
         "PMT_Total": 285987.24,
         "Saldo_Devedor_R$": 2229526.1,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48734077.24,
       "total_amortization_running": 74361025.85000001
@@ -7040,7 +7040,7 @@
         "Amort_R$": 247724.87,
         "PMT_Total": 280426.43,
         "Saldo_Devedor_R$": 1981801.23,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48766778.800000004,
       "total_amortization_running": 74608750.72000001
@@ -7091,7 +7091,7 @@
         "Amort_R$": 247725.15,
         "PMT_Total": 282966.91,
         "Saldo_Devedor_R$": 1734076.07,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48802020.56,
       "total_amortization_running": 74856475.87000002
@@ -7142,7 +7142,7 @@
         "Amort_R$": 247724.91,
         "PMT_Total": 273159.46,
         "Saldo_Devedor_R$": 1486351.17,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48827455.11,
       "total_amortization_running": 75104200.78000002
@@ -7193,7 +7193,7 @@
         "Amort_R$": 247725.69,
         "PMT_Total": 270682.97,
         "Saldo_Devedor_R$": 1238625.48,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48850412.39,
       "total_amortization_running": 75351926.47000001
@@ -7244,7 +7244,7 @@
         "Amort_R$": 247725.1,
         "PMT_Total": 266856.16,
         "Saldo_Devedor_R$": 990900.38,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48869543.45,
       "total_amortization_running": 75599651.57000001
@@ -7295,7 +7295,7 @@
         "Amort_R$": 247725.1,
         "PMT_Total": 263801.37,
         "Saldo_Devedor_R$": 743175.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48885619.720000006,
       "total_amortization_running": 75847376.67
@@ -7346,7 +7346,7 @@
         "Amort_R$": 247724.85,
         "PMT_Total": 259782.05,
         "Saldo_Devedor_R$": 495450.44,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48897676.92000001,
       "total_amortization_running": 76095101.52
@@ -7397,7 +7397,7 @@
         "Amort_R$": 247725.22,
         "PMT_Total": 256535.66,
         "Saldo_Devedor_R$": 247725.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48906487.36000001,
       "total_amortization_running": 76342826.74
@@ -7448,7 +7448,7 @@
         "Amort_R$": 247725.22,
         "PMT_Total": 251744.29,
         "Saldo_Devedor_R$": 0.0,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48910506.43000001,
       "total_amortization_running": 76590551.96
@@ -7501,7 +7501,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 57409957.05,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7552,7 +7552,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 58281904.07,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7603,7 +7603,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 59029980.0,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7654,7 +7654,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 59868109.91,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7705,7 +7705,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 60870261.35,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7756,7 +7756,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 61686643.68,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7807,7 +7807,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 62690144.79,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7858,7 +7858,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 63624587.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7909,7 +7909,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 64743484.44,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -7960,7 +7960,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 65786829.13,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8011,7 +8011,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 67010142.85,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8062,7 +8062,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 68146936.95,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8113,7 +8113,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 69358554.39,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8164,7 +8164,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 70648284.76,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8215,7 +8215,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 71731783.73,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8266,7 +8266,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 72948678.15,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8317,7 +8317,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 74245668.08,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8368,7 +8368,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 75323975.11,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8419,7 +8419,7 @@
         "Amort_R$": 0.0,
         "PMT_Total": 0.0,
         "Saldo_Devedor_R$": 76590551.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -8470,7 +8470,7 @@
         "Amort_R$": 2843194.47,
         "PMT_Total": 4060629.48,
         "Saldo_Devedor_R$": 73747357.5,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 1217435.01,
       "total_amortization_running": 2843194.47
@@ -8521,7 +8521,7 @@
         "Amort_R$": 154131.98,
         "PMT_Total": 1319240.37,
         "Saldo_Devedor_R$": 73593225.52,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 2382543.4,
       "total_amortization_running": 2997326.45
@@ -8572,7 +8572,7 @@
         "Amort_R$": 270160.73,
         "PMT_Total": 1538402.28,
         "Saldo_Devedor_R$": 73323064.79,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs"
       },
       "total_interest_running": 3650784.95,
       "total_amortization_running": 3267487.18
@@ -8623,7 +8623,7 @@
         "Amort_R$": 668486.38,
         "PMT_Total": 1983413.39,
         "Saldo_Devedor_R$": 72654578.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs + ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs + ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 4965711.96,
       "total_amortization_running": 3935973.56
@@ -8674,7 +8674,7 @@
         "Amort_R$": 1012804.82,
         "PMT_Total": 2134983.41,
         "Saldo_Devedor_R$": 71641773.59,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 6087890.55,
       "total_amortization_running": 4948778.38
@@ -8725,7 +8725,7 @@
         "Amort_R$": 769719.22,
         "PMT_Total": 1932028.33,
         "Saldo_Devedor_R$": 70872054.37,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 7250199.66,
       "total_amortization_running": 5718497.6
@@ -8776,7 +8776,7 @@
         "Amort_R$": 1336788.69,
         "PMT_Total": 2486609.95,
         "Saldo_Devedor_R$": 69535265.68,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 8400020.92,
       "total_amortization_running": 7055286.289999999
@@ -8827,7 +8827,7 @@
         "Amort_R$": 1113746.35,
         "PMT_Total": 2187745.93,
         "Saldo_Devedor_R$": 68421519.33,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 9474020.5,
       "total_amortization_running": 8169032.639999999
@@ -8878,7 +8878,7 @@
         "Amort_R$": 972817.16,
         "PMT_Total": 2082881.18,
         "Saldo_Devedor_R$": 67448702.17,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 10584084.52,
       "total_amortization_running": 9141849.799999999
@@ -8929,7 +8929,7 @@
         "Amort_R$": 882296.47,
         "PMT_Total": 1871599.84,
         "Saldo_Devedor_R$": 66566405.7,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 11573387.889999999,
       "total_amortization_running": 10024146.27
@@ -8980,7 +8980,7 @@
         "Amort_R$": 1337119.39,
         "PMT_Total": 2365263.75,
         "Saldo_Devedor_R$": 65229286.31,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 12601532.249999998,
       "total_amortization_running": 11361265.66
@@ -9031,7 +9031,7 @@
         "Amort_R$": 1154688.83,
         "PMT_Total": 2263782.25,
         "Saldo_Devedor_R$": 64074597.48,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 13710625.669999998,
       "total_amortization_running": 12515954.49
@@ -9082,7 +9082,7 @@
         "Amort_R$": 1199668.69,
         "PMT_Total": 2239208.68,
         "Saldo_Devedor_R$": 62874928.8,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 14750165.659999998,
       "total_amortization_running": 13715623.18
@@ -9133,7 +9133,7 @@
         "Amort_R$": 5449118.58,
         "PMT_Total": 6420246.63,
         "Saldo_Devedor_R$": 57425810.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 15721293.709999999,
       "total_amortization_running": 19164741.759999998
@@ -9184,7 +9184,7 @@
         "Amort_R$": 1121009.24,
         "PMT_Total": 2097420.18,
         "Saldo_Devedor_R$": 56304800.98,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 16697704.649999999,
       "total_amortization_running": 20285750.999999996
@@ -9235,7 +9235,7 @@
         "Amort_R$": 1119508.36,
         "PMT_Total": 2076858.78,
         "Saldo_Devedor_R$": 55185292.62,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 17655055.07,
       "total_amortization_running": 21405259.359999996
@@ -9286,7 +9286,7 @@
         "Amort_R$": 1202156.41,
         "PMT_Total": 2097477.19,
         "Saldo_Devedor_R$": 53983136.2,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 18550375.85,
       "total_amortization_running": 22607415.769999996
@@ -9337,7 +9337,7 @@
         "Amort_R$": 1256349.53,
         "PMT_Total": 2132166.64,
         "Saldo_Devedor_R$": 52726786.67,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 19426192.96,
       "total_amortization_running": 23863765.299999997
@@ -9388,7 +9388,7 @@
         "Amort_R$": 1409070.65,
         "PMT_Total": 2223456.64,
         "Saldo_Devedor_R$": 51317716.03,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 20240578.95,
       "total_amortization_running": 25272835.949999996
@@ -9439,7 +9439,7 @@
         "Amort_R$": 1697487.41,
         "PMT_Total": 2530061.01,
         "Saldo_Devedor_R$": 49620228.62,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 21073152.55,
       "total_amortization_running": 26970323.359999996
@@ -9490,7 +9490,7 @@
         "Amort_R$": 1260155.33,
         "PMT_Total": 2142536.47,
         "Saldo_Devedor_R$": 48360073.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 21955533.69,
       "total_amortization_running": 28230478.689999998
@@ -9541,7 +9541,7 @@
         "Amort_R$": 1256781.58,
         "PMT_Total": 2041370.67,
         "Saldo_Devedor_R$": 47103291.71,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 22740122.78,
       "total_amortization_running": 29487260.269999996
@@ -9592,7 +9592,7 @@
         "Amort_R$": 1327700.48,
         "PMT_Total": 2018587.68,
         "Saldo_Devedor_R$": 45775591.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 23431009.98,
       "total_amortization_running": 30814960.749999996
@@ -9643,7 +9643,7 @@
         "Amort_R$": 1158351.34,
         "PMT_Total": 1936673.63,
         "Saldo_Devedor_R$": 44617239.89,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 24209332.27,
       "total_amortization_running": 31973312.089999996
@@ -9694,7 +9694,7 @@
         "Amort_R$": 1200605.31,
         "PMT_Total": 1820346.76,
         "Saldo_Devedor_R$": 43416634.58,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 24829073.72,
       "total_amortization_running": 33173917.399999995
@@ -9745,7 +9745,7 @@
         "Amort_R$": 1090191.69,
         "PMT_Total": 1862256.24,
         "Saldo_Devedor_R$": 42326442.89,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 25601138.27,
       "total_amortization_running": 34264109.089999996
@@ -9796,7 +9796,7 @@
         "Amort_R$": 1147893.13,
         "PMT_Total": 1834593.19,
         "Saldo_Devedor_R$": 41178549.76,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 26287838.33,
       "total_amortization_running": 35412002.22
@@ -9847,7 +9847,7 @@
         "Amort_R$": 1144269.54,
         "PMT_Total": 1812346.3,
         "Saldo_Devedor_R$": 40034280.21,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 26955915.09,
       "total_amortization_running": 36556271.76
@@ -9898,7 +9898,7 @@
         "Amort_R$": 1220685.24,
         "PMT_Total": 1901388.03,
         "Saldo_Devedor_R$": 38813594.98,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 27636617.88,
       "total_amortization_running": 37776957.0
@@ -9949,7 +9949,7 @@
         "Amort_R$": 1024368.4,
         "PMT_Total": 1623859.67,
         "Saldo_Devedor_R$": 37789226.58,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 28236109.15,
       "total_amortization_running": 38801325.4
@@ -10000,7 +10000,7 @@
         "Amort_R$": 1156954.96,
         "PMT_Total": 1770043.67,
         "Saldo_Devedor_R$": 36632271.62,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 28849197.86,
       "total_amortization_running": 39958280.36
@@ -10051,7 +10051,7 @@
         "Amort_R$": 1243299.3,
         "PMT_Total": 1809099.17,
         "Saldo_Devedor_R$": 35388972.32,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 29414997.73,
       "total_amortization_running": 41201579.66
@@ -10102,7 +10102,7 @@
         "Amort_R$": 1020865.68,
         "PMT_Total": 1539933.18,
         "Saldo_Devedor_R$": 34368106.64,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 29934065.23,
       "total_amortization_running": 42222445.339999996
@@ -10153,7 +10153,7 @@
         "Amort_R$": 1018636.31,
         "PMT_Total": 1576221.1,
         "Saldo_Devedor_R$": 33349470.32,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 30491650.02,
       "total_amortization_running": 43241081.65
@@ -10204,7 +10204,7 @@
         "Amort_R$": 1081156.48,
         "PMT_Total": 1596252.19,
         "Saldo_Devedor_R$": 32268313.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 31006745.73,
       "total_amortization_running": 44322238.129999995
@@ -10255,7 +10255,7 @@
         "Amort_R$": 935684.3,
         "PMT_Total": 1459202.26,
         "Saldo_Devedor_R$": 31332629.55,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 31530263.69,
       "total_amortization_running": 45257922.42999999
@@ -10306,7 +10306,7 @@
         "Amort_R$": 973316.8,
         "PMT_Total": 1457261.61,
         "Saldo_Devedor_R$": 30359312.74,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 32014208.5,
       "total_amortization_running": 46231239.22999999
@@ -10357,7 +10357,7 @@
         "Amort_R$": 874530.36,
         "PMT_Total": 1390729.69,
         "Saldo_Devedor_R$": 29484782.38,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 32530407.83,
       "total_amortization_running": 47105769.58999999
@@ -10408,7 +10408,7 @@
         "Amort_R$": 923404.41,
         "PMT_Total": 1401762.63,
         "Saldo_Devedor_R$": 28561377.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 33008766.049999997,
       "total_amortization_running": 48029173.999999985
@@ -10459,7 +10459,7 @@
         "Amort_R$": 921418.61,
         "PMT_Total": 1407047.66,
         "Saldo_Devedor_R$": 27639959.35,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 33494395.099999998,
       "total_amortization_running": 48950592.609999985
@@ -10510,7 +10510,7 @@
         "Amort_R$": 990477.94,
         "PMT_Total": 1460440.11,
         "Saldo_Devedor_R$": 26649481.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 33964357.269999996,
       "total_amortization_running": 49941070.54999998
@@ -10561,7 +10561,7 @@
         "Amort_R$": 665704.05,
         "PMT_Total": 1056585.13,
         "Saldo_Devedor_R$": 25983777.37,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 34355238.349999994,
       "total_amortization_running": 50606774.59999998
@@ -10612,7 +10612,7 @@
         "Amort_R$": 777356.67,
         "PMT_Total": 1219158.78,
         "Saldo_Devedor_R$": 25206420.7,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 34797040.45999999,
       "total_amortization_running": 51384131.26999998
@@ -10663,7 +10663,7 @@
         "Amort_R$": 794304.73,
         "PMT_Total": 1183627.83,
         "Saldo_Devedor_R$": 24412115.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 35186363.559999995,
       "total_amortization_running": 52178435.99999998
@@ -10714,7 +10714,7 @@
         "Amort_R$": 663203.95,
         "PMT_Total": 1021268.49,
         "Saldo_Devedor_R$": 23748912.01,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 35544428.099999994,
       "total_amortization_running": 52841639.94999998
@@ -10765,7 +10765,7 @@
         "Amort_R$": 663520.85,
         "PMT_Total": 1085840.39,
         "Saldo_Devedor_R$": 23085391.16,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 35966747.63999999,
       "total_amortization_running": 53505160.79999998
@@ -10816,7 +10816,7 @@
         "Amort_R$": 718348.12,
         "PMT_Total": 1039008.34,
         "Saldo_Devedor_R$": 22367043.05,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 36287407.85999999,
       "total_amortization_running": 54223508.91999998
@@ -10867,7 +10867,7 @@
         "Amort_R$": 592145.1,
         "PMT_Total": 955025.81,
         "Saldo_Devedor_R$": 21774897.95,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 36650288.56999999,
       "total_amortization_running": 54815654.01999998
@@ -10918,7 +10918,7 @@
         "Amort_R$": 612614.98,
         "PMT_Total": 948936.86,
         "Saldo_Devedor_R$": 21162282.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 36986610.449999996,
       "total_amortization_running": 55428268.99999998
@@ -10969,7 +10969,7 @@
         "Amort_R$": 499091.28,
         "PMT_Total": 875413.6,
         "Saldo_Devedor_R$": 20663191.69,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 37362932.769999996,
       "total_amortization_running": 55927360.27999998
@@ -11020,7 +11020,7 @@
         "Amort_R$": 529804.23,
         "PMT_Total": 832881.45,
         "Saldo_Devedor_R$": 20133387.45,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 37666009.989999995,
       "total_amortization_running": 56457164.509999976
@@ -11071,7 +11071,7 @@
         "Amort_R$": 531924.1,
         "PMT_Total": 889949.89,
         "Saldo_Devedor_R$": 19601463.36,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38024035.779999994,
       "total_amortization_running": 56989088.60999998
@@ -11122,7 +11122,7 @@
         "Amort_R$": 589553.21,
         "PMT_Total": 922836.85,
         "Saldo_Devedor_R$": 19011910.14,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38357319.419999994,
       "total_amortization_running": 57578641.81999998
@@ -11173,7 +11173,7 @@
         "Amort_R$": 570148.17,
         "PMT_Total": 878595.54,
         "Saldo_Devedor_R$": 18441761.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38665766.78999999,
       "total_amortization_running": 58148789.98999998
@@ -11224,7 +11224,7 @@
         "Amort_R$": 663737.45,
         "PMT_Total": 991681.59,
         "Saldo_Devedor_R$": 17778024.52,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 38993710.92999999,
       "total_amortization_running": 58812527.43999998
@@ -11275,7 +11275,7 @@
         "Amort_R$": 684933.95,
         "PMT_Total": 945693.0,
         "Saldo_Devedor_R$": 17093090.57,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 39254469.97999999,
       "total_amortization_running": 59497461.389999986
@@ -11326,7 +11326,7 @@
         "Amort_R$": 247730.16,
         "PMT_Total": 511739.68,
         "Saldo_Devedor_R$": 16845360.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 39518479.49999999,
       "total_amortization_running": 59745191.54999998
@@ -11377,7 +11377,7 @@
         "Amort_R$": 247727.87,
         "PMT_Total": 547283.69,
         "Saldo_Devedor_R$": 16597632.54,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 39818035.31999999,
       "total_amortization_running": 59992919.41999998
@@ -11428,7 +11428,7 @@
         "Amort_R$": 247719.67,
         "PMT_Total": 478263.76,
         "Saldo_Devedor_R$": 16349912.87,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40048579.41,
       "total_amortization_running": 60240639.08999998
@@ -11479,7 +11479,7 @@
         "Amort_R$": 247733.88,
         "PMT_Total": 500264.73,
         "Saldo_Devedor_R$": 16102178.99,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40301110.26,
       "total_amortization_running": 60488372.969999984
@@ -11530,7 +11530,7 @@
         "Amort_R$": 247732.02,
         "PMT_Total": 496436.52,
         "Saldo_Devedor_R$": 15854446.97,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40549814.76,
       "total_amortization_running": 60736104.98999999
@@ -11581,7 +11581,7 @@
         "Amort_R$": 247725.73,
         "PMT_Total": 504946.72,
         "Saldo_Devedor_R$": 15606721.23,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 40807035.75,
       "total_amortization_running": 60983830.719999984
@@ -11632,7 +11632,7 @@
         "Amort_R$": 247725.49,
         "PMT_Total": 500927.41,
         "Saldo_Devedor_R$": 15358995.75,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41060237.67,
       "total_amortization_running": 61231556.209999986
@@ -11683,7 +11683,7 @@
         "Amort_R$": 247725.24,
         "PMT_Total": 520849.5,
         "Saldo_Devedor_R$": 15111270.51,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41333361.93,
       "total_amortization_running": 61479281.44999999
@@ -11734,7 +11734,7 @@
         "Amort_R$": 247719.06,
         "PMT_Total": 492882.83,
         "Saldo_Devedor_R$": 14863551.45,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41578525.7,
       "total_amortization_running": 61727000.50999999
@@ -11785,7 +11785,7 @@
         "Amort_R$": 247730.81,
         "PMT_Total": 500455.75,
         "Saldo_Devedor_R$": 14615820.64,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 41831250.64,
       "total_amortization_running": 61974731.31999999
@@ -11836,7 +11836,7 @@
         "Amort_R$": 247723.54,
         "PMT_Total": 507632.15,
         "Saldo_Devedor_R$": 14368097.09,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42091159.25,
       "total_amortization_running": 62222454.85999999
@@ -11887,7 +11887,7 @@
         "Amort_R$": 247720.36,
         "PMT_Total": 458464.32,
         "Saldo_Devedor_R$": 14120376.73,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42301903.21,
       "total_amortization_running": 62470175.21999999
@@ -11938,7 +11938,7 @@
         "Amort_R$": 247727.89,
         "PMT_Total": 476815.5,
         "Saldo_Devedor_R$": 13872648.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42530990.82,
       "total_amortization_running": 62717903.10999999
@@ -11989,7 +11989,7 @@
         "Amort_R$": 247723.89,
         "PMT_Total": 461992.42,
         "Saldo_Devedor_R$": 13624924.95,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42745259.35,
       "total_amortization_running": 62965626.99999999
@@ -12040,7 +12040,7 @@
         "Amort_R$": 247728.39,
         "PMT_Total": 458170.72,
         "Saldo_Devedor_R$": 13377196.57,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 42955701.68,
       "total_amortization_running": 63213355.38999999
@@ -12091,7 +12091,7 @@
         "Amort_R$": 247732.3,
         "PMT_Total": 475184.75,
         "Saldo_Devedor_R$": 13129464.26,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43183154.13,
       "total_amortization_running": 63461087.68999999
@@ -12142,7 +12142,7 @@
         "Amort_R$": 247726.73,
         "PMT_Total": 460737.87,
         "Saldo_Devedor_R$": 12881737.53,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43396165.27,
       "total_amortization_running": 63708814.41999999
@@ -12193,7 +12193,7 @@
         "Amort_R$": 247728.69,
         "PMT_Total": 446692.2,
         "Saldo_Devedor_R$": 12634008.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43595128.78,
       "total_amortization_running": 63956543.109999985
@@ -12244,7 +12244,7 @@
         "Amort_R$": 247727.65,
         "PMT_Total": 462543.68,
         "Saldo_Devedor_R$": 12386281.19,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 43809944.81,
       "total_amortization_running": 64204270.75999998
@@ -12295,7 +12295,7 @@
         "Amort_R$": 247725.62,
         "PMT_Total": 458329.53,
         "Saldo_Devedor_R$": 12138555.57,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44020548.72,
       "total_amortization_running": 64451996.37999998
@@ -12346,7 +12346,7 @@
         "Amort_R$": 247723.64,
         "PMT_Total": 444658.38,
         "Saldo_Devedor_R$": 11890831.93,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44217483.46,
       "total_amortization_running": 64699720.01999998
@@ -12397,7 +12397,7 @@
         "Amort_R$": 247721.7,
         "PMT_Total": 440637.39,
         "Saldo_Devedor_R$": 11643110.23,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44410399.15,
       "total_amortization_running": 64947441.719999984
@@ -12448,7 +12448,7 @@
         "Amort_R$": 247730.46,
         "PMT_Total": 427562.88,
         "Saldo_Devedor_R$": 11395379.77,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44590231.57,
       "total_amortization_running": 65195172.179999985
@@ -12499,7 +12499,7 @@
         "Amort_R$": 247724.16,
         "PMT_Total": 432601.68,
         "Saldo_Devedor_R$": 11147655.61,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44775109.09,
       "total_amortization_running": 65442896.33999998
@@ -12550,7 +12550,7 @@
         "Amort_R$": 247723.2,
         "PMT_Total": 445958.5,
         "Saldo_Devedor_R$": 10899932.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 44973344.39,
       "total_amortization_running": 65690619.539999984
@@ -12601,7 +12601,7 @@
         "Amort_R$": 247722.76,
         "PMT_Total": 424562.2,
         "Saldo_Devedor_R$": 10652209.64,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45150183.83,
       "total_amortization_running": 65938342.29999998
@@ -12652,7 +12652,7 @@
         "Amort_R$": 247727.79,
         "PMT_Total": 395688.89,
         "Saldo_Devedor_R$": 10404481.86,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45298144.93,
       "total_amortization_running": 66186070.08999998
@@ -12703,7 +12703,7 @@
         "Amort_R$": 247730.71,
         "PMT_Total": 432750.38,
         "Saldo_Devedor_R$": 10156751.14,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45483164.6,
       "total_amortization_running": 66433800.79999998
@@ -12754,7 +12754,7 @@
         "Amort_R$": 247723.16,
         "PMT_Total": 396697.24,
         "Saldo_Devedor_R$": 9909027.98,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45632138.68,
       "total_amortization_running": 66681523.95999998
@@ -12805,7 +12805,7 @@
         "Amort_R$": 247725.7,
         "PMT_Total": 416208.88,
         "Saldo_Devedor_R$": 9661302.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45800621.86,
       "total_amortization_running": 66929249.65999998
@@ -12856,7 +12856,7 @@
         "Amort_R$": 247725.45,
         "PMT_Total": 404469.47,
         "Saldo_Devedor_R$": 9413576.83,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 45957365.88,
       "total_amortization_running": 67176975.10999998
@@ -12907,7 +12907,7 @@
         "Amort_R$": 247727.69,
         "PMT_Total": 400452.64,
         "Saldo_Devedor_R$": 9165849.15,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46110090.830000006,
       "total_amortization_running": 67424702.79999998
@@ -12958,7 +12958,7 @@
         "Amort_R$": 247725.4,
         "PMT_Total": 403572.31,
         "Saldo_Devedor_R$": 8918123.74,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46265937.74,
       "total_amortization_running": 67672428.19999999
@@ -13009,7 +13009,7 @@
         "Amort_R$": 247727.64,
         "PMT_Total": 392414.41,
         "Saldo_Devedor_R$": 8670396.1,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46410624.510000005,
       "total_amortization_running": 67920155.83999999
@@ -13060,7 +13060,7 @@
         "Amort_R$": 247721.89,
         "PMT_Total": 381639.57,
         "Saldo_Devedor_R$": 8422674.21,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46544542.190000005,
       "total_amortization_running": 68167877.72999999
@@ -13111,7 +13111,7 @@
         "Amort_R$": 247727.69,
         "PMT_Total": 384376.33,
         "Saldo_Devedor_R$": 8174946.52,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46681190.830000006,
       "total_amortization_running": 68415605.41999999
@@ -13162,7 +13162,7 @@
         "Amort_R$": 247725.4,
         "PMT_Total": 386724.0,
         "Saldo_Devedor_R$": 7927221.12,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46820189.43000001,
       "total_amortization_running": 68663330.82
@@ -13213,7 +13213,7 @@
         "Amort_R$": 247725.66,
         "PMT_Total": 382512.18,
         "Saldo_Devedor_R$": 7679495.46,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 46954975.95000001,
       "total_amortization_running": 68911056.47999999
@@ -13264,7 +13264,7 @@
         "Amort_R$": 247725.16,
         "PMT_Total": 354394.73,
         "Saldo_Devedor_R$": 7431770.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47061645.52000001,
       "total_amortization_running": 69158781.63999999
@@ -13315,7 +13315,7 @@
         "Amort_R$": 247723.2,
         "PMT_Total": 374085.57,
         "Saldo_Devedor_R$": 7184047.09,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47188007.89000001,
       "total_amortization_running": 69406504.83999999
@@ -13366,7 +13366,7 @@
         "Amort_R$": 247727.5,
         "PMT_Total": 347515.2,
         "Saldo_Devedor_R$": 6936319.6,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47287795.59000001,
       "total_amortization_running": 69654232.33999999
@@ -13417,7 +13417,7 @@
         "Amort_R$": 247723.72,
         "PMT_Total": 365661.95,
         "Saldo_Devedor_R$": 6688595.88,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47405733.82000001,
       "total_amortization_running": 69901956.05999999
@@ -13468,7 +13468,7 @@
         "Amort_R$": 247725.53,
         "PMT_Total": 361451.71,
         "Saldo_Devedor_R$": 6440870.35,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47519460.00000001,
       "total_amortization_running": 70149681.58999999
@@ -13519,7 +13519,7 @@
         "Amort_R$": 247728.76,
         "PMT_Total": 352224.81,
         "Saldo_Devedor_R$": 6193141.6,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47623956.050000004,
       "total_amortization_running": 70397410.35
@@ -13570,7 +13570,7 @@
         "Amort_R$": 247725.66,
         "PMT_Total": 353027.63,
         "Saldo_Devedor_R$": 5945415.94,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47729258.02,
       "total_amortization_running": 70645136.00999999
@@ -13621,7 +13621,7 @@
         "Amort_R$": 247727.65,
         "PMT_Total": 339556.94,
         "Saldo_Devedor_R$": 5697688.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47821087.31,
       "total_amortization_running": 70892863.66
@@ -13672,7 +13672,7 @@
         "Amort_R$": 247724.09,
         "PMT_Total": 340162.83,
         "Saldo_Devedor_R$": 5449964.2,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47913526.050000004,
       "total_amortization_running": 71140587.75
@@ -13723,7 +13723,7 @@
         "Amort_R$": 247728.12,
         "PMT_Total": 331904.96,
         "Saldo_Devedor_R$": 5202236.08,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 47997702.89000001,
       "total_amortization_running": 71388315.87
@@ -13774,7 +13774,7 @@
         "Amort_R$": 247725.28,
         "PMT_Total": 324029.04,
         "Saldo_Devedor_R$": 4954510.8,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48074006.650000006,
       "total_amortization_running": 71636041.15
@@ -13825,7 +13825,7 @@
         "Amort_R$": 247725.54,
         "PMT_Total": 328107.04,
         "Saldo_Devedor_R$": 4706785.26,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48154388.150000006,
       "total_amortization_running": 71883766.69000001
@@ -13876,7 +13876,7 @@
         "Amort_R$": 247727.52,
         "PMT_Total": 320425.67,
         "Saldo_Devedor_R$": 4459057.74,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48227086.300000004,
       "total_amortization_running": 72131494.21000001
@@ -13927,7 +13927,7 @@
         "Amort_R$": 247727.41,
         "PMT_Total": 320070.73,
         "Saldo_Devedor_R$": 4211330.32,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48299429.620000005,
       "total_amortization_running": 72379221.62
@@ -13978,7 +13978,7 @@
         "Amort_R$": 247727.29,
         "PMT_Total": 312772.95,
         "Saldo_Devedor_R$": 3963603.03,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48364475.28,
       "total_amortization_running": 72626948.91000001
@@ -14029,7 +14029,7 @@
         "Amort_R$": 247725.19,
         "PMT_Total": 315118.32,
         "Saldo_Devedor_R$": 3715877.84,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48431868.410000004,
       "total_amortization_running": 72874674.10000001
@@ -14080,7 +14080,7 @@
         "Amort_R$": 247726.43,
         "PMT_Total": 308012.47,
         "Saldo_Devedor_R$": 3468151.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48492154.45,
       "total_amortization_running": 73122400.53000002
@@ -14131,7 +14131,7 @@
         "Amort_R$": 247726.59,
         "PMT_Total": 306695.56,
         "Saldo_Devedor_R$": 3220424.83,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48551123.42,
       "total_amortization_running": 73370127.12000002
@@ -14182,7 +14182,7 @@
         "Amort_R$": 247724.74,
         "PMT_Total": 302481.62,
         "Saldo_Devedor_R$": 2972700.09,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48605880.300000004,
       "total_amortization_running": 73617851.86000001
@@ -14233,7 +14233,7 @@
         "Amort_R$": 247724.02,
         "PMT_Total": 291326.08,
         "Saldo_Devedor_R$": 2724976.07,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48649482.36000001,
       "total_amortization_running": 73865575.88000001
@@ -14284,7 +14284,7 @@
         "Amort_R$": 247724.85,
         "PMT_Total": 294057.61,
         "Saldo_Devedor_R$": 2477251.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48695815.120000005,
       "total_amortization_running": 74113300.73
@@ -14335,7 +14335,7 @@
         "Amort_R$": 247725.12,
         "PMT_Total": 285987.24,
         "Saldo_Devedor_R$": 2229526.1,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48734077.24,
       "total_amortization_running": 74361025.85000001
@@ -14386,7 +14386,7 @@
         "Amort_R$": 247724.87,
         "PMT_Total": 280426.43,
         "Saldo_Devedor_R$": 1981801.23,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48766778.800000004,
       "total_amortization_running": 74608750.72000001
@@ -14437,7 +14437,7 @@
         "Amort_R$": 247725.15,
         "PMT_Total": 282966.91,
         "Saldo_Devedor_R$": 1734076.07,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48802020.56,
       "total_amortization_running": 74856475.87000002
@@ -14488,7 +14488,7 @@
         "Amort_R$": 247724.91,
         "PMT_Total": 273159.46,
         "Saldo_Devedor_R$": 1486351.17,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48827455.11,
       "total_amortization_running": 75104200.78000002
@@ -14539,7 +14539,7 @@
         "Amort_R$": 247725.69,
         "PMT_Total": 270682.97,
         "Saldo_Devedor_R$": 1238625.48,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48850412.39,
       "total_amortization_running": 75351926.47000001
@@ -14590,7 +14590,7 @@
         "Amort_R$": 247725.1,
         "PMT_Total": 266856.16,
         "Saldo_Devedor_R$": 990900.38,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48869543.45,
       "total_amortization_running": 75599651.57000001
@@ -14641,7 +14641,7 @@
         "Amort_R$": 247725.1,
         "PMT_Total": 263801.37,
         "Saldo_Devedor_R$": 743175.29,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48885619.720000006,
       "total_amortization_running": 75847376.67
@@ -14692,7 +14692,7 @@
         "Amort_R$": 247724.85,
         "PMT_Total": 259782.05,
         "Saldo_Devedor_R$": 495450.44,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48897676.92000001,
       "total_amortization_running": 76095101.52
@@ -14743,7 +14743,7 @@
         "Amort_R$": 247725.22,
         "PMT_Total": 256535.66,
         "Saldo_Devedor_R$": 247725.22,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48906487.36000001,
       "total_amortization_running": 76342826.74
@@ -14794,7 +14794,7 @@
         "Amort_R$": 247725.22,
         "PMT_Total": 251744.29,
         "Saldo_Devedor_R$": 0.0,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 48910506.43000001,
       "total_amortization_running": 76590551.96
@@ -170507,8 +170507,8 @@
     "next_amortization_amount": 668486.38,
     "last_event_date": "15/07/2026",
     "final_balance": 0.0,
-    "duration_years": 2.943948521363534,
-    "wal_years": 3.1244519205795194,
+    "duration_years": 2.941210670576402,
+    "wal_years": 3.121714069792387,
     "tir_annual_pct": 6.389566608994047,
     "tir_monthly_pct": 0.5174787192671504,
     "contracted_rate_label": "CDI + 6.5%",
@@ -171037,12 +171037,12 @@
         "amount": 185781.2724305786
       }
     ],
-    "monthly_balance_variation": 287365.4099999964,
-    "monthly_balance_update": 287365.4099999964,
+    "monthly_balance_variation": 344324.68000000715,
+    "monthly_balance_update": 344324.68000000715,
     "monthly_balance_interest": 0.0,
     "monthly_balance_amortization": 0,
     "monthly_balance_reference_date": "31/07/2026",
-    "monthly_balance_current_date": "07/08/2026",
+    "monthly_balance_current_date": "10/08/2026",
     "monthly_balance_update_label": "Atualização CDI"
   },
   "timeline": [
@@ -171092,7 +171092,7 @@
         "Amort_R$": 668486.38,
         "PMT_Total": 1983413.39,
         "Saldo_Devedor_R$": 72654578.41,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs + ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | BCB/SGS12 diario com defasagem de 2 DUs + ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 4965711.96,
       "total_amortization_running": 3935973.56
@@ -171143,7 +171143,7 @@
         "Amort_R$": 1012804.82,
         "PMT_Total": 2134983.41,
         "Saldo_Devedor_R$": 71641773.59,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 6087890.55,
       "total_amortization_running": 4948778.38
@@ -171194,7 +171194,7 @@
         "Amort_R$": 769719.22,
         "PMT_Total": 1932028.33,
         "Saldo_Devedor_R$": 70872054.37,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 7250199.66,
       "total_amortization_running": 5718497.6
@@ -171245,7 +171245,7 @@
         "Amort_R$": 1336788.69,
         "PMT_Total": 2486609.95,
         "Saldo_Devedor_R$": 69535265.68,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 8400020.92,
       "total_amortization_running": 7055286.289999999
@@ -171296,7 +171296,7 @@
         "Amort_R$": 1113746.35,
         "PMT_Total": 2187745.93,
         "Saldo_Devedor_R$": 68421519.33,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 9474020.5,
       "total_amortization_running": 8169032.639999999
@@ -171347,14 +171347,14 @@
         "Amort_R$": 972817.16,
         "PMT_Total": 2082881.18,
         "Saldo_Devedor_R$": 67448702.17,
-        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026 | ultima Taxa DI disponivel carregada"
+        "Fonte_CDI": "BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026 | ultima Taxa DI disponivel carregada"
       },
       "total_interest_running": 10584084.52,
       "total_amortization_running": 9141849.799999999
     }
   ],
   "meta": {
-    "primary_source": "Fonte CDI: BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=09%2F08%2F2026",
+    "primary_source": "Fonte CDI: BCB SGS 12 | https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?formato=json&dataInicial=20%2F09%2F2024&dataFinal=10%2F08%2F2026",
     "notes": "AXS 10 inclui uma aba de PU diário em dias úteis, inspirada no histórico operacional da Vórtx."
   },
   "variant_options": [],
@@ -171506,6 +171506,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "09/08/2026 19:35:56",
-  "generated_at_iso": "2026-08-09T19:35:56"
+  "generated_at": "10/08/2026 08:00:11",
+  "generated_at_iso": "2026-08-10T08:00:11"
 }
