@@ -170623,13 +170623,13 @@
     {
       "id": "axs10",
       "label": "AXS 10",
-      "full_name": "AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
-      "current_balance": 73323064.79,
-      "next_payment_amount": 1983413.39,
-      "total_interest": 48910506.43,
-      "total_amortization": 76590551.96,
-      "event_count": 144,
-      "indexer": "CDI + 6,50%",
+      "full_name": "AXS - Emissão 2 / Série 1",
+      "current_balance": 168057015.38,
+      "next_payment_amount": 17009103.47,
+      "total_interest": 349117745.64,
+      "total_amortization": 375630641.17,
+      "event_count": 30,
+      "indexer": "IPCA + 13,6455%",
       "badge": "DEB"
     },
     {
@@ -170645,6 +170645,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "13/08/2026 08:00:08",
-  "generated_at_iso": "2026-08-13T08:00:08"
+  "generated_at": "13/08/2026 16:15:08",
+  "generated_at_iso": "2026-08-13T16:15:08"
 }

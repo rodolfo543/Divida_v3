@@ -541594,6 +541594,18 @@
       "badge": "DEB"
     },
     {
+      "id": "axs10",
+      "label": "AXS 10",
+      "full_name": "AXS - Emissão 2 / Série 1",
+      "current_balance": 168057015.38,
+      "next_payment_amount": 17009103.47,
+      "total_interest": 349117745.64,
+      "total_amortization": 375630641.17,
+      "event_count": 30,
+      "indexer": "IPCA + 13,6455%",
+      "badge": "DEB"
+    },
+    {
       "id": "axs04",
       "label": "AXS 04",
       "full_name": "AXS 4 - Emissao 139 / Serie UNICA",
@@ -541645,10 +541657,10 @@
       "id": "axs09",
       "label": "AXS 09",
       "full_name": "AXS ENERGIA 09 - Emissao 1 / Serie UNICA",
-      "current_balance": 109213702.7,
-      "next_payment_amount": 9334073.17,
-      "total_interest": 111305397.82,
-      "total_amortization": 154993433.03,
+      "current_balance": 109213947.27,
+      "next_payment_amount": 9569770.11,
+      "total_interest": 113969016.47,
+      "total_amortization": 158893352.86,
       "event_count": 28,
       "indexer": "IPCA + 10,98%",
       "badge": "DEB"
@@ -541678,18 +541690,6 @@
       "badge": "DEB"
     },
     {
-      "id": "axs10",
-      "label": "AXS 10",
-      "full_name": "AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
-      "current_balance": 73323064.79,
-      "next_payment_amount": 1983413.39,
-      "total_interest": 48910506.43,
-      "total_amortization": 76590551.96,
-      "event_count": 144,
-      "indexer": "CDI + 6,50%",
-      "badge": "DEB"
-    },
-    {
       "id": "axs07",
       "label": "AXS 07",
       "full_name": "AXS VII - Emissao 1 / Serie UNICA",
@@ -541702,6 +541702,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "13/08/2026 08:00:08",
-  "generated_at_iso": "2026-08-13T08:00:08"
+  "generated_at": "13/08/2026 16:15:08",
+  "generated_at_iso": "2026-08-13T16:15:08"
 }

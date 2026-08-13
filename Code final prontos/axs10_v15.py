@@ -1,573 +1,389 @@
 # -*- coding: utf-8 -*-
-"""
-AXS Energia Unidade 10 - Debenture AXS411 (Mezanino) - calculo PMT CDI + spread.
+"""Calculo da 2a emissao, 1a serie, da AXS Energia Unidade 10.
 
-Objetivo
-- Gerar uma saida de eventos no mesmo estilo do calculo da AXS 07.
-- Calcular a debenture AXS 10 pela escritura/aditamento:
-  sem atualizacao monetaria, 100% da Taxa DI + spread de 6,50% a.a. base 252,
-  juros mensais no dia 15, primeira amortizacao em 15/01/2026 e vencimento em
-  15/09/2036.
-- Usar CDI historico do BCB/SGS serie 12 como taxa diaria em % a.d. A taxa e
-  aplicada ao PU de calculo com defasagem operacional de 2 Dias Uteis, metodologia
-  que reproduz o historico de PUs da Vortx existente na pasta.
+Termos contratuais considerados:
+- Emissao: 15/05/2026; inicio da rentabilidade: 27/05/2026.
+- 162.500 debentures com PU de emissao de R$ 1.000,00.
+- Atualizacao monetaria mensal pelo IPCA.
+- Juros de 13,6455% a.a., base 252 dias uteis.
+- Cinco incorporacoes semestrais de juros ate 15/11/2028.
+- Juros e amortizacao semestrais de 15/05/2029 a 15/05/2041.
 
-Como rodar
-    python axs10_v6_cdi_fluxo.py
-
-Arquivos gerados
-    controle_divida_axs10_v6_cdi_fluxo.csv
-    controle_divida_axs10_v6_cdi_fluxo.xlsx
-
-Observacao sobre datas futuras
-- Para datas posteriores ao ultimo CDI divulgado pelo BCB, o script carrega a
-  ultima Taxa DI disponivel e sinaliza isso na coluna Fonte_CDI. Isso evita
-  imputar valores da Vortx como entrada.
+O motor de IPCA e Focus e compartilhado com a AXS Goias para manter a mesma
+metodologia e as mesmas fontes utilizadas pelas demais operacoes do portal.
 """
 
 from __future__ import annotations
 
-import csv
-import json
-import ssl
+import importlib.util
+import sys
 from datetime import date, datetime, timedelta
 from decimal import Decimal, ROUND_DOWN, ROUND_HALF_UP, getcontext
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
-from urllib.parse import urlencode
-from urllib.request import Request, urlopen
 
 getcontext().prec = 34
 
 BASE_DIR = Path(__file__).resolve().parent
+ENGINE_PATH = BASE_DIR / "axs_goias_v1.py"
 
-DATA_EMISSAO = date(2024, 9, 15)
-DATA_INICIO_RENTABILIDADE = date(2024, 9, 30)
-DATA_VENCIMENTO = date(2036, 9, 15)
-DATA_LIMITE_INCORPORACAO = date(2026, 4, 25)
-
-PERCENTUAL_CDI = Decimal("1.00000000")
-SPREAD_AA = Decimal("0.06500000")
-BASE_DU = Decimal("252")
-QUANTIDADE = Decimal("57000")
+DATA_EMISSAO = date(2026, 5, 15)
+DATA_INICIO_RENTABILIDADE = date(2026, 5, 27)
+DATA_VENCIMENTO = date(2041, 5, 15)
+TAXA_AA = Decimal("0.136455")
+QUANTIDADE = Decimal("162500")
 PU_INICIAL = Decimal("1000.00000000")
-DEFASAGEM_CDI_DU = 2
 
-ARQUIVO_SAIDA = BASE_DIR / "controle_divida_axs10_v6_cdi_fluxo.csv"
-ARQUIVO_SAIDA_XLSX = BASE_DIR / "controle_divida_axs10_v6_cdi_fluxo.xlsx"
-ARQUIVO_SAIDA_DIARIA = BASE_DIR / "controle_divida_axs10_v6_cdi_diario.csv"
-ARQUIVO_SAIDA_DIARIA_XLSX = BASE_DIR / "controle_divida_axs10_v6_cdi_diario.xlsx"
+DATAS_INCORPORACAO_NOMINAIS = [
+    date(2026, 11, 15),
+    date(2027, 5, 15),
+    date(2027, 11, 15),
+    date(2028, 5, 15),
+    date(2028, 11, 15),
+]
 
-# Anexo IV do 1o Aditamento a Escritura de Emissao.
-# Campos: data, % do saldo do VNU a ser amortizado, paga juros remuneratorios.
+# Anexo II da Escritura de Emissao. Os percentuais incidem sobre o saldo do
+# Valor Nominal Unitario Atualizado existente em cada data.
 CRONOGRAMA_RAW = [
-    ("2024-10-15", "0.0000", "SIM"), ("2024-11-15", "0.0000", "SIM"),
-    ("2024-12-15", "0.0000", "SIM"), ("2025-01-15", "0.0000", "SIM"),
-    ("2025-02-15", "0.0000", "SIM"), ("2025-03-15", "0.0000", "SIM"),
-    ("2025-04-15", "0.0000", "SIM"), ("2025-05-15", "0.0000", "SIM"),
-    ("2025-06-15", "0.0000", "SIM"), ("2025-07-15", "0.0000", "SIM"),
-    ("2025-08-15", "0.0000", "SIM"), ("2025-09-15", "0.0000", "SIM"),
-    ("2025-10-15", "0.0000", "SIM"), ("2025-11-15", "0.0000", "SIM"),
-    ("2025-12-15", "0.0000", "SIM"), ("2026-01-15", "1.5510", "SIM"),
-    ("2026-02-15", "2.6749", "SIM"), ("2026-03-15", "2.7952", "SIM"),
-    ("2026-04-15", "2.3156", "SIM"), ("2026-05-15", "3.7122", "SIM"),
-    ("2026-06-15", "0.2090", "SIM"), ("2026-07-15", "0.3671", "SIM"),
-    ("2026-08-15", "0.9117", "SIM"), ("2026-09-15", "1.3940", "SIM"),
-    ("2026-10-15", "1.0744", "SIM"), ("2026-11-15", "1.8862", "SIM"),
-    ("2026-12-15", "1.6017", "SIM"), ("2027-01-15", "1.4218", "SIM"),
-    ("2027-02-15", "1.3081", "SIM"), ("2027-03-15", "2.0087", "SIM"),
-    ("2027-04-15", "1.7702", "SIM"), ("2027-05-15", "1.8723", "SIM"),
-    ("2027-06-15", "8.6666", "SIM"), ("2027-07-15", "1.9521", "SIM"),
-    ("2027-08-15", "1.9883", "SIM"), ("2027-09-15", "2.1784", "SIM"),
-    ("2027-10-15", "2.3273", "SIM"), ("2027-11-15", "2.6724", "SIM"),
-    ("2027-12-15", "3.3078", "SIM"), ("2028-01-15", "2.5396", "SIM"),
-    ("2028-02-15", "2.5988", "SIM"), ("2028-03-15", "2.8187", "SIM"),
-    ("2028-04-15", "2.5305", "SIM"), ("2028-05-15", "2.6909", "SIM"),
-    ("2028-06-15", "2.5110", "SIM"), ("2028-07-15", "2.7120", "SIM"),
-    ("2028-08-15", "2.7788", "SIM"), ("2028-09-15", "3.0491", "SIM"),
-    ("2028-10-15", "2.6392", "SIM"), ("2028-11-15", "3.0616", "SIM"),
-    ("2028-12-15", "3.3940", "SIM"), ("2029-01-15", "2.8847", "SIM"),
-    ("2029-02-15", "2.9639", "SIM"), ("2029-03-15", "3.2419", "SIM"),
-    ("2029-04-15", "2.8997", "SIM"), ("2029-05-15", "3.1064", "SIM"),
-    ("2029-06-15", "2.8806", "SIM"), ("2029-07-15", "3.1318", "SIM"),
-    ("2029-08-15", "3.2261", "SIM"), ("2029-09-15", "3.5835", "SIM"),
-    ("2029-10-15", "2.4980", "SIM"), ("2029-11-15", "2.9917", "SIM"),
-    ("2029-12-15", "3.1512", "SIM"), ("2030-01-15", "2.7167", "SIM"),
-    ("2030-02-15", "2.7939", "SIM"), ("2030-03-15", "3.1117", "SIM"),
-    ("2030-04-15", "2.6474", "SIM"), ("2030-05-15", "2.8134", "SIM"),
-    ("2030-06-15", "2.3584", "SIM"), ("2030-07-15", "2.5640", "SIM"),
-    ("2030-08-15", "2.6420", "SIM"), ("2030-09-15", "3.0077", "SIM"),
-    ("2030-10-15", "2.9989", "SIM"), ("2030-11-15", "3.5991", "SIM"),
-    ("2030-12-15", "3.8527", "SIM"), ("2031-01-15", "1.4493", "SIM"),
-    ("2031-02-15", "1.4706", "SIM"), ("2031-03-15", "1.4925", "SIM"),
-    ("2031-04-15", "1.5152", "SIM"), ("2031-05-15", "1.5385", "SIM"),
-    ("2031-06-15", "1.5625", "SIM"), ("2031-07-15", "1.5873", "SIM"),
-    ("2031-08-15", "1.6129", "SIM"), ("2031-09-15", "1.6393", "SIM"),
-    ("2031-10-15", "1.6667", "SIM"), ("2031-11-15", "1.6949", "SIM"),
-    ("2031-12-15", "1.7241", "SIM"), ("2032-01-15", "1.7544", "SIM"),
-    ("2032-02-15", "1.7857", "SIM"), ("2032-03-15", "1.8182", "SIM"),
-    ("2032-04-15", "1.8519", "SIM"), ("2032-05-15", "1.8868", "SIM"),
-    ("2032-06-15", "1.9231", "SIM"), ("2032-07-15", "1.9608", "SIM"),
-    ("2032-08-15", "2.0000", "SIM"), ("2032-09-15", "2.0408", "SIM"),
-    ("2032-10-15", "2.0833", "SIM"), ("2032-11-15", "2.1277", "SIM"),
-    ("2032-12-15", "2.1739", "SIM"), ("2033-01-15", "2.2222", "SIM"),
-    ("2033-02-15", "2.2727", "SIM"), ("2033-03-15", "2.3256", "SIM"),
-    ("2033-04-15", "2.3810", "SIM"), ("2033-05-15", "2.4390", "SIM"),
-    ("2033-06-15", "2.5000", "SIM"), ("2033-07-15", "2.5641", "SIM"),
-    ("2033-08-15", "2.6316", "SIM"), ("2033-09-15", "2.7027", "SIM"),
-    ("2033-10-15", "2.7778", "SIM"), ("2033-11-15", "2.8571", "SIM"),
-    ("2033-12-15", "2.9412", "SIM"), ("2034-01-15", "3.0303", "SIM"),
-    ("2034-02-15", "3.1250", "SIM"), ("2034-03-15", "3.2258", "SIM"),
-    ("2034-04-15", "3.3333", "SIM"), ("2034-05-15", "3.4483", "SIM"),
-    ("2034-06-15", "3.5714", "SIM"), ("2034-07-15", "3.7037", "SIM"),
-    ("2034-08-15", "3.8462", "SIM"), ("2034-09-15", "4.0000", "SIM"),
-    ("2034-10-15", "4.1667", "SIM"), ("2034-11-15", "4.3478", "SIM"),
-    ("2034-12-15", "4.5455", "SIM"), ("2035-01-15", "4.7619", "SIM"),
-    ("2035-02-15", "5.0000", "SIM"), ("2035-03-15", "5.2632", "SIM"),
-    ("2035-04-15", "5.5556", "SIM"), ("2035-05-15", "5.8824", "SIM"),
-    ("2035-06-15", "6.2500", "SIM"), ("2035-07-15", "6.6667", "SIM"),
-    ("2035-08-15", "7.1429", "SIM"), ("2035-09-15", "7.6923", "SIM"),
-    ("2035-10-15", "8.3333", "SIM"), ("2035-11-15", "9.0909", "SIM"),
-    ("2035-12-15", "10.0000", "SIM"), ("2036-01-15", "11.1111", "SIM"),
-    ("2036-02-15", "12.5000", "SIM"), ("2036-03-15", "14.2857", "SIM"),
-    ("2036-04-15", "16.6667", "SIM"), ("2036-05-15", "20.0000", "SIM"),
-    ("2036-06-15", "25.0000", "SIM"), ("2036-07-15", "33.3333", "SIM"),
-    ("2036-08-15", "50.0000", "SIM"), ("2036-09-15", "100.0000", "SIM"),
-]
-
-CRONOGRAMA = [
-    (datetime.strptime(d, "%Y-%m-%d").date(), Decimal(p) / Decimal("100"), j.upper() == "SIM")
-    for d, p, j in CRONOGRAMA_RAW
+    ("2029-05-15", "0.5000"), ("2029-11-15", "0.5025"),
+    ("2030-05-15", "1.0570"), ("2030-11-15", "1.0683"),
+    ("2031-05-15", "1.3894"), ("2031-11-15", "1.4592"),
+    ("2032-05-15", "3.8140"), ("2032-11-15", "4.0024"),
+    ("2033-05-15", "4.1105"), ("2033-11-15", "3.9684"),
+    ("2034-05-15", "4.3218"), ("2034-11-15", "4.4782"),
+    ("2035-05-15", "4.9136"), ("2035-11-15", "5.4347"),
+    ("2036-05-15", "6.0445"), ("2036-11-15", "6.8221"),
+    ("2037-05-15", "7.7272"), ("2037-11-15", "8.8815"),
+    ("2038-05-15", "10.5027"), ("2038-11-15", "13.6206"),
+    ("2039-05-15", "16.5325"), ("2039-11-15", "20.8645"),
+    ("2040-05-15", "27.6699"), ("2040-11-15", "40.2696"),
+    ("2041-05-15", "100.0000"),
 ]
 
 
-def trunc_dec(x: Decimal, casas: int = 8) -> Decimal:
-    return x.quantize(Decimal("1").scaleb(-casas), rounding=ROUND_DOWN)
+def _carregar_engine_ipca():
+    module_name = "axs10_ipca_shared_engine"
+    spec = importlib.util.spec_from_file_location(module_name, ENGINE_PATH)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Nao foi possivel carregar o motor IPCA: {ENGINE_PATH}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
-def round_dec(x: Decimal, casas: int = 2) -> Decimal:
-    return x.quantize(Decimal("1").scaleb(-casas), rounding=ROUND_HALF_UP)
+_ENGINE = _carregar_engine_ipca()
 
 
-def data_ptbr(dt: date) -> str:
-    return dt.strftime("%d/%m/%Y")
+def trunc_dec(value: Decimal, casas: int = 8) -> Decimal:
+    return value.quantize(Decimal("1").scaleb(-casas), rounding=ROUND_DOWN)
 
 
-def easter_date(year: int) -> date:
-    a = year % 19
-    b = year // 100
-    c = year % 100
-    d = b // 4
-    e = b % 4
-    f = (b + 8) // 25
-    g = (b - f + 1) // 3
-    h = (19 * a + b - d - g + 15) % 30
-    i = c // 4
-    k = c % 4
-    l = (32 + 2 * e + 2 * i - h - k) % 7
-    m = (a + 11 * h + 22 * l) // 451
-    month = (h + l - 7 * m + 114) // 31
-    day = ((h + l - 7 * m + 114) % 31) + 1
-    return date(year, month, day)
-
-
-def feriados_nacionais(start_year: int = 2024, end_year: int = 2036) -> set[date]:
-    fs: set[date] = set()
-    for y in range(start_year, end_year + 1):
-        pascoa = easter_date(y)
-        fs.update({
-            date(y, 1, 1),
-            pascoa - timedelta(days=48),
-            pascoa - timedelta(days=47),
-            pascoa - timedelta(days=2),
-            date(y, 4, 21),
-            date(y, 5, 1),
-            pascoa + timedelta(days=60),
-            date(y, 9, 7),
-            date(y, 10, 12),
-            date(y, 11, 2),
-            date(y, 11, 15),
-            date(y, 11, 20),
-            date(y, 12, 25),
-        })
-    return fs
-
-
-FERIADOS = feriados_nacionais()
+def round_dec(value: Decimal, casas: int = 2) -> Decimal:
+    return value.quantize(Decimal("1").scaleb(-casas), rounding=ROUND_HALF_UP)
 
 
 def eh_dia_util(dt: date) -> bool:
-    return dt.weekday() < 5 and dt not in FERIADOS
+    return bool(_ENGINE.eh_dia_util(dt))
 
 
 def proximo_dia_util(dt: date) -> date:
-    out = dt
-    while not eh_dia_util(out):
-        out += timedelta(days=1)
-    return out
+    resultado = dt
+    while not eh_dia_util(resultado):
+        resultado += timedelta(days=1)
+    return resultado
 
 
-def dia_util_anterior(dt: date) -> date:
-    out = dt - timedelta(days=1)
-    while not eh_dia_util(out):
-        out -= timedelta(days=1)
-    return out
-
-
-def iter_dias_uteis_periodo(inicio: date, fim: date) -> Iterable[date]:
-    """Itera os DUs do calculo em (inicio, fim], padrao observado no PU Vortx."""
-    dt = inicio + timedelta(days=1)
-    while dt <= fim:
+def iter_dias_uteis(inicio_exclusivo: date, fim_inclusivo: date) -> Iterable[date]:
+    dt = inicio_exclusivo + timedelta(days=1)
+    while dt <= fim_inclusivo:
         if eh_dia_util(dt):
             yield dt
         dt += timedelta(days=1)
 
 
-def iter_dias_periodo(inicio: date, fim: date) -> Iterable[date]:
-    dt = inicio + timedelta(days=1)
-    while dt <= fim:
-        yield dt
-        dt += timedelta(days=1)
+CRONOGRAMA_NOMINAL = [
+    (datetime.strptime(data_txt, "%Y-%m-%d").date(), Decimal(percentual) / Decimal("100"))
+    for data_txt, percentual in CRONOGRAMA_RAW
+]
+CRONOGRAMA = [(proximo_dia_util(dt), percentual) for dt, percentual in CRONOGRAMA_NOMINAL]
+DATAS_INCORPORACAO_JUROS = [proximo_dia_util(dt) for dt in DATAS_INCORPORACAO_NOMINAIS]
+
+# Configura o motor compartilhado antes de chamar suas rotinas de IPCA/Focus.
+_ENGINE.DATA_EMISSAO = DATA_EMISSAO
+_ENGINE.DATA_INICIO_RENTABILIDADE = DATA_INICIO_RENTABILIDADE
+_ENGINE.DATAS_INCORPORACAO_JUROS = DATAS_INCORPORACAO_JUROS
+_ENGINE.TAXA_AA = TAXA_AA
+_ENGINE.QUANTIDADE = QUANTIDADE
+_ENGINE.PU_INICIAL = PU_INICIAL
+_ENGINE.CRONOGRAMA_RAW = CRONOGRAMA_RAW
+_ENGINE.CRONOGRAMA = CRONOGRAMA
 
 
-def obter_json_url(url: str, timeout: int = 45) -> object:
-    ctx = ssl.create_default_context()
-    req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(req, timeout=timeout, context=ctx) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+def obter_ipca_numero_indice_sidra() -> Tuple[Dict[str, Decimal], str]:
+    return _ENGINE.obter_ipca_numero_indice_sidra()
 
 
-def obter_cdi_sgs12(data_inicial: date, data_final: date) -> Tuple[Dict[date, Decimal], str]:
-    params = {
-        "formato": "json",
-        "dataInicial": data_inicial.strftime("%d/%m/%Y"),
-        "dataFinal": data_final.strftime("%d/%m/%Y"),
+def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, Decimal], Dict[str, str]]:
+    return _ENGINE.preencher_indices_futuros(indices)
+
+
+def fator_juros_252(dias_uteis: int) -> Decimal:
+    bruto = Decimal(str((1.0 + float(TAXA_AA)) ** (dias_uteis / 252.0)))
+    return bruto.quantize(Decimal("0.000000001"), rounding=ROUND_HALF_UP)
+
+
+def _fator_ipca_parcial(
+    indices: Dict[str, Decimal],
+    inicio: date,
+    fim: date,
+    proximo_aniversario: date,
+) -> Decimal:
+    if fim <= inicio:
+        return Decimal("1.00000000")
+
+    _, _, _, ni_k, ni_k_1 = _ENGINE.fator_ipca(indices, proximo_aniversario)
+    mes_anterior = _ENGINE.add_months(proximo_aniversario, -1)
+    inicio_aniversario = date(mes_anterior.year, mes_anterior.month, 15)
+    dias_decorridos = _ENGINE.dias_uteis(inicio, fim)
+    dias_periodo = _ENGINE.dias_uteis(inicio_aniversario, proximo_aniversario)
+    if dias_periodo <= 0 or dias_decorridos <= 0:
+        return Decimal("1.00000000")
+
+    fator = Decimal(str(float(ni_k / ni_k_1) ** (dias_decorridos / dias_periodo)))
+    return trunc_dec(fator, 8)
+
+
+def atualizar_ipca_ate_data(
+    saldo_abertura: Decimal,
+    data_base_ipca: date,
+    data_calculo: date,
+    indices: Dict[str, Decimal],
+) -> Decimal:
+    """Atualiza o VNA ate uma data qualquer, inclusive no meio do mes."""
+    saldo = trunc_dec(saldo_abertura, 8)
+    if data_calculo <= data_base_ipca:
+        return saldo
+
+    data_atual = data_base_ipca
+    proximo_aniversario = _ENGINE.proxima_data_aniversario(data_atual)
+
+    while proximo_aniversario <= data_calculo:
+        if data_atual == proximo_aniversario:
+            proximo_mes = _ENGINE.add_months(proximo_aniversario, 1)
+            proximo_aniversario = date(proximo_mes.year, proximo_mes.month, 15)
+            continue
+
+        if data_atual.day == 15:
+            fator, *_ = _ENGINE.fator_ipca(indices, proximo_aniversario)
+        else:
+            fator, *_ = _ENGINE.fator_ipca_prorata(indices, proximo_aniversario, data_atual)
+        saldo = trunc_dec(saldo * fator, 8)
+        data_atual = proximo_aniversario
+        proximo_mes = _ENGINE.add_months(proximo_aniversario, 1)
+        proximo_aniversario = date(proximo_mes.year, proximo_mes.month, 15)
+
+    if data_atual < data_calculo:
+        fator_parcial = _fator_ipca_parcial(indices, data_atual, data_calculo, proximo_aniversario)
+        saldo = trunc_dec(saldo * fator_parcial, 8)
+
+    return saldo
+
+
+def _linha_diaria_inicial() -> Dict[str, object]:
+    return {
+        "Evento": 0,
+        "Data": DATA_INICIO_RENTABILIDADE.strftime("%d/%m/%Y"),
+        "Data_Ref_Evento": DATA_INICIO_RENTABILIDADE.strftime("%d/%m/%Y"),
+        "Data_Pgto_Evento": DATA_INICIO_RENTABILIDADE.strftime("%d/%m/%Y"),
+        "Data_Inicio_Periodo": DATA_INICIO_RENTABILIDADE.strftime("%d/%m/%Y"),
+        "Dia_Util": "SIM",
+        "DU_Acumulado": 0,
+        "PU_VNa_Abertura_Periodo": PU_INICIAL,
+        "PU_VNa_Atualizado_Dia": PU_INICIAL,
+        "PU_Juros_Acumulado": Decimal("0.00000000"),
+        "PU_Valor_Bruto": PU_INICIAL,
+        "PU_Juros_Pago_Dia": Decimal("0.00000000"),
+        "PU_Juros_Capitalizado_Dia": Decimal("0.00000000"),
+        "PU_Amort_Dia": Decimal("0.00000000"),
+        "PU_Total_Pago_Dia": Decimal("0.00000000"),
+        "PU_Saldo_Fechamento_Dia": PU_INICIAL,
+        "Saldo_Bruto_R$": round_dec(PU_INICIAL * QUANTIDADE, 2),
+        "Saldo_Fechamento_R$": round_dec(PU_INICIAL * QUANTIDADE, 2),
+        "Tipo_Dia": "EMISSAO",
+        "Fonte_Indexador": "IPCA SIDRA/IBGE e projecoes Focus/BCB",
     }
-    url = f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.12/dados?{urlencode(params)}"
-    dados = obter_json_url(url)
-    if not isinstance(dados, list):
-        raise RuntimeError(f"BCB/SGS retornou layout inesperado: {type(dados).__name__}")
-
-    out: Dict[date, Decimal] = {}
-    for item in dados:
-        if not isinstance(item, dict):
-            continue
-        if "data" not in item or "valor" not in item:
-            continue
-        dt = datetime.strptime(str(item["data"]), "%d/%m/%Y").date()
-        out[dt] = Decimal(str(item["valor"]).replace(",", ".")) / Decimal("100")
-
-    if not out:
-        raise RuntimeError("BCB/SGS 12 retornou vazio.")
-
-    return out, f"BCB SGS 12 | {url}"
-
-
-def taxa_cdi_para_data_calculo(data_calculo: date, cdi: Dict[date, Decimal]) -> Tuple[date, Decimal, str]:
-    ref = data_calculo
-    for _ in range(DEFASAGEM_CDI_DU):
-        ref = dia_util_anterior(ref)
-    if ref in cdi:
-        return ref, cdi[ref], f"BCB/SGS12 diario com defasagem de {DEFASAGEM_CDI_DU} DUs"
-
-    datas_anteriores = [dt for dt in cdi if dt <= ref]
-    if datas_anteriores:
-        ultima = max(datas_anteriores)
-        return ultima, cdi[ultima], "ultima Taxa DI disponivel carregada"
-
-    raise RuntimeError(f"CDI SGS 12 nao encontrado ate {data_ptbr(ref)}.")
-
-
-def fator_di_periodo(inicio: date, fim: date, cdi: Dict[date, Decimal]) -> Tuple[Decimal, int, str, date | None, date | None]:
-    acc = Decimal("1.0000000000000000")
-    du = 0
-    fontes: set[str] = set()
-    primeira_ref: date | None = None
-    ultima_ref: date | None = None
-
-    for data_calc in iter_dias_uteis_periodo(inicio, fim):
-        ref_cdi, taxa_dia, fonte = taxa_cdi_para_data_calculo(data_calc, cdi)
-        tdik = round_dec(Decimal("1") + (taxa_dia * PERCENTUAL_CDI), 8)
-        acc = trunc_dec(acc * tdik, 16)
-        du += 1
-        fontes.add(fonte)
-        primeira_ref = ref_cdi if primeira_ref is None else min(primeira_ref, ref_cdi)
-        ultima_ref = ref_cdi if ultima_ref is None else max(ultima_ref, ref_cdi)
-
-    return round_dec(acc, 8), du, " + ".join(sorted(fontes)), primeira_ref, ultima_ref
-
-
-def fator_spread_periodo(du: int) -> Decimal:
-    bruto = (Decimal("1") + SPREAD_AA) ** (Decimal(du) / BASE_DU)
-    return round_dec(bruto, 9)
 
 
 def detalhar_periodo_diario(
     numero_evento: int,
     data_inicio_periodo: date,
-    data_ref_evento: date,
-    data_pagto_evento: date,
-    pu_vna_ini: Decimal,
-    cdi: Dict[date, Decimal],
-) -> Tuple[Decimal, int, str, date | None, date | None, List[Dict[str, object]]]:
-    acc_di = Decimal("1.0000000000000000")
-    du = 0
-    fontes: set[str] = set()
-    primeira_ref: date | None = None
-    ultima_ref: date | None = None
+    data_base_ipca: date,
+    data_evento: date,
+    saldo_abertura: Decimal,
+    percentual_amortizacao: Decimal,
+    incorpora_juros: bool,
+    indices: Dict[str, Decimal],
+) -> List[Dict[str, object]]:
     linhas: List[Dict[str, object]] = []
+    for data_corrente in iter_dias_uteis(data_inicio_periodo, data_evento):
+        du = _ENGINE.dias_uteis(data_inicio_periodo, data_corrente)
+        fator_juros = fator_juros_252(du)
+        pu_vna = atualizar_ipca_ate_data(saldo_abertura, data_base_ipca, data_corrente, indices)
+        pu_juros = trunc_dec(pu_vna * (fator_juros - Decimal("1")), 8)
+        pu_cheio = trunc_dec(pu_vna + pu_juros, 8)
 
-    for data_corrente in iter_dias_periodo(data_inicio_periodo, data_pagto_evento):
-        eh_util_dia = eh_dia_util(data_corrente)
-        ref_cdi_txt = ""
-        fonte_cdi_dia = ""
-        taxa_cdi_pct: Decimal | str = ""
-        fator_di_dia: Decimal | str = ""
+        eh_evento = data_corrente == data_evento
+        pu_juros_pago = Decimal("0.00000000")
+        pu_juros_capitalizado = Decimal("0.00000000")
+        pu_amort = Decimal("0.00000000")
+        pu_total_pago = Decimal("0.00000000")
+        pu_fechamento = pu_cheio
+        tipo_dia = "ACUMULACAO"
 
-        if eh_util_dia:
-            ref_cdi, taxa_dia, fonte_cdi_dia = taxa_cdi_para_data_calculo(data_corrente, cdi)
-            fator_di_dia = round_dec(Decimal("1") + (taxa_dia * PERCENTUAL_CDI), 8)
-            taxa_cdi_pct = round_dec(taxa_dia * Decimal("100"), 6)
-            acc_di = trunc_dec(acc_di * fator_di_dia, 16)
-            du += 1
-            fontes.add(fonte_cdi_dia)
-            primeira_ref = ref_cdi if primeira_ref is None else min(primeira_ref, ref_cdi)
-            ultima_ref = ref_cdi if ultima_ref is None else max(ultima_ref, ref_cdi)
-            ref_cdi_txt = ref_cdi.strftime("%d/%m/%Y")
-
-        fator_di_acumulado = round_dec(acc_di, 8)
-        fator_spread_acumulado = fator_spread_periodo(du)
-        fator_juros_acumulado = round_dec(fator_di_acumulado * fator_spread_acumulado, 9)
-        pu_juros_acumulado = trunc_dec(pu_vna_ini * (fator_juros_acumulado - Decimal("1")), 8)
-        pu_valor_bruto = trunc_dec(pu_vna_ini + pu_juros_acumulado, 8)
+        if eh_evento and incorpora_juros:
+            pu_juros_capitalizado = pu_juros
+            pu_fechamento = pu_cheio
+            tipo_dia = "CAPITALIZACAO"
+        elif eh_evento:
+            pu_juros_pago = pu_juros
+            pu_amort = trunc_dec(pu_vna * percentual_amortizacao, 8)
+            if percentual_amortizacao == Decimal("1"):
+                pu_amort = pu_vna
+            pu_total_pago = trunc_dec(pu_juros_pago + pu_amort, 8)
+            pu_fechamento = trunc_dec(pu_vna - pu_amort, 8)
+            tipo_dia = "PAGAMENTO_JUROS_E_AMORTIZACAO"
 
         linhas.append({
             "Evento": numero_evento,
             "Data": data_corrente.strftime("%d/%m/%Y"),
-            "Data_Ref_Evento": data_ref_evento.strftime("%d/%m/%Y"),
-            "Data_Pgto_Evento": data_pagto_evento.strftime("%d/%m/%Y"),
+            "Data_Ref_Evento": data_evento.strftime("%d/%m/%Y"),
+            "Data_Pgto_Evento": data_evento.strftime("%d/%m/%Y"),
             "Data_Inicio_Periodo": data_inicio_periodo.strftime("%d/%m/%Y"),
-            "Dia_Util": "SIM" if eh_util_dia else "NAO",
+            "Dia_Util": "SIM",
             "DU_Acumulado": du,
-            "Data_Ref_CDI": ref_cdi_txt,
-            "Taxa_CDI_Pct_AD": taxa_cdi_pct,
-            "Fator_DI_Dia": fator_di_dia,
-            "Fator_DI_Acumulado": fator_di_acumulado,
-            "Fator_Spread_Acumulado": fator_spread_acumulado,
-            "Fator_Juros_Acumulado": fator_juros_acumulado,
-            "PU_VNa_Abertura_Periodo": pu_vna_ini,
-            "PU_Juros_Acumulado": pu_juros_acumulado,
-            "PU_Valor_Bruto": pu_valor_bruto,
-            "PU_Juros_Pago_Dia": Decimal("0.00000000"),
-            "PU_Juros_Capitalizado_Dia": Decimal("0.00000000"),
-            "PU_Amort_Dia": Decimal("0.00000000"),
-            "PU_Total_Pago_Dia": Decimal("0.00000000"),
-            "PU_Saldo_Fechamento_Dia": pu_valor_bruto,
-            "Saldo_Bruto_R$": round_dec(pu_valor_bruto * QUANTIDADE, 2),
-            "Saldo_Fechamento_R$": round_dec(pu_valor_bruto * QUANTIDADE, 2),
-            "Tipo_Dia": "DATA_PAGAMENTO" if data_corrente == data_pagto_evento else "ACUMULACAO",
-            "Fonte_CDI_Dia": fonte_cdi_dia,
+            "Fator_Juros_Acumulado": fator_juros,
+            "PU_VNa_Abertura_Periodo": saldo_abertura,
+            "PU_VNa_Atualizado_Dia": pu_vna,
+            "PU_Juros_Acumulado": pu_juros,
+            "PU_Valor_Bruto": pu_cheio,
+            "PU_Juros_Pago_Dia": pu_juros_pago,
+            "PU_Juros_Capitalizado_Dia": pu_juros_capitalizado,
+            "PU_Amort_Dia": pu_amort,
+            "PU_Total_Pago_Dia": pu_total_pago,
+            "PU_Saldo_Fechamento_Dia": pu_fechamento,
+            "Saldo_Bruto_R$": round_dec(pu_vna * QUANTIDADE, 2),
+            "Saldo_Fechamento_R$": round_dec(pu_fechamento * QUANTIDADE, 2),
+            "Tipo_Dia": tipo_dia,
+            "Fonte_Indexador": "IPCA SIDRA/IBGE e projecoes Focus/BCB",
         })
-
-    return round_dec(acc_di, 8), du, " + ".join(sorted(fontes)), primeira_ref, ultima_ref, linhas
-
-
-def caminho_alternativo(caminho: str | Path) -> Path:
-    path = Path(caminho)
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    return path.with_name(f"{path.stem}_{timestamp}{path.suffix}")
-
-
-def salvar_com_fallback(funcao_salvar, linhas: List[Dict[str, object]], caminho: str | Path) -> Tuple[Path, bool]:
-    path = Path(caminho)
-    try:
-        funcao_salvar(linhas, path)
-        return path, False
-    except PermissionError:
-        alternativa = caminho_alternativo(path)
-        funcao_salvar(linhas, alternativa)
-        return alternativa, True
-
-
-def houve_incorporacao_ate(data_pagto: date) -> bool:
-    return data_pagto <= DATA_LIMITE_INCORPORACAO
+    return linhas
 
 
 def calcular_fluxo() -> Tuple[List[Dict[str, object]], List[Dict[str, object]], str]:
-    data_fim_cdi = max(date.today(), DATA_INICIO_RENTABILIDADE)
-    cdi, fonte_base = obter_cdi_sgs12(DATA_INICIO_RENTABILIDADE - timedelta(days=10), data_fim_cdi)
+    indices, fonte_ipca = obter_ipca_numero_indice_sidra()
+    indices, fonte_mes = preencher_indices_futuros(indices)
 
     saldo_pu = trunc_dec(PU_INICIAL, 8)
     data_ref_juros = DATA_INICIO_RENTABILIDADE
+    data_base_ipca = DATA_INICIO_RENTABILIDADE
     linhas: List[Dict[str, object]] = []
-    linhas_diarias: List[Dict[str, object]] = []
+    linhas_diarias: List[Dict[str, object]] = [_linha_diaria_inicial()]
+    numero_evento = 0
 
-    for idx, (data_ref, perc_amort, paga_juros) in enumerate(CRONOGRAMA, start=1):
-        data_pagto = proximo_dia_util(data_ref)
-        pu_vna_ini = trunc_dec(saldo_pu, 8)
-        incorpora_periodo = houve_incorporacao_ate(data_pagto)
+    eventos = [
+        (data_nominal, data_efetiva, Decimal("0"), True)
+        for data_nominal, data_efetiva in zip(DATAS_INCORPORACAO_NOMINAIS, DATAS_INCORPORACAO_JUROS)
+    ]
+    eventos.extend([
+        (data_nominal, data_efetiva, percentual, False)
+        for (data_nominal, percentual), (data_efetiva, _) in zip(CRONOGRAMA_NOMINAL, CRONOGRAMA)
+    ])
 
-        fator_di, du, fonte_cdi, primeira_ref, ultima_ref, linhas_periodo = detalhar_periodo_diario(
-            idx,
-            data_ref_juros,
-            data_ref,
-            data_pagto,
-            pu_vna_ini,
-            cdi,
+    for data_nominal, data_evento, percentual_amort, incorpora_juros in eventos:
+        numero_evento += 1
+        saldo_abertura = trunc_dec(saldo_pu, 8)
+        data_base_inicio = data_base_ipca
+        data_inicio_periodo = data_ref_juros
+
+        pu_vna_atualizado = atualizar_ipca_ate_data(
+            saldo_abertura, data_base_inicio, data_evento, indices,
         )
-        fator_spread = fator_spread_periodo(du)
-        fator_juros = round_dec(fator_di * fator_spread, 9)
+        du = _ENGINE.dias_uteis(data_inicio_periodo, data_evento)
+        fator_juros = fator_juros_252(du)
+        pu_juros = trunc_dec(pu_vna_atualizado * (fator_juros - Decimal("1")), 8)
 
-        pu_juros = trunc_dec(pu_vna_ini * (fator_juros - Decimal("1")), 8)
-        paga_juros_efetivo = paga_juros and not incorpora_periodo
-        pu_juros_pago = pu_juros if paga_juros_efetivo else Decimal("0.00000000")
-        pu_juros_capitalizado = pu_juros if incorpora_periodo or not paga_juros else Decimal("0.00000000")
-        pu_vna_atualizado = trunc_dec(pu_vna_ini + pu_juros_capitalizado, 8)
-
-        pu_amort = Decimal("0.00000000") if incorpora_periodo else trunc_dec(pu_vna_atualizado * perc_amort, 8)
-        if idx == len(CRONOGRAMA) and not incorpora_periodo:
-            pu_amort = pu_vna_atualizado
-        pu_vna_fim = trunc_dec(pu_vna_atualizado - pu_amort, 8)
+        if incorpora_juros:
+            pu_juros_pago = Decimal("0.00000000")
+            pu_juros_incorporado = pu_juros
+            pu_amort = Decimal("0.00000000")
+            saldo_pu = trunc_dec(pu_vna_atualizado + pu_juros, 8)
+            evento_nome = "Incorporacao Juros Carencia"
+        else:
+            pu_juros_pago = pu_juros
+            pu_juros_incorporado = Decimal("0.00000000")
+            pu_amort = trunc_dec(pu_vna_atualizado * percentual_amort, 8)
+            if percentual_amort == Decimal("1"):
+                pu_amort = pu_vna_atualizado
+            saldo_pu = trunc_dec(pu_vna_atualizado - pu_amort, 8)
+            evento_nome = "Pagamento"
 
         juros_rs = round_dec(pu_juros_pago * QUANTIDADE, 2)
+        juros_incorporados_rs = round_dec(pu_juros_incorporado * QUANTIDADE, 2)
         amort_rs = round_dec(pu_amort * QUANTIDADE, 2)
-        pmt_rs = round_dec(juros_rs + amort_rs, 2)
-        saldo_rs = round_dec(pu_vna_fim * QUANTIDADE, 2)
 
         linhas.append({
-            "Evento": idx,
-            "Data_Ref": data_ref.strftime("%d/%m/%Y"),
-            "Data_Pgto": data_pagto.strftime("%d/%m/%Y"),
+            "Evento": evento_nome,
+            "Codigo_IF": "AXS412",
+            "ISIN": "BRAXS4DBS014",
+            "Data_Ref": data_nominal.strftime("%d/%m/%Y"),
+            "Data_Pgto": data_evento.strftime("%d/%m/%Y"),
+            "Data_Inicio_Periodo": data_inicio_periodo.strftime("%d/%m/%Y"),
             "DU_Juros": du,
-            "Data_Inicio_Periodo": data_ref_juros.strftime("%d/%m/%Y"),
-            "Primeira_Data_Ref_CDI": primeira_ref.strftime("%d/%m/%Y") if primeira_ref else "",
-            "Ultima_Data_Ref_CDI": ultima_ref.strftime("%d/%m/%Y") if ultima_ref else "",
-            "Percentual_CDI": PERCENTUAL_CDI,
-            "Spread_aa": SPREAD_AA,
-            "Fator_DI": fator_di,
-            "Fator_Spread": fator_spread,
+            "Taxa_aa": TAXA_AA,
             "Fator_Juros": fator_juros,
-            "Paga_Juros_Contrato": "SIM" if paga_juros else "NAO",
-            "Incorpora_Ate_Data": "SIM" if incorpora_periodo else "NAO",
-            "Perc_Amort": perc_amort,
-            "PU_VNa_Ini": pu_vna_ini,
+            "TAI_Amort": percentual_amort,
+            "Incorpora_Ate_Data": "SIM" if incorpora_juros else "NAO",
+            "PU_VNa_Ini": saldo_abertura,
             "PU_VNa_Atualizado": pu_vna_atualizado,
             "PU_Juros": pu_juros,
             "PU_Juros_Pago": pu_juros_pago,
-            "PU_Juros_Capitalizado": pu_juros_capitalizado,
+            "PU_Juros_Incorporado": pu_juros_incorporado,
             "PU_Amort": pu_amort,
-            "PU_Total": trunc_dec(pu_juros_pago + pu_amort, 8),
-            "PU_VNa_Fim": pu_vna_fim,
+            "PU_Total_Pago": trunc_dec(pu_juros_pago + pu_amort, 8),
+            "PU_VNa_Fim": saldo_pu,
             "Juros_R$": juros_rs,
-            "Juros_Capitalizado_R$": round_dec(pu_juros_capitalizado * QUANTIDADE, 2),
+            "Juros_Incorporado_R$": juros_incorporados_rs,
             "Amort_R$": amort_rs,
-            "PMT_Total": pmt_rs,
-            "Saldo_Devedor_R$": saldo_rs,
-            "Fonte_CDI": f"{fonte_base} | {fonte_cdi}",
+            "PMT_Total": round_dec(juros_rs + amort_rs, 2),
+            "Saldo_Devedor_R$": round_dec(saldo_pu * QUANTIDADE, 2),
+            "Fonte_IPCA": fonte_ipca,
+            "Fonte_Projecao": fonte_mes.get(_ENGINE.mes_str(_ENGINE.add_months(data_nominal, -1)), ""),
         })
 
-        if linhas_periodo:
-            linhas_periodo[-1]["PU_Juros_Pago_Dia"] = pu_juros_pago
-            linhas_periodo[-1]["PU_Juros_Capitalizado_Dia"] = pu_juros_capitalizado
-            linhas_periodo[-1]["PU_Amort_Dia"] = pu_amort
-            linhas_periodo[-1]["PU_Total_Pago_Dia"] = trunc_dec(pu_juros_pago + pu_amort, 8)
-            linhas_periodo[-1]["PU_Saldo_Fechamento_Dia"] = pu_vna_fim
-            linhas_periodo[-1]["Saldo_Fechamento_R$"] = saldo_rs
-            linhas_periodo[-1]["Tipo_Dia"] = (
-                "CAPITALIZACAO"
-                if incorpora_periodo
-                else ("PAGAMENTO_JUROS_E_AMORTIZACAO" if pu_juros_pago or pu_amort else "FECHAMENTO_PERIODO")
-            )
-        linhas_diarias.extend(linhas_periodo)
+        linhas_diarias.extend(detalhar_periodo_diario(
+            numero_evento,
+            data_inicio_periodo,
+            data_base_inicio,
+            data_evento,
+            saldo_abertura,
+            percentual_amort,
+            incorpora_juros,
+            indices,
+        ))
 
-        saldo_pu = pu_vna_fim
-        data_ref_juros = data_pagto
+        data_ref_juros = data_evento
+        data_base_ipca = date(data_nominal.year, data_nominal.month, 15)
 
-    return linhas, linhas_diarias, fonte_base
-
-
-def salvar_csv(linhas: List[Dict[str, object]], caminho: str | Path) -> None:
-    if not linhas:
-        raise RuntimeError("Nenhuma linha calculada.")
-    campos = list(linhas[0].keys())
-    path = Path(caminho)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=campos, delimiter=";")
-        w.writeheader()
-        for row in linhas:
-            out: Dict[str, object] = {}
-            for k, v in row.items():
-                out[k] = format(v, "f").replace(".", ",") if isinstance(v, Decimal) else v
-            w.writerow(out)
-
-
-def salvar_xlsx(linhas: List[Dict[str, object]], caminho: str | Path) -> None:
-    import pandas as pd
-    if not linhas:
-        raise RuntimeError("Nenhuma linha calculada.")
-    path = Path(caminho)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    
-    linhas_export = []
-    for row in linhas:
-        out: Dict[str, object] = {}
-        for k, v in row.items():
-            if isinstance(v, Decimal):
-                out[k] = float(v)
-            else:
-                out[k] = v
-        linhas_export.append(out)
-    
-    df = pd.DataFrame(linhas_export)
-    df.to_excel(path, index=False)
-
-
-def imprimir_linha(data_txt: str, linhas: List[Dict[str, object]]) -> None:
-    linha = next((x for x in linhas if x["Data_Pgto"] == data_txt), None)
-    if not linha:
-        print(f"\nLinha {data_txt}: nao calculada.")
-        return
-    print(f"\nLinha {data_txt}:")
-    campos = [
-        "Data_Ref", "Data_Pgto", "DU_Juros", "Data_Inicio_Periodo", "Fator_DI",
-        "Fator_Spread", "Fator_Juros", "PU_VNa_Ini", "PU_Juros", "PU_Amort",
-        "Juros_R$", "Amort_R$", "PMT_Total", "Saldo_Devedor_R$",
-    ]
-    for k in campos:
-        valor = linha[k]
-        if isinstance(valor, Decimal):
-            valor = format(valor, "f")
-        print(f"{k}: {valor}")
+    return linhas, linhas_diarias, fonte_ipca
 
 
 def main() -> None:
     linhas, linhas_diarias, fonte = calcular_fluxo()
-    csv_gerado, csv_fallback = salvar_com_fallback(salvar_csv, linhas, ARQUIVO_SAIDA)
-    xlsx_gerado, xlsx_fallback = salvar_com_fallback(salvar_xlsx, linhas, ARQUIVO_SAIDA_XLSX)
-    csv_diario_gerado, csv_diario_fallback = salvar_com_fallback(salvar_csv, linhas_diarias, ARQUIVO_SAIDA_DIARIA)
-    xlsx_diario_gerado, xlsx_diario_fallback = salvar_com_fallback(salvar_xlsx, linhas_diarias, ARQUIVO_SAIDA_DIARIA_XLSX)
-
-    print("Fonte CDI historica:", fonte)
-    if csv_fallback:
-        print(f"CSV padrao estava aberto/bloqueado. Arquivo alternativo gerado: {csv_gerado}")
-    else:
-        print(f"CSV gerado: {csv_gerado}")
-    if xlsx_fallback:
-        print(f"XLSX padrao estava aberto/bloqueado. Arquivo alternativo gerado: {xlsx_gerado}")
-    else:
-        print(f"XLSX gerado: {xlsx_gerado}")
-    if csv_diario_fallback:
-        print(f"CSV diario padrao estava aberto/bloqueado. Arquivo alternativo gerado: {csv_diario_gerado}")
-    else:
-        print(f"CSV diario gerado: {csv_diario_gerado}")
-    if xlsx_diario_fallback:
-        print(f"XLSX diario padrao estava aberto/bloqueado. Arquivo alternativo gerado: {xlsx_diario_gerado}")
-    else:
-        print(f"XLSX diario gerado: {xlsx_diario_gerado}")
-    imprimir_linha("15/10/2024", linhas)
-    imprimir_linha("15/04/2026", linhas)
-    imprimir_linha("15/09/2036", linhas)
+    print(f"Fonte IPCA: {fonte}")
+    print(f"Eventos calculados: {len(linhas)}")
+    print(f"Linhas diarias calculadas: {len(linhas_diarias)}")
+    print(f"Saldo final: {linhas[-1]['Saldo_Devedor_R$']}")
 
 
 if __name__ == "__main__":

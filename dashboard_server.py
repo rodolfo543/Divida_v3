@@ -540,7 +540,8 @@ def xirr(cashflows: list[dict[str, Any]]) -> float | None:
 def build_return_cashflows(config: OperationConfig, series: list[dict[str, Any]], module: Any | None) -> list[dict[str, Any]]:
     quantity = derive_quantity_value(config, module)
     pu_issue = number_or_none(metadata_value(config, "pu_issue", number_or_none(getattr(module, "PU_INICIAL", None)) if module else None))
-    issue_dates = derive_issue_dates(config, module)
+    tir_start_dates = extract_dates_from_text(metadata_value(config, "tir_start_date", ""))
+    issue_dates = tir_start_dates or derive_issue_dates(config, module)
     if quantity is None or quantity <= 0 or pu_issue is None or pu_issue <= 0 or not issue_dates:
         return []
 
@@ -921,6 +922,7 @@ def load_axs_standard(module: Any, primary_source_label: str, secondary_source_l
 def format_daily_pu_type(value: Any) -> str:
     text = text_or_default(value, "ACUMULACAO").strip().upper()
     return {
+        "EMISSAO": "Emissão",
         "ACUMULACAO": "Acumulação",
         "DATA_PAGAMENTO": "Pagamento",
         "PAGAMENTO_JUROS_E_AMORTIZACAO": "Pagamento",
@@ -950,12 +952,15 @@ def load_axs10(module: Any) -> dict[str, Any]:
         if text_or_default(row.get("Dia_Util")).upper() != "SIM":
             continue
 
-        pu_abertura = first_number(row.get("PU_VNa_Abertura_Periodo")) or 0.0
-        fator_di_acumulado = first_number(row.get("Fator_DI_Acumulado")) or 1.0
-        valor_nominal = pu_abertura * fator_di_acumulado
+        valor_nominal = first_number(
+            row.get("PU_VNa_Atualizado_Dia"),
+            row.get("PU_VNa_Abertura_Periodo"),
+        ) or 0.0
         pu_cheio = first_number(row.get("PU_Valor_Bruto"), row.get("PU_Saldo_Fechamento_Dia")) or 0.0
-        pu_vazio = first_number(row.get("PU_Saldo_Fechamento_Dia"), row.get("PU_Valor_Bruto")) or pu_cheio
-        valor_juros = pu_cheio - valor_nominal
+        pu_vazio = valor_nominal
+        valor_juros = first_number(row.get("PU_Juros_Acumulado"))
+        if valor_juros is None:
+            valor_juros = pu_cheio - valor_nominal
         juros_pct = (valor_juros / valor_nominal * 100) if valor_nominal else None
         pu_amort = first_number(row.get("PU_Amort_Dia")) or 0.0
         pu_total = first_number(row.get("PU_Total_Pago_Dia")) or 0.0
@@ -987,16 +992,29 @@ def load_axs10(module: Any) -> dict[str, Any]:
         })
 
     daily_pu_rows = finalize_series(daily_pu_rows)
+    summary = build_summary(series)
+    current_daily = get_current_row(daily_pu_rows)
+    if current_daily is not None:
+        summary.update({
+            "current_balance": current_daily.get("balance"),
+            "current_principal": current_daily.get("principal"),
+            "current_pu_cheio": current_daily.get("pu_cheio"),
+            "current_pu_vazio": current_daily.get("pu_vazio"),
+            "current_pu_juros": current_daily.get("pu_juros"),
+            "current_pu_amort": current_daily.get("pu_amort"),
+            "current_payment": current_daily.get("payment"),
+            "last_event_date": current_daily.get("date"),
+        })
     return {
         "module_ref": module,
         "series": series,
         "table_series": series,
         "daily_pu_series": daily_pu_rows,
-        "summary": build_summary(series),
+        "summary": summary,
         "timeline": build_timeline(series),
         "meta": {
-            "primary_source": f"Fonte CDI: {primary_source}",
-            "notes": "AXS 10 inclui uma aba de PU diário em dias úteis, inspirada no histórico operacional da Vórtx.",
+            "primary_source": f"Fonte IPCA: {primary_source}",
+            "notes": "AXS 10 considera a 2ª emissão, 1ª série, com PU diário em dias úteis.",
         },
     }
 
@@ -1898,28 +1916,30 @@ OPERATIONS: dict[str, OperationConfig] = {
     "axs10": OperationConfig(
         id="axs10",
         label="AXS 10",
-        full_name="AXS ENERGIA 10 - Emissao 1 / Serie UNICA",
+        full_name="AXS - Emissão 2 / Série 1",
         badge="DEB",
         category="Debenture",
-        indexer="CDI + 6,50%",
-        description="Debenture mezanino indexada ao CDI com foco em spread e cronograma.",
+        indexer="IPCA + 13,6455%",
+        description="Debênture mezanino da 2ª emissão, atualizada pelo IPCA e com fluxo semestral.",
         issuer="AXS ENERGIA UNIDADE 10 S.A.",
-        code_if="AXS411",
-        isin="BRAXS4DBS006",
+        code_if="AXS412",
+        isin="BRAXS4DBS014",
         script_path=PROJECT_DIR / "Code final prontos" / "axs10_v15.py",
         loader=load_axs10,
         metadata={
-            "issue_date": "15/09/2024",
-            "maturity_date": "15/09/2036",
-            "quantity_emitted": "57000",
-            "volume_emitted": "57000000",
+            "issue_date": "15/05/2026",
+            "start_date": "27/05/2026",
+            "tir_start_date": "27/05/2026",
+            "maturity_date": "15/05/2041",
+            "quantity_emitted": "162500",
+            "volume_emitted": "162500000",
             "pu_issue": "1000",
-            "payment_frequency": "Mensal",
-            "amortization_frequency": "Mensal",
+            "payment_frequency": "Semestral",
+            "amortization_frequency": "Semestral",
             "distribution": "Res CVM 160",
-            "risk_type": "-",
-            "guarantees": "Conforme documentos da emissao.",
-            "remuneration_label": "CDI + 6.5%",
+            "risk_type": "Corporativo",
+            "guarantees": "Alienação Fiduciária de Ações, Cessão Fiduciária e Fiança.",
+            "remuneration_label": "IPCA + 13,6455%",
         },
     ),
     "axsgoias": OperationConfig(
