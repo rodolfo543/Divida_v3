@@ -957,11 +957,11 @@ def load_axs10(module: Any) -> dict[str, Any]:
             row.get("PU_VNa_Abertura_Periodo"),
         ) or 0.0
         pu_cheio = first_number(row.get("PU_Valor_Bruto"), row.get("PU_Saldo_Fechamento_Dia")) or 0.0
-        pu_vazio = valor_nominal
+        pu_vazio = pu_cheio
         valor_juros = first_number(row.get("PU_Juros_Acumulado"))
         if valor_juros is None:
             valor_juros = pu_cheio - valor_nominal
-        juros_pct = (valor_juros / valor_nominal * 100) if valor_nominal else None
+        juros_pct = number_or_none(getattr(module, "TAXA_AA", None))
         pu_amort = first_number(row.get("PU_Amort_Dia")) or 0.0
         pu_total = first_number(row.get("PU_Total_Pago_Dia")) or 0.0
         tipo_dia = format_daily_pu_type(row.get("Tipo_Dia"))
@@ -1015,6 +1015,87 @@ def load_axs10(module: Any) -> dict[str, Any]:
         "meta": {
             "primary_source": f"Fonte IPCA: {primary_source}",
             "notes": "AXS 10 considera a 2ª emissão, 1ª série, com PU diário em dias úteis.",
+        },
+    }
+
+
+def load_axs_goias(module: Any) -> dict[str, Any]:
+    if not hasattr(module, "calcular_fluxo_e_pu_diario"):
+        raise RuntimeError("Modulo da AXS Goias sem calcular_fluxo_e_pu_diario().")
+
+    rows, daily_rows, primary_source, daily_source = module.calcular_fluxo_e_pu_diario()
+    series = normalize_series(rows)
+    for item in series:
+        raw = item.get("raw", {})
+        item["label"] = (
+            "Capitalizacao"
+            if text_or_default(raw.get("Evento")).startswith("Incorporacao")
+            else "Pagamento"
+        )
+
+    quantity = number_or_none(getattr(module, "QUANTIDADE", None)) or 1.0
+    daily_pu_rows: list[dict[str, Any]] = []
+    for row in daily_rows:
+        if text_or_default(row.get("Dia_Util")).upper() != "SIM":
+            continue
+
+        valor_nominal = first_number(row.get("Valor_Nominal")) or 0.0
+        valor_juros = first_number(row.get("Valor_Juros")) or 0.0
+        pu_cheio = first_number(row.get("PU_Cheio"), valor_nominal + valor_juros) or 0.0
+        pu_vazio = first_number(row.get("PU_Vazio"), pu_cheio) or pu_cheio
+        pu_amort = first_number(row.get("PU_Amort_Dia")) or 0.0
+        pu_total = first_number(row.get("PU_Total_Pago_Dia")) or 0.0
+
+        daily_pu_rows.append({
+            "date": text_or_default(row.get("Data"), "-"),
+            "label": "PU diario",
+            "component": "diario",
+            "component_label": format_daily_pu_type(row.get("Tipo_Dia")),
+            "payment": pu_total,
+            "interest": first_number(row.get("PU_Juros_Pago_Dia")) or 0.0,
+            "amortization": pu_amort,
+            "balance": pu_vazio * quantity,
+            "principal": valor_nominal * quantity,
+            "pu_cheio": pu_cheio,
+            "pu_vazio": pu_vazio,
+            "pu_juros": valor_juros,
+            "pu_amort": pu_amort,
+            "pu_total": pu_total,
+            "valor_nominal": valor_nominal,
+            "valor_juros": valor_juros,
+            "juros_pct": first_number(row.get("Taxa_Juros_Pct")),
+            "taxa_cdi_pct_ad": None,
+            "data_ref_cdi": "",
+            "parsed_date": parse_date(row.get("Data")),
+            "sort_key": "1-pu-diario",
+            "raw": decimal_to_float(row),
+        })
+
+    daily_pu_rows = finalize_series(daily_pu_rows)
+    summary = build_summary(series)
+    current_daily = get_current_row(daily_pu_rows)
+    if current_daily is not None:
+        summary.update({
+            "current_balance": current_daily.get("balance"),
+            "current_principal": current_daily.get("principal"),
+            "current_pu_cheio": current_daily.get("pu_cheio"),
+            "current_pu_vazio": current_daily.get("pu_vazio"),
+            "current_pu_juros": current_daily.get("pu_juros"),
+            "current_pu_amort": current_daily.get("pu_amort"),
+            "current_payment": current_daily.get("payment"),
+            "last_event_date": current_daily.get("date"),
+        })
+    return {
+        "module_ref": module,
+        "series": series,
+        "table_series": series,
+        "daily_pu_series": daily_pu_rows,
+        "summary": summary,
+        "timeline": build_timeline(series),
+        "meta": {
+            "primary_source": f"Fonte IPCA: {primary_source}",
+            "secondary_source": daily_source,
+            "notes": "AXS Goias com PU diario oficial e calculo local de contingencia.",
         },
     }
 
@@ -1954,10 +2035,11 @@ OPERATIONS: dict[str, OperationConfig] = {
         code_if="AXS311",
         isin="",
         script_path=PROJECT_DIR / "Code final prontos" / "axs_goias_v1.py",
-        loader=lambda module: load_axs_standard(module, "Fonte IPCA", "Fonte Focus"),
+        loader=load_axs_goias,
         metadata={
             "issue_date": "15/09/2024",
-            "start_date": "27/09/2024",
+            "start_date": "01/10/2024",
+            "tir_start_date": "01/10/2024",
             "maturity_date": "15/12/2041",
             "quantity_emitted": "196000",
             "volume_emitted": "196000000",

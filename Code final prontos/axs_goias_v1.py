@@ -45,11 +45,16 @@ getcontext().prec = 34
 
 DATA_EMISSAO = date(2024, 10, 1)
 # Ajuste aqui para a data efetiva da primeira integralizacao, conforme B3/Vortx.
-DATA_INICIO_RENTABILIDADE = date(2024, 9, 27)
+DATA_INICIO_RENTABILIDADE = date(2024, 10, 1)
 DATAS_INCORPORACAO_JUROS = [date(2024, 12, 15), date(2025, 6, 15), date(2025, 12, 15), date(2026, 6, 15)]
 TAXA_AA = Decimal("0.104")
 QUANTIDADE = Decimal("196000")
 PU_INICIAL = Decimal("1000.00000000")
+VORTX_OPERATION_ID = 93664
+VORTX_PU_HISTORY_URL = (
+    f"https://apis.vortx.com.br/vxsite/api/operacao/{VORTX_OPERATION_ID}"
+    "/preco-unitario/historico-pagamentos"
+)
 
 # Cronograma conforme Anexo VI da Escritura/Aditamento AXS Goias.
 # Usa-se a coluna "Saldo do Valor Nominal Unitario a ser amortizado" como TAI,
@@ -558,9 +563,61 @@ def aplicar_ipca_ate(
     return saldo, detalhes, data_aniv_alvo
 
 
-def calcular_fluxo() -> Tuple[List[Dict[str, object]], str]:
-    indices, fonte = obter_ipca_numero_indice_sidra()
-    indices, fonte_mes = preencher_indices_futuros(indices)
+def aplicar_ipca_ate_data(
+    saldo_pu: Decimal,
+    data_base: date,
+    data_alvo: date,
+    indices: Dict[str, Decimal],
+) -> Decimal:
+    """Atualiza o VNA ate uma data qualquer, com IPCA pro rata entre aniversarios."""
+    if data_alvo < data_base:
+        raise RuntimeError("data_alvo anterior a data_base")
+
+    saldo = trunc_dec(saldo_pu, 8)
+    atual = data_base
+    while atual < data_alvo:
+        prox = proxima_data_aniversario(atual)
+        if prox == atual:
+            prox_mes = add_months(prox, 1)
+            prox = date(prox_mes.year, prox_mes.month, 15)
+
+        if prox <= data_alvo:
+            if atual.day == 15:
+                fator, *_ = fator_ipca(indices, prox)
+            else:
+                fator, *_ = fator_ipca_prorata(indices, prox, atual)
+            saldo = trunc_dec(saldo * fator, 8)
+            atual = prox
+            continue
+
+        fator_cheio, *_ = fator_ipca(indices, prox)
+        inicio_ciclo = atual
+        if atual.day != 15:
+            mes_anterior = add_months(prox, -1)
+            inicio_ciclo = date(mes_anterior.year, mes_anterior.month, 15)
+        du_parcial = dias_uteis(atual, data_alvo)
+        du_total = dias_uteis(inicio_ciclo, prox)
+        if du_parcial > 0 and du_total > 0:
+            fator_parcial = Decimal(str(float(fator_cheio) ** (du_parcial / du_total)))
+            saldo = trunc_dec(saldo * fator_parcial, 8)
+        atual = data_alvo
+
+    return saldo
+
+
+def calcular_fluxo(
+    indices: Dict[str, Decimal] | None = None,
+    fonte_mes: Dict[str, str] | None = None,
+    fonte: str | None = None,
+) -> Tuple[List[Dict[str, object]], str]:
+    if indices is None:
+        indices, fonte_obtida = obter_ipca_numero_indice_sidra()
+        indices, fonte_mes_obtida = preencher_indices_futuros(indices)
+        fonte = fonte or fonte_obtida
+        fonte_mes = fonte_mes or fonte_mes_obtida
+    elif fonte_mes is None:
+        indices, fonte_mes = preencher_indices_futuros(indices)
+    fonte = fonte or "Indices IPCA fornecidos ao calculo"
 
     saldo_pu = trunc_dec(PU_INICIAL, 8)
     data_ref_juros = DATA_INICIO_RENTABILIDADE
@@ -654,6 +711,146 @@ def calcular_fluxo() -> Tuple[List[Dict[str, object]], str]:
         data_ref_juros = data_pagto
 
     return linhas, fonte
+
+
+def calcular_pu_diario_local(
+    indices: Dict[str, Decimal],
+    eventos: List[Dict[str, object]],
+    data_fim: date | None = None,
+) -> List[Dict[str, object]]:
+    """Calcula o PU diario sem interpolar os valores entre os eventos contratuais."""
+    data_fim = data_fim or date.today()
+    data_final_carencia = DATAS_INCORPORACAO_JUROS[-1]
+    eventos_por_data = {
+        datetime.strptime(str(item["Data_Ref"]), "%d/%m/%Y").date(): item
+        for item in eventos
+        if item.get("Data_Ref")
+    }
+    evento_final_carencia = eventos_por_data[data_final_carencia]
+
+    linhas: List[Dict[str, object]] = []
+    data_atual = DATA_INICIO_RENTABILIDADE
+    while data_atual <= data_fim:
+        if not eh_dia_util(data_atual):
+            data_atual += timedelta(days=1)
+            continue
+
+        if data_atual <= data_final_carencia:
+            data_base = DATA_INICIO_RENTABILIDADE
+            pu_base = PU_INICIAL
+        else:
+            eventos_anteriores = [
+                data_evento
+                for data_evento in eventos_por_data
+                if data_final_carencia <= data_evento < data_atual
+            ]
+            data_base = max(eventos_anteriores, default=data_final_carencia)
+            evento_base = eventos_por_data.get(data_base, evento_final_carencia)
+            pu_base = Decimal(str(evento_base["PU_VNa_Fim"]))
+
+        valor_nominal = aplicar_ipca_ate_data(pu_base, data_base, data_atual, indices)
+        du_juros = dias_uteis(data_base, data_atual)
+        fator_juros = fator_juros_252(du_juros)
+        valor_juros = trunc_dec(valor_nominal * (fator_juros - Decimal("1")), 8)
+        pu_cheio = trunc_dec(valor_nominal + valor_juros, 8)
+
+        evento_dia = eventos_por_data.get(data_atual)
+        pu_amort = Decimal(str(evento_dia.get("PU_Amort", 0))) if evento_dia else Decimal("0")
+        pu_total = Decimal(str(evento_dia.get("PU_Total_Pago", 0))) if evento_dia else Decimal("0")
+        juros_pago = Decimal("0")
+        tipo = "ACUMULACAO"
+        if evento_dia:
+            if str(evento_dia.get("Evento", "")).startswith("Incorporacao"):
+                tipo = "CAPITALIZACAO"
+            elif pu_total > 0:
+                tipo = "PAGAMENTO_JUROS_E_AMORTIZACAO"
+                juros_pago = Decimal(str(evento_dia.get("PU_Juros", 0)))
+
+        linhas.append({
+            "Data": data_atual.strftime("%d/%m/%Y"),
+            "Dia_Util": "SIM",
+            "Tipo_Dia": tipo,
+            "Valor_Nominal": valor_nominal,
+            "Valor_Juros": valor_juros,
+            "PU_Cheio": pu_cheio,
+            "PU_Vazio": pu_cheio,
+            "Taxa_Juros_Pct": TAXA_AA,
+            "PU_Juros_Pago_Dia": juros_pago,
+            "PU_Amort_Dia": pu_amort,
+            "PU_Total_Pago_Dia": pu_total,
+            "Fonte_PU": "Calculo local IPCA pro rata e juros em 252 dias uteis",
+        })
+        data_atual += timedelta(days=1)
+
+    return linhas
+
+
+def obter_historico_pu_vortx(data_fim: date | None = None) -> List[Dict[str, object]]:
+    """Busca o historico oficial publicado para a operacao AXS311."""
+    data_fim = data_fim or date.today()
+    dados = obter_json_url(VORTX_PU_HISTORY_URL, timeout=20)
+    itens = dados.get("unitPrices", []) if isinstance(dados, dict) else []
+    linhas: List[Dict[str, object]] = []
+    for item in itens:
+        data_txt = str(item.get("paymentDate", ""))[:10]
+        try:
+            data_pu = date.fromisoformat(data_txt)
+        except ValueError:
+            continue
+        if data_pu > data_fim:
+            continue
+
+        valor_nominal = Decimal(str(item.get("nominalValue", 0)))
+        valor_juros = Decimal(str(item.get("interestValue", 0)))
+        pu_cheio = Decimal(str(item.get("unitPriceFull", valor_nominal + valor_juros)))
+        pu_vazio = Decimal(str(item.get("unitPriceEmpty", pu_cheio)))
+        pu_amort = Decimal(str(item.get("amortization", 0)))
+        pu_total = Decimal(str(item.get("total", 0)))
+        tipo = "PAGAMENTO_JUROS_E_AMORTIZACAO" if pu_total > 0 else "ACUMULACAO"
+        linhas.append({
+            "Data": data_pu.strftime("%d/%m/%Y"),
+            "Dia_Util": "SIM",
+            "Tipo_Dia": tipo,
+            "Valor_Nominal": valor_nominal,
+            "Valor_Juros": valor_juros,
+            "PU_Cheio": pu_cheio,
+            "PU_Vazio": pu_vazio,
+            "Taxa_Juros_Pct": Decimal(str(item.get("interest", TAXA_AA))),
+            "PU_Juros_Pago_Dia": Decimal("0"),
+            "PU_Amort_Dia": pu_amort,
+            "PU_Total_Pago_Dia": pu_total,
+            "Fonte_PU": f"Vortx operacao {VORTX_OPERATION_ID}",
+        })
+    return linhas
+
+
+def calcular_fluxo_e_pu_diario() -> Tuple[List[Dict[str, object]], List[Dict[str, object]], str, str]:
+    indices, fonte = obter_ipca_numero_indice_sidra()
+    indices, fonte_mes = preencher_indices_futuros(indices)
+    eventos, _ = calcular_fluxo(indices=indices, fonte_mes=fonte_mes, fonte=fonte)
+    data_final = max(
+        datetime.strptime(str(item["Data_Ref"]), "%d/%m/%Y").date()
+        for item in eventos
+        if item.get("Data_Ref")
+    )
+    pu_local = calcular_pu_diario_local(indices, eventos, data_final)
+    try:
+        pu_oficial = obter_historico_pu_vortx()
+    except Exception:
+        pu_oficial = []
+    if pu_oficial:
+        pu_por_data = {str(item["Data"]): item for item in pu_local}
+        pu_por_data.update({str(item["Data"]): item for item in pu_oficial})
+        pu_completo = sorted(
+            pu_por_data.values(),
+            key=lambda item: datetime.strptime(str(item["Data"]), "%d/%m/%Y").date(),
+        )
+        fonte_pu = (
+            f"Historico oficial: {VORTX_PU_HISTORY_URL} | "
+            "projecao futura pelo calculo local"
+        )
+        return eventos, pu_completo, fonte, fonte_pu
+    return eventos, pu_local, fonte, "Contingencia: calculo local do PU diario"
 
 def salvar_csv(linhas: List[Dict[str, object]], caminho: str) -> None:
     if not linhas:
