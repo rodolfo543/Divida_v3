@@ -26,7 +26,7 @@
     "overview_fields": [
       {
         "label": "Saldo consolidado",
-        "value": "1262552826.21"
+        "value": "1354431875.54"
       },
       {
         "label": "Próximo PMT da carteira",
@@ -10195,13 +10195,13 @@
     }
   ],
   "summary": {
-    "current_balance": 1262552826.21,
-    "current_principal": 428621480.62,
-    "current_pu_cheio": 5336.99170912,
-    "current_pu_vazio": 5288.97386518,
+    "current_balance": 1354431875.54,
+    "current_principal": 91879049.33,
+    "current_pu_cheio": 2134.75553031,
+    "current_pu_vazio": 2048.39431056,
     "current_pu_juros": null,
     "current_pu_amort": null,
-    "current_payment": 6167227.279999999,
+    "current_payment": 0.0,
     "total_interest": 2280024359.23,
     "total_amortization": 2838412196.67,
     "event_count": 241,
@@ -10209,10 +10209,10 @@
     "next_payment_amount": 6331806.5200000005,
     "next_interest_amount": 4055423.7000000007,
     "next_amortization_amount": 2276382.83,
-    "last_event_date": "15/07/2026",
+    "last_event_date": "15/08/2026",
     "final_balance": 227301780.51999998,
-    "duration_years": 8.398047112700938,
-    "wal_years": 9.693349836220433,
+    "duration_years": 8.395309261913805,
+    "wal_years": 9.690611985433302,
     "tir_annual_pct": 10.910989140154815,
     "tir_monthly_pct": 0.8667160376830019,
     "contracted_rate_annual_pct": 10.914924114376095,
@@ -11493,6 +11493,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "14/08/2026 08:00:08",
-  "generated_at_iso": "2026-08-14T08:00:08"
+  "generated_at": "15/08/2026 19:51:35",
+  "generated_at_iso": "2026-08-15T19:51:35"
 }

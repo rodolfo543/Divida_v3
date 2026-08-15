@@ -16929,8 +16929,8 @@
     "next_amortization_amount": 189909.61,
     "last_event_date": "15/07/2026",
     "final_balance": 0.0,
-    "duration_years": 5.407110052036052,
-    "wal_years": 6.17433349592745,
+    "duration_years": 5.40437220124892,
+    "wal_years": 6.171595645140318,
     "tir_annual_pct": 10.893869512120535,
     "tir_monthly_pct": 0.8654185085795074,
     "contracted_rate_label": "IPCA + 11%",
@@ -136349,8 +136349,8 @@
         "next_amortization_amount": 404487.31999999995,
         "last_event_date": "15/07/2026",
         "final_balance": 0.0,
-        "duration_years": 5.407038529935451,
-        "wal_years": 6.174294129351279,
+        "duration_years": 5.40430067914832,
+        "wal_years": 6.171556278564147,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -345851,8 +345851,8 @@
         "next_amortization_amount": 214577.71,
         "last_event_date": "15/07/2026",
         "final_balance": 0.0,
-        "duration_years": 5.406974991345558,
-        "wal_years": 6.174259156536816,
+        "duration_years": 5.4042371405584255,
+        "wal_years": 6.171521305749684,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -555515,8 +555515,8 @@
         "next_amortization_amount": 189909.61,
         "last_event_date": "15/07/2026",
         "final_balance": 0.0,
-        "duration_years": 5.407110052036052,
-        "wal_years": 6.17433349592745,
+        "duration_years": 5.40437220124892,
+        "wal_years": 6.171595645140318,
         "tir_annual_pct": 10.893869512120535,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -556664,6 +556664,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "14/08/2026 08:00:08",
-  "generated_at_iso": "2026-08-14T08:00:08"
+  "generated_at": "15/08/2026 19:51:35",
+  "generated_at_iso": "2026-08-15T19:51:35"
 }
