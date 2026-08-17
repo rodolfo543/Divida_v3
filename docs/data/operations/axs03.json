@@ -74,7 +74,7 @@
       },
       {
         "label": "Saldo atual",
-        "value": "111022737.99"
+        "value": "110830126.36"
       },
       {
         "label": "Próximo PMT",
@@ -84,27 +84,27 @@
     "pu_fields": [
       {
         "label": "PU cheio",
-        "value": "1091.37716296"
+        "value": "1089.9470561199998"
       },
       {
         "label": "PU vazio",
-        "value": "1081.47900746"
+        "value": "1079.61468155"
       },
       {
         "label": "PU juros",
-        "value": "9.8981555"
+        "value": "10.33237457"
       },
       {
         "label": "PU amortização",
-        "value": "3.58834734"
+        "value": "3.59403727"
       },
       {
         "label": "Principal atualizado",
-        "value": "111392337.77"
+        "value": "111200312.2"
       },
       {
         "label": "PMT da linha atual",
-        "value": "1389109.79"
+        "value": "1434420.42"
       }
     ]
   },
@@ -205579,13 +205579,13 @@
     }
   ],
   "summary": {
-    "current_balance": 111022737.99,
-    "current_principal": 111392337.77,
-    "current_pu_cheio": 1091.37716296,
-    "current_pu_vazio": 1081.47900746,
-    "current_pu_juros": 9.8981555,
-    "current_pu_amort": 3.58834734,
-    "current_payment": 1389109.79,
+    "current_balance": 110830126.36,
+    "current_principal": 111200312.2,
+    "current_pu_cheio": 1089.9470561199998,
+    "current_pu_vazio": 1079.61468155,
+    "current_pu_juros": 10.33237457,
+    "current_pu_amort": 3.59403727,
+    "current_payment": 1434420.42,
     "total_interest": 125948657.55,
     "total_amortization": 157641482.02,
     "event_count": 168,
@@ -205593,10 +205593,10 @@
     "next_payment_amount": 1434420.42,
     "next_interest_amount": 1064234.58,
     "next_amortization_amount": 370185.84,
-    "last_event_date": "15/07/2026",
+    "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 5.616225085305593,
-    "wal_years": 6.553980289089038,
+    "duration_years": 5.610749383731329,
+    "wal_years": 6.548504587514775,
     "tir_annual_pct": 10.932293421529662,
     "tir_monthly_pct": 0.8683304732421737,
     "contracted_rate_label": "IPCA + 11%",
@@ -206281,12 +206281,12 @@
         "amount": 1211441.5987037164
       }
     ],
-    "monthly_balance_variation": 541352.620297268,
-    "monthly_balance_update": 77235.68188120425,
-    "monthly_balance_interest": 464116.9384160638,
-    "monthly_balance_amortization": 0,
+    "monthly_balance_variation": 595632.014275074,
+    "monthly_balance_update": 455148.04218968394,
+    "monthly_balance_interest": 510669.8120853901,
+    "monthly_balance_amortization": 370185.84,
     "monthly_balance_reference_date": "31/07/2026",
-    "monthly_balance_current_date": "14/08/2026",
+    "monthly_balance_current_date": "17/08/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -206597,7 +206597,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 258404318.7544,
+      "current_balance": 258513663.8322,
       "next_payment_amount": 13114385.84,
       "total_interest": 332079203.35,
       "total_amortization": 407678942.26,
@@ -206633,7 +206633,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 169088545.95,
+      "current_balance": 169186151.97,
       "next_payment_amount": 17067948.43,
       "total_interest": 349865585.45,
       "total_amortization": 376331803.77,
@@ -206645,7 +206645,7 @@
       "id": "axs04",
       "label": "AXS 04",
       "full_name": "AXS 4 - Emissao 139 / Serie UNICA",
-      "current_balance": 149800620.1,
+      "current_balance": 149295417.57,
       "next_payment_amount": 2180748.73,
       "total_interest": 161687842.32,
       "total_amortization": 212426955.46,
@@ -206681,7 +206681,7 @@
       "id": "axs03",
       "label": "AXS 03",
       "full_name": "AXS III - Emissao 78 / Serie UNICA",
-      "current_balance": 111022737.99,
+      "current_balance": 110830126.36,
       "next_payment_amount": 1434420.42,
       "total_interest": 125948657.55,
       "total_amortization": 157641482.02,
@@ -206705,7 +206705,7 @@
       "id": "axs02",
       "label": "AXS 02",
       "full_name": "AXS 02 - Consolidado CRI + Debenture",
-      "current_balance": 92408907.05,
+      "current_balance": 92113198.15,
       "next_payment_amount": 1289921.16,
       "total_interest": 101738231.6,
       "total_amortization": 135310770.91,
@@ -206729,7 +206729,7 @@
       "id": "axs07",
       "label": "AXS 07",
       "full_name": "AXS VII - Emissao 1 / Serie UNICA",
-      "current_balance": 73115537.65,
+      "current_balance": 72409839.94,
       "next_payment_amount": 1426716.21,
       "total_interest": 47269763.12,
       "total_amortization": 95667293.76,
@@ -206738,6 +206738,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "15/08/2026 19:51:35",
-  "generated_at_iso": "2026-08-15T19:51:35"
+  "generated_at": "17/08/2026 08:00:05",
+  "generated_at_iso": "2026-08-17T08:00:05"
 }
