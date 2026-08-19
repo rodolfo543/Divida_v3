@@ -20793,8 +20793,8 @@
     "next_amortization_amount": 405473.9,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 5.43196699011157,
-    "wal_years": 6.1830234242280095,
+    "duration_years": 5.429229139324438,
+    "wal_years": 6.1802855734408775,
     "tir_annual_pct": 10.893869512120524,
     "tir_monthly_pct": 0.8654185085795074,
     "contracted_rate_label": "IPCA + 11%",
@@ -21479,12 +21479,12 @@
         "amount": 1028059.8755180751
       }
     ],
-    "monthly_balance_variation": -13.83382638211151,
+    "monthly_balance_variation": -12.933485707400905,
     "monthly_balance_update": 404483.42983772996,
-    "monthly_balance_interest": -9.943664112111037,
+    "monthly_balance_interest": -9.043323437400431,
     "monthly_balance_amortization": 404487.31999999995,
     "monthly_balance_reference_date": "31/07/2026",
-    "monthly_balance_current_date": "18/08/2026",
+    "monthly_balance_current_date": "19/08/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -140051,8 +140051,8 @@
         "next_amortization_amount": 405473.9,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.43196699011157,
-        "wal_years": 6.1830234242280095,
+        "duration_years": 5.429229139324438,
+        "wal_years": 6.1802855734408775,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -140737,12 +140737,12 @@
             "amount": 1028059.8755180751
           }
         ],
-        "monthly_balance_variation": -13.83382638211151,
+        "monthly_balance_variation": -12.933485707400905,
         "monthly_balance_update": 404483.42983772996,
-        "monthly_balance_interest": -9.943664112111037,
+        "monthly_balance_interest": -9.043323437400431,
         "monthly_balance_amortization": 404487.31999999995,
         "monthly_balance_reference_date": "31/07/2026",
-        "monthly_balance_current_date": "18/08/2026",
+        "monthly_balance_current_date": "19/08/2026",
         "monthly_balance_update_label": "Atualização IPCA"
       },
       "timeline": [
@@ -349553,8 +349553,8 @@
         "next_amortization_amount": 214718.31,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.431966990422587,
-        "wal_years": 6.183023423568812,
+        "duration_years": 5.429229139635454,
+        "wal_years": 6.1802855727816794,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -350239,12 +350239,12 @@
             "amount": 544266.9929213339
           }
         ],
-        "monthly_balance_variation": -8.876685069027644,
-        "monthly_balance_update": 214573.81293811553,
-        "monthly_balance_interest": -4.97962318456257,
+        "monthly_balance_variation": -8.388640170770941,
+        "monthly_balance_update": 214573.85095657708,
+        "monthly_balance_interest": -4.529596747869164,
         "monthly_balance_amortization": 214577.71,
         "monthly_balance_reference_date": "31/07/2026",
-        "monthly_balance_current_date": "18/08/2026",
+        "monthly_balance_current_date": "19/08/2026",
         "monthly_balance_update_label": "Atualização IPCA"
       },
       "timeline": [
@@ -559217,8 +559217,8 @@
         "next_amortization_amount": 190755.59,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.4319669897614835,
-        "wal_years": 6.183023424970015,
+        "duration_years": 5.429229138974351,
+        "wal_years": 6.180285574182884,
         "tir_annual_pct": 10.893869512120535,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -559903,12 +559903,12 @@
             "amount": 483792.8825967412
           }
         ],
-        "monthly_balance_variation": -9.101692269471641,
-        "monthly_balance_update": 189905.4685998609,
-        "monthly_balance_interest": -4.960292130402877,
+        "monthly_balance_variation": -8.410555480341827,
+        "monthly_balance_update": 189905.7114046917,
+        "monthly_balance_interest": -4.511960172063709,
         "monthly_balance_amortization": 189909.61,
         "monthly_balance_reference_date": "31/07/2026",
-        "monthly_balance_current_date": "18/08/2026",
+        "monthly_balance_current_date": "19/08/2026",
         "monthly_balance_update_label": "Atualização IPCA"
       },
       "timeline": [
@@ -560225,7 +560225,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 258589293.39768,
+      "current_balance": 258664945.12096,
       "next_payment_amount": 13114339.71,
       "total_interest": 331780483.12,
       "total_amortization": 407241182.97,
@@ -560261,7 +560261,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 169277975.97,
+      "current_balance": 169369853.05,
       "next_payment_amount": 17048739.49,
       "total_interest": 349471832.75,
       "total_amortization": 375908264.86,
@@ -560366,6 +560366,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "18/08/2026 08:00:07",
-  "generated_at_iso": "2026-08-18T08:00:07"
+  "generated_at": "19/08/2026 08:00:06",
+  "generated_at_iso": "2026-08-19T08:00:06"
 }
