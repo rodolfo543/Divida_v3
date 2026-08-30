@@ -20793,8 +20793,8 @@
     "next_amortization_amount": 405473.9,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 5.404588482240249,
-    "wal_years": 6.155644916356689,
+    "duration_years": 5.399112780665984,
+    "wal_years": 6.150169214782425,
     "tir_annual_pct": 10.893869512120524,
     "tir_monthly_pct": 0.8654185085795074,
     "contracted_rate_label": "IPCA + 11%",
@@ -140051,8 +140051,8 @@
         "next_amortization_amount": 405473.9,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.404588482240249,
-        "wal_years": 6.155644916356689,
+        "duration_years": 5.399112780665984,
+        "wal_years": 6.150169214782425,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -349553,8 +349553,8 @@
         "next_amortization_amount": 214718.31,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.404588482551265,
-        "wal_years": 6.155644915697491,
+        "duration_years": 5.399112780977001,
+        "wal_years": 6.150169214123227,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -559217,8 +559217,8 @@
         "next_amortization_amount": 190755.59,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.404588481890162,
-        "wal_years": 6.155644917098694,
+        "duration_years": 5.399112780315899,
+        "wal_years": 6.15016921552443,
         "tir_annual_pct": 10.893869512120535,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -560366,6 +560366,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "28/08/2026 08:00:05",
-  "generated_at_iso": "2026-08-28T08:00:05"
+  "generated_at": "30/08/2026 10:43:57",
+  "generated_at_iso": "2026-08-30T10:43:57"
 }
