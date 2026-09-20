@@ -3873,8 +3873,8 @@
     "next_amortization_amount": 2886770.2,
     "last_event_date": "15/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.092730274809332,
-    "wal_years": 10.427554736070578,
+    "duration_years": 9.0899924240222,
+    "wal_years": 10.424816885283446,
     "tir_annual_pct": 9.594971131255894,
     "tir_monthly_pct": 0.7664330401235597,
     "contracted_rate_label": "IPCA + 9,4659% / 10,9659%",
@@ -119767,8 +119767,8 @@
         "next_amortization_amount": 2886770.2,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.092730274809332,
-        "wal_years": 10.427554736070578,
+        "duration_years": 9.0899924240222,
+        "wal_years": 10.424816885283446,
         "tir_annual_pct": 9.594971131255894,
         "tir_monthly_pct": 0.7664330401235597,
         "contracted_rate_label": "IPCA + 9,4659% / 10,9659%",
@@ -330671,8 +330671,8 @@
         "next_amortization_amount": 366297.87,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.849221532256891,
-        "wal_years": 11.618977766121265,
+        "duration_years": 9.846483681469758,
+        "wal_years": 11.616239915334134,
         "tir_annual_pct": 9.343559803155122,
         "tir_monthly_pct": 0.7471495379901549,
         "contracted_rate_label": "IPCA + 9,4659%",
@@ -541719,8 +541719,8 @@
         "next_amortization_amount": 2520472.33,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.627782825854973,
-        "wal_years": 5.90338690651105,
+        "duration_years": 5.625044975067841,
+        "wal_years": 5.9006490557239175,
         "tir_annual_pct": 10.7700409476937,
         "tir_monthly_pct": 0.8560278355393081,
         "contracted_rate_label": "IPCA + 10,9659%",
@@ -542294,6 +542294,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "19/09/2026 09:59:19",
-  "generated_at_iso": "2026-09-19T09:59:19"
+  "generated_at": "20/09/2026 08:00:13",
+  "generated_at_iso": "2026-09-20T08:00:13"
 }
