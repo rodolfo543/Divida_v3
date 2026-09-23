@@ -46,7 +46,7 @@
       },
       {
         "label": "Saldo somado das emissões",
-        "value": "1701166295.34776"
+        "value": "1701398784.7167602"
       }
     ],
     "pu_fields": [
@@ -56,7 +56,7 @@
       },
       {
         "label": "Maior saldo atual",
-        "value": "260574578.17776"
+        "value": "260746234.04676"
       },
       {
         "label": "Maior juros acumulados",
@@ -10211,12 +10211,12 @@
     "next_amortization_amount": 2274785.29,
     "last_event_date": "15/09/2026",
     "final_balance": 227284999.38,
-    "duration_years": 8.328605610149104,
-    "wal_years": 9.614938302570353,
+    "duration_years": 8.325867759361971,
+    "wal_years": 9.612200451783222,
     "tir_annual_pct": 10.910989140154815,
     "tir_monthly_pct": 0.8667160376830019,
-    "contracted_rate_annual_pct": 10.91425567172495,
-    "effective_spread_annual_pct": -0.003266531570135456,
+    "contracted_rate_annual_pct": 10.91430144356182,
+    "effective_spread_annual_pct": -0.0033123034070055013,
     "tir_cashflows": [
       {
         "date": "29/11/2022",
@@ -11205,12 +11205,12 @@
     ],
     "contracted_rate_label": "Média ponderada da carteira",
     "contracted_rate_display": "Média ponderada: 10,91% a.a.",
-    "monthly_balance_variation": -7352153.814019647,
-    "monthly_balance_update": -9137570.069623515,
-    "monthly_balance_interest": 7420183.495603867,
+    "monthly_balance_variation": -6867333.291850134,
+    "monthly_balance_update": -9079022.820752844,
+    "monthly_balance_interest": 7846456.76890271,
     "monthly_balance_amortization": 5634767.24,
     "monthly_balance_reference_date": "31/08/2026",
-    "monthly_balance_current_date": "22/09/2026",
+    "monthly_balance_current_date": "23/09/2026",
     "monthly_balance_update_label": "Atualização indexadores"
   },
   "timeline": [
@@ -11350,7 +11350,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 260574578.17776,
+      "current_balance": 260746234.04676,
       "next_payment_amount": 13103360.94,
       "total_interest": 332124043.13,
       "total_amortization": 407697989.55,
@@ -11386,7 +11386,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 171336021.15,
+      "current_balance": 171396854.65,
       "next_payment_amount": 17067898.6,
       "total_interest": 349864563.8,
       "total_amortization": 376330704.8,
@@ -11493,6 +11493,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "22/09/2026 08:00:05",
-  "generated_at_iso": "2026-09-22T08:00:05"
+  "generated_at": "23/09/2026 08:00:06",
+  "generated_at_iso": "2026-09-23T08:00:06"
 }
