@@ -205271,8 +205271,8 @@
     "next_amortization_amount": 742969.65,
     "last_event_date": "15/09/2026",
     "final_balance": 0.0,
-    "duration_years": 5.66048573587526,
-    "wal_years": 6.524817604862742,
+    "duration_years": 5.652272183513864,
+    "wal_years": 6.516604052501345,
     "tir_annual_pct": 10.837870784225279,
     "tir_monthly_pct": 0.8611729756932363,
     "contracted_rate_label": "IPCA + 11%",
@@ -205957,12 +205957,12 @@
         "amount": 895383.9130994584
       }
     ],
-    "monthly_balance_variation": -923546.8767879307,
-    "monthly_balance_update": -174373.60304235574,
-    "monthly_balance_interest": -3816.733745574951,
-    "monthly_balance_amortization": 745356.54,
-    "monthly_balance_reference_date": "31/08/2026",
-    "monthly_balance_current_date": "29/09/2026",
+    "monthly_balance_variation": 77999.97252553701,
+    "monthly_balance_update": -45285.246763408184,
+    "monthly_balance_interest": 123285.2192889452,
+    "monthly_balance_amortization": 0,
+    "monthly_balance_reference_date": "30/09/2026",
+    "monthly_balance_current_date": "02/10/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -206273,7 +206273,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 261631982.79371998,
+      "current_balance": 262208929.59519997,
       "next_payment_amount": 13117448.62,
       "total_interest": 332000811.44,
       "total_amortization": 407489776.59,
@@ -206309,7 +206309,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 171640410.65,
+      "current_balance": 171823302.98,
       "next_payment_amount": 17058649.3,
       "total_interest": 349675704.35,
       "total_amortization": 376127606.79,
@@ -206414,6 +206414,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "29/09/2026 08:01:10",
-  "generated_at_iso": "2026-09-29T08:01:10"
+  "generated_at": "02/10/2026 08:00:04",
+  "generated_at_iso": "2026-10-02T08:00:04"
 }
