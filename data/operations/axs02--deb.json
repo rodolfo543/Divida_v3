@@ -16929,8 +16929,8 @@
     "next_amortization_amount": 190129.51,
     "last_event_date": "15/09/2026",
     "final_balance": 0.0,
-    "duration_years": 5.338600593255008,
-    "wal_years": 6.076682636998099,
+    "duration_years": 5.335862742467876,
+    "wal_years": 6.073944786210967,
     "tir_annual_pct": 10.893869512120535,
     "tir_monthly_pct": 0.8654185085795074,
     "contracted_rate_label": "IPCA + 11%",
@@ -136349,8 +136349,8 @@
         "next_amortization_amount": 404143.1,
         "last_event_date": "15/09/2026",
         "final_balance": 0.0,
-        "duration_years": 5.3386005936889775,
-        "wal_years": 6.076682636222237,
+        "duration_years": 5.335862742901845,
+        "wal_years": 6.0739447854351045,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -345851,8 +345851,8 @@
         "next_amortization_amount": 214013.59,
         "last_event_date": "15/09/2026",
         "final_balance": 0.0,
-        "duration_years": 5.338600594074514,
-        "wal_years": 6.076682635532962,
+        "duration_years": 5.3358627432873815,
+        "wal_years": 6.073944784745831,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -555515,8 +555515,8 @@
         "next_amortization_amount": 190129.51,
         "last_event_date": "15/09/2026",
         "final_balance": 0.0,
-        "duration_years": 5.338600593255008,
-        "wal_years": 6.076682636998099,
+        "duration_years": 5.335862742467876,
+        "wal_years": 6.073944786210967,
         "tir_annual_pct": 10.893869512120535,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -556664,6 +556664,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "03/10/2026 12:27:51",
-  "generated_at_iso": "2026-10-03T12:27:51"
+  "generated_at": "04/10/2026 13:18:08",
+  "generated_at_iso": "2026-10-04T13:18:08"
 }
