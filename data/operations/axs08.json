@@ -206671,8 +206671,8 @@
     "next_amortization_amount": 625711.85,
     "last_event_date": "15/06/2026",
     "final_balance": 0.0,
-    "duration_years": 7.86207425189969,
-    "wal_years": 9.332203769225918,
+    "duration_years": 7.859336401112558,
+    "wal_years": 9.329465918438787,
     "tir_annual_pct": 10.89437918071262,
     "tir_monthly_pct": 0.865457139981296,
     "contracted_rate_label": "IPCA + 11%",
@@ -206817,12 +206817,12 @@
         "amount": 6196941.757894135
       }
     ],
-    "monthly_balance_variation": 342231.45174619555,
-    "monthly_balance_update": 63653.59751611948,
-    "monthly_balance_interest": 278577.8542300761,
+    "monthly_balance_variation": 410783.0665663779,
+    "monthly_balance_update": 76388.0792388171,
+    "monthly_balance_interest": 334394.9873275608,
     "monthly_balance_amortization": 0,
     "monthly_balance_reference_date": "30/09/2026",
-    "monthly_balance_current_date": "07/10/2026",
+    "monthly_balance_current_date": "08/10/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -207096,7 +207096,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 262787143.20347998,
+      "current_balance": 262980163.47428,
       "next_payment_amount": 13118744.56,
       "total_interest": 332102385.22,
       "total_amortization": 407626917.78,
@@ -207132,7 +207132,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 172006390.03,
+      "current_balance": 172067463.51,
       "next_payment_amount": 17063285.99,
       "total_interest": 349795705.08,
       "total_amortization": 376258313.64,
@@ -207237,6 +207237,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "07/10/2026 15:49:29",
-  "generated_at_iso": "2026-10-07T15:49:29"
+  "generated_at": "08/10/2026 08:00:10",
+  "generated_at_iso": "2026-10-08T08:00:10"
 }
