@@ -182863,8 +182863,8 @@
     "next_amortization_amount": 1249444.98,
     "last_event_date": "16/10/2026",
     "final_balance": 0.0,
-    "duration_years": 9.4445278834081,
-    "wal_years": 11.06861182222192,
+    "duration_years": 9.441790032620966,
+    "wal_years": 11.065873971434788,
     "tir_annual_pct": 13.550174266686843,
     "tir_monthly_pct": 1.0645819180790994,
     "contracted_rate_label": "IPCA + 13,6455%",
@@ -183428,6 +183428,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/10/2026 08:00:06",
-  "generated_at_iso": "2026-10-16T08:00:06"
+  "generated_at": "17/10/2026 20:16:11",
+  "generated_at_iso": "2026-10-17T20:16:11"
 }

@@ -3137,8 +3137,8 @@
     "next_amortization_amount": 2525713.4,
     "last_event_date": "15/08/2026",
     "final_balance": 0.0,
-    "duration_years": 5.553655976386919,
-    "wal_years": 5.829265219418319,
+    "duration_years": 5.550918125599788,
+    "wal_years": 5.826527368631187,
     "tir_annual_pct": 10.7700409476937,
     "tir_monthly_pct": 0.8560278355393081,
     "contracted_rate_label": "IPCA + 10,9659%",
@@ -119175,8 +119175,8 @@
         "next_amortization_amount": 2892772.9499999997,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.018671322728826,
-        "wal_years": 10.353535359510971,
+        "duration_years": 9.015933471941693,
+        "wal_years": 10.350797508723838,
         "tir_annual_pct": 9.594971131255894,
         "tir_monthly_pct": 0.7664330401235597,
         "contracted_rate_label": "IPCA + 9,4659% / 10,9659%",
@@ -330079,8 +330079,8 @@
         "next_amortization_amount": 367059.55,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.775206840344435,
-        "wal_years": 11.545037714271317,
+        "duration_years": 9.772468989557304,
+        "wal_years": 11.542299863484185,
         "tir_annual_pct": 9.343559803155122,
         "tir_monthly_pct": 0.7471495379901549,
         "contracted_rate_label": "IPCA + 9,4659%",
@@ -541127,8 +541127,8 @@
         "next_amortization_amount": 2525713.4,
         "last_event_date": "15/08/2026",
         "final_balance": 0.0,
-        "duration_years": 5.553655976386919,
-        "wal_years": 5.829265219418319,
+        "duration_years": 5.550918125599788,
+        "wal_years": 5.826527368631187,
         "tir_annual_pct": 10.7700409476937,
         "tir_monthly_pct": 0.8560278355393081,
         "contracted_rate_label": "IPCA + 10,9659%",
@@ -541702,6 +541702,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/10/2026 08:00:06",
-  "generated_at_iso": "2026-10-16T08:00:06"
+  "generated_at": "17/10/2026 20:16:11",
+  "generated_at_iso": "2026-10-17T20:16:11"
 }

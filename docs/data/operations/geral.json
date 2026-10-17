@@ -10211,8 +10211,8 @@
     "next_amortization_amount": 2291941.33,
     "last_event_date": "15/10/2026",
     "final_balance": 227432310.91,
-    "duration_years": 8.272245699351663,
-    "wal_years": 9.55631952385488,
+    "duration_years": 8.26950784856453,
+    "wal_years": 9.553581673067747,
     "tir_annual_pct": 10.910989140154815,
     "tir_monthly_pct": 0.8667160376830019,
     "contracted_rate_annual_pct": 10.914922238382612,
@@ -11493,6 +11493,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "16/10/2026 08:00:06",
-  "generated_at_iso": "2026-10-16T08:00:06"
+  "generated_at": "17/10/2026 20:16:11",
+  "generated_at_iso": "2026-10-17T20:16:11"
 }

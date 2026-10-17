@@ -4449,8 +4449,8 @@
     "next_amortization_amount": 2118165.9699999997,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.491877885092046,
-    "wal_years": 11.088045427935738,
+    "duration_years": 9.489140034304915,
+    "wal_years": 11.085307577148606,
     "tir_annual_pct": 9.51368369738409,
     "tir_monthly_pct": 0.7602026518901628,
     "contracted_rate_label": "IPCA + 9,3515% / 10,9659%",
@@ -120947,8 +120947,8 @@
         "next_amortization_amount": 2118165.9699999997,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.491877885092046,
-        "wal_years": 11.088045427935738,
+        "duration_years": 9.489140034304915,
+        "wal_years": 11.085307577148606,
         "tir_annual_pct": 9.51368369738409,
         "tir_monthly_pct": 0.7602026518901628,
         "contracted_rate_label": "IPCA + 9,3515% / 10,9659%",
@@ -368398,8 +368398,8 @@
         "next_amortization_amount": 714189.99,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.621214926864722,
-        "wal_years": 11.35318750499015,
+        "duration_years": 9.61847707607759,
+        "wal_years": 11.350449654203016,
         "tir_annual_pct": 9.22953112343704,
         "tir_monthly_pct": 0.7383900226449525,
         "contracted_rate_label": "IPCA + 9,3515%",
@@ -616047,8 +616047,8 @@
         "next_amortization_amount": 1403975.98,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 8.97180692719629,
-        "wal_years": 10.018355368084416,
+        "duration_years": 8.96906907640916,
+        "wal_years": 10.015617517297285,
         "tir_annual_pct": 10.799329805904085,
         "tir_monthly_pct": 0.8582498563043384,
         "contracted_rate_label": "IPCA + 10,9659%",
@@ -616676,6 +616676,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "16/10/2026 08:00:06",
-  "generated_at_iso": "2026-10-16T08:00:06"
+  "generated_at": "17/10/2026 20:16:11",
+  "generated_at_iso": "2026-10-17T20:16:11"
 }
