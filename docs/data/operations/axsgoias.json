@@ -74,7 +74,7 @@
       },
       {
         "label": "Saldo atual",
-        "value": "264566251.58124"
+        "value": "264704129.50016"
       },
       {
         "label": "Próximo PMT",
@@ -84,15 +84,15 @@
     "pu_fields": [
       {
         "label": "PU cheio",
-        "value": "1349.82781419"
+        "value": "1350.53127296"
       },
       {
         "label": "PU vazio",
-        "value": "1349.82781419"
+        "value": "1350.53127296"
       },
       {
         "label": "PU juros",
-        "value": "46.86423818"
+        "value": "47.40039529"
       },
       {
         "label": "PU amortização",
@@ -100,7 +100,7 @@
       },
       {
         "label": "Principal atualizado",
-        "value": "255380860.89796"
+        "value": "255413652.02332"
       },
       {
         "label": "PMT da linha atual",
@@ -23255,15 +23255,15 @@
       "payment": 0.0,
       "interest": 0.0,
       "amortization": 0.0,
-      "balance": 264735558.6078,
-      "principal": 255443978.04492,
-      "pu_cheio": 1350.69162555,
-      "pu_vazio": 1350.69162555,
-      "pu_juros": 47.40602328,
+      "balance": 264704129.50016,
+      "principal": 255413652.02332,
+      "pu_cheio": 1350.53127296,
+      "pu_vazio": 1350.53127296,
+      "pu_juros": 47.40039529,
       "pu_amort": 0.0,
       "pu_total": 0.0,
-      "valor_nominal": 1303.28560227,
-      "valor_juros": 47.40602328,
+      "valor_nominal": 1303.13087767,
+      "valor_juros": 47.40039529,
       "juros_pct": 0.104,
       "taxa_cdi_pct_ad": null,
       "data_ref_cdi": "",
@@ -23273,15 +23273,15 @@
         "Data": "22/10/2026",
         "Dia_Util": "SIM",
         "Tipo_Dia": "ACUMULACAO",
-        "Valor_Nominal": 1303.28560227,
-        "Valor_Juros": 47.40602328,
-        "PU_Cheio": 1350.69162555,
-        "PU_Vazio": 1350.69162555,
+        "Valor_Nominal": 1303.13087767,
+        "Valor_Juros": 47.40039529,
+        "PU_Cheio": 1350.53127296,
+        "PU_Vazio": 1350.53127296,
         "Taxa_Juros_Pct": 0.104,
         "PU_Juros_Pago_Dia": 0.0,
         "PU_Amort_Dia": 0.0,
         "PU_Total_Pago_Dia": 0.0,
-        "Fonte_PU": "Calculo local IPCA pro rata e juros em 252 dias uteis"
+        "Fonte_PU": "Vortx operacao 93664"
       },
       "total_interest_running": 0.0,
       "total_amortization_running": 0.0
@@ -171254,11 +171254,11 @@
     }
   ],
   "summary": {
-    "current_balance": 264566251.58124,
-    "current_principal": 255380860.89796,
-    "current_pu_cheio": 1349.82781419,
-    "current_pu_vazio": 1349.82781419,
-    "current_pu_juros": 46.86423818,
+    "current_balance": 264704129.50016,
+    "current_principal": 255413652.02332,
+    "current_pu_cheio": 1350.53127296,
+    "current_pu_vazio": 1350.53127296,
+    "current_pu_juros": 47.40039529,
     "current_pu_amort": 0.0,
     "current_payment": 0.0,
     "total_interest": 332749829.01,
@@ -171268,10 +171268,10 @@
     "next_payment_amount": 13132409.94,
     "next_interest_amount": 13132409.94,
     "next_amortization_amount": 0.0,
-    "last_event_date": "21/10/2026",
+    "last_event_date": "22/10/2026",
     "final_balance": 0.0,
-    "duration_years": 8.628974060278576,
-    "wal_years": 10.35194491798724,
+    "duration_years": 8.626236209491443,
+    "wal_years": 10.349207067200107,
     "tir_annual_pct": 10.329443441428932,
     "tir_monthly_pct": 0.8225364302511418,
     "contracted_rate_label": "IPCA + 10,40%",
@@ -171408,12 +171408,12 @@
         "amount": 22059358.83419539
       }
     ],
-    "monthly_balance_variation": 2742094.8760799766,
-    "monthly_balance_update": 1253874.4024799764,
-    "monthly_balance_interest": 1488220.4736000001,
+    "monthly_balance_variation": 2879972.794999987,
+    "monthly_balance_update": 1286665.5278399587,
+    "monthly_balance_interest": 1593307.2671600282,
     "monthly_balance_amortization": 0,
     "monthly_balance_reference_date": "30/09/2026",
-    "monthly_balance_current_date": "21/10/2026",
+    "monthly_balance_current_date": "22/10/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -171689,7 +171689,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 264566251.58124,
+      "current_balance": 264704129.50016,
       "next_payment_amount": 13132409.94,
       "total_interest": 332749829.01,
       "total_amortization": 408453627.99,
@@ -171725,7 +171725,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 172930966.43,
+      "current_balance": 173086062.86,
       "next_payment_amount": 17099428.52,
       "total_interest": 350510876.75,
       "total_amortization": 377025909.23,
@@ -171830,6 +171830,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "21/10/2026 08:46:44",
-  "generated_at_iso": "2026-10-21T08:46:44"
+  "generated_at": "22/10/2026 08:00:05",
+  "generated_at_iso": "2026-10-22T08:00:05"
 }
