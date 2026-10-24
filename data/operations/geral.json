@@ -46,7 +46,7 @@
       },
       {
         "label": "Saldo somado das emissões",
-        "value": "1705013966.2474"
+        "value": "1704968679.03424"
       }
     ],
     "pu_fields": [
@@ -56,7 +56,7 @@
       },
       {
         "label": "Maior saldo atual",
-        "value": "264842082.1774"
+        "value": "264796794.96423998"
       },
       {
         "label": "Maior juros acumulados",
@@ -10211,12 +10211,12 @@
     "next_amortization_amount": 2291941.33,
     "last_event_date": "15/10/2026",
     "final_balance": 227708700.39,
-    "duration_years": 8.253541873028857,
-    "wal_years": 9.537540222995228,
+    "duration_years": 8.250804022241725,
+    "wal_years": 9.534802372208096,
     "tir_annual_pct": 10.910989140154815,
     "tir_monthly_pct": 0.8667160376830019,
-    "contracted_rate_annual_pct": 10.915954962793073,
-    "effective_spread_annual_pct": -0.004965822638258288,
+    "contracted_rate_annual_pct": 10.915968667538896,
+    "effective_spread_annual_pct": -0.0049795273840818055,
     "tir_cashflows": [
       {
         "date": "29/11/2022",
@@ -11205,9 +11205,9 @@
     ],
     "contracted_rate_label": "Média ponderada da carteira",
     "contracted_rate_display": "Média ponderada: 10,92% a.a.",
-    "monthly_balance_variation": 4849497.086914327,
-    "monthly_balance_update": 3081387.62992196,
-    "monthly_balance_interest": 4045782.6569923665,
+    "monthly_balance_variation": 4804209.873754319,
+    "monthly_balance_update": 3037707.042481976,
+    "monthly_balance_interest": 4044176.0312723424,
     "monthly_balance_amortization": 2277673.2,
     "monthly_balance_reference_date": "30/09/2026",
     "monthly_balance_current_date": "23/10/2026",
@@ -11350,7 +11350,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 264842082.1774,
+      "current_balance": 264796794.96423998,
       "next_payment_amount": 13132409.94,
       "total_interest": 332749829.01,
       "total_amortization": 408453627.99,
@@ -11493,6 +11493,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "23/10/2026 08:36:51",
-  "generated_at_iso": "2026-10-23T08:36:51"
+  "generated_at": "24/10/2026 18:50:58",
+  "generated_at_iso": "2026-10-24T18:50:58"
 }
