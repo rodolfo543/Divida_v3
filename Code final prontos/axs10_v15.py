@@ -452,18 +452,6 @@ def calcular_fluxo() -> Tuple[List[Dict[str, object]], List[Dict[str, object]], 
         data_ref_juros = data_evento
         data_base_ipca = date(data_nominal.year, data_nominal.month, 15)
 
-    try:
-        linhas_oficiais = obter_historico_pu_vortx()
-    except Exception:
-        linhas_oficiais = []
-    if linhas_oficiais:
-        linhas_por_data = {str(item["Data"]): item for item in linhas_diarias}
-        linhas_por_data.update({str(item["Data"]): item for item in linhas_oficiais})
-        linhas_diarias = sorted(
-            linhas_por_data.values(),
-            key=lambda item: datetime.strptime(str(item["Data"]), "%d/%m/%Y").date(),
-        )
-
     return linhas, linhas_diarias, fonte_ipca
 
 

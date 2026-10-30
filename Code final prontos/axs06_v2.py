@@ -56,6 +56,8 @@ from typing import Dict, List, Tuple
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
+from ipca_inputs import aplicar_projecao_anbima
+
 getcontext().prec = 34
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -543,12 +545,13 @@ def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, De
         out[m] = ultimo_indice
         fontes[m] = f"{fonte_taxa} | {fonte_focus}"
         mes_atual = add_months(mes_atual, 1)
+    aplicar_projecao_anbima(out, fontes, indices)
     return out, fontes
 
 
-def fator_ipca(indices: Dict[str, Decimal], data_aniv: date) -> Tuple[Decimal, str, str, Decimal, Decimal]:
-    mes_nik = mes_str(add_months(data_aniv, -1))
-    mes_nik_1 = mes_str(add_months(data_aniv, -2))
+def fator_ipca(indices: Dict[str, Decimal], data_aniv: date, lag_ipca: int = 1) -> Tuple[Decimal, str, str, Decimal, Decimal]:
+    mes_nik = mes_str(add_months(data_aniv, -lag_ipca))
+    mes_nik_1 = mes_str(add_months(data_aniv, -lag_ipca - 1))
     if mes_nik not in indices or mes_nik_1 not in indices:
         raise RuntimeError(f"IPCA necessario nao disponivel: NIk={mes_nik}, NIk_1={mes_nik_1}.")
     ni_k = indices[mes_nik]
@@ -561,8 +564,9 @@ def fator_ipca_prorata(
     indices: Dict[str, Decimal],
     data_aniv: date,
     inicio: date,
+    lag_ipca: int = 1,
 ) -> Tuple[Decimal, str, str, Decimal, Decimal, int, int]:
-    fator_cheio, mes_nik, mes_nik_1, ni_k, ni_k_1 = fator_ipca(indices, data_aniv)
+    fator_cheio, mes_nik, mes_nik_1, ni_k, ni_k_1 = fator_ipca(indices, data_aniv, lag_ipca)
     prev_m = add_months(data_aniv, -1)
     inicio_aniv = date(prev_m.year, prev_m.month, 15)
     dup = dias_uteis(inicio, data_aniv)
@@ -589,6 +593,7 @@ def aplicar_ipca_ate(
     data_aniv_alvo: date,
     indices: Dict[str, Decimal],
     fonte_mes: Dict[str, str],
+    lag_ipca: int = 1,
 ) -> Tuple[Decimal, List[Dict[str, object]], date]:
     detalhes: List[Dict[str, object]] = []
     if data_aniv_alvo < data_ipca_atual:
@@ -605,13 +610,13 @@ def aplicar_ipca_ate(
             continue
 
         if atual.day == 15 and atual < prox:
-            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1 = fator_ipca(indices, prox)
+            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1 = fator_ipca(indices, prox, lag_ipca)
             prev_m = add_months(prox, -1)
             inicio_aniv = date(prev_m.year, prev_m.month, 15)
             dup_ipca = dias_uteis(inicio_aniv, prox)
             dut_ipca = dup_ipca
         else:
-            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1, dup_ipca, dut_ipca = fator_ipca_prorata(indices, prox, atual)
+            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1, dup_ipca, dut_ipca = fator_ipca_prorata(indices, prox, atual, lag_ipca)
 
         saldo_ini = saldo
         saldo = trunc_dec(saldo * fator_c, 8)
@@ -741,9 +746,11 @@ def calcular_fluxo_primeira_emissao(
                 data_incorp,
                 indices,
                 fonte_mes,
+                lag_ipca=2,
             )
         du = dias_uteis(data_ref_juros, data_incorp)
-        fator_juros = fator_juros_252(du, emissao.taxa_aa_nova)
+        taxa_periodo = emissao.taxa_aa_antiga if data_incorp <= emissao.data_migracao else emissao.taxa_aa_nova
+        fator_juros = fator_juros_252(du, taxa_periodo)
         pu_vna_atualizado = trunc_dec(saldo_pu, 8)
         pu_juros = trunc_dec(pu_vna_atualizado * (fator_juros - Decimal("1")), 8)
         pu_vna_fim = trunc_dec(pu_vna_atualizado + pu_juros, 8)
@@ -756,7 +763,7 @@ def calcular_fluxo_primeira_emissao(
                 du,
                 detalhes_ipca,
                 fator_juros,
-                emissao.taxa_aa_nova,
+                taxa_periodo,
                 Decimal("0"),
                 pu_vna_ini,
                 pu_vna_atualizado,
@@ -778,6 +785,7 @@ def calcular_fluxo_primeira_emissao(
             aniversario(data_pagto),
             indices,
             fonte_mes,
+            lag_ipca=2,
         )
         du = dias_uteis(data_ref_juros, data_pagto)
         fator_juros = fator_juros_252(du, emissao.taxa_aa_nova)

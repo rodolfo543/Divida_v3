@@ -35,6 +35,8 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 from urllib.request import Request, urlopen
 
+from ipca_inputs import aplicar_projecao_anbima
+
 getcontext().prec = 40
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -301,6 +303,7 @@ def obter_ipca_sidra(periodo_inicial: str, periodo_final: str) -> Tuple[Dict[str
 
 def preparar_indices_ipca(periodo_inicial: str, periodo_final: str) -> Tuple[Dict[str, Decimal], Dict[str, str], str]:
     indices, fonte = obter_ipca_sidra(periodo_inicial, periodo_final)
+    oficiais = set(indices)
     fontes = {periodo: "IBGE/SIDRA numero-indice IPCA" for periodo in indices}
 
     if periodo_inicial not in indices:
@@ -319,6 +322,7 @@ def preparar_indices_ipca(periodo_inicial: str, periodo_final: str) -> Tuple[Dic
         indices[periodo] = ultimo_indice
         fontes[periodo] = f"Projetado fixo {IPCA_FUTURO_MENSAL * Decimal('100')}% a.m."
 
+    aplicar_projecao_anbima(indices, fontes, oficiais)
     return indices, fontes, fonte
 
 
@@ -443,6 +447,13 @@ def calcular_instrumento(
 
     saldo_base = PU_INICIAL
     inicio_periodo = DATA_INTEGRALIZACAO
+    event_file = BASE_DIR.parent / "data" / "events" / "axs02.json"
+    extra_events = json.loads(event_file.read_text(encoding="utf-8"))["events"] if event_file.exists() else []
+    total_quantity = sum(inst.quantidade for inst in INSTRUMENTOS)
+    extras = {
+        date.fromisoformat(event["date"]): round_dec(Decimal(event["total_amount"]) * instrumento.quantidade / total_quantity, 2)
+        for event in extra_events if event["type"] == "extraordinary_amortization"
+    }
 
     for idx, (data_pagto, perc_amort) in enumerate(CRONOGRAMA):
         primeiro_periodo = idx == 0
@@ -464,6 +475,10 @@ def calcular_instrumento(
             amort = trunc_dec(vna * perc_amort, 8) if linha_evento else Decimal("0.00000000")
             if linha_evento and idx == len(CRONOGRAMA) - 1:
                 amort = vna
+            amort_programada = amort
+            extra_cash = extras.get(data_calc, Decimal("0")) if linha_evento else Decimal("0")
+            extra_pu = trunc_dec(extra_cash / instrumento.quantidade, 8)
+            amort = trunc_dec(amort + extra_pu, 8)
 
             pu_cheio = trunc_dec(vna + juros, 8)
             pu_vazio = trunc_dec(vna - amort, 8) if linha_evento else pu_cheio
@@ -496,6 +511,7 @@ def calcular_instrumento(
                 "PU_Vazio": pu_vazio,
                 "Juros_%": round_dec(juros, 2) if linha_evento else Decimal("0.00"),
                 "Amortizacao": amort,
+                "Amortizacao_Extraordinaria": extra_pu,
                 "Total": total,
                 "Saldo_Pos_Evento": saldo_evento if linha_evento else "",
                 "Fonte_IPCA": fonte_periodo,
@@ -511,7 +527,7 @@ def calcular_instrumento(
                     "ISIN": instrumento.isin,
                     "Data_Ref": data_ptbr(data_pagto),
                     "Data_Pgto": data_ptbr(data_pagto),
-                    "Evento": "Juros + Amortizacao" if amort else "Juros",
+                    "Evento": "Juros + Amortização programada e extraordinária" if extra_cash else ("Juros + Amortizacao" if amort else "Juros"),
                     "DU_Juros": dup,
                     "DU_IPCA": dup,
                     "DUT_IPCA": dut,
@@ -526,6 +542,9 @@ def calcular_instrumento(
                     "PU_VNa_Atualizado": vna,
                     "PU_Juros": juros,
                     "PU_Amort": amort,
+                    "PU_Amort_Programada": amort_programada,
+                    "PU_Amort_Extraordinaria": extra_pu,
+                    "Amort_Extraordinaria_R$": extra_cash,
                     "PU_Total": total,
                     "PU_VNa_Fim": saldo_evento,
                     "Juros_R$": juros_rs,

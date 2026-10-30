@@ -45,6 +45,8 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 import importlib.util
 
+from ipca_inputs import aplicar_projecao_anbima
+
 getcontext().prec = 34
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -488,6 +490,7 @@ def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, De
         out[m] = ultimo_indice
         fontes[m] = f"{fonte_taxa} | {fonte_focus}"
         mes_atual = add_months(mes_atual, 1)
+    aplicar_projecao_anbima(out, fontes, indices, decimal_places=2)
     return out, fontes
 
 

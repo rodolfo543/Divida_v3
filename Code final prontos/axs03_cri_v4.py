@@ -46,6 +46,8 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 import importlib.util
 
+from ipca_inputs import aplicar_projecao_anbima
+
 getcontext().prec = 34
 
 DATA_EMISSAO = date(2022, 11, 22)
@@ -293,7 +295,7 @@ def feriados_nacionais(start_year: int = 2022, end_year: int = 2037) -> set[date
             date(y, 10, 12),
             date(y, 11, 2),
             date(y, 11, 15),
-            date(y, 11, 20),
+            *([date(y, 11, 20)] if y >= 2024 else []),
             date(y, 12, 25),
         })
     return fs
@@ -554,6 +556,7 @@ def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, De
         else:
             ultimo_indice = out[m]
         mes_atual = add_months(mes_atual, 1)
+    aplicar_projecao_anbima(out, fontes, indices)
     return out, fontes, fonte_focus
 
 

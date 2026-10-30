@@ -21,9 +21,7 @@ Premissas principais extraidas da escritura
 
 Taxas adotadas
 - Segunda Serie: 10,9659% a.a., conforme informacao publica da emissao.
-- Primeira Serie: 9,4659% a.a., inferida a partir do mesmo bookbuilding da escritura:
-  mesma NTN-B 2035 de referencia da emissao + spread de 1,60%, usando como base
-  a taxa publica fechada da Segunda Serie (10,9659% = referencia + 3,10%).
+- Primeira Serie: 9,3515% a.a., conforme primeiro aditamento assinado e confirmação do emissor.
 
 Arquivos gerados
 - controle_divida_axs05_v1_primeira_serie.csv
@@ -136,9 +134,9 @@ SERIES = {
         ticker="AXSC12",
         isin="BRAXSCDBS015",
         quantidade=Decimal("64000"),
-        taxa_aa=Decimal("0.094659"),
+        taxa_aa=Decimal("0.093515"),
         cronograma=build_cronograma(1),
-        observacao_taxa="Taxa anual inferida pelo mesmo bookbuilding da emissao: taxa publica da 2a serie menos 1,50 p.p. de spread.",
+        observacao_taxa="Taxa anual de 9,3515% conforme primeiro aditamento assinado e confirmação do emissor.",
     ),
     "segunda": SerieConfig(
         id="segunda",

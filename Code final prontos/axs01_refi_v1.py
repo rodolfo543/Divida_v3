@@ -246,10 +246,10 @@ def aniversario_do_periodo(dt: date) -> Tuple[date, date, str]:
     aniversario_atual = data_aniversario_mes(dt.year, dt.month)
     if dt >= aniversario_atual:
         prox_mes = add_months_data(mes_atual, 1)
-        return aniversario_atual, data_aniversario_mes(prox_mes.year, prox_mes.month), periodo_yyyymm(mes_atual)
+        return aniversario_atual, data_aniversario_mes(prox_mes.year, prox_mes.month), add_months_periodo(periodo_yyyymm(mes_atual), -1)
 
     mes_anterior = add_months_data(mes_atual, -1)
-    return data_aniversario_mes(mes_anterior.year, mes_anterior.month), aniversario_atual, periodo_yyyymm(mes_anterior)
+    return data_aniversario_mes(mes_anterior.year, mes_anterior.month), aniversario_atual, add_months_periodo(periodo_yyyymm(mes_anterior), -1)
 
 
 def obter_bytes_url(url: str, timeout: int = 45) -> bytes:
@@ -446,6 +446,7 @@ def fator_ipca_periodo(
         return Decimal("1.00000000"), 0, "", "", Decimal("0"), Decimal("0"), ""
 
     acumulado = Decimal("1.0000000000000000")
+    fatores = []
     du_total = 0
     ultimo_nik = ""
     ultimo_nik_1 = ""
@@ -464,8 +465,8 @@ def fator_ipca_periodo(
             raise RuntimeError(f"IPCA ausente para {mes_nik}/{mes_nik_1}.")
         if du_seg > 0:
             razao = trunc_dec(indices[mes_nik] / indices[mes_nik_1], 8)
-            fator_seg = trunc_float_dec(math.pow(float(razao), du_seg / dut), 8)
-            acumulado = trunc_dec(acumulado * fator_seg, 16)
+            fator_seg = trunc_dec(razao ** (Decimal(du_seg) / Decimal(dut)), 8)
+            fatores.append(fator_seg)
             du_total += du_seg
             fontes_usadas.add(fontes.get(mes_nik, ""))
             fontes_usadas.add(fontes.get(mes_nik_1, ""))
@@ -475,6 +476,9 @@ def fator_ipca_periodo(
         ultimo_ni_1 = indices[mes_nik_1]
         cursor = seg_fim
 
+    # Ordem definida na escritura: fator mais recente primeiro.
+    for fator_seg in reversed(fatores):
+        acumulado = trunc_dec(acumulado * fator_seg, 16)
     return (
         trunc_dec(acumulado, 8),
         du_total,

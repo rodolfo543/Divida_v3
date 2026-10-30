@@ -19,6 +19,8 @@ from typing import Any, Callable
 from urllib.parse import parse_qs, urlparse
 from urllib.request import Request, urlopen
 
+from daily_contracts import calculate_daily, prepared_indices
+
 
 DASH_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = DASH_DIR
@@ -69,6 +71,8 @@ class OperationConfig:
 
 
 def load_module(module_name: str, path: Path) -> Any:
+    if str(path.parent) not in sys.path:
+        sys.path.insert(0, str(path.parent))
     spec = importlib.util.spec_from_file_location(module_name, path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Nao foi possivel carregar o modulo: {path}")
@@ -276,8 +280,8 @@ def derive_daily_type(row: dict[str, Any], is_last_day: bool) -> str:
     return "Fechamento"
 
 
-def build_synthetic_daily_pu_series(series: list[dict[str, Any]], module: Any | None) -> list[dict[str, Any]]:
-    quantity = number_or_none(getattr(module, "QUANTIDADE", None))
+def build_synthetic_daily_pu_series(series: list[dict[str, Any]], module: Any | None, quantity: float | None = None) -> list[dict[str, Any]]:
+    quantity = quantity or number_or_none(getattr(module, "QUANTIDADE", None))
     if quantity is None:
         quantity = number_or_none(getattr(module, "QUANTIDADE_EQUIVALENTE", None))
     quantity = quantity or 1.0
@@ -859,8 +863,21 @@ def build_fields(config: OperationConfig, payload: dict[str, Any], module: Any |
 def build_operation_view(config: OperationConfig, payload: dict[str, Any], module: Any | None) -> dict[str, Any]:
     daily_pu_series = payload.get("daily_pu_series")
     if daily_pu_series is None:
-        daily_pu_series = build_synthetic_daily_pu_series(payload["series"], module)
+        daily_pu_series = build_synthetic_daily_pu_series(payload["series"], module, number_or_none(config.metadata.get("quantity_emitted")))
     summary = dict(payload["summary"])
+    if payload.get("daily_pu_series"):
+        current = get_current_row(daily_pu_series)
+        if current:
+            summary.update({
+                "current_balance": current["balance"],
+                "current_principal": current["principal"],
+                "current_pu_cheio": current["pu_cheio"],
+                "current_pu_vazio": current["pu_vazio"],
+                "current_pu_juros": current["pu_juros"],
+                "current_pu_amort": current["pu_amort"],
+                "current_payment": current["payment"],
+                "last_event_date": current["date"],
+            })
     summary.update(build_return_summary(config, payload["series"], module))
     summary.update(build_monthly_balance_summary(config, payload["series"], daily_pu_series, module))
     enriched_payload = dict(payload)
@@ -909,10 +926,15 @@ def load_axs_standard(module: Any, primary_source_label: str, secondary_source_l
         raise RuntimeError("Retorno inesperado do calculo.")
 
     series = normalize_series(rows)
+    quantity = getattr(module, "QUANTIDADE", getattr(module, "QUANTIDADE_EQUIVALENTE", Decimal(1)))
+    lag = getattr(module, "IPCA_LAG_MESES", 1)
+    rate = module.DEBENTURE.taxa_aa if hasattr(module, "DEBENTURE") else module.TAXA_AA
+    daily = calculate_daily(module, rows, rate=rate, lag=lag)
     return {
         "module_ref": module,
         "series": series,
         "table_series": series,
+        "daily_pu_series": normalize_daily_pu(daily, quantity),
         "summary": build_summary(series),
         "timeline": build_timeline(series),
         "meta": meta,
@@ -929,6 +951,32 @@ def format_daily_pu_type(value: Any) -> str:
         "CAPITALIZACAO": "Capitalização",
         "FECHAMENTO_PERIODO": "Fechamento",
     }.get(text, text.title() or "-")
+
+
+def normalize_daily_pu(rows: list[dict[str, Any]], quantity: Any, component: str = "diario") -> list[dict[str, Any]]:
+    normalized = []
+    quantity = Decimal(str(quantity))
+    for row in rows:
+        nominal = Decimal(str(row["Valor_Nominal"]))
+        interest = Decimal(str(row.get("Valor_dos_Juros", row.get("Valor_Juros", 0))))
+        paid = Decimal(str(row.get("Total", 0)))
+        amort = Decimal(str(row.get("Amortizacao", 0)))
+        interest_paid = Decimal(str(row.get("Juros_Pago", paid - amort)))
+        normalized.append({
+            "date": row["Data"], "label": "PU diário", "component": component,
+            "component_label": format_daily_pu_type(row.get("Tipo_Dia") or row.get("Tipo_Evento")),
+            "payment": float(paid * quantity), "interest": float(interest_paid * quantity),
+            "amortization": float(amort * quantity),
+            "balance": float(Decimal(str(row["PU_Vazio"])) * quantity),
+            "principal": float(nominal * quantity),
+            "pu_cheio": float(row["PU_Cheio"]), "pu_vazio": float(row["PU_Vazio"]),
+            "pu_juros": float(interest), "pu_amort": float(amort), "pu_total": float(paid),
+            "valor_nominal": float(nominal), "valor_juros": float(interest),
+            "juros_pct": float(interest / nominal * 100) if nominal else None,
+            "taxa_cdi_pct_ad": None, "data_ref_cdi": "",
+            "parsed_date": parse_date(row["Data"]), "sort_key": f"contract-{component}", "raw": row,
+        })
+    return finalize_series(normalized)
 
 
 def load_axs10(module: Any) -> dict[str, Any]:
@@ -1104,7 +1152,7 @@ def load_axs_goias(module: Any) -> dict[str, Any]:
         "meta": {
             "primary_source": f"Fonte IPCA: {primary_source}",
             "secondary_source": daily_source,
-            "notes": "AXS Goias com PU diario oficial e calculo local de contingencia.",
+            "notes": "AXS Goiás com PU diário calculado por IPCA e juros contratuais.",
         },
     }
 
@@ -1119,15 +1167,18 @@ def load_axs_internal_formula(module: Any, primary_source_label: str) -> dict[st
     indices, fonte_mes = module.preencher_indices_futuros(indices)
     rows = module.calcular_fluxo(indices, fonte_mes)
     series = normalize_series(rows)
+    daily = calculate_daily(module, rows, rate=module.DEBENTURE.taxa_aa, indices=indices)
     return {
         "module_ref": module,
         "series": series,
         "table_series": series,
+        "daily_pu_series": normalize_daily_pu(daily, module.DEBENTURE.quantidade),
         "summary": build_summary(series),
         "timeline": build_timeline(series),
         "meta": {
             "primary_source": f"{primary_source_label}: {primary_source}",
             "secondary_source": "Projecoes futuras preenchidas pelo proprio modulo com Focus/BCB ou fallback local.",
+            "notes": "AXS 11: cálculo independente segundo o aditivo; divergência do índice aplicado na memória Vórtx documentada e pendente de confirmação externa.",
         },
     }
 
@@ -1235,15 +1286,18 @@ def make_variant_payload(series: list[dict[str, Any]], table_series: list[dict[s
 
 
 def load_axs01(module: Any) -> dict[str, Any]:
-    periodo_inicial = module.add_months_periodo(module.periodo_yyyymm(module.DATA_EMISSAO), -1)
+    periodo_inicial = module.add_months_periodo(module.periodo_yyyymm(module.DATA_EMISSAO), -2)
     periodo_final = module.periodo_yyyymm(module.DATA_VENCIMENTO)
     indices_ipca, fontes_ipca, fonte_ipca = module.preparar_indices_ipca(periodo_inicial, periodo_final)
 
+    daily_by_variant = {}
     detailed_raw: list[dict[str, Any]] = []
     primeira_raw: list[dict[str, Any]] = []
     segunda_raw: list[dict[str, Any]] = []
     for serie in module.SERIES:
-        eventos_serie, _ = module.calcular_serie(serie, indices_ipca, fontes_ipca)
+        eventos_serie, daily = module.calcular_serie(serie, indices_ipca, fontes_ipca)
+        variant = "primeira" if "PRIMEIRA" in serie.nome.upper() else "segunda"
+        daily_by_variant[variant] = normalize_daily_pu(daily, serie.quantidade, variant)
         enriched = []
         for row in eventos_serie:
             new_row = dict(row)
@@ -1267,6 +1321,7 @@ def load_axs01(module: Any) -> dict[str, Any]:
 
     return {
         "module_ref": module,
+        "daily_by_variant": daily_by_variant,
         "series": total_rows,
         "table_series": detailed_rows,
         "summary": build_summary(total_rows),
@@ -1363,9 +1418,12 @@ def load_axs02(module: Any) -> dict[str, Any]:
     menor_mes_ipca = "202210"
     maior_mes_ipca = max(module.meses_ipca(module.DATA_VENCIMENTO, inst.lag_ipca_meses)[0] for inst in module.INSTRUMENTOS)
     indices_ipca, fontes_ipca, fonte_ipca = module.preparar_indices_ipca(menor_mes_ipca, maior_mes_ipca)
+    daily_by_variant = {}
     eventos: list[dict[str, Any]] = []
     for instrumento in module.INSTRUMENTOS:
-        eventos_inst, _ = module.calcular_instrumento(instrumento, indices_ipca, fontes_ipca)
+        eventos_inst, daily = module.calcular_instrumento(instrumento, indices_ipca, fontes_ipca)
+        variant = "cri" if instrumento.tipo == "CRI" else "deb"
+        daily_by_variant[variant] = normalize_daily_pu(daily, instrumento.quantidade, variant)
         eventos.extend(eventos_inst)
 
     detailed_rows = normalize_series(eventos)
@@ -1379,6 +1437,7 @@ def load_axs02(module: Any) -> dict[str, Any]:
 
     return {
         "module_ref": module,
+        "daily_by_variant": daily_by_variant,
         "series": total_rows,
         "table_series": detailed_rows,
         "summary": build_summary(total_rows),
@@ -1494,7 +1553,7 @@ def load_axs05(module: Any) -> dict[str, Any]:
                 {
                     "full_name": "AXS 05 - 2a Emissao / 2 Series",
                     "badge": "DEB",
-                    "indexer": "IPCA + 9,47% / 10,97%",
+                    "indexer": "IPCA + 9,35% / 10,97%",
                     "description": "Visao consolidada da AXS 05 com as duas series somadas.",
                     "issuer": "AXS ENERGIA UNIDADE 05 S.A.",
                     "metadata": {
@@ -1508,7 +1567,7 @@ def load_axs05(module: Any) -> dict[str, Any]:
                         "distribution": "Res CVM 160",
                         "risk_type": "Duas series",
                         "guarantees": "Conforme documentos da emissao.",
-                        "remuneration_label": "IPCA + 9,4659% / 10,9659%",
+                        "remuneration_label": "IPCA + 9,3515% / 10,9659%",
                         "code_if": "AXSC12 / AXSC22",
                         "isin": "BRAXSCDBS015 / BRAXSCDBS023",
                     },
@@ -1521,7 +1580,7 @@ def load_axs05(module: Any) -> dict[str, Any]:
                 {
                     "full_name": "AXS 05 - 2a Emissao / 1a Serie",
                     "badge": "DEB",
-                    "indexer": "IPCA + 9,4659%",
+                    "indexer": "IPCA + 9,3515%",
                     "description": "Visualizacao isolada da 1a serie da AXS 05.",
                     "issuer": "AXS ENERGIA UNIDADE 05 S.A.",
                     "metadata": {
@@ -1535,7 +1594,7 @@ def load_axs05(module: Any) -> dict[str, Any]:
                         "distribution": "Res CVM 160",
                         "risk_type": "Serie 1",
                         "guarantees": "Conforme documentos da emissao.",
-                        "remuneration_label": "IPCA + 9,4659%",
+                        "remuneration_label": "IPCA + 9,3515%",
                         "code_if": "AXSC12",
                         "isin": "BRAXSCDBS015",
                     },
@@ -1575,6 +1634,14 @@ def load_axs05(module: Any) -> dict[str, Any]:
 
 def load_axs06(module: Any) -> dict[str, Any]:
     fluxos, fonte = module.calcular_fluxos_emissoes()
+    indices, _ = prepared_indices(module)
+    daily_by_variant = {}
+    for variant, conf in module.EMISSOES.items():
+        daily = calculate_daily(module, fluxos[variant], start=conf.data_inicio_rentabilidade,
+            rate=conf.taxa_aa_nova, lag=2 if variant == "primeira" else 1,
+            migration=conf.data_migracao if variant == "primeira" else None,
+            old_rate=conf.taxa_aa_antiga, indices=indices)
+        daily_by_variant[variant] = normalize_daily_pu(daily, conf.quantidade, variant)
     primeira_rows = normalize_series(fluxos["primeira"])
     segunda_rows = normalize_series(fluxos["segunda"])
     detailed_rows = normalize_series([linha for linhas in fluxos.values() for linha in linhas])
@@ -1589,6 +1656,7 @@ def load_axs06(module: Any) -> dict[str, Any]:
 
     return {
         "module_ref": module,
+        "daily_by_variant": daily_by_variant,
         "series": total_rows,
         "table_series": detailed_rows,
         "summary": total_summary,
@@ -1709,17 +1777,22 @@ def build_portfolio_series(payloads: list[dict[str, Any]]) -> list[dict[str, Any
         for item in payload["series"]
         if item["parsed_date"] is not None
     }
-    # A PAXS12 não tem pagamentos antes do vencimento; sua posição diária
-    # precisa entrar na carteira desde a integralização, não apenas em 2031.
-    paxs = next((p for p in payloads if p["operation"]["id"] == "paxs12"), None)
-    paxs_daily = paxs.get("daily_pu_series", []) if paxs else []
-    if paxs_daily:
-        dates.add(paxs_daily[0]["parsed_date"])
-        current = get_current_row(paxs_daily)
-        if current:
-            dates.add(current["parsed_date"])
+    # O saldo em cada data vem da curva calculada, inclusive antes do primeiro PMT.
+    # Interpolações ainda pendentes (AXS 05) não substituem saldos financeiros.
+    daily_by_operation = {}
+    for payload in payloads:
+        rows = payload.get("daily_pu_series", [])
+        if rows and not any(str(row.get("sort_key", "")).startswith("daily-") for row in rows):
+            if payload.get("variants"):
+                rows = aggregate_variant_series(rows)
+            daily_by_operation[payload["operation"]["id"]] = rows
+            dates.add(rows[0]["parsed_date"])
+            dates.add(rows[-1]["parsed_date"])
+            current = get_current_row(rows)
+            if current:
+                dates.add(current["parsed_date"])
     all_dates = sorted(dates)
-    paxs_pointer = 0
+    daily_pointers = {op_id: 0 for op_id in daily_by_operation}
     pointers = {payload["operation"]["id"]: 0 for payload in payloads}
     balances = {payload["operation"]["id"]: 0.0 for payload in payloads}
     series_by_operation = {payload["operation"]["id"]: payload["series"] for payload in payloads}
@@ -1739,7 +1812,7 @@ def build_portfolio_series(payloads: list[dict[str, Any]]) -> list[dict[str, Any
                 item = series[pointers[op_id]]
                 if item["parsed_date"] is None or item["parsed_date"] > current_date:
                     break
-                balances[op_id] = item["balance"] or balances[op_id]
+                balances[op_id] = item["balance"]
                 if item["parsed_date"] == current_date:
                     payment += item["payment"]
                     interest += item["interest"]
@@ -1748,9 +1821,10 @@ def build_portfolio_series(payloads: list[dict[str, Any]]) -> list[dict[str, Any
                     pu_cheio += item["pu_cheio"] or 0.0
                     pu_vazio += item["pu_vazio"] or 0.0
                 pointers[op_id] += 1
-        while paxs_pointer < len(paxs_daily) and paxs_daily[paxs_pointer]["parsed_date"] <= current_date:
-            balances["paxs12"] = paxs_daily[paxs_pointer]["balance"]
-            paxs_pointer += 1
+        for op_id, daily_rows in daily_by_operation.items():
+            while daily_pointers[op_id] < len(daily_rows) and daily_rows[daily_pointers[op_id]]["parsed_date"] <= current_date:
+                balances[op_id] = daily_rows[daily_pointers[op_id]]["balance"]
+                daily_pointers[op_id] += 1
         consolidated.append({
             "date": current_date.strftime("%d/%m/%Y"),
             "label": "Carteira consolidada",
@@ -1888,7 +1962,7 @@ OPERATIONS: dict[str, OperationConfig] = {
         full_name="AXS 05 - 2a Emissao / 2 Series",
         badge="DEB",
         category="Debenture",
-        indexer="IPCA + 9,47% / 10,97%",
+        indexer="IPCA + 9,35% / 10,97%",
         description="Consolidado das duas series da AXS 05, com fluxo agregado da emissao.",
         issuer="AXS ENERGIA UNIDADE 05 S.A.",
         code_if="AXSC12 / AXSC22",
@@ -1906,7 +1980,7 @@ OPERATIONS: dict[str, OperationConfig] = {
             "distribution": "Res CVM 160",
             "risk_type": "Duas series",
             "guarantees": "Conforme documentos da emissao.",
-            "remuneration_label": "IPCA + 9,4659% / 10,9659%",
+            "remuneration_label": "IPCA + 9,3515% / 10,9659%",
         },
     ),
     "axs06": OperationConfig(
@@ -2197,6 +2271,8 @@ def compute_operation(operation_id: str) -> dict[str, Any]:
     module_name = f"codexdash_{operation_id}"
     module = load_module(module_name, config.script_path)
     base_payload = config.loader(module)
+    for variant, daily in base_payload.get("daily_by_variant", {}).items():
+        base_payload["variants"][variant]["daily_pu_series"] = daily
     if "variants" in base_payload:
         variant_options = base_payload.get("variant_options", [])
         default_variant = default_variant_for(config.id, variant_options)
@@ -2234,6 +2310,10 @@ def compute_operation(operation_id: str) -> dict[str, Any]:
                 component_variant_summaries.append(variant_view["summary"])
         if "total" in payload["variants"] and component_variant_summaries:
             total_view = deepcopy(payload["variants"]["total"])
+            total_view["summary"] = merge_variant_summaries(total_view["summary"], component_variant_summaries)
+            for field in ("monthly_balance_variation", "monthly_balance_update", "monthly_balance_interest", "monthly_balance_amortization"):
+                values = [item[field] for item in component_variant_summaries if item.get(field) is not None]
+                total_view["summary"][field] = sum(values) if values else None
             total_view["summary"] = merge_return_metrics_from_components(
                 total_view["summary"],
                 component_variant_summaries,
@@ -2272,10 +2352,10 @@ def daily_pu_for_variant(payload: dict[str, Any], variant_id: str) -> list[dict[
 
 def apply_variant(payload: dict[str, Any], variant_id: str) -> dict[str, Any]:
     if not payload.get("variants"):
-        return payload
+        return sync_current_fields(payload)
     default_variant = payload.get("selected_variant") or next(iter(payload["variants"]))
-    selected = payload["variants"].get(variant_id) or payload["variants"][default_variant]
     merged = deepcopy(payload)
+    selected = merged["variants"].get(variant_id) or merged["variants"][default_variant]
     merged["operation"] = selected["operation"]
     merged["series"] = selected["series"]
     merged["table_series"] = selected["table_series"]
@@ -2284,7 +2364,24 @@ def apply_variant(payload: dict[str, Any], variant_id: str) -> dict[str, Any]:
     merged["meta"] = selected["meta"]
     merged["selected_variant"] = variant_id if variant_id in payload["variants"] else default_variant
     merged["daily_pu_series"] = daily_pu_for_variant(payload, merged["selected_variant"])
-    return merged
+    return sync_current_fields(merged)
+
+
+def sync_current_fields(payload: dict[str, Any]) -> dict[str, Any]:
+    """Mantém o quadro de informações alinhado aos cards e à seleção atual."""
+    labels = {
+        "Saldo atual": "current_balance", "PU cheio": "current_pu_cheio",
+        "PU vazio": "current_pu_vazio", "PU juros": "current_pu_juros",
+        "PU amortização": "current_pu_amort", "Principal atualizado": "current_principal",
+        "PMT da linha atual": "current_payment",
+    }
+    summary = payload["summary"]
+    for field_list in ("overview_fields", "pu_fields"):
+        for field in payload["operation"].get(field_list, []):
+            key = labels.get(field["label"])
+            if key and key in summary:
+                field["value"] = str(summary[key]) if summary[key] is not None else "-"
+    return payload
 
 
 def get_payload(operation_id: str, variant_id: str | None = None) -> dict[str, Any]:

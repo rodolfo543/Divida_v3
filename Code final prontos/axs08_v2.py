@@ -46,6 +46,8 @@ from urllib.request import Request, urlopen
 from urllib.parse import quote, urlencode
 import importlib.util
 
+from ipca_inputs import aplicar_projecao_anbima
+
 getcontext().prec = 34
 
 DATA_EMISSAO = date(2024, 7, 1)
@@ -464,6 +466,7 @@ def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, De
         out[m] = ultimo_indice
         fontes[m] = f"{fonte_taxa} | {fonte_focus}"
         mes_atual = add_months(mes_atual, 1)
+    aplicar_projecao_anbima(out, fontes, indices)
     return out, fontes
 
 def fator_ipca(indices: Dict[str, Decimal], data_aniv: date) -> Tuple[Decimal, str, str, Decimal, Decimal]:

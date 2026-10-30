@@ -58,5 +58,5 @@ for (const operation of manifest.operations.filter((item) => item.id !== "geral"
   assert.equal(JSON.stringify(payload), before, `${operation.id}: base financeira alterada pela exibição`);
 }
 assert.equal(instruments, 17);
-assert.equal(fs.readFileSync(path.join(__dirname, "docs/dashboard.js"), "utf8"), source);
+assert.equal(fs.readFileSync(path.join(__dirname, "docs/dashboard.js"), "utf8").replace(/\r\n/g, "\n"), source.replace(/\r\n/g, "\n"));
 console.log(`PU diário validado em ${views} visões e ${instruments} instrumentos; valores preservados.`);

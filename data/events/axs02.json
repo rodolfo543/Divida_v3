@@ -1,0 +1,12 @@
+{
+  "events": [
+    {
+      "date": "2026-10-15",
+      "type": "extraordinary_amortization",
+      "total_amount": "5000000.00",
+      "allocation": "proportional_security_quantity",
+      "source": "Pagamento total de R$ 5 milhões confirmado pelo emissor neste chat em 30/10/2026; evento também registrado na memória Vórtx de CRI e debênture.",
+      "allocation_note": "Rateio proporcional às quantidades cadastradas de 45.000 CRI e 40.000 debêntures. Não contém PU oficial nem saldo importado."
+    }
+  ]
+}

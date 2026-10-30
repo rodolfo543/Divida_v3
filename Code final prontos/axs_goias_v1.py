@@ -41,6 +41,8 @@ from urllib.request import Request, urlopen
 from urllib.parse import quote, urlencode
 import importlib.util
 
+from ipca_inputs import aplicar_projecao_anbima
+
 getcontext().prec = 34
 
 DATA_EMISSAO = date(2024, 10, 1)
@@ -463,6 +465,7 @@ def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, De
         out[m] = ultimo_indice
         fontes[m] = f"{fonte_taxa} | {fonte_focus}"
         mes_atual = add_months(mes_atual, 1)
+    aplicar_projecao_anbima(out, fontes, indices)
     return out, fontes
 
 def fator_ipca(indices: Dict[str, Decimal], data_aniv: date) -> Tuple[Decimal, str, str, Decimal, Decimal]:
@@ -834,23 +837,8 @@ def calcular_fluxo_e_pu_diario() -> Tuple[List[Dict[str, object]], List[Dict[str
         if item.get("Data_Ref")
     )
     pu_local = calcular_pu_diario_local(indices, eventos, data_final)
-    try:
-        pu_oficial = obter_historico_pu_vortx()
-    except Exception:
-        pu_oficial = []
-    if pu_oficial:
-        pu_por_data = {str(item["Data"]): item for item in pu_local}
-        pu_por_data.update({str(item["Data"]): item for item in pu_oficial})
-        pu_completo = sorted(
-            pu_por_data.values(),
-            key=lambda item: datetime.strptime(str(item["Data"]), "%d/%m/%Y").date(),
-        )
-        fonte_pu = (
-            f"Historico oficial: {VORTX_PU_HISTORY_URL} | "
-            "projecao futura pelo calculo local"
-        )
-        return eventos, pu_completo, fonte, fonte_pu
-    return eventos, pu_local, fonte, "Contingencia: calculo local do PU diario"
+    return eventos, pu_local, fonte, "Cálculo independente: IPCA e juros contratuais"
+
 
 def salvar_csv(linhas: List[Dict[str, object]], caminho: str) -> None:
     if not linhas:
