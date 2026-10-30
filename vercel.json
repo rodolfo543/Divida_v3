@@ -2,6 +2,10 @@
   "functions": {
     "api/chat.js": {
       "maxDuration": 300
+    },
+    "api/vortx.js": {
+      "maxDuration": 60,
+      "includeFiles": "data/vortx/instruments/**"
     }
   }
 }

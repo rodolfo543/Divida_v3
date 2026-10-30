@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Conciliação Vórtx · AXS Energia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./dashboard.css"><link rel="stylesheet" href="./vortx.css">
+  <script defer src="./vortx-core.js"></script><script defer src="./vortx.js"></script>
+</head>
+<body class="comparison-page">
+<div class="comparison-shell">
+  <nav class="workspace-nav" aria-label="Áreas do dashboard"><a class="workspace-brand" href="./index.html">AXS <span>Gestão da dívida</span></a><div><a href="./index.html">Cálculos</a><a href="./vortx.html" aria-current="page">Conciliação Vórtx</a></div></nav>
+  <header class="comparison-hero">
+    <div><p class="section-kicker">Controle e transparência</p><h1>Do cálculo à conferência.</h1><p>Compare a carteira com a Vórtx, encontre a origem de cada diferença e acompanhe seu impacto financeiro.</p></div>
+    <div class="hero-controls"><label for="asOf">Data da comparação</label><input type="date" id="asOf"><button id="refreshVortx" class="primary-button" type="button" disabled>Atualizar Vórtx</button></div>
+  </header>
+  <p id="loadStatus" class="load-status" role="status" aria-live="polite">Carregando cálculos e referências…</p>
+  <main id="comparisonContent" hidden>
+    <section class="metric-grid" id="metrics" aria-label="Resumo da carteira"></section>
+    <section class="cmp-panel portfolio-panel">
+      <div class="cmp-heading"><div><p class="section-kicker">Visão executiva</p><h2>A carteira, lado a lado</h2></div><button id="exportOverview" class="secondary-button" type="button">Exportar comparação CSV</button></div>
+      <div class="impact-strip" id="impactStrip"></div>
+      <div class="toolbar"><label class="search-field">Buscar instrumento<input id="search" type="search" placeholder="Empresa, série ou código IF"></label><label>Situação do PU cheio<select id="statusFilter"><option value="all">Todas as situações</option><option value="exact">Igual nas 8 casas</option><option value="cents">Igual em centavos</option><option value="different">Divergência em centavos</option><option value="pending">Pendência documentada</option><option value="missing">Sem par de dados</option></select></label><label class="check-label"><input type="checkbox" id="includePending"> Incluir pendências nos totais financeiros</label><span id="rowCount" class="subtle"></span></div>
+      <div class="table-scroll"><table class="comparison-table overview-table"><thead><tr><th>Instrumento / série</th><th>PU calculado</th><th>PU Vórtx</th><th>Δ PU <small>Calculado − Vórtx</small></th><th>Impacto R$ <small>Δ PU × quantidade</small></th><th>Situação</th><th><span class="sr-only">Detalhar</span></th></tr></thead><tbody id="overviewRows"></tbody></table></div>
+      <p class="panel-footnote">Valores unitários em reais, com 8 casas. “Igual em centavos” compara os dois PUs arredondados a 2 casas; o resíduo continua visível. Impacto usa a quantidade do modelo, sem presumir posição em custódia. O mesmo dia é exigido nas duas fontes.</p>
+    </section>
+    <section class="cmp-panel detail-panel" id="detail">
+      <div class="cmp-heading"><div><p class="section-kicker">Investigação por instrumento</p><h2 id="detailTitle">Detalhamento</h2></div><label class="instrument-picker">Instrumento<select id="instrumentSelect"></select></label></div>
+      <div id="reviewNote" class="review-note"></div>
+      <div class="mode-tabs" role="tablist" aria-label="Tipo de referência"><button type="button" id="historyTab" role="tab" aria-selected="true" aria-controls="detailContent">Histórico publicado</button><button type="button" id="previewTab" role="tab" aria-selected="false" aria-controls="detailContent">Prévia Vórtx</button></div>
+      <div id="detailContent" role="tabpanel" aria-labelledby="historyTab">
+        <div id="previewNotice" class="projection-note" hidden>Prévia: valores indicativos da Vórtx comparados à projeção local. Podem mudar com índices e eventos. Não entram nos indicadores de conciliação histórica.</div>
+        <div class="toolbar detail-filters"><label>Componente<select id="component"></select></label><label>De<input type="date" id="dateFrom"></label><label>Até<input type="date" id="dateTo"></label><button type="button" id="allHistory" class="secondary-button">Todo o período</button><button type="button" id="exportDetail" class="secondary-button">Exportar detalhe CSV</button></div>
+        <div id="coverage" class="coverage-grid"></div>
+        <div class="chart-heading"><h3 id="chartTitle">Evolução do PU</h3><div class="chart-legend"><span><i class="legend-local"></i> Cálculo AXS</span><span><i class="legend-reference"></i> Vórtx</span></div></div>
+        <div id="comparisonChart" class="chart-wrap"></div><div id="deltaChart" class="chart-wrap delta-chart"></div>
+        <div class="cmp-heading compact"><h3 id="historyTitle">Comparação diária</h3><div class="pagination"><button type="button" id="previousPage" aria-label="Página anterior">←</button><span id="pageLabel"></span><button type="button" id="nextPage" aria-label="Próxima página">→</button></div></div>
+        <div class="table-scroll"><table class="comparison-table daily-table"><thead><tr><th>Data</th><th>Cálculo AXS</th><th>Vórtx</th><th>Δ por título</th><th>Impacto R$</th><th>Situação</th><th></th></tr></thead><tbody id="dailyRows"></tbody></table></div>
+        <div class="component-breakdown"><div class="cmp-heading compact"><h3>Composição em <span id="breakdownDate"></span></h3><label>Data<input type="date" id="breakdownDay"></label></div><div class="table-scroll"><table class="comparison-table"><thead><tr><th>Componente por título</th><th>Cálculo AXS</th><th>Vórtx</th><th>Diferença</th><th>Situação</th></tr></thead><tbody id="breakdownRows"></tbody></table></div></div>
+        <details class="events-section" open><summary>Eventos: juros, amortizações e incorporações <span id="eventCount"></span></summary><p class="subtle">Cada célula mostra AXS / Vórtx e a diferença por título. Amortização ordinária e extraordinária são comparadas separadamente.</p><div class="table-scroll"><table class="comparison-table events-table"><thead><tr><th>Data</th><th>Juros pagos</th><th>Amort. ordinária</th><th>Amort. extraordinária</th><th>Incorporação</th><th>Pagamento total</th></tr></thead><tbody id="eventRows"></tbody></table></div></details>
+      </div>
+    </section>
+    <section class="cmp-panel sources-panel"><div class="cmp-heading"><div><p class="section-kicker">Rastreabilidade</p><h2>Fontes e premissas</h2></div><span class="source-tag">Modelo independente</span></div><div id="sourceContent"></div><details><summary>Como interpretar esta comparação</summary><div class="methodology"><p>Os PUs oficiais são referências de conferência. Não alimentam nem substituem os motores de cálculo. A aba de cálculos e seu histórico permanecem independentes.</p><p>O resumo usa apenas a data selecionada, até a data-base do cálculo local. Não há preenchimento de datas ausentes nem substituição de valor ausente por zero. Divergência não identifica, sozinha, qual fonte está correta.</p><p>Para comparar conceitos equivalentes, o PU vazio local desta aba é apresentado ex-evento: PU cheio menos pagamento por título. O campo original de PU vazio do motor permanece intacto na área de cálculos e é preservado como empty_model no retrato JSON. Amortização ordinária exclui a extraordinária. Fluxos locais da AXS 05 não são inferidos das linhas interpoladas.</p><p>O histórico permite consultar todas as datas do retrato local e da referência até a data-base. A prévia usa as datas fornecidas pela Vórtx e encontra projeções locais até 180 dias após a geração. Juros incorporados não são pagamentos em caixa.</p><p>Os totais líquidos podem compensar diferenças positivas e negativas. O total absoluto expõe a soma das diferenças sem compensação. Pendências documentadas e séries diárias estimadas ficam fora desses totais por padrão.</p><p>Uma coincidência de PU cheio não valida automaticamente sua decomposição, o contrato ou todos os dias anteriores. As oito casas são comparadas com aritmética decimal; os indicadores em centavos usam arredondamento comercial.</p><p>A atualização consulta os endpoints públicos da Vórtx, sujeitos a disponibilidade e alterações. Se houver falha, o último retrato disponível é preservado, com sua data real de coleta. Dados apresentados como “histórico” são valores publicados pela Vórtx, e não confirmação de liquidação.</p></div></details></section>
+  </main>
+  <footer class="comparison-footer">AXS Energia · Gestão da dívida <a href="./index.html">Voltar aos cálculos →</a></footer>
+</div>
+</body></html>
