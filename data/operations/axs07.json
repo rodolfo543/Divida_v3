@@ -137457,8 +137457,8 @@
     "next_amortization_amount": 762628.92,
     "last_event_date": "15/10/2026",
     "final_balance": 0.0,
-    "duration_years": 3.4592297128465086,
-    "wal_years": 3.7848100243994214,
+    "duration_years": 3.4564918620593765,
+    "wal_years": 3.7820721736122893,
     "tir_annual_pct": 10.127208554903866,
     "tir_monthly_pct": 0.8071227566199157,
     "contracted_rate_label": "IPCA + 10.5%",
@@ -137947,12 +137947,12 @@
         "amount": 304465.4609038135
       }
     ],
-    "monthly_balance_variation": -423103.12017327547,
-    "monthly_balance_update": 367630.49795343634,
-    "monthly_balance_interest": -30098.908126711845,
+    "monthly_balance_variation": -385860.99524232745,
+    "monthly_balance_update": 376451.76433702465,
+    "monthly_balance_interest": -1678.0495793521404,
     "monthly_balance_amortization": 760634.71,
     "monthly_balance_reference_date": "30/09/2026",
-    "monthly_balance_current_date": "29/10/2026",
+    "monthly_balance_current_date": "30/10/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -138244,7 +138244,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 265318973.59744,
+      "current_balance": 265449677.9242,
       "next_payment_amount": 13127172.43,
       "total_interest": 332801202.02,
       "total_amortization": 408509178.96,
@@ -138280,12 +138280,24 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 173863629.56,
+      "current_balance": 174019562.8,
       "next_payment_amount": 17101498.02,
       "total_interest": 350553298.23,
       "total_amortization": 377071539.8,
       "event_count": 30,
       "indexer": "IPCA + 13,6455%",
+      "badge": "DEB"
+    },
+    {
+      "id": "paxs12",
+      "label": "AXS Participações",
+      "full_name": "AXS Participações - Emissão 2 / Série Única",
+      "current_balance": 153210568.269924,
+      "next_payment_amount": 369566927.500485,
+      "total_interest": 217667927.500485,
+      "total_amortization": 151899000.0,
+      "event_count": 1,
+      "indexer": "CDI + 5,40%",
       "badge": "DEB"
     },
     {
@@ -138385,6 +138397,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "29/10/2026 08:00:07",
-  "generated_at_iso": "2026-10-29T08:00:07"
+  "generated_at": "30/10/2026 13:27:04",
+  "generated_at_iso": "2026-10-30T13:27:04"
 }

@@ -957,7 +957,7 @@ def load_axs10(module: Any) -> dict[str, Any]:
             row.get("PU_VNa_Abertura_Periodo"),
         ) or 0.0
         pu_cheio = first_number(row.get("PU_Valor_Bruto"), row.get("PU_Saldo_Fechamento_Dia")) or 0.0
-        pu_vazio = pu_cheio
+        pu_vazio = valor_nominal if getattr(module, "PU_VAZIO_E_NOMINAL", False) else pu_cheio
         valor_juros = first_number(row.get("PU_Juros_Acumulado"))
         if valor_juros is None:
             valor_juros = pu_cheio - valor_nominal
@@ -1017,6 +1017,15 @@ def load_axs10(module: Any) -> dict[str, Any]:
             "notes": "AXS 10 considera a 2ª emissão, 1ª série, com PU diário em dias úteis.",
         },
     }
+
+
+def load_paxs12(module: Any) -> dict[str, Any]:
+    payload = load_axs10(module)
+    payload["meta"] = {
+        "primary_source": "CDI: BCB/SGS 4389; projeção com o último CDI disponível.",
+        "notes": "PAXS12: início em 14/10/2026 inferido do primeiro PU da Vórtx; confirmar integralização e quantidade efetivamente colocada. Fluxo futuro projetado; não contempla amortizações extraordinárias.",
+    }
+    return payload
 
 
 def load_axs_goias(module: Any) -> dict[str, Any]:
@@ -1694,12 +1703,23 @@ def build_comparison_rows(payloads: list[dict[str, Any]]) -> list[dict[str, Any]
 
 
 def build_portfolio_series(payloads: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    all_dates = sorted({
+    dates = {
         item["parsed_date"]
         for payload in payloads
         for item in payload["series"]
         if item["parsed_date"] is not None
-    })
+    }
+    # A PAXS12 não tem pagamentos antes do vencimento; sua posição diária
+    # precisa entrar na carteira desde a integralização, não apenas em 2031.
+    paxs = next((p for p in payloads if p["operation"]["id"] == "paxs12"), None)
+    paxs_daily = paxs.get("daily_pu_series", []) if paxs else []
+    if paxs_daily:
+        dates.add(paxs_daily[0]["parsed_date"])
+        current = get_current_row(paxs_daily)
+        if current:
+            dates.add(current["parsed_date"])
+    all_dates = sorted(dates)
+    paxs_pointer = 0
     pointers = {payload["operation"]["id"]: 0 for payload in payloads}
     balances = {payload["operation"]["id"]: 0.0 for payload in payloads}
     series_by_operation = {payload["operation"]["id"]: payload["series"] for payload in payloads}
@@ -1728,6 +1748,9 @@ def build_portfolio_series(payloads: list[dict[str, Any]]) -> list[dict[str, Any
                     pu_cheio += item["pu_cheio"] or 0.0
                     pu_vazio += item["pu_vazio"] or 0.0
                 pointers[op_id] += 1
+        while paxs_pointer < len(paxs_daily) and paxs_daily[paxs_pointer]["parsed_date"] <= current_date:
+            balances["paxs12"] = paxs_daily[paxs_pointer]["balance"]
+            paxs_pointer += 1
         consolidated.append({
             "date": current_date.strftime("%d/%m/%Y"),
             "label": "Carteira consolidada",
@@ -2052,6 +2075,18 @@ OPERATIONS: dict[str, OperationConfig] = {
             "remuneration_label": "IPCA + 10,40%",
         },
     ),
+    "paxs12": OperationConfig(
+        id="paxs12", label="AXS Participações", full_name="AXS Participações - Emissão 2 / Série Única",
+        badge="DEB", category="Debenture", indexer="CDI + 5,40%",
+        description="Debênture PAXS12: juros e principal no vencimento, com projeção do CDI.",
+        issuer="AXS PARTICIPAÇÕES S.A.", code_if="PAXS12", isin="BRPAXSDBS025",
+        script_path=PROJECT_DIR / "Code final prontos" / "paxs12_v1.py", loader=load_paxs12,
+        metadata={"issue_date":"30/09/2026", "start_date":"14/10/2026", "tir_start_date":"14/10/2026",
+            "maturity_date":"30/09/2031", "quantity_emitted":"151899", "volume_emitted":"151899000",
+            "pu_issue":"1000", "payment_frequency":"No vencimento", "amortization_frequency":"No vencimento",
+            "distribution":"Res CVM 160", "risk_type":"Corporativo",
+            "guarantees":"Alienação fiduciária de ações e cessão fiduciária", "remuneration_label":"CDI + 5,40%"},
+    ),
     "axs11": OperationConfig(
         id="axs11",
         label="AXS 11",
@@ -2087,6 +2122,10 @@ def build_portfolio_payload() -> dict[str, Any]:
     comparison = build_comparison_rows(payloads)
     series = build_portfolio_series(payloads)
     summary = build_summary(series)
+    # Os saldos correntes são apurados nas curvas diárias de cada emissão;
+    # a série de eventos isolada não representa necessariamente a data de hoje.
+    summary["current_balance"] = sum(item["current_balance"] for item in comparison)
+    summary["current_principal"] = sum(p["summary"].get("current_principal") or 0.0 for p in payloads)
     summary = merge_return_metrics_from_components(summary, [payload["summary"] for payload in payloads], "Média ponderada da carteira")
     monthly_fields = (
         "monthly_balance_variation",
@@ -2247,6 +2286,7 @@ def normalize_text(value: Any) -> str:
 
 
 CHAT_OPERATION_ALIASES: dict[str, list[str]] = {
+    "paxs12": ["paxs12", "axs participações", "axs participacoes"],
     "axs01": ["axs 01", "axs01", "refi 01", "axsa11", "axsa21", "unidade 01"],
     "axs02": ["axs 02", "axs02", "cri axs 02", "deb axs 02", "axsd11", "unidade 02"],
     "axs03": ["axs 03", "axs03", "axs iii", "emissao 78", "22k1397969"],

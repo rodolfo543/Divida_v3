@@ -12,6 +12,7 @@
 };
 
 const OPERATION_HINTS = [
+  { id: "paxs12", aliases: ["paxs12", "axs participacoes", "axs participações"] },
   { id: "geral", aliases: ["visao geral", "carteira", "consolidado", "geral"] },
   { id: "axs01", aliases: ["axs 01", "axs01", "refi 01", "axsa11", "axsa21", "unidade 01"] },
   { id: "axs02", aliases: ["axs 02", "axs02", "axsd11", "cri axs 02", "deb axs 02", "unidade 02"] },

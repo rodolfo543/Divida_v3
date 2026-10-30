@@ -1,6 +1,6 @@
 {
-  "generated_at": "29/10/2026 08:00:07",
-  "generated_at_iso": "2026-10-29T08:00:07",
+  "generated_at": "30/10/2026 13:27:04",
+  "generated_at_iso": "2026-10-30T13:27:04",
   "operations": [
     {
       "id": "geral",
@@ -147,6 +147,14 @@
       "label": "AXS Goiás",
       "category": "Debenture",
       "indexer": "IPCA + 10,40%",
+      "badge": "DEB",
+      "variant_options": []
+    },
+    {
+      "id": "paxs12",
+      "label": "AXS Participações",
+      "category": "Debenture",
+      "indexer": "CDI + 5,40%",
       "badge": "DEB",
       "variant_options": []
     },

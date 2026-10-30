@@ -3,6 +3,7 @@ let manifestCache = null;
 const payloadCache = new Map();
 
 const OPERATIONS = {
+  paxs12: ["paxs12", "axs participacoes", "axs participações"],
   geral: ["visao geral", "carteira", "consolidado", "geral"],
   axs01: ["axs 01", "axs01", "refi 01", "axsa11", "axsa21", "unidade 01"],
   axs02: ["axs 02", "axs02", "axsd11", "cri axs 02", "deb axs 02", "unidade 02"],
