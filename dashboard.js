@@ -155,15 +155,20 @@ function formatCompactCurrency(value) {
   }).format(number);
 }
 
+const numberFormatters = new Map();
+
 function formatNumber(value, digits = 2) {
   const number = toNumber(value);
   if (number === null) {
     return "-";
   }
-  return new Intl.NumberFormat("pt-BR", {
-    maximumFractionDigits: digits,
-    minimumFractionDigits: digits,
-  }).format(number);
+  if (!numberFormatters.has(digits)) {
+    numberFormatters.set(digits, new Intl.NumberFormat("pt-BR", {
+      maximumFractionDigits: digits,
+      minimumFractionDigits: digits,
+    }));
+  }
+  return numberFormatters.get(digits).format(number);
 }
 
 function formatPercent(value, digits = 2) {
@@ -588,6 +593,34 @@ function getFocusSlice(series, maxItems = 24) {
   return series.slice(start, start + maxItems);
 }
 
+const dailyDetailCache = new WeakMap();
+
+function getDailyPuSeries(payload) {
+  if (!payload) {
+    return [];
+  }
+  if (dailyDetailCache.has(payload)) {
+    return dailyDetailCache.get(payload);
+  }
+  const variants = payload.variants || {};
+  const selectedId = payload.selected_variant;
+  let rows = variants[selectedId]?.daily_pu_series || payload.daily_pu_series || [];
+  if (selectedId === "total") {
+    // Um PU pertence a um título: no consolidado, preservar cada instrumento.
+    const componentRows = (payload.variant_options || []).filter((option) => option.id !== "total")
+      .flatMap((option) => (variants[option.id]?.daily_pu_series || []).map((item) => ({
+        ...item,
+        instrument_label: option.label,
+      })));
+    if (componentRows.length) {
+      rows = componentRows.sort((a, b) => (parseBrDate(a.date) - parseBrDate(b.date))
+        || a.instrument_label.localeCompare(b.instrument_label, "pt-BR"));
+    }
+  }
+  dailyDetailCache.set(payload, rows);
+  return rows;
+}
+
 function getAvailableDetailViews(payload) {
   const views = [
     {
@@ -597,19 +630,27 @@ function getAvailableDetailViews(payload) {
       note: "Operações com variantes exibem linhas separadas por instrumento, série ou emissão quando aplicável.",
     },
   ];
-  if (payload?.daily_pu_series?.length) {
+  const dailyRows = getDailyPuSeries(payload);
+  if (dailyRows.length) {
+    const interpolated = dailyRows.some((item) => String(item.sort_key || "").startsWith("daily-"));
     views.push({
       id: "daily_pu",
       label: "PU diário",
       title: "PU diário",
-      note: "Histórico diário em dias úteis, inspirado na leitura operacional da Vórtx e com taxa CDI por data de referência.",
+      note: interpolated
+        ? "PU diário estimado por interpolação entre eventos. Valores sujeitos à conciliação; datas futuras são projeções."
+        : "Valores diários da seleção atual. Datas futuras são projeções. No consolidado, cada instrumento aparece separadamente.",
     });
   }
   return views;
 }
 
 function dailyViewHasCdiColumns(payload) {
-  return Boolean((payload?.daily_pu_series || []).some((item) => item.taxa_cdi_pct_ad !== null && item.taxa_cdi_pct_ad !== undefined));
+  return getDailyPuSeries(payload).some((item) => item.taxa_cdi_pct_ad !== null && item.taxa_cdi_pct_ad !== undefined);
+}
+
+function dailyViewHasInstrumentColumn(payload) {
+  return getDailyPuSeries(payload).some((item) => item.instrument_label);
 }
 
 function getActiveDetailView(payload) {
@@ -674,6 +715,9 @@ function getTableHeaders(payload) {
     if (dailyViewHasCdiColumns(payload)) {
       headers.splice(6, 0, "Taxa CDI (% a.d.)", "Data ref. CDI");
     }
+    if (dailyViewHasInstrumentColumn(payload)) {
+      headers.splice(1, 0, "Instrumento / série");
+    }
     return headers;
   }
   return [
@@ -695,8 +739,9 @@ function getTableHeaders(payload) {
 function getTableRowsForExport(payload) {
   const activeView = getActiveDetailView(payload);
   if (activeView?.id === "daily_pu") {
-    const dailySeries = payload?.daily_pu_series || [];
+    const dailySeries = getDailyPuSeries(payload);
     const includeCdi = dailyViewHasCdiColumns(payload);
+    const includeInstrument = dailyViewHasInstrumentColumn(payload);
     return dailySeries.map((item) => {
       const row = [
         item.date || "-",
@@ -717,6 +762,9 @@ function getTableRowsForExport(payload) {
         item.pu_amort !== null ? formatNumber(item.pu_amort, 8) : "-",
         item.pu_total !== null ? formatNumber(item.pu_total, 8) : "-",
       );
+      if (includeInstrument) {
+        row.splice(1, 0, item.instrument_label || "-");
+      }
       return row;
     });
   }

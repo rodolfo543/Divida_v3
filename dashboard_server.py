@@ -2243,6 +2243,7 @@ def compute_operation(operation_id: str) -> dict[str, Any]:
             if default_variant == "total":
                 payload["summary"] = total_view["summary"]
         payload["selected_variant"] = default_variant
+        payload["daily_pu_series"] = daily_pu_for_variant(payload, default_variant)
     else:
         payload = build_operation_view(config, base_payload, module)
         payload["variant_options"] = []
@@ -2252,6 +2253,21 @@ def compute_operation(operation_id: str) -> dict[str, Any]:
     payload["comparison"] = []
     payload["generated_at"] = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     return payload
+
+
+def daily_pu_for_variant(payload: dict[str, Any], variant_id: str) -> list[dict[str, Any]]:
+    variants = payload.get("variants", {})
+    if variant_id == "total":
+        # Preservar o PU de cada título; somar PUs de séries diferentes não é um PU.
+        rows = [
+            {**row, "instrument_label": option["label"]}
+            for option in payload.get("variant_options", [])
+            if option["id"] != "total"
+            for row in variants.get(option["id"], {}).get("daily_pu_series", [])
+        ]
+        if rows:
+            return sorted(rows, key=lambda row: (parse_date(row["date"]) or date.min, row["instrument_label"]))
+    return variants.get(variant_id, {}).get("daily_pu_series", payload.get("daily_pu_series", []))
 
 
 def apply_variant(payload: dict[str, Any], variant_id: str) -> dict[str, Any]:
@@ -2267,6 +2283,7 @@ def apply_variant(payload: dict[str, Any], variant_id: str) -> dict[str, Any]:
     merged["timeline"] = selected["timeline"]
     merged["meta"] = selected["meta"]
     merged["selected_variant"] = variant_id if variant_id in payload["variants"] else default_variant
+    merged["daily_pu_series"] = daily_pu_for_variant(payload, merged["selected_variant"])
     return merged
 
 
