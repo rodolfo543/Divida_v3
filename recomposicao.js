@@ -41,6 +41,9 @@ function renderProjection(){
 async function load(){try{
   state.data=await U.json('./data/recomposition.json');const d=state.data;
   $('fundMonth').value=d.local_as_of.slice(0,7);$('fundMonth').min=d.contributions[0].month;$('fundMonth').max=d.contributions.at(-1).month;
+  const params=new URLSearchParams(location.search),requestedMonth=params.get('month'),requestedInstrument=params.get('instrument');
+  if(/^\d{4}-(0[1-9]|1[0-2])$/.test(requestedMonth||'')&&requestedMonth>=$('fundMonth').min&&requestedMonth<=$('fundMonth').max)$('fundMonth').value=requestedMonth;
+  if(d.instruments.some(i=>i.eligible&&i.code===requestedInstrument))state.code=requestedInstrument;
   $('fundCompany').innerHTML='<option value="">Todas as empresas</option>'+[...new Map(d.instruments.map(i=>[i.operation,i.label]))].map(([id,name])=>`<option value="${id}">${U.esc(name)}</option>`).join('');
   $('fundStatus').textContent=`Base de cálculo: ${d.generated_at} · ${d.instruments.filter(i=>i.eligible).length} instrumentos com composição de 1/6 · planejamento sem consulta a contas bancárias.`;
   $('fundContent').hidden=false;render();

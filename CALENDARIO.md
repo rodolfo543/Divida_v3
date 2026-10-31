@@ -10,6 +10,14 @@ As datas vêm do cronograma publicado e não são ajustadas por esta camada. Há
 
 A primeira abertura seleciona o próximo compromisso disponível. O botão Hoje retorna à data de Brasília. A página permite mudar mês/ano, filtrar empresa e tipo, clicar em dias, navegar com setas do teclado e abrir os detalhes à direita (abaixo no celular). O arquivo `.ics` exporta apenas os eventos do mês e dos filtros selecionados, como eventos de dia inteiro, sem deslocamento por fuso e sem bloquear disponibilidade.
 
+### Recomposições na agenda
+
+Por orientação do Financeiro, os aportes de `data/recomposition.json` são exibidos no dia 12 da competência, como referência de planejamento. Não se trata de agendamento bancário. A junção é feita em leitura pela função `CalendarCore.withRecompositions`, sem alterar `data/calendar.json`, as parcelas do planejamento ou qualquer motor de dívida. As gerações das duas fontes devem coincidir; em falha da recomposição, os PMTs continuam disponíveis com aviso explícito, e o filtro de aportes fica desabilitado.
+
+Recomposições têm identificação roxa, filtro próprio e total monetário separado. O evento carrega o valor de aporte já calculado, a parcela de 1/6, a competência, a PMT alvo, o acumulado programado e a natureza. Seu campo de pagamento da dívida é zero. Tanto no mês como no dia e nos próximos compromissos, aportes não são somados aos PMTs. A AXS 10 continua fora do rateio. O link para a recomposição abre a mesma competência e instrumento. A exportação iCalendar inclui os aportes com identificação e UID próprios, preservando os eventos originais.
+
+No retrato inicial de novembro/2026 são 8 eventos: 2 recomposições em 12/11 (R$ 2.745.963,61), 5 PMTs e 1 incorporação em 16/11. Os PMTs permanecem em R$ 5.888.981,02 e as incorporações em R$ 10.292.114,32. Os testes também cobrem PMT e aporte no mesmo dia, junção repetida sem duplicação e fontes com gerações incompatíveis.
+
 Verificação: `python -m unittest test_calendar.py` e `node test_calendar.js`. No retrato de 30/10/2026, a agenda contém 1.151 eventos (1.100 PMTs, 34 incorporações e 17 vencimentos). Em 16/11/2026 são 6 eventos e R$ 5.888.981,02 em caixa, separados de R$ 10.292.114,32 de incorporação. A AMEX da AXS 02 em 15/10/2026 preserva o total confirmado de R$ 5 milhões.
 
 ## Registro da logo
