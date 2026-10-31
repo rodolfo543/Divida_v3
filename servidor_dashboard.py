@@ -145,8 +145,10 @@ def sync_frontend_assets() -> None:
     write_text(DOCS_DIR / "dashboard.css", css)
     write_text(DOCS_DIR / "dashboard.js", js)
     write_text(DOCS_DIR / "chat-widget.js", chat_widget)
-    for filename in ("vortx.html", "vortx.css", "vortx.js", "vortx-core.js"):
+    for filename in ("vortx.html", "vortx.css", "vortx.js", "vortx-core.js", "navigation.css",
+                     "calendario.html", "calendario.css", "calendario.js", "calendario-core.js"):
         write_text(DOCS_DIR / filename, (ROOT_DIR / filename).read_text(encoding="utf-8"))
+    (DOCS_DIR / "axs-logo-header.png").write_bytes((ROOT_DIR / "axs-logo-header.png").read_bytes())
     logo_path = ROOT_DIR / "logo.png"
     if logo_path.exists():
         (DOCS_DIR / "logo.png").write_bytes(logo_path.read_bytes())
@@ -163,6 +165,8 @@ def build_static_site() -> None:
     sync_frontend_assets()
     sync_optional_knowledge_assets()
     generate_operation_payloads(engine, generated_at, generated_at_iso)
+    from build_calendar import build_calendar
+    build_calendar()
     from build_vortx_comparison import build_comparison
     build_comparison()
 
