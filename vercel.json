@@ -6,6 +6,10 @@
     "api/vortx.js": {
       "maxDuration": 60,
       "includeFiles": "data/vortx/instruments/**"
+    },
+    "api/documentos.js": {
+      "maxDuration": 60,
+      "includeFiles": "data/documents.json"
     }
   }
 }

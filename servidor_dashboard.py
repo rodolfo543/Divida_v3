@@ -132,10 +132,11 @@ def sync_optional_knowledge_assets() -> None:
 
 
 def sync_frontend_assets() -> None:
+    from navigation import with_navigation
     html_source = ROOT_DIR / "dashhtml.html"
     if not html_source.exists():
         html_source = ROOT_DIR / "index.html"
-    html = html_source.read_text(encoding="utf-8")
+    html = with_navigation(html_source.read_text(encoding="utf-8"), "index.html")
     css = (ROOT_DIR / "dashboard.css").read_text(encoding="utf-8")
     js = (ROOT_DIR / "dashboard.js").read_text(encoding="utf-8")
     chat_widget = (ROOT_DIR / "chat-widget.js").read_text(encoding="utf-8")
@@ -146,8 +147,14 @@ def sync_frontend_assets() -> None:
     write_text(DOCS_DIR / "dashboard.js", js)
     write_text(DOCS_DIR / "chat-widget.js", chat_widget)
     for filename in ("vortx.html", "vortx.css", "vortx.js", "vortx-core.js", "navigation.css",
-                     "calendario.html", "calendario.css", "calendario.js", "calendario-core.js"):
-        write_text(DOCS_DIR / filename, (ROOT_DIR / filename).read_text(encoding="utf-8"))
+                     "calendario.html", "calendario.css", "calendario.js", "calendario-core.js",
+                     "finance-common.js", "finance-pages.css", "recomposicao.html", "recomposicao.js",
+                     "documentos.html", "documentos.css", "documentos.js", "documents-core.js"):
+        content = (ROOT_DIR / filename).read_text(encoding="utf-8")
+        if filename.endswith(".html"):
+            content = with_navigation(content, filename)
+            write_text(ROOT_DIR / filename, content)
+        write_text(DOCS_DIR / filename, content)
     (DOCS_DIR / "axs-logo-header.png").write_bytes((ROOT_DIR / "axs-logo-header.png").read_bytes())
     logo_path = ROOT_DIR / "logo.png"
     if logo_path.exists():
@@ -167,8 +174,12 @@ def build_static_site() -> None:
     generate_operation_payloads(engine, generated_at, generated_at_iso)
     from build_calendar import build_calendar
     build_calendar()
+    from build_recomposition import build_recomposition
+    build_recomposition()
     from build_vortx_comparison import build_comparison
     build_comparison()
+    from build_documents import build_documents
+    build_documents()
 
 
 def serve_docs(port: int) -> None:

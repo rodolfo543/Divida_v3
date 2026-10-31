@@ -9,3 +9,6 @@
 .workspace-nav a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:760px){.workspace-nav{grid-template-columns:1fr;justify-items:center;gap:12px;padding-bottom:18px}.workspace-nav .workspace-brand{width:112px;height:54px}.workspace-brand img{width:112px;height:54px}.workspace-nav>div{grid-column:1;max-width:100%;gap:3px;justify-content:center}.workspace-nav>div>a{font-size:11px;padding:11px 13px;flex:initial}}
 @media(max-width:380px){.workspace-nav>div>a{font-size:10px;padding:11px 9px}}
+.workspace-nav>div{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#37546a transparent}
+@media(max-width:1050px){.workspace-nav{grid-template-columns:126px minmax(0,1fr);gap:15px}.workspace-nav>div{justify-self:center}}
+@media(max-width:760px){.workspace-nav{grid-template-columns:minmax(0,1fr)}.workspace-nav>div{width:100%;justify-content:flex-start}.workspace-nav>div>a{flex-shrink:0}}

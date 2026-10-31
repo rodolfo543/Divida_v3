@@ -1,0 +1,19 @@
+[
+ {"code":"AXSA11","eligible":true,"rank":"Sênior","end":"penultimate","source":"AXS Refi 01 - Cessão Fiduciária (57174703.1)","clauses":"Definição (xxi); 5.1 a 5.1.5","pages":"5 e 19","verification_day":12},
+ {"code":"AXSA21","eligible":true,"rank":"Subordinada","end":"last","source":"AXS Refi 01 - Cessão Fiduciária (57174703.1)","clauses":"Definição (xxii); 5.3 a 5.3.4","pages":"5, 20 e 21","note":"Montante de referência subordinado, sujeito à cascata. A cláusula 5.3.2 admite composição inferior sem caracterização de descumprimento."},
+ {"code":"22L1467623","eligible":false,"reason":"PMT mensal; não integra o rateio semestral de 1/6."},
+ {"code":"AXSD11","eligible":false,"reason":"PMT mensal; não integra o rateio semestral de 1/6."},
+ {"code":"22K1397969","eligible":false,"reason":"PMT mensal; não integra o rateio semestral de 1/6."},
+ {"code":"23F0046476","eligible":false,"reason":"PMT mensal; não integra o rateio semestral de 1/6."},
+ {"code":"AXSC12","eligible":true,"rank":"Sênior","end":"penultimate","source":"AXS Refi 05 - Cessão Fiduciária (57174695.1)","clauses":"Definição (xxi); 5.1 a 5.1.5","pages":"5 e 19","verification_day":12},
+ {"code":"AXSC22","eligible":true,"rank":"Subordinada","end":"last","source":"AXS Refi 05 - Cessão Fiduciária (57174695.1)","clauses":"Definição (xxii); 5.3 a 5.3.4","pages":"5, 20 e 21","note":"Montante de referência subordinado, sujeito à cascata. A cláusula 5.3.2 admite composição inferior sem caracterização de descumprimento."},
+ {"code":"AXSE11","eligible":true,"rank":"Pari passu","end":"penultimate","source":"AXS Refi Cifi 06 - CF (57300530v1)","clauses":"Definição (xx); 5.1 a 5.1.5","pages":"5, 6 e seção V","verification_day":12,"note":"Contrato refinanciado de março/2026: primeira e segunda emissões integram o mesmo fundo. Os valores são discriminados por emissão e somados uma única vez."},
+ {"code":"AXSE12","eligible":true,"rank":"Pari passu","end":"penultimate","source":"AXS Refi Cifi 06 - CF (57300530v1)","clauses":"Definição (xx); 5.1 a 5.1.5","pages":"5, 6 e seção V","verification_day":12},
+ {"code":"AXSU11","eligible":false,"reason":"PMT mensal; não integra o rateio semestral de 1/6."},
+ {"code":"AXS811","eligible":true,"rank":"Série única","end":"last","source":"AXS Energia Unidade 08 - Contrato Cessão Fiduciária Direitos Creditórios","clauses":"Definição (xx); 5.1 a 5.1.4","pages":"7, 23 e 24","verification_day":12},
+ {"code":"AXS911","eligible":true,"rank":"Série única","end":"penultimate","source":"AXS Energia Unidade 09 - Contrato Cessão Fiduciária e 1º Aditivo","clauses":"Definição (xix); 5.1 a 5.1.5","pages":"7 e seção V","verification_day":12},
+ {"code":"AXS412","eligible":false,"reason":"Fundo estático no contrato refinanciado. Separada do aporte de 1/6, conforme orientação do Financeiro.","source":"AXS Refi 10 - Cessão Fiduciária - 20.Mai.2026","clauses":"5.1"},
+ {"code":"AXS311","eligible":true,"rank":"Sênior","end":"penultimate","source":"DEMAREST SP 12484652v1 - 1º Aditamento ao Contrato de Cessão Fiduciária (Sênior / Goiás)","clauses":"Definição (xix); 5.1 a 5.1.5","pages":"Definições e seção V","verification_day":12,"note":"Retenção começa seis meses antes da primeira amortização programada (junho/2027 no fluxo atual). A PMT de juros em dezembro/2026 não antecipa esse início."},
+ {"code":"PAXS12","eligible":false,"reason":"Pagamento bullet; não integra o rateio de PMTs semestrais de 1/6."},
+ {"code":"AXSI11","eligible":true,"rank":"Série única","end":"penultimate","source":"AXS Energia Unidade 11 - 1º Aditivo Contrato Cessão Fiduciária","clauses":"Definição (xviii); 5.1 a 5.1.5","pages":"8, 23 e 24","verification_day":12}
+]
