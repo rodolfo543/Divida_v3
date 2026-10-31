@@ -82,8 +82,10 @@ def calculate_daily(module, events, *, start=None, rate=None, lag=1,
             base = module.PU_INICIAL
         nominal = base
         if not migration or current > migration:
-            nominal = update_nominal(base, max(base_date, migration) if migration else base_date,
-                                     current, indices, module, lag)
+            nominal_start = max(base_date, migration) if migration else base_date
+            updater = getattr(module, "atualizar_nominal_diario", None)
+            nominal = (updater(base, nominal_start, current, indices) if updater else
+                       update_nominal(base, nominal_start, current, indices, module, lag))
         period_rate = old_rate if migration and current <= migration else rate
         du = module.dias_uteis(interest_start, current)
         factor = ((1 + period_rate) ** (D(du) / D(252))).quantize(D("0.000000001"), rounding=ROUND_HALF_UP)
@@ -106,7 +108,7 @@ def calculate_daily(module, events, *, start=None, rate=None, lag=1,
             "Amortizacao": amort, "Total": paid,
             "Juros_Pago": D(str(event.get("PU_Juros", 0))) if paid else D(0),
             "Fator_Juros": factor,
-            "Fonte_PU": "Cálculo independente: índices IPCA, projeção ANBIMA e juros em 252 DU",
+            "Fonte_PU": getattr(module, "FONTE_PU_DIARIO", "Cálculo independente: índices IPCA, projeção ANBIMA e juros em 252 DU"),
         })
         current += timedelta(days=1)
     return result

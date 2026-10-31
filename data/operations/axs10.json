@@ -8,7 +8,7 @@
     "indexer": "IPCA + 13,6455%",
     "description": "Debênture mezanino da 2ª emissão, atualizada pelo IPCA e com fluxo semestral.",
     "issuer": "AXS ENERGIA UNIDADE 10 S.A.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs10_v15.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\AppData\\Local\\Temp\\axs05-11-validacao-jepzhov6\\Code final prontos\\axs10_v15.py",
     "identity_fields": [
       {
         "label": "Código IF",
@@ -182962,8 +182962,8 @@
     "next_amortization_amount": 1250504.96,
     "last_event_date": "30/10/2026",
     "final_balance": 0.0,
-    "duration_years": 9.40619781736933,
-    "wal_years": 11.030281781282278,
+    "duration_years": 9.403459966582197,
+    "wal_years": 11.027543930495147,
     "tir_annual_pct": 13.550174266686843,
     "tir_monthly_pct": 1.0645819180790994,
     "contracted_rate_label": "IPCA + 13,6455%",
@@ -183410,10 +183410,10 @@
       "id": "axs11",
       "label": "AXS 11",
       "full_name": "AXS 11 - Emissao 1 / Serie UNICA",
-      "current_balance": 199537083.1651,
-      "next_payment_amount": 14664039.67,
-      "total_interest": 245008876.06,
-      "total_amortization": 322082881.15,
+      "current_balance": 199537081.4889,
+      "next_payment_amount": 14664039.51,
+      "total_interest": 245008856.10999998,
+      "total_amortization": 322082838.34,
       "event_count": 32,
       "indexer": "IPCA + 10,74%",
       "badge": "DEB"
@@ -183506,10 +183506,10 @@
       "id": "axs05",
       "label": "AXS 05",
       "full_name": "AXS 05 - 2a Emissao / 2 Series",
-      "current_balance": 91848814.89999999,
-      "next_payment_amount": 8060692.119999999,
-      "total_interest": 110007673.4,
-      "total_amortization": 161880403.8,
+      "current_balance": 94369497.84166199,
+      "next_payment_amount": 8083120.300000001,
+      "total_interest": 110305459.95,
+      "total_amortization": 162276156.72,
       "event_count": 32,
       "indexer": "IPCA + 9,35% / 10,97%",
       "badge": "DEB"
@@ -183539,6 +183539,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "30/10/2026 17:33:27",
-  "generated_at_iso": "2026-10-30T17:33:27"
+  "generated_at": "31/10/2026 00:20:54",
+  "generated_at_iso": "2026-10-31T00:20:54"
 }

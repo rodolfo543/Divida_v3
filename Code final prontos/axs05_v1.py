@@ -14,6 +14,9 @@ Premissas principais extraidas da escritura
   Observacao: a escritura define a data como a primeira integralizacao. A data de
   13/03/2026 foi adotada com base nas informacoes publicas da emissao.
 - Atualizacao monetaria: IPCA, aniversario no dia 15.
+- O mês de divulgação do IPCA corresponde ao mês seguinte à sua referência IBGE.
+- Fatores mensais truncados a 8 casas; produtório do mais recente para o mais
+  remoto, com intermediários a 16 casas, conforme cláusulas 6.10 e 6.11.
 - Juros: base 252 dias uteis, com 3 incorporacoes iniciais em:
   15/08/2026, 15/02/2027 e 15/08/2027.
 - Primeiro pagamento de juros e primeira amortizacao: 15/02/2028.
@@ -45,6 +48,7 @@ from typing import Dict, List, Tuple
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 import importlib.util
+from ipca_product import update_nominal as atualizar_produtorio_ipca
 
 getcontext().prec = 34
 
@@ -59,6 +63,8 @@ DATAS_INCORPORACAO_JUROS = [
 ]
 PU_INICIAL = Decimal("1000.00000000")
 IPCA_PROJECAO_MENSAL_PADRAO = Decimal("0.0045")
+IPCA_LAG_MESES = 2
+FONTE_PU_DIARIO = "Cálculo independente: IPCA por mês de divulgação, produtório contratual e juros em 252 DU"
 
 
 CRONOGRAMA_RAW = [
@@ -218,6 +224,12 @@ FERIADOS = feriados_nacionais()
 
 def eh_dia_util(dt: date) -> bool:
     return dt.weekday() < 5 and dt not in FERIADOS
+
+
+def dia_util_seguinte(dt: date) -> date:
+    while not eh_dia_util(dt):
+        dt += timedelta(days=1)
+    return dt
 
 
 def dias_uteis(inicio: date, fim: date) -> int:
@@ -512,8 +524,9 @@ def preencher_indices_futuros(indices: Dict[str, Decimal]) -> Tuple[Dict[str, De
 
 
 def fator_ipca(indices: Dict[str, Decimal], data_aniv: date) -> Tuple[Decimal, str, str, Decimal, Decimal]:
-    mes_nik = mes_str(add_months(data_aniv, -1))
-    mes_nik_1 = mes_str(add_months(data_aniv, -2))
+    # A escritura usa mês de DIVULGAÇÃO; o SIDRA é indexado por mês de referência.
+    mes_nik = mes_str(add_months(data_aniv, -IPCA_LAG_MESES))
+    mes_nik_1 = mes_str(add_months(data_aniv, -IPCA_LAG_MESES - 1))
     if mes_nik not in indices or mes_nik_1 not in indices:
         raise RuntimeError(f"IPCA necessario nao disponivel: NIk={mes_nik}, NIk_1={mes_nik_1}.")
     ni_k = indices[mes_nik]
@@ -532,12 +545,12 @@ def fator_ipca_prorata(
     inicio_aniv = date(prev_m.year, prev_m.month, 15)
     dup = dias_uteis(inicio, data_aniv)
     dut = dias_uteis(inicio_aniv, data_aniv)
-    bruto = Decimal(str(float(fator_cheio) ** (dup / dut)))
+    bruto = (ni_k / ni_k_1) ** (Decimal(dup) / Decimal(dut))
     return trunc_dec(bruto, 8), mes_nik, mes_nik_1, ni_k, ni_k_1, dup, dut
 
 
 def fator_juros_252(du: int, taxa_aa: Decimal) -> Decimal:
-    bruto = Decimal(str((1.0 + float(taxa_aa)) ** (du / 252.0)))
+    bruto = (Decimal("1") + taxa_aa) ** (Decimal(du) / Decimal("252"))
     return bruto.quantize(Decimal("0.000000001"), rounding=ROUND_HALF_UP)
 
 
@@ -555,49 +568,14 @@ def aplicar_ipca_ate(
     indices: Dict[str, Decimal],
     fonte_mes: Dict[str, str],
 ) -> Tuple[Decimal, List[Dict[str, object]], date]:
-    detalhes: List[Dict[str, object]] = []
-    if data_aniv_alvo < data_ipca_atual:
-        raise RuntimeError("data_aniv_alvo anterior a data_ipca_atual")
+    return atualizar_produtorio_ipca(
+        saldo_pu, data_ipca_atual, data_aniv_alvo, indices, fonte_mes,
+        lag=IPCA_LAG_MESES, business_days=dias_uteis, is_business_day=eh_dia_util)
 
-    prox = proxima_data_aniversario(data_ipca_atual)
-    atual = data_ipca_atual
-    saldo = trunc_dec(saldo_pu, 8)
 
-    while prox <= data_aniv_alvo:
-        if atual == prox:
-            prox_m = add_months(prox, 1)
-            prox = date(prox_m.year, prox_m.month, 15)
-            continue
-
-        if atual.day == 15 and atual < prox:
-            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1 = fator_ipca(indices, prox)
-            prev_m = add_months(prox, -1)
-            inicio_aniv = date(prev_m.year, prev_m.month, 15)
-            dup_ipca = dias_uteis(inicio_aniv, prox)
-            dut_ipca = dup_ipca
-        else:
-            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1, dup_ipca, dut_ipca = fator_ipca_prorata(indices, prox, atual)
-
-        saldo_ini = saldo
-        saldo = trunc_dec(saldo * fator_c, 8)
-        detalhes.append({
-            "Data_Aniv_IPCA": prox.strftime("%d/%m/%Y"),
-            "Mes_NIk": mes_nik,
-            "Mes_NIk_1": mes_nik_1,
-            "NIk": ni_k,
-            "NIk_1": ni_k_1,
-            "Fonte_NIk": fonte_mes.get(mes_nik, ""),
-            "DUP_IPCA": dup_ipca,
-            "DUT_IPCA": dut_ipca,
-            "Fator_C_IPCA": fator_c,
-            "PU_Antes_IPCA": saldo_ini,
-            "PU_Apos_IPCA": saldo,
-        })
-        atual = prox
-        prox_m = add_months(prox, 1)
-        prox = date(prox_m.year, prox_m.month, 15)
-
-    return saldo, detalhes, data_aniv_alvo
+def atualizar_nominal_diario(saldo: Decimal, inicio: date, fim: date, indices: Dict[str, Decimal]) -> Decimal:
+    """Mesma fórmula dos eventos, inclusive no trecho parcial do mês corrente."""
+    return aplicar_ipca_ate(saldo, inicio, fim, indices, {})[0]
 
 
 def calcular_fluxo_serie(
@@ -718,12 +696,18 @@ def ordenar_por_data(linhas: List[Dict[str, object]]) -> List[Dict[str, object]]
 
 
 def calcular_fluxos_series() -> Tuple[Dict[str, List[Dict[str, object]]], str]:
+    fluxos, fonte, _ = calcular_fluxos_com_indices()
+    return fluxos, fonte
+
+
+def calcular_fluxos_com_indices():
+    """Compartilha exatamente os mesmos insumos entre eventos e PU diário."""
     indices, fonte = obter_ipca_numero_indice_sidra()
     indices, fonte_mes = preencher_indices_futuros(indices)
     out: Dict[str, List[Dict[str, object]]] = {}
     for serie_id, config in SERIES.items():
         out[serie_id] = calcular_fluxo_serie(config, indices, fonte_mes)
-    return out, fonte
+    return out, fonte, indices
 
 
 def calcular_fluxo(serie: str | None = None) -> Tuple[List[Dict[str, object]], str]:

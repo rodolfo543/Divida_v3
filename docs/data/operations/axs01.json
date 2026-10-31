@@ -8,7 +8,7 @@
     "indexer": "IPCA + 9,35% / 10,97%",
     "description": "Visao consolidada das duas series da AXS 01 Refi.",
     "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-    "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
+    "script_path": "C:\\Users\\rodolfo.crotti\\AppData\\Local\\Temp\\axs05-11-validacao-jepzhov6\\Code final prontos\\axs01_refi_v1.py",
     "identity_fields": [
       {
         "label": "Código IF",
@@ -4449,8 +4449,8 @@
     "next_amortization_amount": 2126993.2199999997,
     "last_event_date": "17/08/2026",
     "final_balance": 0.0,
-    "duration_years": 9.452050567943461,
-    "wal_years": 11.04896195112906,
+    "duration_years": 9.449312717156328,
+    "wal_years": 11.046224100341927,
     "tir_annual_pct": 9.51368369738409,
     "tir_monthly_pct": 0.7602026518901628,
     "contracted_rate_label": "IPCA + 9,3515% / 10,9659%",
@@ -4756,7 +4756,7 @@
         "indexer": "IPCA + 9,35% / 10,97%",
         "description": "Visao consolidada das duas series da AXS 01 Refi.",
         "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\AppData\\Local\\Temp\\axs05-11-validacao-jepzhov6\\Code final prontos\\axs01_refi_v1.py",
         "identity_fields": [
           {
             "label": "Código IF",
@@ -120947,8 +120947,8 @@
         "next_amortization_amount": 2126993.2199999997,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.452050567943461,
-        "wal_years": 11.04896195112906,
+        "duration_years": 9.449312717156328,
+        "wal_years": 11.046224100341927,
         "tir_annual_pct": 9.51368369738409,
         "tir_monthly_pct": 0.7602026518901628,
         "contracted_rate_label": "IPCA + 9,3515% / 10,9659%",
@@ -121240,7 +121240,7 @@
         "indexer": "IPCA + 9,3515%",
         "description": "Visualizacao isolada da 1a serie da AXS 01 Refi.",
         "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\AppData\\Local\\Temp\\axs05-11-validacao-jepzhov6\\Code final prontos\\axs01_refi_v1.py",
         "identity_fields": [
           {
             "label": "Código IF",
@@ -352491,8 +352491,8 @@
         "next_amortization_amount": 717166.31,
         "last_event_date": "30/10/2026",
         "final_balance": 0.0,
-        "duration_years": 9.581642963694689,
-        "wal_years": 11.314630483476495,
+        "duration_years": 9.578905112907558,
+        "wal_years": 11.311892632689364,
         "tir_annual_pct": 9.22953112343704,
         "tir_monthly_pct": 0.7383900226449525,
         "contracted_rate_label": "IPCA + 9,3515%",
@@ -352982,7 +352982,7 @@
         "indexer": "IPCA + 10,9659%",
         "description": "Visualizacao isolada da 2a serie da AXS 01 Refi.",
         "issuer": "AXS ENERGIA UNIDADE 01 LTDA.",
-        "script_path": "C:\\Users\\rodolfo.crotti\\OneDrive - AXS ENERGIA S A\\Documents\\Desenvolvimento\\Cálculo da dívida\\dash_v2\\Code final prontos\\axs01_refi_v1.py",
+        "script_path": "C:\\Users\\rodolfo.crotti\\AppData\\Local\\Temp\\axs05-11-validacao-jepzhov6\\Code final prontos\\axs01_refi_v1.py",
         "identity_fields": [
           {
             "label": "Código IF",
@@ -584233,8 +584233,8 @@
         "next_amortization_amount": 1409826.91,
         "last_event_date": "30/10/2026",
         "final_balance": 0.0,
-        "duration_years": 8.931059349549598,
-        "wal_years": 9.97749164859896,
+        "duration_years": 8.928321498762466,
+        "wal_years": 9.974753797811829,
         "tir_annual_pct": 10.799329805904085,
         "tir_monthly_pct": 0.8582498563043384,
         "contracted_rate_label": "IPCA + 10,9659%",
@@ -1047819,10 +1047819,10 @@
       "id": "axs11",
       "label": "AXS 11",
       "full_name": "AXS 11 - Emissao 1 / Serie UNICA",
-      "current_balance": 199537083.1651,
-      "next_payment_amount": 14664039.67,
-      "total_interest": 245008876.06,
-      "total_amortization": 322082881.15,
+      "current_balance": 199537081.4889,
+      "next_payment_amount": 14664039.51,
+      "total_interest": 245008856.10999998,
+      "total_amortization": 322082838.34,
       "event_count": 32,
       "indexer": "IPCA + 10,74%",
       "badge": "DEB"
@@ -1047915,10 +1047915,10 @@
       "id": "axs05",
       "label": "AXS 05",
       "full_name": "AXS 05 - 2a Emissao / 2 Series",
-      "current_balance": 91848814.89999999,
-      "next_payment_amount": 8060692.119999999,
-      "total_interest": 110007673.4,
-      "total_amortization": 161880403.8,
+      "current_balance": 94369497.84166199,
+      "next_payment_amount": 8083120.300000001,
+      "total_interest": 110305459.95,
+      "total_amortization": 162276156.72,
       "event_count": 32,
       "indexer": "IPCA + 9,35% / 10,97%",
       "badge": "DEB"
@@ -1047948,6 +1047948,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "30/10/2026 17:33:27",
-  "generated_at_iso": "2026-10-30T17:33:27"
+  "generated_at": "31/10/2026 00:20:54",
+  "generated_at_iso": "2026-10-31T00:20:54"
 }

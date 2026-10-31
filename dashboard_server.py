@@ -1528,18 +1528,26 @@ def load_axs02(module: Any) -> dict[str, Any]:
 
 
 def load_axs05(module: Any) -> dict[str, Any]:
-    fluxos, fonte = module.calcular_fluxos_series()
+    fluxos, fonte, indices = module.calcular_fluxos_com_indices()
+    daily_by_variant = {
+        key: normalize_daily_pu(
+            calculate_daily(module, fluxos[key], rate=conf.taxa_aa,
+                            lag=module.IPCA_LAG_MESES, indices=indices),
+            conf.quantidade, key)
+        for key, conf in module.SERIES.items()
+    }
     primeira_rows = normalize_series(fluxos["primeira"])
     segunda_rows = normalize_series(fluxos["segunda"])
     detailed_rows = normalize_series([linha for linhas in fluxos.values() for linha in linhas])
     total_rows = aggregate_variant_series(detailed_rows, "Total 1a + 2a Serie")
     base_meta = {
         "primary_source": f"Fonte IPCA: {fonte}",
-        "notes": "AXS 05 permite visualizar o consolidado ou cada serie separadamente.",
+        "notes": "AXS 05: PU diário calculado pelos aditivos, sem interpolação, com IPCA por mês de divulgação e incorporações nas duas séries. A parametrização da memória Vórtx permanece em conciliação.",
     }
 
     return {
         "module_ref": module,
+        "daily_by_variant": daily_by_variant,
         "series": total_rows,
         "table_series": detailed_rows,
         "summary": build_summary(total_rows),
@@ -1778,7 +1786,7 @@ def build_portfolio_series(payloads: list[dict[str, Any]]) -> list[dict[str, Any
         if item["parsed_date"] is not None
     }
     # O saldo em cada data vem da curva calculada, inclusive antes do primeiro PMT.
-    # Interpolações ainda pendentes (AXS 05) não substituem saldos financeiros.
+    # Séries eventualmente interpoladas não substituem saldos financeiros.
     daily_by_operation = {}
     for payload in payloads:
         rows = payload.get("daily_pu_series", [])

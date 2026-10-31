@@ -46,6 +46,7 @@ from urllib.request import Request, urlopen
 import importlib.util
 
 from ipca_inputs import aplicar_projecao_anbima
+from ipca_product import update_nominal as atualizar_produtorio_ipca
 
 getcontext().prec = 34
 
@@ -515,12 +516,12 @@ def fator_ipca_prorata(
     inicio_aniv = date(prev_m.year, prev_m.month, 15)
     dup = dias_uteis(inicio, data_aniv)
     dut = dias_uteis(inicio_aniv, data_aniv)
-    bruto = Decimal(str(float(fator_cheio) ** (dup / dut)))
+    bruto = (ni_k / ni_k_1) ** (Decimal(dup) / Decimal(dut))
     return trunc_dec(bruto, 8), mes_nik, mes_nik_1, ni_k, ni_k_1, dup, dut
 
 
 def fator_juros_252(du: int, taxa_aa: Decimal) -> Decimal:
-    bruto = Decimal(str((1.0 + float(taxa_aa)) ** (du / 252.0)))
+    bruto = (Decimal("1") + taxa_aa) ** (Decimal(du) / Decimal("252"))
     return bruto.quantize(Decimal("0.000000001"), rounding=ROUND_HALF_UP)
 
 
@@ -538,49 +539,13 @@ def aplicar_ipca_ate(
     indices: Dict[str, Decimal],
     fonte_mes: Dict[str, str],
 ) -> Tuple[Decimal, List[Dict[str, object]], date]:
-    detalhes: List[Dict[str, object]] = []
-    if data_aniv_alvo < data_ipca_atual:
-        raise RuntimeError("data_aniv_alvo anterior a data_ipca_atual")
+    return atualizar_produtorio_ipca(
+        saldo_pu, data_ipca_atual, data_aniv_alvo, indices, fonte_mes,
+        lag=1, business_days=dias_uteis, is_business_day=eh_dia_util)
 
-    prox = proxima_data_aniversario(data_ipca_atual)
-    atual = data_ipca_atual
-    saldo = trunc_dec(saldo_pu, 8)
 
-    while prox <= data_aniv_alvo:
-        if atual == prox:
-            prox_m = add_months(prox, 1)
-            prox = date(prox_m.year, prox_m.month, 15)
-            continue
-
-        if atual.day == 15 and atual < prox:
-            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1 = fator_ipca(indices, prox)
-            prev_m = add_months(prox, -1)
-            inicio_aniv = date(prev_m.year, prev_m.month, 15)
-            dup_ipca = dias_uteis(inicio_aniv, prox)
-            dut_ipca = dup_ipca
-        else:
-            fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1, dup_ipca, dut_ipca = fator_ipca_prorata(indices, prox, atual)
-
-        saldo_ini = saldo
-        saldo = trunc_dec(saldo * fator_c, 8)
-        detalhes.append({
-            "Data_Aniv_IPCA": prox.strftime("%d/%m/%Y"),
-            "Mes_NIk": mes_nik,
-            "Mes_NIk_1": mes_nik_1,
-            "NIk": ni_k,
-            "NIk_1": ni_k_1,
-            "Fonte_NIk": fonte_mes.get(mes_nik, ""),
-            "DUP_IPCA": dup_ipca,
-            "DUT_IPCA": dut_ipca,
-            "Fator_C_IPCA": fator_c,
-            "PU_Antes_IPCA": saldo_ini,
-            "PU_Apos_IPCA": saldo,
-        })
-        atual = prox
-        prox_m = add_months(prox, 1)
-        prox = date(prox_m.year, prox_m.month, 15)
-
-    return saldo, detalhes, data_aniv_alvo
+def atualizar_nominal_diario(saldo: Decimal, inicio: date, fim: date, indices: Dict[str, Decimal]) -> Decimal:
+    return aplicar_ipca_ate(saldo, inicio, fim, indices, {})[0]
 
 
 def calcular_fluxo(

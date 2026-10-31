@@ -29,12 +29,14 @@ async function run() {
   assert.equal(mapped.ordinary, '5.00000000'); assert.equal(mapped.extra, '70.00000000'); assert.equal(mapped.full, null);
   const manifest = JSON.parse(fs.readFileSync('./data/vortx/manifest.json'));
   const instruments = manifest.instruments.map(i => C.prepare(JSON.parse(fs.readFileSync('./data/vortx/' + i.file))));
-  const comparisons = instruments.map(i => C.at(i, manifest.local_as_of));
+  const asOf = C.latestComparableDay(instruments, manifest.local_as_of);
+  assert.ok(asOf && asOf <= manifest.local_as_of);
+  const comparisons = instruments.map(i => C.at(i, asOf));
   assert.equal(comparisons.filter(r => r.status === 'exact').length, 1);
   assert.equal(comparisons.filter(r => ['exact', 'cents'].includes(r.status)).length, 14);
   assert.equal(comparisons.filter(r => r.status === 'different').length, 3);
   for (const i of instruments) {
-    const r = C.at(i, manifest.local_as_of, 'empty');
+    const r = C.at(i, asOf, 'empty');
     assert.notEqual(r.status, 'missing', i.code);
   }
   const oldTime = '2026-10-29T10:00:00Z';

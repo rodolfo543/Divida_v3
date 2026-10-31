@@ -1,0 +1,26 @@
+[
+  {
+    "code": "AXSC12",
+    "source": "https://apis.vortx.com.br/vxsite/api/operacao/97044/preco-unitario/historico-pagamentos",
+    "collected_on": "2026-10-31",
+    "reference": {
+      "paymentDate": "2026-10-30T00:00:00",
+      "interest": "0.016",
+      "unitPriceFull": "1042.65254857",
+      "nominalValue": "1032.26216",
+      "interestValue": "10.39038857"
+    }
+  },
+  {
+    "code": "AXSC22",
+    "source": "https://apis.vortx.com.br/vxsite/api/operacao/97045/preco-unitario/historico-pagamentos",
+    "collected_on": "2026-10-31",
+    "reference": {
+      "paymentDate": "2026-10-30T00:00:00",
+      "interest": "0.031",
+      "unitPriceFull": "1038.78560472",
+      "nominalValue": "1032.26216",
+      "interestValue": "6.52344472"
+    }
+  }
+]
