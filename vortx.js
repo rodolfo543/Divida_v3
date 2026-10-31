@@ -200,7 +200,10 @@ async function bootstrap() {
     const worker = async () => { while (cursor < pending.length) { const item = pending[cursor++]; state.instruments.push(C.prepare(await request('./data/vortx/' + item.file))); } };
     await Promise.all([worker(), worker(), worker()]);
     state.instruments.sort((a, b) => state.manifest.instruments.findIndex(i => i.code === a.code) - state.manifest.instruments.findIndex(i => i.code === b.code));
-    $('asOf').value = state.manifest.local_as_of; $('asOf').max = state.manifest.local_as_of;
+    // Em fins de semana ou antes da publicação diária, iniciar na última data
+    // que de fato tenha PU calculado e referência publicada no mesmo dia.
+    $('asOf').value = C.latestComparableDay(state.instruments, state.manifest.local_as_of) || state.manifest.local_as_of;
+    $('asOf').max = state.manifest.local_as_of;
     $('asOf').min = state.instruments.flatMap(i => i.local_rows.map(r => r.d)).sort()[0];
     $('instrumentSelect').innerHTML = state.instruments.map(i => `<option value="${i.code}">${esc(i.label)} · ${esc(i.series)} · ${i.code}</option>`).join('');
     $('component').innerHTML = Object.entries(C.FIELDS).map(([value, label]) => `<option value="${value}">${label}</option>`).join('');

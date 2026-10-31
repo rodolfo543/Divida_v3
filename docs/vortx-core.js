@@ -64,11 +64,20 @@
     if (mode === 'preview') return [...ref.keys()].sort();
     return [...new Set([...instrument.localIndex.keys(), ...ref.keys()])].filter(d => d <= instrument.local_as_of).sort();
   }
+  function latestComparableDay(instruments, cutoff) {
+    let latest = null;
+    for (const instrument of instruments) for (const [d, reference] of instrument.historyIndex) {
+      if (d > cutoff || d > instrument.local_as_of || (latest && d <= latest)) continue;
+      const local = instrument.localIndex.get(d);
+      if (local?.full != null && reference.full != null) latest = d;
+    }
+    return latest;
+  }
   function official(row) {
     const names = {full: 'unitPriceFull', empty: 'unitPriceEmpty', nominal: 'nominalValue', interest: 'interestValue',
       paid_interest: 'interestCashflowAmount', ordinary: 'ordinaryCashflowAmount', extra: 'extraordinaryAmortization',
       incorporation: 'incorporationCashflowAmount', total: 'total'};
     return Object.fromEntries([['d', String(row.paymentDate).slice(0, 10)], ...Object.entries(names).map(([a, b]) => [a, decimal(fixed(row[b]))])]);
   }
-  return {SCALE, FIELDS, fixed, decimal, format, divideRound, compare, index, prepare, at, dates, official};
+  return {SCALE, FIELDS, fixed, decimal, format, divideRound, compare, index, prepare, at, dates, latestComparableDay, official};
 });

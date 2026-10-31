@@ -78,9 +78,15 @@ def calcular_fluxo(taxas=None, hoje=None):
                 break
             taxa = taxas.get(data)
             if taxa is None:
-                # Data corrente pode ainda não ter sido divulgada; seu DI só afeta o dia seguinte.
+                # O DI desta data só afeta o PU do PRÓXIMO dia útil. Em fins de
+                # semana/feriados, sua ausência ainda pertence à projeção, mesmo
+                # que a data de referência já tenha passado no calendário civil.
                 if data < hoje:
-                    raise ValueError(f'DI histórico ausente em {data:%d/%m/%Y}; atualize a série 4389 do BCB.')
+                    proximo = data + timedelta(days=1)
+                    while not util(proximo):
+                        proximo += timedelta(days=1)
+                    if proximo <= hoje:
+                        raise ValueError(f'DI histórico ausente em {data:%d/%m/%Y}; atualize a série 4389 do BCB.')
                 taxa = ultima_taxa
             if taxa is None:
                 raise ValueError('Taxa DI indisponível para projeção.')

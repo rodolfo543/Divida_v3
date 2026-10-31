@@ -21,6 +21,10 @@ async function run() {
   assert.equal(C.at(i, '2026-11-03').status, 'missing');
   assert.equal(C.at(i, '2026-11-03', 'full', 'preview').status, 'exact');
   assert.deepEqual(C.dates(i), []);
+  const weekend = C.prepare({quantity:'1',local_as_of:'2026-10-31',local_rows:[{d:'2026-10-30',full:'10'},{d:'2026-11-02',full:'11'}],reference:{history:[{d:'2026-10-30',full:'10'},{d:'2026-11-02',full:'11'}],preview:[]}});
+  assert.equal(C.latestComparableDay([weekend],'2026-10-31'),'2026-10-30');
+  assert.equal(C.latestComparableDay([weekend],'2026-10-29'),null);
+  assert.equal(C.latestComparableDay([], '2026-10-31'),null);
   const mapped = C.official({paymentDate: '2026-10-30T00:00:00Z', amortization: 75, ordinaryCashflowAmount: 5, extraordinaryAmortization: 70});
   assert.equal(mapped.ordinary, '5.00000000'); assert.equal(mapped.extra, '70.00000000'); assert.equal(mapped.full, null);
   const manifest = JSON.parse(fs.readFileSync('./data/vortx/manifest.json'));

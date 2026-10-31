@@ -26,6 +26,19 @@ class PAXS12Test(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'DI histórico ausente'):
             paxs.calcular_fluxo({date(2026,10,14):Decimal('13.65')}, date(2026,10,19))
 
+    def test_fim_de_semana_e_feriado_nao_exigem_di_so_usado_no_futuro(self):
+        taxas = {date(2026,10,d): Decimal('13.65') for d in (14,15,16,19,20,21,22,23,26,27,28,29)}
+        _, referencia, _ = paxs.calcular_fluxo(taxas, date(2026,10,30))
+        for hoje in (date(2026,10,31), date(2026,11,1), date(2026,11,2)):
+            _, dias, _ = paxs.calcular_fluxo(taxas, hoje)
+            confirmados = [row for row in dias if not row['Projecao']]
+            self.assertEqual(confirmados[-1]['Data'], '30/10/2026')
+            self.assertEqual([r['PU_Valor_Bruto'] for r in confirmados], [r['PU_Valor_Bruto'] for r in referencia[:13]])
+            self.assertTrue(next(r for r in dias if r['Data']=='03/11/2026')['Projecao'])
+        # Na terça-feira esse DI já afeta o PU corrente: continua obrigatório.
+        with self.assertRaisesRegex(ValueError, 'DI histórico ausente em 30/10/2026'):
+            paxs.calcular_fluxo(taxas, date(2026,11,3))
+
     def test_carteira_inclui_saldo_antes_do_vencimento_e_zera_apos(self):
         def evento(d, saldo, pagamento=0):
             return {'parsed_date': d, 'balance': saldo, 'payment': pagamento,
