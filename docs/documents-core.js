@@ -1,6 +1,16 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.DocumentsCore=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
   function allowedUrl(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&u.hostname.endsWith('.vortx.com.br');}catch{return false;}}
+  function sourceType(d){return d.source_type||'vortx';}
+  function sourceLabel(d){return {vortx:'Vórtx',axs_ri:'RI AXS',axs_archive:'Acervo AXS'}[sourceType(d)]||'Origem não identificada';}
+  function supplementalUrl(d){
+    if(sourceType(d)==='axs_archive')return /^\.\/assets\/documents\/[a-z0-9-]+\.pdf$/.test(d.href||'')?d.href:null;
+    if(sourceType(d)==='axs_ri')try{const u=new URL(d.href);return u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&u.hostname==='apiri.axsenergia.com.br'&&u.pathname.startsWith('/storage/v1/object/public/documentos/')?u.href:null;}catch{return null;}
+    return null;
+  }
+  function supplemental(items,code){return items.filter(d=>d.codes?.includes(code)&&/^axs-[a-z0-9-]+$/.test(d.id)&&supplementalUrl(d)).map(({codes,...d})=>({...d,code}));}
+  function mergeDocuments(...lists){const map=new Map();for(const list of lists)for(const d of list||[])map.set(d.id,d);return [...map.values()];}
+  function documentDate(d){return d.document_date||d.uploaded_at||'';}
   function normalize(groups,code,withUrl=false){
     if(!Array.isArray(groups))throw new Error('Resposta de documentos inválida');
     const docs=new Map();
@@ -13,5 +23,5 @@
   function unique(instruments){const map=new Map();for(const i of instruments)for(const d of i.documents){const old=map.get(d.id);if(old){if(!old.codes.includes(i.code))old.codes.push(i.code);}else map.set(d.id,{...d,codes:[i.code],operation:i.operation,label:i.label});}return [...map.values()];}
   function search(text,query){const clean=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();return clean(text).includes(clean(query));}
   function categoryTitle(value){return {'Emissao Debentures':'Escrituras e aditivos','Cessao Fiduciaria':'Cessão fiduciária','AF Acoes':'AF de ações','AF de Máquinas':'AF de equipamentos','AF de Outros':'Outras garantias','Mat':'Matrículas','DFP':'Demonstrações financeiras','ARCA/AGE':'Atas societárias','Relatório Garantias':'Relatórios de garantias'}[value]||value;}
-  return {allowedUrl,normalize,unique,search,categoryTitle};
+  return {allowedUrl,normalize,unique,search,categoryTitle,sourceType,sourceLabel,supplementalUrl,supplemental,mergeDocuments,documentDate};
 });

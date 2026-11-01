@@ -1,15 +1,16 @@
 const catalog=require('../vortx_catalog.json');
 const snapshot=require('../data/documents.json');
-const {normalize,allowedUrl}=require('../documents-core.js');
+const extras=require('../documents-supplemental.json');
+const {normalize,allowedUrl,supplemental,mergeDocuments}=require('../documents-core.js');
 const cache=new Map(),BASE='https://apis.vortx.com.br/vxsite/api/operacao';
 async function collect(config,fetcher=fetch){
   const documents=new Map(),errors=[],now=new Date().toISOString();
-  await Promise.all([0,1].map(async route=>{try{
+  await Promise.all([2,1].map(async route=>{try{
     const response=await fetcher(`${BASE}/${config.operation_id}/documentos-por-tipo/${route}`,{headers:{Accept:'application/json','User-Agent':'AXS-Debt-Documents/1.0'},signal:AbortSignal.timeout(18000)});
     if(!response.ok)throw new Error(`HTTP ${response.status}`);
     for(const d of normalize(await response.json(),config.code,true))documents.set(d.id,d);
   }catch(e){errors.push(`Consulta ${route}: ${e.message}`);}}));
-  return {code:config.code,documents:[...documents.values()],errors,collected_at:errors.length?null:now,attempted_at:now};
+  return {code:config.code,documents:mergeDocuments([...documents.values()],supplemental(extras,config.code)),errors,collected_at:errors.length?null:now,attempted_at:now};
 }
 module.exports=async function handler(req,res){
   res.setHeader('Cache-Control','private, no-store');

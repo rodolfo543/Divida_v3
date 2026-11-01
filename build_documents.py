@@ -1,10 +1,11 @@
-"""Catálogo de documentos públicos da Vórtx. Não publica arquivos locais."""
+"""Biblioteca Vórtx e documentos complementares com origem identificada."""
 import json
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
+from supplemental_documents import supplemental_for, sync_assets
 
 ROOT = Path(__file__).resolve().parent
 BASE = 'https://apis.vortx.com.br/vxsite/api/operacao'
@@ -29,10 +30,10 @@ def public_documents(groups, code):
     return list(result.values())
 
 
-def collect(config, previous=None, fetch=None):
+def collect(config, previous=None, fetch=None, root=ROOT):
     now = datetime.now(timezone.utc).isoformat(timespec='seconds')
     documents, errors = {}, []
-    for route in (0, 1):
+    for route in (2, 1):
         try:
             url = f"{BASE}/{config['operation_id']}/documentos-por-tipo/{route}"
             if fetch:
@@ -49,12 +50,15 @@ def collect(config, previous=None, fetch=None):
     if errors:
         for doc in (previous or {}).get('documents', []):
             documents.setdefault(doc['id'], doc)
+    for doc in supplemental_for(config['code'], root):
+        documents[doc['id']] = doc
     return {**config, 'documents': sorted(documents.values(), key=lambda d: (d['category'], d['name'])),
             'collected_at': now if not errors else (previous or {}).get('collected_at'),
             'attempted_at': now, 'errors': errors, 'cached': bool(errors)}
 
 
 def build_documents(root=ROOT):
+    sync_assets(root)
     catalog = json.loads((root / 'vortx_catalog.json').read_text(encoding='utf-8'))
     path = root / 'data/documents.json'
     old = json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
@@ -67,7 +71,7 @@ def build_documents(root=ROOT):
         configs.append({key: i[key] for key in ('code', 'operation_id', 'operation', 'label', 'series')} |
                        {'title': f"{kind} · {str(issue) + 'ª emissão · ' if issue else ''}{i['series']}"})
     with ThreadPoolExecutor(max_workers=3) as pool:
-        instruments = list(pool.map(lambda c: collect(c, previous.get(c['code'])), configs))
+        instruments = list(pool.map(lambda c: collect(c, previous.get(c['code']), root=root), configs))
     result = {'schema_version': 1, 'built_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
               'instruments': instruments}
     for directory in (root / 'data', root / 'docs/data'):

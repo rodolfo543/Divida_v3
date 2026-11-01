@@ -1,0 +1,34 @@
+[
+  {
+    "id": "axs-ri-96",
+    "format": "PDF",
+    "codes": ["AXSC12", "AXSC22"],
+    "name": "AXS 05 - 1º aditamento à escritura da 2ª emissão (assinado)",
+    "category": "Emissao Debentures",
+    "document_date": "2026-03-11",
+    "uploaded_at": "2026-03-12T16:36:28+00:00",
+    "source_type": "axs_ri",
+    "source_name": "RI AXS",
+    "source_page": "https://ri.axsenergia.com.br/documentos",
+    "href": "https://apiri.axsenergia.com.br/storage/v1/object/public/documentos/documentos-cvm/1773333387691.pdf",
+    "sha256": "beedccc2c8b2e6691b6e9e2280029f5fc9504cc9f933094de618f86c72a952f2",
+    "verified_at": "2026-10-31",
+    "source_note": "Disponível no portal público de Relações com Investidores da AXS. Arquivo idêntico à cópia assinada do acervo AXS, verificado por SHA-256."
+  },
+  {
+    "id": "axs-acervo-axsi11-aditivo-2",
+    "format": "PDF",
+    "codes": ["AXSI11"],
+    "name": "AXS 11 - 2º aditivo à escritura da 1ª emissão (assinado)",
+    "category": "Emissao Debentures",
+    "document_date": "2025-09-24",
+    "uploaded_at": null,
+    "source_type": "axs_archive",
+    "source_name": "Acervo AXS",
+    "source_page": null,
+    "href": "./assets/documents/axs11-segundo-aditivo-assinado.pdf",
+    "sha256": "2edaf9554080b4d9cfa10fd98b90168f93d8515ed422effaa76a45d921b6b77c",
+    "verified_at": "2026-10-31",
+    "source_note": "Cópia assinada fornecida pela AXS. Link público externo não localizado na consulta de 31/10/2026; disponibilizada neste acervo por solicitação da AXS."
+  }
+]

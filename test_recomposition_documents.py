@@ -5,6 +5,7 @@ from decimal import Decimal as D
 from pathlib import Path
 from build_recomposition import split_six, shift_month, cents
 from build_documents import public_documents, collect
+from supplemental_documents import supplemental_for, sync_assets
 
 ROOT = Path(__file__).resolve().parent
 
@@ -45,6 +46,22 @@ class RecompositionTests(unittest.TestCase):
 
 
 class DocumentsTests(unittest.TestCase):
+    def test_complementos_tem_origem_e_nao_somem_em_falha_vortx(self):
+        ri=supplemental_for('AXSC12')
+        self.assertEqual(ri[0]['id'],supplemental_for('AXSC22')[0]['id'])
+        self.assertEqual(ri[0]['source_type'],'axs_ri')
+        self.assertEqual(ri[0]['source_page'],'https://ri.axsenergia.com.br/documentos')
+        archive=supplemental_for('AXSI11')[0]
+        self.assertEqual(archive['source_type'],'axs_archive')
+        self.assertIn('não localizado',archive['source_note'])
+        sync_assets()
+        asset=ROOT/archive['href'][2:]
+        self.assertEqual(hashlib.sha256(asset.read_bytes()).hexdigest(),archive['sha256'])
+        self.assertEqual(asset.read_bytes(),(ROOT/'docs'/archive['href'][2:]).read_bytes())
+        def offline(_):raise OSError('offline')
+        result=collect({'code':'AXSI11','operation_id':95427},fetch=offline)
+        self.assertEqual(next(d['id'] for d in result['documents'] if d.get('source_type')=='axs_archive'),archive['id'])
+
     def test_only_public_documents_are_exposed(self):
         docs = public_documents([{'type':'Contrato','documents':[
             {'id':1,'public':True,'url':'https://arquivos-vx-informa.vortx.com.br/test.pdf','description':'A.pdf','userId':999},
