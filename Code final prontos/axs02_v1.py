@@ -450,10 +450,19 @@ def calcular_instrumento(
     event_file = BASE_DIR.parent / "data" / "events" / "axs02.json"
     extra_events = json.loads(event_file.read_text(encoding="utf-8"))["events"] if event_file.exists() else []
     total_quantity = sum(inst.quantidade for inst in INSTRUMENTOS)
-    extras = {
-        date.fromisoformat(event["date"]): round_dec(Decimal(event["total_amount"]) * instrumento.quantidade / total_quantity, 2)
-        for event in extra_events if event["type"] == "extraordinary_amortization"
-    }
+    extras = {}
+    for event in extra_events:
+        if event["type"] != "extraordinary_amortization":
+            continue
+        amounts = event.get("amount_by_instrument")
+        if amounts is not None:
+            codes = {inst.codigo_if for inst in INSTRUMENTOS}
+            if set(amounts) != codes or sum(Decimal(v) for v in amounts.values()) != Decimal(event["total_amount"]):
+                raise ValueError("Rateio de amortização extraordinária da AXS 02 inválido")
+            amount = Decimal(amounts[instrumento.codigo_if])
+        else:
+            amount = round_dec(Decimal(event["total_amount"]) * instrumento.quantidade / total_quantity, 2)
+        extras[date.fromisoformat(event["date"])] = amount
 
     for idx, (data_pagto, perc_amort) in enumerate(CRONOGRAMA):
         primeiro_periodo = idx == 0

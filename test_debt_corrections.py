@@ -18,6 +18,27 @@ def module(operation):
 
 
 class DebtCorrectionTest(unittest.TestCase):
+    def test_axs04_amortizacoes_liquidadas_opea_e_pu(self):
+        m = module("axs04")
+        raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
+        indices = {key[:4] + "-" + key[4:]: D(value) for key, value in raw.items()}
+        self.assertEqual(dict(m.CRONOGRAMA_RAW)["2025-09-15"], "0.5219")
+        self.assertEqual(dict(m.CRONOGRAMA)[date(2025, 9, 15)], D("0.005218"))
+        self.assertEqual(dict(m.CRONOGRAMA)[date(2025, 10, 15)], D("0.005246"))
+        m.CRONOGRAMA = [(day, pct) for day, pct in m.CRONOGRAMA if day <= date(2026, 10, 15)]
+        with patch.object(m, "obter_ipca_numero_indice_sidra", return_value=(indices, "IBGE")), \
+             patch.object(m, "preencher_indices_futuros", return_value=(indices, {}, "fixture")):
+            events, _, _ = m.calcular_fluxo()
+        by_date = {row["Data_Pgto"]: row for row in events}
+        # Valores unitários de amortização publicados pela Opea para eventos liquidados.
+        self.assertEqual(by_date[date(2025, 9, 15)]["PU_Amort"], D("5.50518436"))
+        self.assertEqual(by_date[date(2025, 10, 15)]["PU_Amort"], D("5.49978515"))
+        start, end = date(2026, 10, 15), date(2026, 11, 3)
+        nominal = update_nominal(events[-1]["PU_VNa_Fim"], start, end, indices, m, 2)
+        interest = trunc(nominal * (m.fator_juros_252(m.dias_uteis(start, end)) - D(1)))
+        self.assertEqual(nominal + interest, D("1033.77714827"))
+        self.assertEqual(nominal + interest - D("1033.77714556"), D("0.00000271"))
+
     def test_axs07_primeiro_periodo_e_residuo_posterior(self):
         m = module("axs07")
         raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
@@ -116,6 +137,10 @@ class DebtCorrectionTest(unittest.TestCase):
             events, daily = m.calcular_instrumento(conf, indices, {})
             event = events[-1]
             extra += event["Amort_Extraordinaria_R$"]
+            amounts = {"22L1467623": D("2647060.00"), "AXSD11": D("2352940.00")}
+            self.assertEqual(event["Amort_Extraordinaria_R$"], amounts[conf.codigo_if])
+            if conf.codigo_if == "22L1467623":
+                self.assertEqual(event["PU_Amort_Extraordinaria"], D("58.82355555"))
             self.assertEqual(event["PU_Amort"], event["PU_Amort_Programada"] + event["PU_Amort_Extraordinaria"])
             self.assertEqual(event["PU_VNa_Fim"], event["PU_VNa_Atualizado"] - event["PU_Amort"])
         self.assertEqual(extra, D("5000000.00"))

@@ -238,7 +238,17 @@ CRONOGRAMA_RAW = [
     ("2037-06-15", "100.0000"),
 ]
 
-CRONOGRAMA = [(datetime.strptime(d, "%Y-%m-%d").date(), Decimal(p) / Decimal("100")) for d, p in CRONOGRAMA_RAW]
+# O cronograma acima registra a escritura. Para eventos já liquidados, usar os
+# percentuais operacionais divulgados pela securitizadora, mantidos à parte.
+_event_file = Path(__file__).resolve().parent.parent / "data" / "events" / "axs04.json"
+_settled = json.loads(_event_file.read_text(encoding="utf-8"))["settled_amortization_percentages"]
+_overrides = {row["date"]: Decimal(row["percentage"]) for row in _settled}
+if len(_overrides) != len(_settled) or not set(_overrides).issubset({d for d, _ in CRONOGRAMA_RAW}):
+    raise ValueError("Eventos liquidados da AXS 04 duplicados ou ausentes do cronograma")
+for _row in _settled:
+    if Decimal(dict(CRONOGRAMA_RAW)[_row["date"]]) != Decimal(_row["contract_percentage"]):
+        raise ValueError("Percentual contratual da AXS 04 diverge do evento liquidado")
+CRONOGRAMA = [(datetime.strptime(d, "%Y-%m-%d").date(), _overrides.get(d, Decimal(p)) / Decimal("100")) for d, p in CRONOGRAMA_RAW]
 
 IPCA_PROJECAO_MENSAL_PADRAO = Decimal("0.0045")
 

@@ -14,7 +14,7 @@ assert.equal(K.matches({operation:'axs02',type:'incorporation'},'axs02','payment
 const data=JSON.parse(fs.readFileSync('./data/calendar.json'));
 const month=data.events.filter(e=>e.date.startsWith('2026-11'));
 assert.equal(month.length,6);
-assert.equal(K.sum(month),588898100n);
+assert.equal(K.sum(month),588898512n);
 assert.equal(K.sum(month,'incorporation'),1029211412n);
 assert.equal(K.grouped(month).size,1);
 const ics=K.calendarFile(month,data.built_at);
@@ -34,7 +34,7 @@ const transfers=november.filter(e=>K.matches(e,'','recomposition'));
 assert.equal(november.length,8);assert.equal(transfers.length,2);
 assert.ok(transfers.every(e=>e.date==='2026-11-12'&&e.payment==='0.00'));
 assert.equal(K.sum(transfers,'recomposition'),274596361n);
-assert.equal(K.sum(november),588898100n);
+assert.equal(K.sum(november),588898512n);
 assert.equal(november.filter(e=>K.matches(e,'','payment')).length,5);
 assert.equal(K.grouped(november).size,2);
 assert.equal(K.matches(transfers[0],'','payment'),false);

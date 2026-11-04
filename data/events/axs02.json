@@ -4,9 +4,14 @@
       "date": "2026-10-15",
       "type": "extraordinary_amortization",
       "total_amount": "5000000.00",
-      "allocation": "proportional_security_quantity",
+      "allocation": "settled_cri_and_remainder",
+      "amount_by_instrument": {
+        "22L1467623": "2647060.00",
+        "AXSD11": "2352940.00"
+      },
       "source": "Pagamento total de R$ 5 milhões confirmado pelo emissor neste chat em 30/10/2026; evento também registrado na memória Vórtx de CRI e debênture.",
-      "allocation_note": "Rateio proporcional às quantidades cadastradas de 45.000 CRI e 40.000 debêntures. Não contém PU oficial nem saldo importado."
+      "allocation_note": "CRI: Opea registra amortização extraordinária de R$ 58,82355556 por título em 45.000 títulos, equivalente a R$ 2.647.060,00 em centavos. Debênture: saldo do total de R$ 5 milhões confirmado pelo emissor, R$ 2.352.940,00. Não contém PU cheio nem saldo importado.",
+      "allocation_source_url": "https://app.opea.com.br/bff/v1/api/emissao/precificacoes/detalhe?pagina=1&tamanhoPagina=200&dataEventoFinal=2026-11-04&codigoOpea=CRI.46.CIA.1"
     }
   ]
 }

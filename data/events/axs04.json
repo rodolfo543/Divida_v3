@@ -1,0 +1,11 @@
+{
+  "instrument": "23F0046476",
+  "source": "Opea, detalhe da emissão CRI.139.CIA.1: curva de pagamento com status Liquidado; conferido também com os eventos publicados pela Opea e a memória Vórtx.",
+  "source_url": "https://app.opea.com.br/bff/v1/api/emissao/passivosoperacoes/detalhe?codigoIf=23F0046476",
+  "retrieved_on": "2026-11-04",
+  "note": "Percentuais efetivamente registrados para eventos históricos. O cronograma documental permanece no código para permitir conciliação contratual; não há PU ou saldo oficial como entrada.",
+  "settled_amortization_percentages": [
+    {"date": "2025-09-15", "percentage": "0.5218", "contract_percentage": "0.5219"},
+    {"date": "2025-10-15", "percentage": "0.5246", "contract_percentage": "0.5247"}
+  ]
+}
