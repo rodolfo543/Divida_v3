@@ -86,6 +86,27 @@ class DebtCorrectionTest(unittest.TestCase):
         self.assertEqual(migration["DU_Juros"], 125)
         self.assertEqual(migration["PU_VNa_Fim"], D("1066.68837400"))
 
+    def test_axs06_produtorio_e_evento_de_setembro(self):
+        from dataclasses import replace
+        m = module("axs06")
+        raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
+        indices = {key[:4] + "-" + key[4:]: D(value) for key, value in raw.items()}
+        indices["2026-10"] = indices["2026-09"] * D("1.0021")
+        expected = {
+            "primeira": (2, D("1099.71987286"), D("1173.34839206")),
+            "segunda": (1, D("1020.92034000"), D("1097.24408421")),
+        }
+        for variant, (lag, expected_nominal, expected_daily) in expected.items():
+            conf = m.EMISSOES[variant]
+            conf = replace(conf, datas_incorporacao_juros=tuple(
+                day for day in conf.datas_incorporacao_juros if day <= date(2026, 9, 15)), cronograma=[])
+            events = getattr(m, f"calcular_fluxo_{variant}_emissao")(conf, indices, {})
+            self.assertEqual(events[-1]["PU_VNa_Atualizado"], expected_nominal)
+            start, end = date(2026, 9, 15), date(2026, 11, 3)
+            nominal = update_nominal(events[-1]["PU_VNa_Fim"], start, end, indices, m, lag)
+            interest = trunc(nominal * (m.fator_juros_252(m.dias_uteis(start, end), conf.taxa_aa_nova) - D(1)))
+            self.assertEqual(nominal + interest, expected_daily)
+
     def test_axs02_amortizacao_confirmada_soma_cinco_milhoes(self):
         m = module("axs02")
         m.CRONOGRAMA = [(day, rate) for day, rate in m.CRONOGRAMA if day <= date(2026, 10, 15)]

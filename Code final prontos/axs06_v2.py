@@ -601,7 +601,9 @@ def aplicar_ipca_ate(
 
     prox = proxima_data_aniversario(data_ipca_atual)
     atual = data_ipca_atual
-    saldo = trunc_dec(saldo_pu, 8)
+    saldo_inicial = trunc_dec(saldo_pu, 8)
+    saldo = saldo_inicial
+    fatores: List[Decimal] = []
 
     while prox <= data_aniv_alvo:
         if atual == prox:
@@ -619,7 +621,11 @@ def aplicar_ipca_ate(
             fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1, dup_ipca, dut_ipca = fator_ipca_prorata(indices, prox, atual, lag_ipca)
 
         saldo_ini = saldo
-        saldo = trunc_dec(saldo * fator_c, 8)
+        fatores.append(fator_c)
+        acumulado = Decimal("1")
+        for fator in reversed(fatores):
+            acumulado = trunc_dec(acumulado * fator, 16)
+        saldo = trunc_dec(saldo_inicial * trunc_dec(acumulado, 8), 8)
         detalhes.append({
             "Data_Aniv_IPCA": prox.strftime("%d/%m/%Y"),
             "Mes_NIk": mes_nik,
