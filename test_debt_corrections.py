@@ -145,6 +145,20 @@ class DebtCorrectionTest(unittest.TestCase):
             self.assertEqual(event["PU_VNa_Fim"], event["PU_VNa_Atualizado"] - event["PU_Amort"])
         self.assertEqual(extra, D("5000000.00"))
 
+    def test_axs02_cri_razao_integral_concilia_eventos_opea(self):
+        m = module("axs02")
+        indices = {k: D(v) for k, v in json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text()).items()}
+        indices["202610"] = indices["202609"] * D("1.0021")
+        m.CRONOGRAMA = [(day, pct) for day, pct in m.CRONOGRAMA if day <= date(2026, 12, 15)]
+        cri = next(inst for inst in m.INSTRUMENTOS if inst.tipo == "CRI")
+        events, daily = m.calcular_instrumento(cri, indices, {})
+        by_day = {event["Data_Pgto"]: event for event in events}
+        # Referências externas da memória Opea, sem usar PUs como entrada.
+        self.assertEqual(by_day["16/01/2023"]["PU_VNa_Fim"], D("1002.23407000"))
+        self.assertEqual(by_day["15/09/2026"]["PU_VNa_Fim"], D("1081.88725130"))
+        self.assertEqual(by_day["15/10/2026"]["PU_VNa_Fim"], D("1014.84645840"))
+        self.assertEqual(next(r for r in daily if r["Data"] == "03/11/2026")["PU_Cheio"], D("1024.67272435"))
+
     def test_pu_atual_nao_depende_do_pu_de_evento_futuro(self):
         m = module("axs07")
         events = [

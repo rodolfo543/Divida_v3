@@ -339,6 +339,7 @@ def fator_ipca(
     lag_meses: int,
     dup: int,
     dut: int,
+    razao_integral: bool = False,
 ) -> Tuple[Decimal, str, str, Decimal, Decimal]:
     nik, nik_anterior = meses_ipca(data_pagto, lag_meses)
     if nik not in indices_ipca or nik_anterior not in indices_ipca:
@@ -347,7 +348,12 @@ def fator_ipca(
     if dup == 0:
         return Decimal("1.00000000"), nik, nik_anterior, indices_ipca[nik], indices_ipca[nik_anterior]
 
-    # A Vortx trunca a razao mensal antes da interpolacao por DU.
+    # A memória da Opea para o CRI aplica a razão integral antes do pro rata.
+    # A debênture conserva sua regra própria de truncamento da razão mensal.
+    if razao_integral:
+        razao = indices_ipca[nik] / indices_ipca[nik_anterior]
+        fator = razao ** (Decimal(dup) / Decimal(dut))
+        return trunc_dec(fator, 8), nik, nik_anterior, indices_ipca[nik], indices_ipca[nik_anterior]
     razao = float(trunc_dec(indices_ipca[nik] / indices_ipca[nik_anterior], 8))
     fator = math.pow(razao, dup / dut)
     return trunc_float_dec(fator, 8), nik, nik_anterior, indices_ipca[nik], indices_ipca[nik_anterior]
@@ -474,7 +480,8 @@ def calcular_instrumento(
         for data_calc in datas_diarias_periodo(inicio_periodo, data_pagto, primeiro_periodo):
             dup = 0 if data_calc == inicio_periodo else contar_dias_uteis(inicio_periodo, data_calc)
             fator_c, nik, nik_anterior, valor_nik, valor_nik_anterior = fator_ipca(
-                indices_ipca, data_pagto, instrumento.lag_ipca_meses, dup, dut
+                indices_ipca, data_pagto, instrumento.lag_ipca_meses, dup, dut,
+                razao_integral=instrumento.tipo == "CRI",
             )
             fator_j = fator_juros(dup)
             vna = trunc_float_dec(float(saldo_base) * float(fator_c), 8)
