@@ -504,7 +504,9 @@ def fator_ipca_prorata(indices: Dict[str, Decimal], data_aniv: date, inicio: dat
     inicio_aniv = date(prev_m.year, prev_m.month, 15)
     dup = dias_uteis(inicio, data_aniv)
     dut = dias_uteis(inicio_aniv, data_aniv)
-    bruto = Decimal(str(float(ni_k / ni_k_1) ** (dup / dut)))
+    # A memória Vórtx do primeiro período é reproduzida ao truncar a razão
+    # mensal antes do pro rata, preservando precisão decimal na potência.
+    bruto = fator_cheio ** (Decimal(dup) / Decimal(dut))
     return trunc_dec(bruto, 8), mes_nik, mes_nik_1, ni_k, ni_k_1, dup, dut
 
 

@@ -8,7 +8,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import dashboard_server as dashboard
-from daily_contracts import calculate_daily
+from daily_contracts import calculate_daily, update_nominal, trunc
 
 ROOT = Path(__file__).parent
 
@@ -18,6 +18,25 @@ def module(operation):
 
 
 class DebtCorrectionTest(unittest.TestCase):
+    def test_axs07_primeiro_periodo_e_residuo_posterior(self):
+        m = module("axs07")
+        raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
+        indices = {key[:4] + "-" + key[4:]: D(value) for key, value in raw.items()}
+        indices["2026-10"] = indices["2026-09"] * D("1.0021")
+        m.CRONOGRAMA = [(day, pct) for day, pct in m.CRONOGRAMA if day <= date(2026, 10, 15)]
+        with patch.object(m, "obter_ipca_numero_indice_sidra", return_value=(indices, "IBGE")), \
+             patch.object(m, "preencher_indices_futuros", return_value=(indices, {})):
+            events, _ = m.calcular_fluxo()
+        first = events[0]
+        self.assertEqual(first["Fator_C_IPCA"], D("1.00198846"))
+        self.assertEqual(first["PU_VNa_Atualizado"] + first["PU_Juros"], D("1006.36498427"))
+        start, end = date(2026, 10, 15), date(2026, 11, 3)
+        nominal = update_nominal(events[-1]["PU_VNa_Fim"], start, end, indices, m)
+        interest = trunc(nominal * (m.fator_juros_252(m.dias_uteis(start, end)) - D(1)))
+        self.assertEqual(nominal + interest, D("949.32633374"))
+        # A referência é externa ao cálculo; o resíduo remanescente não é zerado.
+        self.assertEqual(nominal + interest - D("949.32633233"), D("0.00000141"))
+
     def test_axs10_produtorio_concilia_pu_diario_vortx(self):
         m = module("axs10")
         raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
