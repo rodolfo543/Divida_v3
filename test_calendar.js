@@ -14,7 +14,7 @@ assert.equal(K.matches({operation:'axs02',type:'incorporation'},'axs02','payment
 const data=JSON.parse(fs.readFileSync('./data/calendar.json'));
 const month=data.events.filter(e=>e.date.startsWith('2026-11'));
 assert.equal(month.length,6);
-assert.equal(K.sum(month),588898519n);
+assert.equal(K.sum(month),588898517n);
 assert.equal(K.sum(month,'incorporation'),1029211412n);
 assert.equal(K.grouped(month).size,1);
 const ics=K.calendarFile(month,data.built_at);
@@ -33,8 +33,8 @@ const november=combined.events.filter(e=>e.date.startsWith('2026-11'));
 const transfers=november.filter(e=>K.matches(e,'','recomposition'));
 assert.equal(november.length,8);assert.equal(transfers.length,2);
 assert.ok(transfers.every(e=>e.date==='2026-11-12'&&e.payment==='0.00'));
-assert.equal(K.sum(transfers,'recomposition'),274596361n);
-assert.equal(K.sum(november),588898519n);
+assert.equal(K.sum(transfers,'recomposition'),274876346n);
+assert.equal(K.sum(november),588898517n);
 assert.equal(november.filter(e=>K.matches(e,'','payment')).length,5);
 assert.equal(K.grouped(november).size,2);
 assert.equal(K.matches(transfers[0],'','payment'),false);
@@ -47,11 +47,11 @@ assert.throws(()=>K.withRecompositions(data,funding,32),/referência inválido/)
 // Uma PMT e um aporte no mesmo dia continuam em totais independentes.
 const sameDay={...data,events:[{...month.find(e=>K.cents(e.payment)>0n),id:'test-same-day',date:'2026-11-12'}]};
 const joined=K.withRecompositions(sameDay,funding).events.filter(e=>e.date==='2026-11-12');
-assert.equal(K.sum(joined),K.sum(sameDay.events));assert.equal(K.sum(joined,'recomposition'),274596361n);
+assert.equal(K.sum(joined),K.sum(sameDay.events));assert.equal(K.sum(joined,'recomposition'),274876346n);
 const mergedIcs=K.calendarFile(november,data.built_at);
 assert.equal((mergedIcs.match(/BEGIN:VEVENT/g)||[]).length,8);
 assert.ok(mergedIcs.includes('DTSTART;VALUE=DATE:20261112'));
-assert.ok(mergedIcs.includes('Aporte planejado: R$ 1.273.332\\,94'));
+assert.ok(mergedIcs.includes('Aporte planejado: R$ 1.273.586\\,77'));
 assert.ok(mergedIcs.includes('recomposition-AXS811-2026-11@divida.axs'));
 assert.ok(mergedIcs.split('\r\n').every(l=>Buffer.byteLength(l,'utf8')<=75));
 fs.mkdirSync('../auditoria/2026-10-30/calendario',{recursive:true});

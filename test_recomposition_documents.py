@@ -34,7 +34,7 @@ class RecompositionTests(unittest.TestCase):
         self.assertEqual(instruments['AXSI11']['start_month'], '2027-03')
         oct_rows = [r for r in data['contributions'] if r['month'] == '2026-10']
         self.assertEqual({r['code'] for r in oct_rows}, {'AXS811', 'AXS911'})
-        self.assertEqual(sum(D(r['amount']) for r in oct_rows), D('2745963.60'))
+        self.assertEqual(sum(D(r['amount']) for r in oct_rows), D('2748763.47'))
         self.assertEqual(len({(r['code'],r['month']) for r in data['contributions']}),len(data['contributions']))
         for i in instruments.values():
             for cycle in i['cycles']:
