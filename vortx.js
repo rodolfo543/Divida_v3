@@ -12,7 +12,7 @@ const stamp = value => value ? new Date(value).toLocaleString('pt-BR', {timeZone
 const tag = status => `<span class="status-tag ${status}">${labels[status]}</span>`;
 const pu = n => C.format(n);
 const money = (n, signed = false) => n === null ? '—' : 'R$ ' + C.format(n, 2, signed);
-const blocked = i => i.pending || i.local_method === 'estimated';
+const blocked = i => i.pending || i.exclude_from_totals || i.local_method === 'estimated';
 function latest(rows) { return rows?.length ? rows[rows.length - 1].d : null; }
 function oldest(rows) { return rows?.length ? rows[0].d : null; }
 function shiftDate(d, amount) { const a = new Date(d + 'T12:00:00Z'); a.setUTCDate(a.getUTCDate() + amount); return a.toISOString().slice(0, 10); }
@@ -28,14 +28,14 @@ function overview() {
     ['Instrumentos acompanhados', all.length, '17 instrumentos · 13 operações', ''],
     ['Iguais nas 8 casas', exact, 'PU cheio sem diferença na data', 'mint'],
     ['Coincidem em centavos', cents, `${counts('cents')} com resíduo · inclui os exatos`, 'blue'],
-    ['Divergem em centavos', counts('different'), `${all.filter(r => r.i.pending).length} pendências documentadas na carteira`, 'amber'],
+    ['Divergem em centavos', counts('different'), 'Comparação dos PUs arredondados para centavos', 'amber'],
     ['Sem par na data', missing, 'Exige o mesmo dia nas duas fontes', missing ? 'amber' : '']
   ];
   $('metrics').innerHTML = metrics.map(([a, b, c, color]) => `<article class="cmp-metric"><span class="metric-label">${a}</span><strong class="${color}">${b}</strong><p>${c}</p></article>`).join('');
   const include = $('includePending').checked;
   const scoped = all.filter(r => r.result.impact !== null && (include || !blocked(r.i)));
   const net = scoped.reduce((n, r) => n + r.result.impact, 0n), gross = scoped.reduce((n, r) => n + abs(r.result.impact), 0n);
-  $('impactStrip').innerHTML = `<p>Diferença líquida de saldo<strong>${money(net, true)}</strong></p><p>Soma absoluta das diferenças<strong>${money(gross)}</strong></p><p class="impact-scope">${scoped.length} instrumentos com par na data. ${include ? 'Inclui pendências e séries estimadas.' : 'Exclui as 3 pendências documentadas, incluindo as 2 séries estimadas da AXS 05.'}<br>Data-base: ${day(date)} · sinal = cálculo AXS − Vórtx.</p>`;
+  $('impactStrip').innerHTML = `<p>Diferença líquida de saldo<strong>${money(net, true)}</strong></p><p>Soma absoluta das diferenças<strong>${money(gross)}</strong></p><p class="impact-scope">${scoped.length} instrumentos com par na data. ${include ? 'Inclui todos os instrumentos.' : `${all.filter(r => blocked(r.i)).length} instrumento(s) fora dos totais por padrão.`}<br>Data-base: ${day(date)} · sinal = cálculo AXS − Vórtx.</p>`;
   const query = $('search').value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const filter = $('statusFilter').value;
   const rows = all.filter(({i, result}) => {

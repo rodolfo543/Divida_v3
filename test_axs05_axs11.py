@@ -21,6 +21,20 @@ def indices():
 
 
 class AXS05AXS11Test(unittest.TestCase):
+    def test_axsc22_memoria_revisada_diverge_no_pagamento_de_agosto(self):
+        m = module("axs05")
+        idx = indices()
+        start, end = date(2026,8,17), date(2026,11,3)
+        factor = m.fator_juros_252(m.dias_uteis(start,end),m.SERIES['segunda'].taxa_aa)
+        # Simulações diagnósticas: bases calculadas no evento de agosto.
+        results = []
+        for base in (D('1076.97973714'), D('1030.43336000')):
+            nominal = m.atualizar_nominal_diario(base,start,end,idx)
+            interest = m.trunc_dec(nominal*(factor-1))
+            results.append(nominal+interest)
+        self.assertEqual(results[0],D('1103.19087634'))
+        self.assertEqual(results[1],D('1055.51167048'))
+        self.assertEqual(results[1]-D('1055.51166990'),D('0.00000058'))
     def test_axs05_mes_de_divulgacao_nao_mes_de_referencia(self):
         m = module("axs05")
         _, nik, previous, _, _ = m.fator_ipca(indices(), date(2026, 8, 15))

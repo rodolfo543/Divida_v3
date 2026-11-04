@@ -1648,7 +1648,8 @@ def load_axs06(module: Any) -> dict[str, Any]:
         daily = calculate_daily(module, fluxos[variant], start=conf.data_inicio_rentabilidade,
             rate=conf.taxa_aa_nova, lag=2 if variant == "primeira" else 1,
             migration=conf.data_migracao if variant == "primeira" else None,
-            old_rate=conf.taxa_aa_antiga, indices=indices)
+            old_rate=conf.taxa_aa_antiga, indices=indices,
+            ipca_product=variant == "primeira")
         daily_by_variant[variant] = normalize_daily_pu(daily, conf.quantidade, variant)
     primeira_rows = normalize_series(fluxos["primeira"])
     segunda_rows = normalize_series(fluxos["segunda"])

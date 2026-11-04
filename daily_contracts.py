@@ -28,8 +28,9 @@ def prepared_indices(module):
     return result[0], source
 
 
-def update_nominal(balance, start, end, indices, module, lag=1):
-    """Reinicia a atualização em cada aniversário, truncando o VNA a 8 casas."""
+def update_nominal(balance, start, end, indices, module, lag=1, *, product=False):
+    """Atualiza por aniversários, com produtório quando exigido pela emissão."""
+    factors = []
     cursor = start
     while cursor < end:
         previous = date(cursor.year, cursor.month, 15)
@@ -44,13 +45,22 @@ def update_nominal(balance, start, end, indices, module, lag=1):
         if du:
             ratio = indices[nik] / indices[nik_previous]
             factor = trunc(ratio ** (D(du) / D(dut)))
-            balance = trunc(balance * factor)
+            if product:
+                factors.append(factor)
+            else:
+                balance = trunc(balance * factor)
         cursor = stop
+    if product:
+        accumulated = D(1)
+        for factor in reversed(factors):
+            accumulated = trunc(accumulated * factor, 16)
+        balance = trunc(balance * trunc(accumulated))
     return balance
 
 
 def calculate_daily(module, events, *, start=None, rate=None, lag=1,
-                    migration=None, old_rate=None, grace_end=None, indices=None):
+                    migration=None, old_rate=None, grace_end=None, indices=None,
+                    ipca_product=False):
     indices = indices if indices is not None else prepared_indices(module)[0]
     start = start or module.DATA_INICIO_RENTABILIDADE
     rate = rate if rate is not None else module.TAXA_AA
@@ -85,7 +95,7 @@ def calculate_daily(module, events, *, start=None, rate=None, lag=1,
             nominal_start = max(base_date, migration) if migration else base_date
             updater = getattr(module, "atualizar_nominal_diario", None)
             nominal = (updater(base, nominal_start, current, indices) if updater else
-                       update_nominal(base, nominal_start, current, indices, module, lag))
+                       update_nominal(base, nominal_start, current, indices, module, lag, product=ipca_product))
         period_rate = old_rate if migration and current <= migration else rate
         du = module.dias_uteis(interest_start, current)
         factor = ((1 + period_rate) ** (D(du) / D(252))).quantize(D("0.000000001"), rounding=ROUND_HALF_UP)

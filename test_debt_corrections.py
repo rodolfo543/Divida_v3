@@ -128,6 +128,21 @@ class DebtCorrectionTest(unittest.TestCase):
             interest = trunc(nominal * (m.fator_juros_252(m.dias_uteis(start, end), conf.taxa_aa_nova) - D(1)))
             self.assertEqual(nominal + interest, expected_daily)
 
+    def test_axs06_primeira_produtorio_diario_contratual(self):
+        from dataclasses import replace
+        m = module("axs06")
+        raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
+        indices = {key[:4] + "-" + key[4:]: D(value) for key, value in raw.items()}
+        conf = m.EMISSOES["primeira"]
+        conf = replace(conf, datas_incorporacao_juros=tuple(day for day in conf.datas_incorporacao_juros if day <= date(2026,9,15)), cronograma=[])
+        base = m.calcular_fluxo_primeira_emissao(conf, indices, {})[-1]["PU_VNa_Fim"]
+        for end, expected in [(date(2026,10,26), "1168.73881015"), (date(2026,10,30), "1172.42502129"),
+                              (date(2026,11,3), "1173.34838571"), (date(2026,11,4), "1174.27248643")]:
+            start = date(2026,9,15)
+            nominal = update_nominal(base, start, end, indices, m, 2, product=True)
+            interest = trunc(nominal * (m.fator_juros_252(m.dias_uteis(start,end), conf.taxa_aa_nova)-1))
+            self.assertEqual(nominal + interest, D(expected))
+
     def test_axs02_amortizacao_confirmada_soma_cinco_milhoes(self):
         m = module("axs02")
         m.CRONOGRAMA = [(day, rate) for day, rate in m.CRONOGRAMA if day <= date(2026, 10, 15)]
@@ -158,6 +173,18 @@ class DebtCorrectionTest(unittest.TestCase):
         self.assertEqual(by_day["15/09/2026"]["PU_VNa_Fim"], D("1081.88725130"))
         self.assertEqual(by_day["15/10/2026"]["PU_VNa_Fim"], D("1014.84645840"))
         self.assertEqual(next(r for r in daily if r["Data"] == "03/11/2026")["PU_Cheio"], D("1024.67272435"))
+
+    def test_axs02_deb_razao_integral_e_indice_projetado_duas_casas(self):
+        m = module("axs02")
+        indices = {k: D(v) for k, v in json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text()).items()}
+        indices["202610"] = indices["202609"] * D("1.0021")
+        m.CRONOGRAMA = [(day, pct) for day, pct in m.CRONOGRAMA if day <= date(2026,11,16)]
+        deb = next(inst for inst in m.INSTRUMENTOS if inst.tipo == "DEBENTURE")
+        _, daily = m.calcular_instrumento(deb, indices, {"202610":"ANBIMA 03/11/2026"})
+        row = next(r for r in daily if r["Data"] == "03/11/2026")
+        self.assertEqual(row["NIk"], D("7711.98"))
+        self.assertEqual(row["PU_Cheio"], D("1024.50720339"))
+        self.assertEqual(indices["202610"], D("7711.981222"))
 
     def test_pu_atual_nao_depende_do_pu_de_evento_futuro(self):
         m = module("axs07")

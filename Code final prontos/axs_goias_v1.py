@@ -526,7 +526,9 @@ def aplicar_ipca_ate(
         raise RuntimeError("data_aniv_alvo anterior a data_ipca_atual")
     prox = proxima_data_aniversario(data_ipca_atual)
     atual = data_ipca_atual
-    saldo = trunc_dec(saldo_pu, 8)
+    saldo_inicial = trunc_dec(saldo_pu, 8)
+    saldo = saldo_inicial
+    fatores: List[Decimal] = []
 
     while prox <= data_aniv_alvo:
         if atual == prox:
@@ -545,7 +547,11 @@ def aplicar_ipca_ate(
             fator_c, mes_nik, mes_nik_1, ni_k, ni_k_1, dup_ipca, dut_ipca = fator_ipca_prorata(indices, prox, atual)
 
         saldo_ini = saldo
-        saldo = trunc_dec(saldo * fator_c, 8)
+        fatores.append(fator_c)
+        acumulado = Decimal("1")
+        for fator in reversed(fatores):
+            acumulado = trunc_dec(acumulado * fator, 16)
+        saldo = trunc_dec(saldo_inicial * trunc_dec(acumulado, 8), 8)
         detalhes.append({
             "Data_Aniv_IPCA": prox.strftime("%d/%m/%Y"),
             "Mes_NIk": mes_nik,
@@ -572,11 +578,12 @@ def aplicar_ipca_ate_data(
     data_alvo: date,
     indices: Dict[str, Decimal],
 ) -> Decimal:
-    """Atualiza o VNA ate uma data qualquer, com IPCA pro rata entre aniversarios."""
+    """Aplica o produtório contratual, com fatores pro rata entre aniversários."""
     if data_alvo < data_base:
         raise RuntimeError("data_alvo anterior a data_base")
 
-    saldo = trunc_dec(saldo_pu, 8)
+    saldo_inicial = trunc_dec(saldo_pu, 8)
+    fatores: List[Decimal] = []
     atual = data_base
     while atual < data_alvo:
         prox = proxima_data_aniversario(atual)
@@ -589,11 +596,11 @@ def aplicar_ipca_ate_data(
                 fator, *_ = fator_ipca(indices, prox)
             else:
                 fator, *_ = fator_ipca_prorata(indices, prox, atual)
-            saldo = trunc_dec(saldo * fator, 8)
+            fatores.append(fator)
             atual = prox
             continue
 
-        fator_cheio, *_ = fator_ipca(indices, prox)
+        _, _, _, ni_k, ni_k_1 = fator_ipca(indices, prox)
         inicio_ciclo = atual
         if atual.day != 15:
             mes_anterior = add_months(prox, -1)
@@ -601,11 +608,14 @@ def aplicar_ipca_ate_data(
         du_parcial = dias_uteis(atual, data_alvo)
         du_total = dias_uteis(inicio_ciclo, prox)
         if du_parcial > 0 and du_total > 0:
-            fator_parcial = Decimal(str(float(fator_cheio) ** (du_parcial / du_total)))
-            saldo = trunc_dec(saldo * fator_parcial, 8)
+            fator_parcial = trunc_dec((ni_k / ni_k_1) ** (Decimal(du_parcial) / Decimal(du_total)), 8)
+            fatores.append(fator_parcial)
         atual = data_alvo
 
-    return saldo
+    acumulado = Decimal("1")
+    for fator in reversed(fatores):
+        acumulado = trunc_dec(acumulado * fator, 16)
+    return trunc_dec(saldo_inicial * trunc_dec(acumulado, 8), 8)
 
 
 def calcular_fluxo(

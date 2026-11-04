@@ -53,7 +53,8 @@ class ComparisonTests(unittest.TestCase):
         self.assertEqual(len(catalog), 17)
         self.assertEqual(len({c['code'] for c in catalog}), 17)
         self.assertEqual(len({c['operation_id'] for c in catalog}), 17)
-        self.assertEqual({c['code'] for c in catalog if c.get('pending')}, {'AXSC12', 'AXSC22', 'AXSI11'})
+        self.assertFalse(any(c.get('pending') for c in catalog))
+        self.assertEqual({c['code'] for c in catalog if c.get('exclude_from_totals')}, {'AXSC22'})
         digests = {}
         for item in catalog:
             source = ROOT / 'data/operations' / (item['operation'] + '.json')
