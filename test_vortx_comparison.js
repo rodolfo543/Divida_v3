@@ -32,7 +32,8 @@ async function run() {
   const asOf = C.latestComparableDay(instruments, manifest.local_as_of);
   assert.ok(asOf && asOf <= manifest.local_as_of);
   const comparisons = instruments.map(i => C.at(i, asOf));
-  assert.equal(comparisons.filter(r => r.status === 'exact').length, 1);
+  assert.equal(comparisons.filter(r => r.status === 'exact').length, 2);
+  assert.equal(C.at(instruments.find(i => i.code === 'AXS412'), asOf).status, 'exact');
   assert.equal(comparisons.filter(r => ['exact', 'cents'].includes(r.status)).length, 14);
   assert.equal(comparisons.filter(r => r.status === 'different').length, 3);
   for (const i of instruments) {

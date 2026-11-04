@@ -15,7 +15,7 @@ const data=JSON.parse(fs.readFileSync('./data/calendar.json'));
 const month=data.events.filter(e=>e.date.startsWith('2026-11'));
 assert.equal(month.length,6);
 assert.equal(K.sum(month),588898102n);
-assert.equal(K.sum(month,'incorporation'),1029211432n);
+assert.equal(K.sum(month,'incorporation'),1029211412n);
 assert.equal(K.grouped(month).size,1);
 const ics=K.calendarFile(month,data.built_at);
 assert.ok(ics.includes('DTSTART;VALUE=DATE:20261116\r\nDTEND;VALUE=DATE:20261117'));

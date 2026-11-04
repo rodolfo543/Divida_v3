@@ -193,34 +193,32 @@ def atualizar_ipca_ate_data(
     data_calculo: date,
     indices: Dict[str, Decimal],
 ) -> Decimal:
-    """Atualiza o VNA ate uma data qualquer, inclusive no meio do mes."""
+    """Aplica o produtório contratual, do fator mais recente ao mais antigo."""
     saldo = trunc_dec(saldo_abertura, 8)
     if data_calculo <= data_base_ipca:
         return saldo
 
+    fatores = []
     data_atual = data_base_ipca
-    proximo_aniversario = _ENGINE.proxima_data_aniversario(data_atual)
+    while data_atual < data_calculo:
+        proximo = _ENGINE.proxima_data_aniversario(data_atual)
+        if proximo == data_atual:
+            mes = _ENGINE.add_months(proximo, 1)
+            proximo = date(mes.year, mes.month, 15)
+        fim = min(proximo, data_calculo)
+        mes_anterior = _ENGINE.add_months(proximo, -1)
+        aniversario_anterior = date(mes_anterior.year, mes_anterior.month, 15)
+        dup = _ENGINE.dias_uteis(data_atual, fim)
+        dut = _ENGINE.dias_uteis(aniversario_anterior, proximo)
+        if dup:
+            razao, *_ = fator_ipca(indices, proximo)
+            fatores.append(trunc_dec(razao ** (Decimal(dup) / Decimal(dut)), 8))
+        data_atual = fim
 
-    while proximo_aniversario <= data_calculo:
-        if data_atual == proximo_aniversario:
-            proximo_mes = _ENGINE.add_months(proximo_aniversario, 1)
-            proximo_aniversario = date(proximo_mes.year, proximo_mes.month, 15)
-            continue
-
-        if data_atual.day == 15:
-            fator, *_ = fator_ipca(indices, proximo_aniversario)
-        else:
-            fator, *_ = fator_ipca_prorata(indices, proximo_aniversario, data_atual)
-        saldo = trunc_dec(saldo * fator, 8)
-        data_atual = proximo_aniversario
-        proximo_mes = _ENGINE.add_months(proximo_aniversario, 1)
-        proximo_aniversario = date(proximo_mes.year, proximo_mes.month, 15)
-
-    if data_atual < data_calculo:
-        fator_parcial = _fator_ipca_parcial(indices, data_atual, data_calculo, proximo_aniversario)
-        saldo = trunc_dec(saldo * fator_parcial, 8)
-
-    return saldo
+    acumulado = Decimal(1)
+    for fator in reversed(fatores):
+        acumulado = trunc_dec(acumulado * fator, 16)
+    return trunc_dec(saldo * trunc_dec(acumulado, 8), 8)
 
 
 def _linha_diaria_inicial() -> Dict[str, object]:

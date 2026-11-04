@@ -18,6 +18,22 @@ def module(operation):
 
 
 class DebtCorrectionTest(unittest.TestCase):
+    def test_axs10_produtorio_concilia_pu_diario_vortx(self):
+        m = module("axs10")
+        raw = json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text())
+        indices = {key[:4] + "-" + key[4:]: D(value) for key, value in raw.items()}
+        expected = {
+            date(2026, 10, 15): (D("1008.92397000"), D("1060.38137364")),
+            date(2026, 10, 30): (D("1013.24894000"), D("1070.88961725")),
+            date(2026, 11, 3): (D("1013.64303000"), D("1071.85005277")),
+            date(2026, 11, 4): (D("1014.03728000"), D("1072.81135734")),
+        }
+        for day, (nominal_ref, pu_ref) in expected.items():
+            nominal = m.atualizar_ipca_ate_data(D("1000"), m.DATA_INICIO_RENTABILIDADE, day, indices)
+            du = m._ENGINE.dias_uteis(m.DATA_INICIO_RENTABILIDADE, day)
+            juros = m.trunc_dec(nominal * (m.fator_juros_252(du) - D(1)))
+            self.assertEqual((nominal, nominal + juros), (nominal_ref, pu_ref))
+
     def test_axsc12_taxa_confirmada_no_aditivo(self):
         self.assertEqual(module("axs05").SERIES["primeira"].taxa_aa, D("0.093515"))
 
