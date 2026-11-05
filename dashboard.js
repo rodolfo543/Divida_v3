@@ -270,6 +270,9 @@ function formatFieldValue(label, value) {
     return value;
   }
   const lower = normalizeText(label);
+  if (lower === "pagamento de juros" || lower === "amortizacao") {
+    return toNumber(value) === null ? String(value) : formatCurrency(value);
+  }
   if (lower.includes("codigo") || lower.includes("emissor") || lower.includes("escopo") || lower.includes("tipos") || lower.includes("garantias") || lower.includes("distribuicao") || lower.includes("risco")) {
     return String(value);
   }
@@ -286,7 +289,7 @@ function formatFieldValue(label, value) {
     return formatYears(value);
   }
   if (lower.includes("saldo") || lower.includes("principal") || lower.includes("pmt") || lower.includes("volume") || lower.includes("juros") || lower.includes("amortizacao")) {
-    return formatCurrency(value);
+    return toNumber(value) === null ? String(value) : formatCurrency(value);
   }
   return String(value);
 }
@@ -465,29 +468,34 @@ function renderInfoPanel(payload) {
     return;
   }
 
-  const fields = state.activeInfoTab === "pu" ? payload.operation.pu_fields : payload.operation.overview_fields;
-  elements.infoPanelContent.innerHTML = `
-    <div class="info-grid">
-      ${fields.map((item) => `
-        <div class="data-pair">
-          <label>${item.label}</label>
-          <strong>${formatFieldValue(item.label, item.value)}</strong>
-        </div>
-      `).join("")}
-    </div>
-  `;
+  const fields = (state.activeInfoTab === "pu" ? payload.operation.pu_fields : payload.operation.overview_fields) || [];
+  const renderFields = (items) => `<div class="info-grid">${items.map((item) => {
+    const value = formatFieldValue(item.label, item.value);
+    const missing = value === "-" || value === "";
+    return `<div class="data-pair"><label>${escapeHtml(item.label)}</label><strong${missing ? ' class="field-missing"' : ''}>${missing ? 'Não informado' : escapeHtml(value)}</strong></div>`;
+  }).join("")}</div>`;
+  if (state.activeInfoTab !== "overview") {
+    elements.infoPanelContent.innerHTML = renderFields(fields);
+    return;
+  }
+  const priority = ["remuneracao", "volume emitido", "data de vencimento", "pagamento de juros", "amortizacao", "saldo atual"];
+  const mainFields = priority.map((label) => fields.find((item) => normalizeText(item.label) === label)).filter(Boolean);
+  const otherFields = fields.filter((item) => !mainFields.includes(item));
+  elements.infoPanelContent.innerHTML = renderFields(mainFields) + (otherFields.length
+    ? `<details class="operation-details"><summary>Mais informações <span>(${otherFields.length})</span></summary>${renderFields(otherFields)}</details>`
+    : "");
 }
 
 function renderMetrics(payload) {
   const summary = payload.summary;
   elements.metricsGrid.innerHTML = "";
   const cards = [
-    createMetricCard("Saldo atual", formatCompactCurrency(summary.current_balance), "Saldo na data corrente da seleção.", METRIC_HELP["Saldo atual"]),
-    createMetricCard("Principal atualizado", formatCompactCurrency(summary.current_principal), "Principal capturado na linha mais recente aplicavel.", METRIC_HELP["Principal atualizado"]),
-    createMetricCard("Duration", formatYears(summary.duration_years), "Prazo medio ponderado pelos PMTs futuros.", METRIC_HELP.Duration),
-    createMetricCard("Vida media", formatYears(summary.wal_years), "Prazo medio ponderado pelas amortizacoes futuras.", METRIC_HELP["Vida media"]),
-    createMetricCard("PU cheio", summary.current_pu_cheio !== null ? formatNumber(summary.current_pu_cheio, 2) : "-", "Arredondado para leitura rapida.", METRIC_HELP["PU cheio"]),
-    createMetricCard("PU vazio", summary.current_pu_vazio !== null ? formatNumber(summary.current_pu_vazio, 2) : "-", "Arredondado para leitura rapida.", METRIC_HELP["PU vazio"]),
+    createMetricCard("Saldo atual", formatCompactCurrency(summary.current_balance), "Saldo da operação selecionada.", METRIC_HELP["Saldo atual"]),
+    createMetricCard("Principal atualizado", formatCompactCurrency(summary.current_principal), "Principal na linha mais recente aplicável.", METRIC_HELP["Principal atualizado"]),
+    createMetricCard("Duration", formatYears(summary.duration_years), "Prazo médio ponderado pelos PMTs futuros.", METRIC_HELP.Duration),
+    createMetricCard("Vida media", formatYears(summary.wal_years), "Prazo médio ponderado pelas amortizações futuras.", METRIC_HELP["Vida media"]),
+    createMetricCard("PU cheio", summary.current_pu_cheio !== null ? formatNumber(summary.current_pu_cheio, 2) : "-", "Arredondado para duas casas decimais.", METRIC_HELP["PU cheio"]),
+    createMetricCard("PU vazio", summary.current_pu_vazio !== null ? formatNumber(summary.current_pu_vazio, 2) : "-", "Arredondado para duas casas decimais.", METRIC_HELP["PU vazio"]),
     createMetricCard("Juros acumulados", formatCompactCurrency(summary.total_interest), "Soma dos juros do fluxo calculado.", METRIC_HELP["Juros acumulados"]),
     createMetricCard("Amortizacao acumulada", formatCompactCurrency(summary.total_amortization), "Soma das amortizações do fluxo calculado.", METRIC_HELP["Amortizacao acumulada"]),
     createTirMetricCard(summary),
@@ -558,6 +566,7 @@ function renderVariantSelector(payload) {
 }
 
 function renderTimeline(payload) {
+  document.getElementById("timelineScope").textContent = payload.operation.id === "geral" ? "Eventos da visão consolidada." : `Eventos de ${payload.operation.label}.`;
   const items = payload.timeline && payload.timeline.length ? payload.timeline : payload.series.slice(0, 6);
   elements.timeline.innerHTML = items.map((item) => `
     <article class="timeline-item">
@@ -568,11 +577,13 @@ function renderTimeline(payload) {
 }
 
 function renderComparisonCards(payload) {
+  document.getElementById("portfolioSummary").hidden = payload.operation.id !== "geral";
   const rows = payload.comparison || [];
   elements.comparisonCards.innerHTML = rows.slice(0, 10).map((item) => `
     <article class="comparison-card">
-      <h3>${item.label}</h3>
-      <p>${item.indexer}<br>Saldo atual: ${formatCurrency(item.current_balance)}<br>Proximo PMT: ${formatCurrency(item.next_payment_amount)}<br>Juros acumulados: ${formatCompactCurrency(item.total_interest)}</p>
+      <h3>${escapeHtml(item.label)}</h3>
+      <p class="comparison-indexer">${escapeHtml(item.indexer)}</p>
+      <dl class="comparison-values"><div><dt>Saldo atual</dt><dd>${formatCurrency(item.current_balance)}</dd></div><div><dt>Próximo PMT</dt><dd>${formatCurrency(item.next_payment_amount)}</dd></div><div><dt>Juros acumulados</dt><dd>${formatCompactCurrency(item.total_interest)}</dd></div></dl>
     </article>
   `).join("");
 }

@@ -218,7 +218,7 @@ body {
 .instrument-panel {
   border-radius: 24px;
   padding: 22px;
-  align-self: stretch;
+  align-self: start;
   justify-self: end;
   width: 100%;
   max-width: 760px;
@@ -318,6 +318,31 @@ body {
 .data-pair strong {
   font-size: 0.98rem;
   line-height: 1.45;
+}
+
+.data-pair .field-missing {
+  color: var(--muted, #a5b7c6);
+  font-weight: 500;
+}
+
+.operation-details {
+  margin-top: 14px;
+}
+
+.operation-details summary {
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 700;
+  padding: 10px 2px;
+}
+
+.operation-details summary span {
+  color: var(--muted, #a5b7c6);
+  font-weight: 400;
+}
+
+.operation-details .info-grid {
+  margin-top: 8px;
 }
 
 .content-grid {
@@ -685,6 +710,15 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
 }
+
+#portfolioSummary[hidden] { display: none; }
+.comparison-card .comparison-indexer { color: var(--muted); font-size: .84rem; min-height: 2.7em; }
+.comparison-values { margin: 12px 0 0; display: grid; gap: 10px; }
+.comparison-values div { border-top: 1px solid rgba(255,255,255,.08); padding-top: 9px; }
+.comparison-values dt { color: var(--muted); font-size: .76rem; }
+.comparison-values dd { margin: 3px 0 0; font-weight: 700; overflow-wrap: anywhere; }
+.calendar-link { display: inline-block; margin-top: 8px; color: var(--accent); font-weight: 700; text-decoration: none; }
+.calendar-link:hover { text-decoration: underline; }
 
 .comparison-card,
 .timeline-item {

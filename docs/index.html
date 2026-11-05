@@ -18,11 +18,10 @@
 
     <header class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Controle executivo</p>
-        <h1>Controle de d&iacute;vida - AXS Energia</h1>
+
+        <h1>Carteira de dívida</h1>
         <p class="hero-text">
-          Dashboard visual para acompanhar cada emissão, consolidar a carteira e navegar
-          pelos cálculos dos scripts Python com muito mais contexto financeiro.
+          Saldos, pagamentos e condições das operações.
         </p>
         <div class="hero-actions">
           <button id="refreshButton" class="primary-button" type="button">Atualizar cálculo</button>
@@ -35,7 +34,7 @@
         <div class="instrument-header">
           <span id="operationBadge" class="badge-pill">Carteira</span>
           <h2 id="activeOperationName">Selecionando operação...</h2>
-          <p id="activeOperationDescription" class="highlight-text">Preparando o dashboard.</p>
+          <p id="activeOperationDescription" class="highlight-text">Carregando informações.</p>
         </div>
 
         <div id="identityGrid" class="identity-grid"></div>
@@ -55,9 +54,8 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Carteira</p>
-            <h2>Escolha a análise</h2>
+            <h2>Selecione uma operação</h2>
           </div>
-          <p class="section-note">Use a visão geral para consolidado e cada aba individual para aprofundar a dívida.</p>
         </div>
         <div id="operationTabs" class="operation-tabs"></div>
         <div id="variantSection" class="variant-section hidden">
@@ -75,9 +73,8 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Fluxo</p>
-            <h2>PMT por evento</h2>
+            <h2>Pagamentos por data</h2>
           </div>
-          <p class="section-note">Leitura do comportamento dos pagamentos no tempo.</p>
         </div>
         <div class="chart-wrap">
           <svg id="paymentsChart" class="chart-svg" viewBox="0 0 760 320" preserveAspectRatio="none"></svg>
@@ -91,7 +88,7 @@
             <p class="section-kicker">Saldo</p>
             <h2>Curva do saldo devedor</h2>
           </div>
-          <p class="section-note">Saldo atual corrigido pela data corrente da carteira.</p>
+
         </div>
         <div class="chart-wrap">
           <svg id="balanceChart" class="chart-svg" viewBox="0 0 760 320" preserveAspectRatio="none"></svg>
@@ -103,9 +100,9 @@
         <div class="panel-header">
           <div>
             <p class="section-kicker">Composição</p>
-            <h2>Juros x amortização</h2>
+            <h2>Juros e amortização</h2>
           </div>
-          <p class="section-note">Comparação direta entre as duas pernas do fluxo.</p>
+
         </div>
         <div class="chart-wrap">
           <svg id="compositionChart" class="chart-svg" viewBox="0 0 760 320" preserveAspectRatio="none"></svg>
@@ -119,7 +116,7 @@
             <p class="section-kicker">Comparativo</p>
             <h2>Saldos por emissão</h2>
           </div>
-          <p class="section-note">Radar da carteira inteira, mesmo quando uma dívida específica estiver selecionada.</p>
+          <p class="section-note">Todas as operações da carteira, independentemente da seleção.</p>
         </div>
         <div class="chart-wrap">
           <svg id="comparisonChart" class="chart-svg" viewBox="0 0 760 320" preserveAspectRatio="none"></svg>
@@ -127,13 +124,14 @@
         </div>
       </section>
 
-      <section class="panel panel-wide tilt-card">
+      <section id="portfolioSummary" class="panel panel-wide tilt-card">
         <div class="panel-header">
           <div>
-            <p class="section-kicker">Radar</p>
-            <h2>Carteira em destaque</h2>
+            <p class="section-kicker">Carteira</p>
+            <h2>Resumo por operação</h2>
           </div>
-          <p class="section-note">Cards com saldos e próximos PMTs para leitura rápida.</p>
+          <p class="section-note">Saldos e próximos pagamentos das operações da carteira.</p>
+
         </div>
         <div id="comparisonCards" class="comparison-cards"></div>
       </section>
@@ -144,7 +142,8 @@
             <p class="section-kicker">Agenda</p>
             <h2>Próximos eventos</h2>
           </div>
-          <p class="section-note">Linha do tempo operacional da seleção atual.</p>
+          <div><p id="timelineScope" class="section-note"></p><a class="calendar-link" href="./calendario.html">Abrir calendário completo →</a></div>
+
         </div>
         <div id="timeline" class="timeline"></div>
       </section>
