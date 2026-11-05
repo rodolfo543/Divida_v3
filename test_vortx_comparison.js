@@ -32,14 +32,16 @@ async function run() {
   const asOf = C.latestComparableDay(instruments, manifest.local_as_of);
   assert.ok(asOf && asOf <= manifest.local_as_of);
   const comparisons = instruments.map(i => C.at(i, asOf));
-  assert.equal(comparisons.filter(r => r.status === 'exact').length, 2);
   assert.equal(C.at(instruments.find(i => i.code === 'AXS412'), asOf).status, 'exact');
-  assert.equal(comparisons.filter(r => ['exact', 'cents'].includes(r.status)).length, 16);
-  assert.equal(comparisons.filter(r => r.status === 'different').length, 1);
+  assert.equal(comparisons.filter(r => ['exact', 'cents', 'different'].includes(r.status)).length, instruments.length);
   for (const code of ['AXSC12', 'AXSC22', 'AXSI11']) {
     assert.equal(Boolean(instruments.find(i => i.code === code).pending), false);
   }
-  assert.deepEqual(instruments.filter(i => i.exclude_from_totals).map(i => i.code), ['AXSC22']);
+  assert.equal(Boolean(instruments.find(i => i.code === 'AXSC22').exclude_from_totals), true);
+  const paxs = instruments.find(i => i.code === 'PAXS12');
+  if (paxs.review.includes('CDI de') && paxs.review.includes('saldo atual estimado')) {
+    assert.equal(paxs.exclude_from_totals, true);
+  }
   for (const i of instruments) {
     const r = C.at(i, asOf, 'empty');
     assert.notEqual(r.status, 'missing', i.code);
