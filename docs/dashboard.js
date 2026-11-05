@@ -747,10 +747,10 @@ function getTableHeaders(payload) {
   ];
 }
 
-function getTableRowsForExport(payload) {
+function getTableRowsForExport(payload, selectedRows = null) {
   const activeView = getActiveDetailView(payload);
   if (activeView?.id === "daily_pu") {
-    const dailySeries = getDailyPuSeries(payload);
+    const dailySeries = selectedRows || getDailyPuSeries(payload);
     const includeCdi = dailyViewHasCdiColumns(payload);
     const includeInstrument = dailyViewHasInstrumentColumn(payload);
     return dailySeries.map((item) => {
@@ -780,7 +780,7 @@ function getTableRowsForExport(payload) {
     });
   }
 
-  const tableSeries = payload?.table_series || payload?.series || [];
+  const tableSeries = selectedRows || payload?.table_series || payload?.series || [];
   return tableSeries.map((item) => [
     item.date || "-",
     item.component_label || "-",
@@ -797,15 +797,67 @@ function getTableRowsForExport(payload) {
   ]);
 }
 
+const tableWindow = { rows: [], payload: null, key: "", frame: null };
+const tableScroll = document.getElementById("tableScroll");
+const tableDateFrom = document.getElementById("tableDateFrom");
+const tableDateTo = document.getElementById("tableDateTo");
+const tableEvent = document.getElementById("tableEvent");
+
+function tableEventLabel(item, daily) {
+  return String((daily ? item.component_label : item.label) || "Não informado");
+}
+
+function drawTableWindow() {
+  if (!tableWindow.payload) return;
+  const height = 48, overscan = 5;
+  const start = Math.max(0, Math.floor(Math.max(0, tableScroll.scrollTop - elements.tableHeadRow.offsetHeight) / height) - overscan);
+  const end = Math.min(tableWindow.rows.length, start + Math.ceil(tableScroll.clientHeight / height) + overscan * 2);
+  const columns = getTableHeaders(tableWindow.payload).length;
+  const spacer = (size) => size > 0 ? `<tr class="table-spacer" aria-hidden="true"><td colspan="${columns}" style="height:${size}px"></td></tr>` : "";
+  const rows = getTableRowsForExport(tableWindow.payload, tableWindow.rows.slice(start, end));
+  elements.tableBody.innerHTML = spacer(start * height) + rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("") + spacer((tableWindow.rows.length - end) * height);
+  if (!tableWindow.rows.length) elements.tableBody.innerHTML = `<tr><td colspan="${columns}">Nenhuma linha encontrada para os filtros selecionados.</td></tr>`;
+}
+
+function applyTableFilters(resetScroll = true) {
+  const payload = tableWindow.payload;
+  if (!payload) return;
+  const daily = getActiveDetailView(payload)?.id === "daily_pu";
+  const rows = daily ? getDailyPuSeries(payload) : (payload.table_series || payload.series || []);
+  const from = tableDateFrom.value, to = tableDateTo.value, event = tableEvent.value;
+  tableWindow.rows = rows.filter((item) => {
+    const date = parseBrDate(item.date);
+    const iso = date ? `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}` : "";
+    return (!from || (iso && iso >= from)) && (!to || (iso && iso <= to)) && (!event || tableEventLabel(item, daily) === event);
+  });
+  document.getElementById("tableCount").textContent = `${tableWindow.rows.length} de ${rows.length} linhas · exportação completa`;
+  if (resetScroll) tableScroll.scrollTop = 0;
+  drawTableWindow();
+}
+
 function renderTable(payload) {
   renderDetailViewTabs(payload);
   const headers = getTableHeaders(payload);
-  const rows = getTableRowsForExport(payload);
   elements.tableHeadRow.innerHTML = headers.map((header) => `<th>${header}</th>`).join("");
-  elements.tableBody.innerHTML = rows.map((row) => `
-    <tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>
-  `).join("");
+  const key = `${payload.operation.id}|${payload.selected_variant || ""}|${state.activeDetailView}`;
+  const daily = getActiveDetailView(payload)?.id === "daily_pu";
+  const source = daily ? getDailyPuSeries(payload) : (payload.table_series || payload.series || []);
+  if (tableWindow.key !== key || tableWindow.payload !== payload) {
+    tableWindow.key = key;
+    tableDateFrom.value = ""; tableDateTo.value = "";
+    const options = [...new Set(source.map((item) => tableEventLabel(item, daily)))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+    tableEvent.innerHTML = '<option value="">Todos os eventos</option>' + options.map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join("");
+  }
+  tableWindow.payload = payload;
+  applyTableFilters();
 }
+
+tableScroll.addEventListener("scroll", () => {
+  if (tableWindow.frame !== null) return;
+  tableWindow.frame = requestAnimationFrame(() => { tableWindow.frame = null; drawTableWindow(); });
+});
+[tableDateFrom, tableDateTo, tableEvent].forEach((control) => control.addEventListener("change", () => applyTableFilters()));
+document.getElementById("tableClear").addEventListener("click", () => { tableDateFrom.value = ""; tableDateTo.value = ""; tableEvent.value = ""; applyTableFilters(); });
 
 function safeFileName(text) {
   return String(text || "tabela_financeira")

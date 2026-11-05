@@ -745,19 +745,35 @@ body {
 
 .table-shell {
   overflow: auto;
+  max-height: 560px;
+  scrollbar-width: thin;
+  scrollbar-color: #47716f #0c1c2d;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+.table-shell::-webkit-scrollbar { width: 10px; height: 10px; }
+.table-shell::-webkit-scrollbar-track, .table-shell::-webkit-scrollbar-corner { background: #0c1c2d; }
+.table-shell::-webkit-scrollbar-thumb { background: #47716f; border: 2px solid #0c1c2d; border-radius: 999px; }
+.table-shell::-webkit-scrollbar-thumb:hover { background: #69a69a; }
 
 .data-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   min-width: 1360px;
 }
 
 .data-table thead {
   background: rgba(255, 255, 255, 0.04);
 }
+.data-table th { position: sticky; top: 0; z-index: 2; background: #152a3d; }
+.data-table tbody tr:not(.table-spacer) { height: 48px; }
+.data-table tbody td { padding-top: 0; padding-bottom: 0; height: 48px; }
+.data-table .table-spacer td { padding: 0; border: 0; height: auto; }
+.table-filters { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin: 0 0 16px; }
+.table-filters label { display: grid; gap: 6px; color: var(--muted); font-size: .8rem; }
+.table-filters input, .table-filters select { min-height: 40px; border: 1px solid #31465a; border-radius: 10px; padding: 8px 10px; background: #0c2035; color: var(--text); color-scheme: dark; font: inherit; }
+.table-filters #tableCount { color: var(--muted); font-size: .82rem; padding: 10px 0; }
 
 .data-table th,
 .data-table td {

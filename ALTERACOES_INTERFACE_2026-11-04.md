@@ -94,3 +94,10 @@ Os arquivos originais alterados estão na pasta `original/`. Para desfazer a rev
 - Os gráficos ganharam explicações e um título próprio para a diferença por título. A sobreposição das duas linhas no primeiro gráfico representa valores próximos; o segundo mostra a diferença entre as fontes.
 - Corrigida a altura dos contêineres, que herdavam uma altura fixa do dashboard e deixavam espaços excessivos. Dados e cálculos dos gráficos não foram alterados.
 - Original de vortx.css preservado em original/; original de vortx.html já estava guardado. Alterações apenas na prévia.
+
+## Tabela financeira e PU diário — publicação posterior
+
+- Cabeçalho fixo, filtros por período e tipo de evento, contador de linhas e botão para limpar filtros. Ao trocar de operação, série ou visão, os filtros são reiniciados.
+- Renderização em janela para limitar as linhas criadas na página; exportação CSV e Excel permanece completa, sem aplicar os filtros. Os arquivos de dados continuam carregados integralmente.
+- Barras de rolagem vertical e horizontal adaptadas às cores do dashboard.
+- Estado anterior: commit 1a8925c. Os dados e cálculos não foram alterados.

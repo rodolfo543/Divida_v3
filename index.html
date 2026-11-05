@@ -166,7 +166,14 @@
             </div>
           </div>
         </div>
-        <div class="table-shell">
+        <div class="table-filters" aria-label="Filtros da tabela">
+          <label>De <input type="date" id="tableDateFrom"></label>
+          <label>Até <input type="date" id="tableDateTo"></label>
+          <label>Tipo de evento <select id="tableEvent"><option value="">Todos os eventos</option></select></label>
+          <button type="button" class="secondary-button" id="tableClear">Limpar filtros</button>
+          <span id="tableCount" role="status" aria-live="polite"></span>
+        </div>
+        <div class="table-shell" id="tableScroll" tabindex="0" aria-label="Tabela de dados financeiros; role para ver mais linhas">
           <table class="data-table">
             <thead>
               <tr>
