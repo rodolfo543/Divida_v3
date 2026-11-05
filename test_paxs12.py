@@ -24,7 +24,7 @@ class PAXS12Test(unittest.TestCase):
 
     def test_nao_projeta_dados_historicos_ausentes(self):
         with self.assertRaisesRegex(ValueError, 'DI histórico ausente'):
-            paxs.calcular_fluxo({date(2026,10,14):Decimal('13.65')}, date(2026,10,19))
+            paxs.calcular_fluxo({date(2026,10,14):Decimal('13.65'), date(2026,10,16):Decimal('13.65')}, date(2026,10,19))
 
     def test_fim_de_semana_e_feriado_nao_exigem_di_so_usado_no_futuro(self):
         taxas = {date(2026,10,d): Decimal('13.65') for d in (14,15,16,19,20,21,22,23,26,27,28,29)}
@@ -35,9 +35,15 @@ class PAXS12Test(unittest.TestCase):
             self.assertEqual(confirmados[-1]['Data'], '30/10/2026')
             self.assertEqual([r['PU_Valor_Bruto'] for r in confirmados], [r['PU_Valor_Bruto'] for r in referencia[:13]])
             self.assertTrue(next(r for r in dias if r['Data']=='03/11/2026')['Projecao'])
-        # Na terça-feira esse DI já afeta o PU corrente: continua obrigatório.
-        with self.assertRaisesRegex(ValueError, 'DI histórico ausente em 30/10/2026'):
-            paxs.calcular_fluxo(taxas, date(2026,11,3))
+        # Na terça-feira a taxa ainda ausente afeta o PU, que fica estimado.
+        _, dias, _ = paxs.calcular_fluxo(taxas, date(2026,11,3))
+        corrente = next(r for r in dias if r['Data'] == '03/11/2026')
+        self.assertTrue(corrente['Projecao'])
+        self.assertEqual(corrente['CDI_Estimado_Desde'], '30/10/2026')
+        self.assertEqual(corrente['CDI_Ultima_Referencia'], '29/10/2026')
+        taxas[date(2026,10,30)] = Decimal('13.65')
+        _, atualizado, _ = paxs.calcular_fluxo(taxas, date(2026,11,3))
+        self.assertFalse(next(r for r in atualizado if r['Data'] == '03/11/2026')['Projecao'])
 
     def test_carteira_inclui_saldo_antes_do_vencimento_e_zera_apos(self):
         def evento(d, saldo, pagamento=0):

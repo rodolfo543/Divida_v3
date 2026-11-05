@@ -55,6 +55,9 @@ def calcular_fluxo(taxas=None, hoje=None):
     data = DATA_INICIO_RENTABILIDADE
     acumulado = D(1)
     ultima_taxa = None
+    ultima_data_taxa = None
+    estimado_desde = None
+    ultima_taxa_historica = max((d for d in taxas if d <= hoje), default=None)
     dias = 0
     diarias = []
     while data <= VENCIMENTO:
@@ -73,21 +76,27 @@ def calcular_fluxo(taxas=None, hoje=None):
                 'PU_Juros_Pago_Dia':juros if pagamento else D(0),
                 'Saldo_Bruto_R$':PU_INICIAL*QUANTIDADE,
                 'Saldo_Fechamento_R$':D(0) if pagamento else cheio*QUANTIDADE,
-                'Fator_Juros':fator,'Projecao':data>hoje})
+                'Fator_Juros':fator,'Projecao':data>hoje or estimado_desde is not None,
+                'CDI_Estimado_Desde': estimado_desde.strftime('%d/%m/%Y') if estimado_desde else '',
+                'CDI_Ultima_Referencia': ultima_data_taxa.strftime('%d/%m/%Y') if ultima_data_taxa else ''})
             if pagamento:
                 break
             taxa = taxas.get(data)
             if taxa is None:
-                # O DI desta data só afeta o PU do PRÓXIMO dia útil. Em fins de
-                # semana/feriados, sua ausência ainda pertence à projeção, mesmo
-                # que a data de referência já tenha passado no calendário civil.
-                if data < hoje:
+                # Lacunas anteriores a uma taxa já publicada não podem ser
+                # preenchidas por estimativa. A ausência ao fim da série usa a
+                # última taxa conhecida e é marcada a partir do PU afetado.
+                if ultima_taxa_historica and data < ultima_taxa_historica:
+                    raise ValueError(f'DI histórico ausente em {data:%d/%m/%Y}; atualize a série 4389 do BCB.')
+                if data < hoje and estimado_desde is None:
                     proximo = data + timedelta(days=1)
                     while not util(proximo):
                         proximo += timedelta(days=1)
                     if proximo <= hoje:
-                        raise ValueError(f'DI histórico ausente em {data:%d/%m/%Y}; atualize a série 4389 do BCB.')
+                        estimado_desde = data
                 taxa = ultima_taxa
+            else:
+                ultima_data_taxa = data
             if taxa is None:
                 raise ValueError('Taxa DI indisponível para projeção.')
             ultima_taxa = taxa

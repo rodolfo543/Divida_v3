@@ -147,6 +147,10 @@ def build_comparison(root=ROOT, *, offline=False):
                       "local_generated_at": payload.get("generated_at"), "local_source_sha256": digest,
                       "local_method": "estimated" if any(str(row.get("sort_key", "")).startswith("daily-") for row in rows) else "calculated",
                       "local_rows": [local_row(row, quantity) for row in rows if iso_day(row["date"]) <= cutoff]}
+        cdi_warning = view.get("meta", {}).get("cdi_warning")
+        if cdi_warning:
+            instrument["review"] = f"{instrument.get('review', '')} {cdi_warning}".strip()
+            instrument["exclude_from_totals"] = True
         path = root / "data/vortx/instruments" / f"{config['code']}.json"
         previous = json.loads(path.read_text(encoding="utf-8")).get("reference") if path.exists() else None
         entries.append((instrument, previous))

@@ -1069,9 +1069,15 @@ def load_axs10(module: Any) -> dict[str, Any]:
 
 def load_paxs12(module: Any) -> dict[str, Any]:
     payload = load_axs10(module)
+    current = get_current_row(payload["daily_pu_series"])
+    raw = current.get("raw", {}) if current else {}
+    missing = raw.get("CDI_Estimado_Desde")
+    reference = raw.get("CDI_Ultima_Referencia")
+    warning = (f"PAXS12: CDI de {missing} ainda não disponível; saldo atual estimado usando a última taxa publicada ({reference}). O consolidado também é afetado." if missing else "")
     payload["meta"] = {
         "primary_source": "CDI: BCB/SGS 4389; projeção com o último CDI disponível.",
         "notes": "PAXS12: início em 14/10/2026 inferido do primeiro PU da Vórtx; confirmar integralização e quantidade efetivamente colocada. Fluxo futuro projetado; não contempla amortizações extraordinárias.",
+        "cdi_warning": warning,
     }
     return payload
 
@@ -2264,6 +2270,7 @@ def build_portfolio_payload() -> dict[str, Any]:
         "meta": {
             "primary_source": "Consolidado gerado a partir dos scripts individuais de cálculo.",
             "notes": "A visao geral soma eventos, saldos e metricas das operacoes individuais.",
+            "cdi_warning": next((p.get("meta", {}).get("cdi_warning") for p in payloads if p.get("meta", {}).get("cdi_warning")), ""),
         },
         "comparison": comparison,
         "variant_options": [],

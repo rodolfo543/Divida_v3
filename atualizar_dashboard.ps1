@@ -56,6 +56,10 @@ try {
 
     $env:GIT_TERMINAL_PROMPT = "0"
 
+    # Conferir o cálculo antes de gerar arquivos parciais. A ausência da taxa
+    # mais recente pode usar a última taxa disponível, identificada no painel.
+    Invoke-Step "verificacao do CDI para PAXS12" { python -c "import importlib.util; s=importlib.util.spec_from_file_location('paxs12_preflight', r'Code final prontos/paxs12_v1.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); _, linhas, _ = m.calcular_fluxo(); hoje=m.date.today().strftime('%d/%m/%Y'); atual=next((x for x in linhas if x['Data']==hoje), None); print(('CDI provisoriamente estimado desde ' + atual['CDI_Estimado_Desde'] + '; ultima referencia ' + atual['CDI_Ultima_Referencia']) if atual and atual['CDI_Estimado_Desde'] else 'Calculo do CDI verificado.')" }
+
     Invoke-Step "git config gc.auto" { git config --local gc.auto 0 }
     Invoke-Step "git config gc.autoDetach" { git config --local gc.autoDetach false }
     Invoke-Step "git config maintenance.auto" { git config --local maintenance.auto false }

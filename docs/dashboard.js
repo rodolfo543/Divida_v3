@@ -951,7 +951,7 @@ function renderSources(payload) {
 function updateHero(payload) {
   elements.operationBadge.textContent = payload.operation.badge;
   elements.activeOperationName.textContent = payload.operation.full_name;
-  elements.activeOperationDescription.textContent = payload.operation.description;
+  elements.activeOperationDescription.textContent = [payload.operation.description, payload.meta?.cdi_warning].filter(Boolean).join(" ");
   renderHeroMiniMetrics(payload);
   renderIdentity(payload);
   renderInfoPanel(payload);
