@@ -74,7 +74,7 @@
       },
       {
         "label": "Saldo atual",
-        "value": "87206823.77395001"
+        "value": "87265016.16245"
       },
       {
         "label": "Próximo PMT",
@@ -84,15 +84,15 @@
     "pu_fields": [
       {
         "label": "PU cheio",
-        "value": "1025.962772410241"
+        "value": "1026.6475195101038"
       },
       {
         "label": "PU vazio",
-        "value": "1025.962772410241"
+        "value": "1026.6475195101038"
       },
       {
         "label": "PU juros",
-        "value": "5.9310945527494425"
+        "value": "6.357670912418138"
       },
       {
         "label": "PU amortização",
@@ -100,7 +100,7 @@
       },
       {
         "label": "Principal atualizado",
-        "value": "86702680.80565"
+        "value": "86724614.2773"
       },
       {
         "label": "PMT da linha atual",
@@ -8952,7 +8952,7 @@
         "Amort_R$": 180805.2,
         "PMT_Total": 537297.31,
         "Saldo_Devedor_R$": 40633010.59,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 36698480.94999999,
       "total_amortization_running": 14776100.299999999
@@ -9005,7 +9005,7 @@
         "Amort_R$": 306569.16,
         "PMT_Total": 688606.34,
         "Saldo_Devedor_R$": 45628277.25,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 37080518.12999999,
       "total_amortization_running": 15082669.459999999
@@ -9058,7 +9058,7 @@
         "Amort_R$": 272405.26,
         "PMT_Total": 611868.41,
         "Saldo_Devedor_R$": 40543485.58,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 37419981.27999999,
       "total_amortization_running": 15355074.719999999
@@ -9111,7 +9111,7 @@
         "Amort_R$": 307955.99,
         "PMT_Total": 708293.92,
         "Saldo_Devedor_R$": 45525648.51,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 37820319.209999986,
       "total_amortization_running": 15663030.709999999
@@ -21785,11 +21785,11 @@
     }
   ],
   "summary": {
-    "current_balance": 87206823.77395001,
-    "current_principal": 86702680.80565,
-    "current_pu_cheio": 1025.962772410241,
-    "current_pu_vazio": 1025.962772410241,
-    "current_pu_juros": 5.9310945527494425,
+    "current_balance": 87265016.16245,
+    "current_principal": 86724614.2773,
+    "current_pu_cheio": 1026.6475195101038,
+    "current_pu_vazio": 1026.6475195101038,
+    "current_pu_juros": 6.357670912418138,
     "current_pu_amort": 127.17365855,
     "current_payment": 6206689.86,
     "total_interest": 97735043.23,
@@ -21801,14 +21801,14 @@
     "next_amortization_amount": 384773.71,
     "last_event_date": "15/10/2026",
     "final_balance": 0.0,
-    "duration_years": 5.281806120147797,
-    "wal_years": 6.005857501755409,
+    "duration_years": 5.279068269360665,
+    "wal_years": 6.003119650968276,
     "tir_annual_pct": 10.893869512120524,
     "tir_monthly_pct": 0.8654185085795074,
     "contracted_rate_label": "IPCA + 11%",
     "contracted_rate_display": "Média ponderada: 11,00% a.a.",
-    "contracted_rate_annual_pct": 10.999999999999998,
-    "effective_spread_annual_pct": -0.10613048787947399,
+    "contracted_rate_annual_pct": 11.0,
+    "effective_spread_annual_pct": -0.10613048787947577,
     "tir_cashflows": [
       {
         "date": "23/12/2022",
@@ -22487,12 +22487,12 @@
         "amount": 1028059.8755180751
       }
     ],
-    "monthly_balance_variation": 174333.4149500057,
-    "monthly_balance_update": 65756.36254999042,
-    "monthly_balance_interest": 108577.0524000153,
+    "monthly_balance_variation": 232525.80345000327,
+    "monthly_balance_update": 87689.8341999948,
+    "monthly_balance_interest": 144835.96925000846,
     "monthly_balance_amortization": 0,
     "monthly_balance_reference_date": "30/10/2026",
-    "monthly_balance_current_date": "05/11/2026",
+    "monthly_balance_current_date": "06/11/2026",
     "monthly_balance_update_label": "Atualização IPCA"
   },
   "timeline": [
@@ -22730,7 +22730,7 @@
           },
           {
             "label": "Saldo atual",
-            "value": "87206823.77395001"
+            "value": "87265016.16245"
           },
           {
             "label": "Próximo PMT",
@@ -22740,15 +22740,15 @@
         "pu_fields": [
           {
             "label": "PU cheio",
-            "value": "1025.962772410241"
+            "value": "1026.6475195101038"
           },
           {
             "label": "PU vazio",
-            "value": "1025.962772410241"
+            "value": "1026.6475195101038"
           },
           {
             "label": "PU juros",
-            "value": "5.9310945527494425"
+            "value": "6.357670912418138"
           },
           {
             "label": "PU amortização",
@@ -22756,7 +22756,7 @@
           },
           {
             "label": "Principal atualizado",
-            "value": "86702680.80565"
+            "value": "86724614.2773"
           },
           {
             "label": "PMT da linha atual",
@@ -31608,7 +31608,7 @@
             "Amort_R$": 180805.2,
             "PMT_Total": 537297.31,
             "Saldo_Devedor_R$": 40633010.59,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 36698480.94999999,
           "total_amortization_running": 14776100.299999999
@@ -31661,7 +31661,7 @@
             "Amort_R$": 306569.16,
             "PMT_Total": 688606.34,
             "Saldo_Devedor_R$": 45628277.25,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 37080518.12999999,
           "total_amortization_running": 15082669.459999999
@@ -31714,7 +31714,7 @@
             "Amort_R$": 272405.26,
             "PMT_Total": 611868.41,
             "Saldo_Devedor_R$": 40543485.58,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37419981.27999999,
           "total_amortization_running": 15355074.719999999
@@ -31767,7 +31767,7 @@
             "Amort_R$": 307955.99,
             "PMT_Total": 708293.92,
             "Saldo_Devedor_R$": 45525648.51,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37820319.209999986,
           "total_amortization_running": 15663030.709999999
@@ -142051,11 +142051,11 @@
         }
       ],
       "summary": {
-        "current_balance": 87206823.77395001,
-        "current_principal": 86702680.80565,
-        "current_pu_cheio": 1025.962772410241,
-        "current_pu_vazio": 1025.962772410241,
-        "current_pu_juros": 5.9310945527494425,
+        "current_balance": 87265016.16245,
+        "current_principal": 86724614.2773,
+        "current_pu_cheio": 1026.6475195101038,
+        "current_pu_vazio": 1026.6475195101038,
+        "current_pu_juros": 6.357670912418138,
         "current_pu_amort": 127.17365855,
         "current_payment": 6206689.86,
         "total_interest": 97735043.23,
@@ -142067,14 +142067,14 @@
         "next_amortization_amount": 384773.71,
         "last_event_date": "15/10/2026",
         "final_balance": 0.0,
-        "duration_years": 5.281806120147797,
-        "wal_years": 6.005857501755409,
+        "duration_years": 5.279068269360665,
+        "wal_years": 6.003119650968276,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
         "contracted_rate_display": "Média ponderada: 11,00% a.a.",
-        "contracted_rate_annual_pct": 10.999999999999998,
-        "effective_spread_annual_pct": -0.10613048787947399,
+        "contracted_rate_annual_pct": 11.0,
+        "effective_spread_annual_pct": -0.10613048787947577,
         "tir_cashflows": [
           {
             "date": "23/12/2022",
@@ -142753,12 +142753,12 @@
             "amount": 1028059.8755180751
           }
         ],
-        "monthly_balance_variation": 174333.4149500057,
-        "monthly_balance_update": 65756.36254999042,
-        "monthly_balance_interest": 108577.0524000153,
+        "monthly_balance_variation": 232525.80345000327,
+        "monthly_balance_update": 87689.8341999948,
+        "monthly_balance_interest": 144835.96925000846,
         "monthly_balance_amortization": 0,
         "monthly_balance_reference_date": "30/10/2026",
-        "monthly_balance_current_date": "05/11/2026",
+        "monthly_balance_current_date": "06/11/2026",
         "monthly_balance_update_label": "Atualização IPCA"
       },
       "timeline": [
@@ -142982,7 +142982,7 @@
           },
           {
             "label": "Saldo atual",
-            "value": "46184384.83275"
+            "value": "46221485.73525"
           },
           {
             "label": "Próximo PMT",
@@ -142992,15 +142992,15 @@
         "pu_fields": [
           {
             "label": "PU cheio",
-            "value": "1026.31966295"
+            "value": "1027.14412745"
           },
           {
             "label": "PU vazio",
-            "value": "1026.31966295"
+            "value": "1027.14412745"
           },
           {
             "label": "PU juros",
-            "value": "5.93315774"
+            "value": "6.36074623"
           },
           {
             "label": "PU amortização",
@@ -143008,7 +143008,7 @@
           },
           {
             "label": "Principal atualizado",
-            "value": "45917392.73445"
+            "value": "45935252.1549"
           },
           {
             "label": "PMT da linha atual",
@@ -145556,7 +145556,7 @@
             "Amort_R$": 306569.16,
             "PMT_Total": 688606.34,
             "Saldo_Devedor_R$": 45628277.25,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 37080518.12999999,
           "total_amortization_running": 15082669.459999999
@@ -145609,7 +145609,7 @@
             "Amort_R$": 307955.99,
             "PMT_Total": 708293.92,
             "Saldo_Devedor_R$": 45525648.51,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37820319.209999986,
           "total_amortization_running": 15663030.709999999
@@ -154462,7 +154462,7 @@
             "Amort_R$": 306569.16,
             "PMT_Total": 688606.34,
             "Saldo_Devedor_R$": 45628277.25,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 37080518.12999999,
           "total_amortization_running": 15082669.459999999
@@ -154515,7 +154515,7 @@
             "Amort_R$": 307955.99,
             "PMT_Total": 708293.92,
             "Saldo_Devedor_R$": 45525648.51,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37820319.209999986,
           "total_amortization_running": 15663030.709999999
@@ -211524,7 +211524,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211576,7 +211576,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211628,7 +211628,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211680,7 +211680,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211732,7 +211732,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211784,7 +211784,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211836,7 +211836,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211888,7 +211888,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211940,7 +211940,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -211992,7 +211992,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212044,7 +212044,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212096,7 +212096,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212148,7 +212148,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212200,7 +212200,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212252,7 +212252,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212304,7 +212304,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212356,7 +212356,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212408,7 +212408,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212460,7 +212460,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19440365.345100004,
           "total_amortization_running": 7825653.914849999
@@ -212512,7 +212512,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 15.30236317,
             "Saldo_Pos_Evento": 1013.96171669,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212564,7 +212564,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212616,7 +212616,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212668,7 +212668,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212720,7 +212720,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212772,7 +212772,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212824,7 +212824,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212876,7 +212876,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212928,7 +212928,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -212980,7 +212980,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213032,7 +213032,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213084,7 +213084,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213136,7 +213136,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213188,7 +213188,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213240,7 +213240,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213292,7 +213292,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213344,7 +213344,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213396,7 +213396,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213448,7 +213448,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213500,7 +213500,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213552,7 +213552,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 19822402.522800006,
           "total_amortization_running": 8132223.0797999995
@@ -213604,7 +213604,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 15.73986478,
             "Saldo_Pos_Evento": 1011.681078,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 20222740.449450005,
           "total_amortization_running": 8440179.068249999
@@ -342779,11 +342779,11 @@
         }
       ],
       "summary": {
-        "current_balance": 46184384.83275,
-        "current_principal": 45917392.73445,
-        "current_pu_cheio": 1026.31966295,
-        "current_pu_vazio": 1026.31966295,
-        "current_pu_juros": 5.93315774,
+        "current_balance": 46221485.73525,
+        "current_principal": 45935252.1549,
+        "current_pu_cheio": 1027.14412745,
+        "current_pu_vazio": 1027.14412745,
+        "current_pu_juros": 6.36074623,
         "current_pu_amort": 0.0,
         "current_payment": 0.0,
         "total_interest": 51759465.1,
@@ -342793,10 +342793,10 @@
         "next_payment_amount": 606131.52,
         "next_interest_amount": 402163.01,
         "next_amortization_amount": 203968.51,
-        "last_event_date": "05/11/2026",
+        "last_event_date": "06/11/2026",
         "final_balance": 0.0,
-        "duration_years": 5.28176834481196,
-        "wal_years": 6.005835384809998,
+        "duration_years": 5.279030494024828,
+        "wal_years": 6.003097534022865,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -343481,12 +343481,12 @@
             "amount": 544266.9929213339
           }
         ],
-        "monthly_balance_variation": 111123.65295000374,
-        "monthly_balance_update": 53536.24574999511,
-        "monthly_balance_interest": 57587.40720000863,
+        "monthly_balance_variation": 148224.55545000732,
+        "monthly_balance_update": 71395.66619999707,
+        "monthly_balance_interest": 76828.88925001025,
         "monthly_balance_amortization": 0,
         "monthly_balance_reference_date": "30/10/2026",
-        "monthly_balance_current_date": "05/11/2026",
+        "monthly_balance_current_date": "06/11/2026",
         "monthly_balance_update_label": "Atualização IPCA"
       },
       "timeline": [
@@ -343591,7 +343591,7 @@
             "Amort_R$": 306569.16,
             "PMT_Total": 688606.34,
             "Saldo_Devedor_R$": 45628277.25,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 37080518.12999999,
           "total_amortization_running": 15082669.459999999
@@ -343644,7 +343644,7 @@
             "Amort_R$": 307955.99,
             "PMT_Total": 708293.92,
             "Saldo_Devedor_R$": 45525648.51,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37820319.209999986,
           "total_amortization_running": 15663030.709999999
@@ -343890,7 +343890,7 @@
           },
           {
             "label": "Saldo atual",
-            "value": "41022438.9412"
+            "value": "41043530.4272"
           },
           {
             "label": "Próximo PMT",
@@ -343900,15 +343900,15 @@
         "pu_fields": [
           {
             "label": "PU cheio",
-            "value": "1025.56097353"
+            "value": "1026.08826068"
           },
           {
             "label": "PU vazio",
-            "value": "1025.56097353"
+            "value": "1026.08826068"
           },
           {
             "label": "PU juros",
-            "value": "5.92877175"
+            "value": "6.35420762"
           },
           {
             "label": "PU amortização",
@@ -343916,7 +343916,7 @@
           },
           {
             "label": "Principal atualizado",
-            "value": "40785288.0712"
+            "value": "40789362.1224"
           },
           {
             "label": "PMT da linha atual",
@@ -346411,7 +346411,7 @@
             "Amort_R$": 180805.2,
             "PMT_Total": 537297.31,
             "Saldo_Devedor_R$": 40633010.59,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 36698480.94999999,
           "total_amortization_running": 14776100.299999999
@@ -346464,7 +346464,7 @@
             "Amort_R$": 272405.26,
             "PMT_Total": 611868.41,
             "Saldo_Devedor_R$": 40543485.58,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37419981.27999999,
           "total_amortization_running": 15355074.719999999
@@ -355317,7 +355317,7 @@
             "Amort_R$": 180805.2,
             "PMT_Total": 537297.31,
             "Saldo_Devedor_R$": 40633010.59,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 36698480.94999999,
           "total_amortization_running": 14776100.299999999
@@ -355370,7 +355370,7 @@
             "Amort_R$": 272405.26,
             "PMT_Total": 611868.41,
             "Saldo_Devedor_R$": 40543485.58,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37419981.27999999,
           "total_amortization_running": 15355074.719999999
@@ -411340,7 +411340,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411392,7 +411392,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411444,7 +411444,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411496,7 +411496,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411548,7 +411548,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411600,7 +411600,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411652,7 +411652,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411704,7 +411704,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411756,7 +411756,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411808,7 +411808,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411860,7 +411860,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411912,7 +411912,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -411964,7 +411964,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412016,7 +412016,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412068,7 +412068,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412120,7 +412120,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412172,7 +412172,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412224,7 +412224,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412276,7 +412276,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412328,7 +412328,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 16901623.5004,
           "total_amortization_running": 6769641.209999999
@@ -412380,7 +412380,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 13.43243285,
             "Saldo_Pos_Evento": 1015.82526483,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412432,7 +412432,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412484,7 +412484,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412536,7 +412536,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412588,7 +412588,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412640,7 +412640,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412692,7 +412692,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412744,7 +412744,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412796,7 +412796,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412848,7 +412848,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412900,7 +412900,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -412952,7 +412952,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413004,7 +413004,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413056,7 +413056,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413108,7 +413108,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413160,7 +413160,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413212,7 +413212,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413264,7 +413264,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413316,7 +413316,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413368,7 +413368,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 0.0,
             "Saldo_Pos_Evento": "",
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17258115.610799998,
           "total_amortization_running": 6950446.413599999
@@ -413420,7 +413420,7 @@
             "Amortizacao_Extraordinaria": 0.0,
             "Total": 15.29671017,
             "Saldo_Pos_Evento": 1013.58713948,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 17597578.762399998,
           "total_amortization_running": 7222851.668799998
@@ -543687,11 +543687,11 @@
         }
       ],
       "summary": {
-        "current_balance": 41022438.9412,
-        "current_principal": 40785288.0712,
-        "current_pu_cheio": 1025.56097353,
-        "current_pu_vazio": 1025.56097353,
-        "current_pu_juros": 5.92877175,
+        "current_balance": 41043530.4272,
+        "current_principal": 40789362.1224,
+        "current_pu_cheio": 1026.08826068,
+        "current_pu_vazio": 1026.08826068,
+        "current_pu_juros": 6.35420762,
         "current_pu_amort": 0.0,
         "current_payment": 0.0,
         "total_interest": 45975578.13,
@@ -543701,10 +543701,10 @@
         "next_payment_amount": 537297.31,
         "next_interest_amount": 356492.11,
         "next_amortization_amount": 180805.2,
-        "last_event_date": "05/11/2026",
+        "last_event_date": "06/11/2026",
         "final_balance": 0.0,
-        "duration_years": 5.281848633768011,
-        "wal_years": 6.00588239271641,
+        "duration_years": 5.279110782980879,
+        "wal_years": 6.003144541929278,
         "tir_annual_pct": 10.893869512120535,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -544389,12 +544389,12 @@
             "amount": 483792.8825967412
           }
         ],
-        "monthly_balance_variation": 63209.76200000197,
-        "monthly_balance_update": 12220.116799995303,
-        "monthly_balance_interest": 50989.645200006664,
+        "monthly_balance_variation": 84301.24799999595,
+        "monthly_balance_update": 16294.167999997735,
+        "monthly_balance_interest": 68007.07999999821,
         "monthly_balance_amortization": 0,
         "monthly_balance_reference_date": "30/10/2026",
-        "monthly_balance_current_date": "05/11/2026",
+        "monthly_balance_current_date": "06/11/2026",
         "monthly_balance_update_label": "Atualização IPCA"
       },
       "timeline": [
@@ -544446,7 +544446,7 @@
             "Amort_R$": 180805.2,
             "PMT_Total": 537297.31,
             "Saldo_Devedor_R$": 40633010.59,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
           },
           "total_interest_running": 36698480.94999999,
           "total_amortization_running": 14776100.299999999
@@ -544499,7 +544499,7 @@
             "Amort_R$": 272405.26,
             "PMT_Total": 611868.41,
             "Saldo_Devedor_R$": 40543485.58,
-            "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+            "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
           },
           "total_interest_running": 37419981.27999999,
           "total_amortization_running": 15355074.719999999
@@ -645843,7 +645843,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -645949,7 +645949,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646055,7 +646055,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646161,7 +646161,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646267,7 +646267,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646373,7 +646373,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646479,7 +646479,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646585,7 +646585,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646691,7 +646691,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646797,7 +646797,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -646903,7 +646903,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647009,7 +647009,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647115,7 +647115,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647221,7 +647221,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647327,7 +647327,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647433,7 +647433,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647539,7 +647539,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647645,7 +647645,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647751,7 +647751,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647857,7 +647857,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 16901623.5004,
       "total_amortization_running": 6769641.209999999,
@@ -647963,7 +647963,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 13.43243285,
         "Saldo_Pos_Evento": 1015.82526483,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648016,7 +648016,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648069,7 +648069,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648122,7 +648122,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648175,7 +648175,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648228,7 +648228,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648281,7 +648281,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648334,7 +648334,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648387,7 +648387,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648440,7 +648440,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648493,7 +648493,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648546,7 +648546,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648599,7 +648599,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648652,7 +648652,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648705,7 +648705,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648758,7 +648758,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648811,7 +648811,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648864,7 +648864,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -648917,7 +648917,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -648970,7 +648970,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649023,7 +649023,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649076,7 +649076,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649129,7 +649129,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649182,7 +649182,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649235,7 +649235,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649288,7 +649288,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649341,7 +649341,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649394,7 +649394,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649447,7 +649447,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649500,7 +649500,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649553,7 +649553,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649606,7 +649606,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649659,7 +649659,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649712,7 +649712,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649765,7 +649765,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649818,7 +649818,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649871,7 +649871,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -649924,7 +649924,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19440365.345100004,
       "total_amortization_running": 7825653.914849999,
@@ -649977,7 +649977,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17258115.610799998,
       "total_amortization_running": 6950446.413599999,
@@ -650030,7 +650030,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 15.30236317,
         "Saldo_Pos_Evento": 1013.96171669,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | IBGE/SIDRA numero-indice IPCA"
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650083,7 +650083,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 15.29671017,
         "Saldo_Pos_Evento": 1013.58713948,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 17597578.762399998,
       "total_amortization_running": 7222851.668799998,
@@ -650136,7 +650136,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650242,7 +650242,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650348,7 +650348,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650454,7 +650454,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650560,7 +650560,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650666,7 +650666,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650772,7 +650772,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650878,7 +650878,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -650984,7 +650984,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651090,7 +651090,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651196,7 +651196,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651302,7 +651302,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651408,7 +651408,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651514,7 +651514,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651620,7 +651620,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651726,7 +651726,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651832,7 +651832,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -651938,7 +651938,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -652044,7 +652044,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -652150,7 +652150,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 0.0,
         "Saldo_Pos_Evento": "",
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 19822402.522800006,
       "total_amortization_running": 8132223.0797999995,
@@ -652256,7 +652256,7 @@
         "Amortizacao_Extraordinaria": 0.0,
         "Total": 15.73986478,
         "Saldo_Pos_Evento": 1011.681078,
-        "Fonte_IPCA": "ANBIMA 04/11/2026 16:29 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
+        "Fonte_IPCA": "ANBIMA 05/11/2026 15:15 | https://www.anbima.com.br/informacoes/indicadores/ | Projetado fixo 0.4500000000% a.m."
       },
       "total_interest_running": 20222740.449450005,
       "total_amortization_running": 8440179.068249999,
@@ -915625,7 +915625,7 @@
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 265842181.30316,
+      "current_balance": 265973144.69096,
       "next_payment_amount": 13123241.09,
       "total_interest": 336276695.39,
       "total_amortization": 413502553.42,
@@ -915637,7 +915637,7 @@
       "id": "axs06",
       "label": "AXS 06",
       "full_name": "AXS 06 - Consolidado / 1ª + 2ª Emissão",
-      "current_balance": 215886815.34037876,
+      "current_balance": 216047105.95215625,
       "next_payment_amount": 12926977.8,
       "total_interest": 372405211.61,
       "total_amortization": 409122923.24,
@@ -915649,7 +915649,7 @@
       "id": "axs11",
       "label": "AXS 11",
       "full_name": "AXS 11 - Emissao 1 / Serie UNICA",
-      "current_balance": 199839402.9558,
+      "current_balance": 199940277.7275,
       "next_payment_amount": 14716301.92,
       "total_interest": 247804571.77,
       "total_amortization": 326183317.46,
@@ -915661,7 +915661,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 174488198.71,
+      "current_balance": 174644691.38,
       "next_payment_amount": 17208452.58,
       "total_interest": 354821872.45,
       "total_amortization": 381885548.33,
@@ -915673,7 +915673,7 @@
       "id": "paxs12",
       "label": "AXS Participações",
       "full_name": "AXS Participações - Emissão 2 / Série Única",
-      "current_balance": 153540226.011381,
+      "current_balance": 153650270.760921,
       "next_payment_amount": 369566927.500485,
       "total_interest": 217667927.500485,
       "total_amortization": 151899000.0,
@@ -915685,7 +915685,7 @@
       "id": "axs04",
       "label": "AXS 04",
       "full_name": "AXS 4 - Emissao 139 / Serie UNICA",
-      "current_balance": 149103175.716,
+      "current_balance": 149222953.48032,
       "next_payment_amount": 2047379.79,
       "total_interest": 162991427.9,
       "total_amortization": 215029774.88,
@@ -915697,7 +915697,7 @@
       "id": "axs08",
       "label": "AXS 08",
       "full_name": "AXS 08 - Emissao 1 / Serie UNICA",
-      "current_balance": 134840597.0592,
+      "current_balance": 134909925.99,
       "next_payment_amount": 7641520.61,
       "total_interest": 177851859.49,
       "total_amortization": 207940688.3,
@@ -915709,7 +915709,7 @@
       "id": "axs01",
       "label": "AXS 01",
       "full_name": "AXS 01 - Refi / 2 Series",
-      "current_balance": 119328712.876892,
+      "current_balance": 119418947.419792,
       "next_payment_amount": 8643890.91,
       "total_interest": 158269804.18,
       "total_amortization": 216182847.05,
@@ -915721,7 +915721,7 @@
       "id": "axs03",
       "label": "AXS 03",
       "full_name": "AXS III - Emissao 78 / Serie UNICA",
-      "current_balance": 111055937.55697,
+      "current_balance": 111145151.1625,
       "next_payment_amount": 1339383.76,
       "total_interest": 126907287.98,
       "total_amortization": 159608612.99,
@@ -915733,7 +915733,7 @@
       "id": "axs09",
       "label": "AXS 09",
       "full_name": "AXS ENERGIA 09 - Emissao 1 / Serie UNICA",
-      "current_balance": 110724248.5461,
+      "current_balance": 110781098.68629,
       "next_payment_amount": 8851060.16,
       "total_interest": 112494388.79,
       "total_amortization": 157055970.79,
@@ -915745,7 +915745,7 @@
       "id": "axs05",
       "label": "AXS 05",
       "full_name": "AXS 05 - 2a Emissao / 2 Series",
-      "current_balance": 94584537.40190801,
+      "current_balance": 94656326.240258,
       "next_payment_amount": 8118675.91,
       "total_interest": 111601600.04,
       "total_amortization": 164341071.07,
@@ -915757,7 +915757,7 @@
       "id": "axs02",
       "label": "AXS 02",
       "full_name": "AXS 02 - Consolidado CRI + Debenture",
-      "current_balance": 87206823.77395001,
+      "current_balance": 87265016.16245,
       "next_payment_amount": 1143428.83,
       "total_interest": 97735043.23,
       "total_amortization": 132658409.6,
@@ -915769,7 +915769,7 @@
       "id": "axs07",
       "label": "AXS 07",
       "full_name": "AXS VII - Emissao 1 / Serie UNICA",
-      "current_balance": 71745289.520435,
+      "current_balance": 71780891.64736,
       "next_payment_amount": 1358792.79,
       "total_interest": 47538332.22,
       "total_amortization": 96630754.77,
@@ -915778,6 +915778,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "05/11/2026 08:14:50",
-  "generated_at_iso": "2026-11-05T08:14:50"
+  "generated_at": "06/11/2026 08:00:07",
+  "generated_at_iso": "2026-11-06T08:00:07"
 }
