@@ -3713,8 +3713,8 @@
     "next_amortization_amount": 1416028.37,
     "last_event_date": "06/11/2026",
     "final_balance": 0.0,
-    "duration_years": 8.921137641825572,
-    "wal_years": 9.967609130307261,
+    "duration_years": 8.91839979103844,
+    "wal_years": 9.96487127952013,
     "tir_annual_pct": 10.799329805904085,
     "tir_monthly_pct": 0.8582498563043384,
     "contracted_rate_label": "IPCA + 10,9659%",
@@ -120409,8 +120409,8 @@
         "next_amortization_amount": 2136349.31,
         "last_event_date": "17/08/2026",
         "final_balance": 0.0,
-        "duration_years": 9.43859738033255,
-        "wal_years": 11.032666177563694,
+        "duration_years": 9.435859529545418,
+        "wal_years": 11.029928326776561,
         "tir_annual_pct": 9.51368369738409,
         "tir_monthly_pct": 0.7602026518901628,
         "contracted_rate_label": "IPCA + 9,3515% / 10,9659%",
@@ -351953,8 +351953,8 @@
         "next_amortization_amount": 720320.94,
         "last_event_date": "06/11/2026",
         "final_balance": 0.0,
-        "duration_years": 9.567218032780376,
-        "wal_years": 11.296458180029019,
+        "duration_years": 9.564480181993245,
+        "wal_years": 11.293720329241886,
         "tir_annual_pct": 9.22953112343704,
         "tir_monthly_pct": 0.7383900226449525,
         "contracted_rate_label": "IPCA + 9,3515%",
@@ -583695,8 +583695,8 @@
         "next_amortization_amount": 1416028.37,
         "last_event_date": "06/11/2026",
         "final_balance": 0.0,
-        "duration_years": 8.921137641825572,
-        "wal_years": 9.967609130307261,
+        "duration_years": 8.91839979103844,
+        "wal_years": 9.96487127952013,
         "tir_annual_pct": 10.799329805904085,
         "tir_monthly_pct": 0.8582498563043384,
         "contracted_rate_label": "IPCA + 10,9659%",
@@ -811882,6 +811882,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "06/11/2026 08:00:07",
-  "generated_at_iso": "2026-11-06T08:00:07"
+  "generated_at": "07/11/2026 10:24:34",
+  "generated_at_iso": "2026-11-07T10:24:34"
 }
