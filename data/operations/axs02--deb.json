@@ -17937,8 +17937,8 @@
     "next_amortization_amount": 180805.2,
     "last_event_date": "06/11/2026",
     "final_balance": 0.0,
-    "duration_years": 5.276372932193747,
-    "wal_years": 6.000406691142147,
+    "duration_years": 5.273635081406614,
+    "wal_years": 5.997668840355015,
     "tir_annual_pct": 10.893869512120535,
     "tir_monthly_pct": 0.8654185085795074,
     "contracted_rate_label": "IPCA + 11%",
@@ -138383,8 +138383,8 @@
         "next_amortization_amount": 384773.71,
         "last_event_date": "15/10/2026",
         "final_balance": 0.0,
-        "duration_years": 5.276330418573533,
-        "wal_years": 6.000381800181144,
+        "duration_years": 5.273592567786401,
+        "wal_years": 5.997643949394012,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -339111,8 +339111,8 @@
         "next_amortization_amount": 203968.51,
         "last_event_date": "06/11/2026",
         "final_balance": 0.0,
-        "duration_years": 5.276292643237696,
-        "wal_years": 6.000359683235733,
+        "duration_years": 5.273554792450564,
+        "wal_years": 5.997621832448601,
         "tir_annual_pct": 10.893869512120524,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -540019,8 +540019,8 @@
         "next_amortization_amount": 180805.2,
         "last_event_date": "06/11/2026",
         "final_balance": 0.0,
-        "duration_years": 5.276372932193747,
-        "wal_years": 6.000406691142147,
+        "duration_years": 5.273635081406614,
+        "wal_years": 5.997668840355015,
         "tir_annual_pct": 10.893869512120535,
         "tir_monthly_pct": 0.8654185085795074,
         "contracted_rate_label": "IPCA + 11%",
@@ -723148,6 +723148,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "07/11/2026 10:24:34",
-  "generated_at_iso": "2026-11-07T10:24:34"
+  "generated_at": "08/11/2026 08:23:27",
+  "generated_at_iso": "2026-11-08T08:23:27"
 }

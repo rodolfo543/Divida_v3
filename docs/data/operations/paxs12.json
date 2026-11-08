@@ -52363,8 +52363,8 @@
     "next_amortization_amount": 151899000.0,
     "last_event_date": "06/11/2026",
     "final_balance": 0.0,
-    "duration_years": 4.895277207392197,
-    "wal_years": 4.895277207392197,
+    "duration_years": 4.892539356605065,
+    "wal_years": 4.892539356605065,
     "tir_annual_pct": 19.62858710706167,
     "tir_monthly_pct": 1.504722394616409,
     "contracted_rate_label": "CDI + 5,40%",
@@ -52591,6 +52591,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "07/11/2026 10:24:34",
-  "generated_at_iso": "2026-11-07T10:24:34"
+  "generated_at": "08/11/2026 08:23:27",
+  "generated_at_iso": "2026-11-08T08:23:27"
 }
