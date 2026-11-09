@@ -26,7 +26,7 @@
     "overview_fields": [
       {
         "label": "Saldo consolidado",
-        "value": "1889435801.3005073"
+        "value": "1890686319.5289805"
       },
       {
         "label": "Próximo PMT da carteira",
@@ -46,7 +46,7 @@
       },
       {
         "label": "Saldo somado das emissões",
-        "value": "1889435801.3005073"
+        "value": "1890686319.5289805"
       }
     ],
     "pu_fields": [
@@ -56,7 +56,7 @@
       },
       {
         "label": "Maior saldo atual",
-        "value": "265973144.69096"
+        "value": "266104172.73328"
       },
       {
         "label": "Maior juros acumulados",
@@ -1414,21 +1414,21 @@
       "total_amortization_running": 70278060.92
     },
     {
-      "date": "06/11/2026",
+      "date": "09/11/2026",
       "label": "Carteira consolidada",
       "component": "total",
       "component_label": "Total",
       "payment": 0.0,
       "interest": 0.0,
       "amortization": 0.0,
-      "balance": 1889435801.3005073,
+      "balance": 1890686319.5289805,
       "principal": 0.0,
       "pu_cheio": null,
       "pu_vazio": null,
       "pu_juros": null,
       "pu_amort": null,
       "pu_total": null,
-      "parsed_date": "06/11/2026",
+      "parsed_date": "09/11/2026",
       "sort_key": "0-total",
       "raw": {},
       "total_interest_running": 215853008.86999997,
@@ -6834,21 +6834,21 @@
       "total_amortization_running": 70278060.92
     },
     {
-      "date": "06/11/2026",
+      "date": "09/11/2026",
       "label": "Carteira consolidada",
       "component": "total",
       "component_label": "Total",
       "payment": 0.0,
       "interest": 0.0,
       "amortization": 0.0,
-      "balance": 1889435801.3005073,
+      "balance": 1890686319.5289805,
       "principal": 0.0,
       "pu_cheio": null,
       "pu_vazio": null,
       "pu_juros": null,
       "pu_amort": null,
       "pu_total": null,
-      "parsed_date": "06/11/2026",
+      "parsed_date": "09/11/2026",
       "sort_key": "0-total",
       "raw": {},
       "total_interest_running": 215853008.86999997,
@@ -10909,8 +10909,8 @@
     }
   ],
   "summary": {
-    "current_balance": 1889435801.3005073,
-    "current_principal": 1847536462.043904,
+    "current_balance": 1890686319.5289805,
+    "current_principal": 1847954366.0664685,
     "current_pu_cheio": null,
     "current_pu_vazio": null,
     "current_pu_juros": null,
@@ -10923,14 +10923,14 @@
     "next_payment_amount": 5888985.17,
     "next_interest_amount": 3620605.13,
     "next_amortization_amount": 2268380.06,
-    "last_event_date": "06/11/2026",
+    "last_event_date": "09/11/2026",
     "final_balance": 0.0,
-    "duration_years": 7.995368690276926,
-    "wal_years": 9.277470055159387,
+    "duration_years": 7.992630839489794,
+    "wal_years": 9.274732204372256,
     "tir_annual_pct": 11.492838461578991,
     "tir_monthly_pct": 0.9107067083790055,
-    "contracted_rate_annual_pct": 10.459275779674408,
-    "effective_spread_annual_pct": 1.0335626819045824,
+    "contracted_rate_annual_pct": 10.459314778719653,
+    "effective_spread_annual_pct": 1.0335236828593377,
     "tir_cashflows": [
       {
         "date": "29/11/2022",
@@ -11927,15 +11927,36 @@
     ],
     "contracted_rate_label": "Média ponderada da carteira",
     "contracted_rate_display": "Média ponderada: 10,46% a.a.",
-    "monthly_balance_variation": 4993394.787470359,
-    "monthly_balance_update": 1670245.705087997,
-    "monthly_balance_interest": 3323149.0823823623,
+    "monthly_balance_variation": 6243913.015943579,
+    "monthly_balance_update": 2088149.727652479,
+    "monthly_balance_interest": 4155763.2882911004,
     "monthly_balance_amortization": 0,
     "monthly_balance_reference_date": "30/10/2026",
-    "monthly_balance_current_date": "06/11/2026",
+    "monthly_balance_current_date": "09/11/2026",
     "monthly_balance_update_label": "Atualização indexadores"
   },
   "timeline": [
+    {
+      "date": "09/11/2026",
+      "label": "Carteira consolidada",
+      "component": "total",
+      "component_label": "Total",
+      "payment": 0.0,
+      "interest": 0.0,
+      "amortization": 0.0,
+      "balance": 1890686319.5289805,
+      "principal": 0.0,
+      "pu_cheio": null,
+      "pu_vazio": null,
+      "pu_juros": null,
+      "pu_amort": null,
+      "pu_total": null,
+      "parsed_date": "09/11/2026",
+      "sort_key": "0-total",
+      "raw": {},
+      "total_interest_running": 215853008.86999997,
+      "total_amortization_running": 70278060.92
+    },
     {
       "date": "16/11/2026",
       "label": "Carteira consolidada",
@@ -12040,40 +12061,19 @@
       "raw": {},
       "total_interest_running": 259123982.90999997,
       "total_amortization_running": 86377711.27
-    },
-    {
-      "date": "15/04/2027",
-      "label": "Carteira consolidada",
-      "component": "total",
-      "component_label": "Total",
-      "payment": 6394379.489999999,
-      "interest": 3775475.95,
-      "amortization": 2618903.5500000003,
-      "balance": 1963507311.3964183,
-      "principal": 415531300.21000004,
-      "pu_cheio": 5103.30464534,
-      "pu_vazio": 5057.38345666,
-      "pu_juros": null,
-      "pu_amort": null,
-      "pu_total": null,
-      "parsed_date": "15/04/2027",
-      "sort_key": "0-total",
-      "raw": {},
-      "total_interest_running": 262899458.85999995,
-      "total_amortization_running": 88996614.82
     }
   ],
   "meta": {
     "primary_source": "Consolidado gerado a partir dos scripts individuais de cálculo.",
     "notes": "A visao geral soma eventos, saldos e metricas das operacoes individuais.",
-    "cdi_warning": ""
+    "cdi_warning": "PAXS12: CDI de 06/11/2026 ainda não disponível; saldo atual estimado usando a última taxa publicada (05/11/2026). O consolidado também é afetado."
   },
   "comparison": [
     {
       "id": "axsgoias",
       "label": "AXS Goiás",
       "full_name": "AXS Goiás - Emissão 1 / Série ÚNICA",
-      "current_balance": 265973144.69096,
+      "current_balance": 266104172.73328,
       "next_payment_amount": 13123241.09,
       "total_interest": 336276695.39,
       "total_amortization": 413502553.42,
@@ -12085,7 +12085,7 @@
       "id": "axs06",
       "label": "AXS 06",
       "full_name": "AXS 06 - Consolidado / 1ª + 2ª Emissão",
-      "current_balance": 216047105.95215625,
+      "current_balance": 216207517.86577344,
       "next_payment_amount": 12926977.8,
       "total_interest": 372405211.61,
       "total_amortization": 409122923.24,
@@ -12097,7 +12097,7 @@
       "id": "axs11",
       "label": "AXS 11",
       "full_name": "AXS 11 - Emissao 1 / Serie UNICA",
-      "current_balance": 199940277.7275,
+      "current_balance": 200041203.5553,
       "next_payment_amount": 14716301.92,
       "total_interest": 247804571.77,
       "total_amortization": 326183317.46,
@@ -12109,7 +12109,7 @@
       "id": "axs10",
       "label": "AXS 10",
       "full_name": "AXS - Emissão 2 / Série 1",
-      "current_balance": 174644691.38,
+      "current_balance": 174801322.27,
       "next_payment_amount": 17208452.58,
       "total_interest": 354821872.45,
       "total_amortization": 381885548.33,
@@ -12121,7 +12121,7 @@
       "id": "paxs12",
       "label": "AXS Participações",
       "full_name": "AXS Participações - Emissão 2 / Série Única",
-      "current_balance": 153650270.760921,
+      "current_balance": 153760392.675153,
       "next_payment_amount": 369566927.500485,
       "total_interest": 217667927.500485,
       "total_amortization": 151899000.0,
@@ -12133,7 +12133,7 @@
       "id": "axs04",
       "label": "AXS 04",
       "full_name": "AXS 4 - Emissao 139 / Serie UNICA",
-      "current_balance": 149222953.48032,
+      "current_balance": 149342826.91968,
       "next_payment_amount": 2047379.79,
       "total_interest": 162991427.9,
       "total_amortization": 215029774.88,
@@ -12145,7 +12145,7 @@
       "id": "axs08",
       "label": "AXS 08",
       "full_name": "AXS 08 - Emissao 1 / Serie UNICA",
-      "current_balance": 134909925.99,
+      "current_balance": 134979290.4624,
       "next_payment_amount": 7641520.61,
       "total_interest": 177851859.49,
       "total_amortization": 207940688.3,
@@ -12157,7 +12157,7 @@
       "id": "axs01",
       "label": "AXS 01",
       "full_name": "AXS 01 - Refi / 2 Series",
-      "current_balance": 119418947.419792,
+      "current_balance": 119509248.940092,
       "next_payment_amount": 8643890.91,
       "total_interest": 158269804.18,
       "total_amortization": 216182847.05,
@@ -12169,7 +12169,7 @@
       "id": "axs03",
       "label": "AXS 03",
       "full_name": "AXS III - Emissao 78 / Serie UNICA",
-      "current_balance": 111145151.1625,
+      "current_balance": 111234436.02858,
       "next_payment_amount": 1339383.76,
       "total_interest": 126907287.98,
       "total_amortization": 159608612.99,
@@ -12181,7 +12181,7 @@
       "id": "axs09",
       "label": "AXS 09",
       "full_name": "AXS ENERGIA 09 - Emissao 1 / Serie UNICA",
-      "current_balance": 110781098.68629,
+      "current_balance": 110837978.07405,
       "next_payment_amount": 8851060.16,
       "total_interest": 112494388.79,
       "total_amortization": 157055970.79,
@@ -12193,7 +12193,7 @@
       "id": "axs05",
       "label": "AXS 05",
       "full_name": "AXS 05 - 2a Emissao / 2 Series",
-      "current_balance": 94656326.240258,
+      "current_balance": 94728169.52098201,
       "next_payment_amount": 8118675.91,
       "total_interest": 111601600.04,
       "total_amortization": 164341071.07,
@@ -12205,7 +12205,7 @@
       "id": "axs02",
       "label": "AXS 02",
       "full_name": "AXS 02 - Consolidado CRI + Debenture",
-      "current_balance": 87265016.16245,
+      "current_balance": 87323248.96615,
       "next_payment_amount": 1143428.83,
       "total_interest": 97735043.23,
       "total_amortization": 132658409.6,
@@ -12217,7 +12217,7 @@
       "id": "axs07",
       "label": "AXS 07",
       "full_name": "AXS VII - Emissao 1 / Serie UNICA",
-      "current_balance": 71780891.64736,
+      "current_balance": 71816511.51754,
       "next_payment_amount": 1358792.79,
       "total_interest": 47538332.22,
       "total_amortization": 96630754.77,
@@ -12228,6 +12228,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "08/11/2026 08:23:27",
-  "generated_at_iso": "2026-11-08T08:23:27"
+  "generated_at": "09/11/2026 08:00:06",
+  "generated_at_iso": "2026-11-09T08:00:06"
 }
