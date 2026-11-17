@@ -4,7 +4,7 @@
   else root.CalendarCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function() {
   'use strict';
-  const TYPES = {payment: 'Pagamento de PMT', incorporation: 'Incorporação de juros', maturity: 'Vencimento', recomposition: 'Recomposição de fundo · 1/6'};
+  const TYPES = {payment: 'Pagamento de PMT', incorporation: 'Incorporação sem caixa', maturity: 'Vencimento', recomposition: 'Recomposição de fundo · 1/6'};
   const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
   function cents(value) {
     if (value === null || value === undefined || value === '') return 0n;

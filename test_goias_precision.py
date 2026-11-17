@@ -17,6 +17,8 @@ class GoiasPrecisionTest(unittest.TestCase):
         self.indices = {key[:4] + "-" + key[4:]: D(value) for key, value in raw.items()}
         self.indices["2026-10"] = self.indices["2026-09"] * D("1.0021")
         self.m.CRONOGRAMA = []
+        # Este teste fixa apenas os quatro eventos historicos anteriores a AGD.
+        self.m.DATAS_INCORPORACAO_JUROS = self.m.DATAS_INCORPORACAO_JUROS[:4]
 
     def test_capitalizacoes_e_detalhes_do_produtorio(self):
         m = self.m

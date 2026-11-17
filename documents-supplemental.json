@@ -2,7 +2,10 @@
   {
     "id": "axs-ri-96",
     "format": "PDF",
-    "codes": ["AXSC12", "AXSC22"],
+    "codes": [
+      "AXSC12",
+      "AXSC22"
+    ],
     "name": "AXS 05 - 1º aditamento à escritura da 2ª emissão (assinado)",
     "category": "Emissao Debentures",
     "document_date": "2026-03-11",
@@ -18,7 +21,9 @@
   {
     "id": "axs-acervo-axsi11-aditivo-2",
     "format": "PDF",
-    "codes": ["AXSI11"],
+    "codes": [
+      "AXSI11"
+    ],
     "name": "AXS 11 - 2º aditivo à escritura da 1ª emissão (assinado)",
     "category": "Emissao Debentures",
     "document_date": "2025-09-24",
@@ -30,5 +35,41 @@
     "sha256": "2edaf9554080b4d9cfa10fd98b90168f93d8515ed422effaa76a45d921b6b77c",
     "verified_at": "2026-10-31",
     "source_note": "Cópia assinada fornecida pela AXS. Link público externo não localizado na consulta de 31/10/2026; disponibilizada neste acervo por solicitação da AXS."
+  },
+  {
+    "id": "axs-acervo-axsgoias-segundo-aditamento-20261110",
+    "format": "PDF",
+    "codes": [
+      "AXS311"
+    ],
+    "name": "AXS Goias - 2o aditamento a escritura (10/11/2026)",
+    "category": "Emissao Debentures",
+    "document_date": "2026-11-10",
+    "uploaded_at": null,
+    "source_type": "axs_archive",
+    "source_name": "Acervo AXS",
+    "source_page": null,
+    "href": "./assets/documents/axsgoias-segundo-aditamento-20261110.pdf",
+    "sha256": "8d3702e997f1aaee7e33061f943cd773e5fc1665b6bb57c7c0f4257f32406081",
+    "verified_at": "2026-11-16",
+    "source_note": "Documento fornecido pela AXS para atualizar a carencia, o premio e o fluxo de pagamentos de Goias. A AGD fixa a data do premio; o Anexo VI do 2o aditamento fornece os 28 percentuais de amortizacao."
+  },
+  {
+    "id": "axs-acervo-axsgoias-agd-20261110",
+    "format": "PDF",
+    "codes": [
+      "AXS311"
+    ],
+    "name": "AXS Goias - AGD de 10/11/2026",
+    "category": "Assembleias",
+    "document_date": "2026-11-10",
+    "uploaded_at": null,
+    "source_type": "axs_archive",
+    "source_name": "Acervo AXS",
+    "source_page": null,
+    "href": "./assets/documents/axsgoias-agd-20261110.pdf",
+    "sha256": "e819e0f4ecb4f6d277b31f4a26da3ead0f0e4ef2d15605a0d9afb6714b07d279",
+    "verified_at": "2026-11-16",
+    "source_note": "Documento fornecido pela AXS para atualizar a carencia, o premio e o fluxo de pagamentos de Goias. A AGD fixa a data do premio; o Anexo VI do 2o aditamento fornece os 28 percentuais de amortizacao."
   }
 ]

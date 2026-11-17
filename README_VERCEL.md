@@ -45,3 +45,11 @@ Os motores usam índices e regras contratuais. O histórico Vórtx não substitu
 As referências externas de PU servem à validação: `validate_pu_reference.py` recebe a planilha PUdia e registra tanto a igualdade em centavos quanto em oito casas. São verificações distintas. AXS 05 e AXS 11 têm pendências documentais/externas; não ajustar taxas ou índices para forçar igualdade. Na AXS 04, o cronograma documental permanece registrado, e os percentuais dos dois eventos já liquidados em 2025 seguem a informação operacional da Opea em `data/events/axs04.json`. Na AXS 02, o valor do CRI é baseado na amortização extraordinária divulgada pela Opea; a debênture recebe o restante dos R$ 5 milhões confirmados.
 
 Verificação local: `python -m unittest test_debt_corrections test_daily_pu test_paxs12` e `node test_daily_pu.js`.
+
+## Goiás: AGD de 10/11/2026 e segundo aditamento
+
+O motor `Code final prontos/axs_goias_v1.py` incorpora os juros de 15/12/2026, 15/06/2027 e 15/12/2027, sem pagamento de juros ou amortização nessas datas. O novo Anexo VI prevê 28 pagamentos semestrais de 15/06/2028 a 15/12/2041; os percentuais incidem sobre o saldo remanescente.
+
+O prêmio de 1% incide sobre o saldo devedor com juros corridos em 10/11/2026 e integra o VNA sem desembolso. A correção monetária e os juros sobre esse acréscimo começam nessa data; os juros anteriores continuam no período original até sua incorporação. O calendário identifica o prêmio separadamente dos juros incorporados, e a variação mensal o separa da atualização pelo IPCA. A recomposição de 1/6 começa em dezembro/2027, seis meses antes da primeira amortização.
+
+Os documentos de suporte estão no acervo de Goiás em `documents-supplemental.json`. Verificação: `python -m unittest test_goias_aditamento test_goias_precision test_calendar test_recomposition_documents test_vortx_comparison` e `node test_calendar.js`.

@@ -48,6 +48,7 @@ def local_row(row, quantity):
             incorporation = row.get("pu_juros")
         else:
             incorporation = 0
+    incorporation = D(str(incorporation)) + D(str(raw.get("PU_Premio_Incorporado") or 0))
     full, total = number(row.get("pu_cheio")), number(row.get("pu_total"))
     result = {
         "d": iso_day(row["date"]),

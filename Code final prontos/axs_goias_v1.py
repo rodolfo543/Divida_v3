@@ -13,9 +13,9 @@ Objetivo
   * Quantidade: 196.000 debentures.
   * PU inicial: R$ 1.000,00.
   * Remuneracao: IPCA + 10,40% a.a., base 252 dias uteis.
-  * Juros relativos ao periodo de carencia, ate junho/2026 inclusive, incorporados ao saldo.
-  * Primeiro pagamento de juros: 15/12/2026.
-  * Amortizacao programada em 30 parcelas semestrais de 15/06/2027 a 15/12/2041.
+  * AGD de 10/11/2026 e 2o aditamento: juros incorporados ate 15/12/2027.
+  * Premio de 1% sobre o saldo devedor em 10/11/2026, sem desembolso.
+  * Juros e amortizacao em 28 parcelas semestrais de 15/06/2028 a 15/12/2041.
 
 Como rodar
     python axs_goias_v1.py
@@ -48,7 +48,13 @@ getcontext().prec = 34
 DATA_EMISSAO = date(2024, 10, 1)
 # Ajuste aqui para a data efetiva da primeira integralizacao, conforme B3/Vortx.
 DATA_INICIO_RENTABILIDADE = date(2024, 10, 1)
-DATAS_INCORPORACAO_JUROS = [date(2024, 12, 15), date(2025, 6, 15), date(2025, 12, 15), date(2026, 6, 15)]
+DATA_FIM_CARENCIA_ANTERIOR = date(2026, 6, 15)
+DATAS_INCORPORACAO_JUROS = [
+    date(2024, 12, 15), date(2025, 6, 15), date(2025, 12, 15), date(2026, 6, 15),
+    date(2026, 12, 15), date(2027, 6, 15), date(2027, 12, 15),
+]
+DATA_PREMIO = date(2026, 11, 10)
+TAXA_PREMIO = Decimal("0.01")
 TAXA_AA = Decimal("0.104")
 QUANTIDADE = Decimal("196000")
 PU_INICIAL = Decimal("1000.00000000")
@@ -58,12 +64,10 @@ VORTX_PU_HISTORY_URL = (
     "/preco-unitario/historico-pagamentos"
 )
 
-# Cronograma conforme Anexo VI da Escritura/Aditamento AXS Goias.
+# Cronograma conforme Anexo VI do 2o aditamento (AGD de 10/11/2026).
 # Usa-se a coluna "Saldo do Valor Nominal Unitario a ser amortizado" como TAI,
 # pois ela representa o percentual aplicado sobre o saldo remanescente na data.
 CRONOGRAMA_RAW = [
-    ("2026-12-15", "0.0000"),
-    ("2027-06-15", "1.3755"), ("2027-12-15", "2.0473"),
     ("2028-06-15", "1.9671"), ("2028-12-15", "2.2261"),
     ("2029-06-15", "2.2340"), ("2029-12-15", "2.4709"),
     ("2030-06-15", "2.5448"), ("2030-12-15", "2.7850"),
@@ -639,12 +643,44 @@ def calcular_fluxo(
 
     # Durante a carencia, os juros sao incorporados ao VNA, nao pagos em caixa.
     for data_incorp in DATAS_INCORPORACAO_JUROS:
+        premio = Decimal("0")
+        if data_ref_juros < DATA_PREMIO <= data_incorp:
+            nominal_premio = aplicar_ipca_ate_data(saldo_pu, data_ipca_atual, DATA_PREMIO, indices)
+            du_premio = dias_uteis(data_ref_juros, DATA_PREMIO)
+            fj_premio = fator_juros_252(du_premio)
+            juros_premio = trunc_dec(nominal_premio * (fj_premio - Decimal("1")), 8)
+            base_premio = nominal_premio + juros_premio
+            premio = trunc_dec(base_premio * TAXA_PREMIO, 8)
+            # O premio entra no VNA; os juros ja decorridos continuam no periodo
+            # original. Apenas o premio passa a render a partir da AGD.
+            linhas.append({
+                "Evento": "Incorporacao Premio AGD 10/11/2026",
+                "Data_Ref": DATA_PREMIO.strftime("%d/%m/%Y"), "Data_Pgto": "",
+                "DU_Juros": du_premio, "Qtde_IPCA_Aplicados": 0,
+                "Ultimo_Mes_NIk": "", "Ultimo_Mes_NIk_1": "", "Ultimo_Fator_C_IPCA": "",
+                "Fator_Juros": fj_premio, "TAI_Amort": Decimal("0"),
+                "PU_VNa_Ini": nominal_premio, "PU_VNa_Atualizado": nominal_premio,
+                "PU_Juros": juros_premio, "PU_Juros_Incorporado": Decimal("0"),
+                "PU_Premio_Incorporado": premio, "PU_Base_Premio": base_premio,
+                "PU_Amort": Decimal("0"), "PU_Total_Pago": Decimal("0"),
+                "PU_VNa_Fim": nominal_premio + premio,
+                "Juros_R$": Decimal("0.00"), "Amort_R$": Decimal("0.00"),
+                "PMT_Total": Decimal("0.00"),
+                "Saldo_Devedor_R$": round_dec((base_premio + premio) * QUANTIDADE, 2),
+            })
         saldo_pu, detalhes_ipca, data_ipca_atual = aplicar_ipca_ate(
             saldo_pu, data_ipca_atual, aniversario(data_incorp), indices, fonte_mes,
         )
         du_incorp = dias_uteis(data_ref_juros, data_incorp)
         fj_incorp = fator_juros_252(du_incorp)
         pu_juros_incorp = trunc_dec(saldo_pu * (fj_incorp - Decimal("1")), 8)
+        if premio:
+            premio_atualizado = aplicar_ipca_ate_data(premio, DATA_PREMIO, data_incorp, indices)
+            juros_sobre_premio = trunc_dec(
+                premio_atualizado * (fator_juros_252(dias_uteis(DATA_PREMIO, data_incorp)) - Decimal("1")), 8,
+            )
+            saldo_pu += premio_atualizado
+            pu_juros_incorp += juros_sobre_premio
         saldo_antes_incorp = trunc_dec(saldo_pu, 8)
         saldo_pu = trunc_dec(saldo_pu + pu_juros_incorp, 8)
         linhas.append({
@@ -662,6 +698,8 @@ def calcular_fluxo(
             "PU_VNa_Atualizado": saldo_antes_incorp,
             "PU_Juros": pu_juros_incorp,
             "PU_Juros_Incorporado": pu_juros_incorp,
+            "PU_Premio_Incorporado": Decimal("0"),
+            "PU_Base_Premio": Decimal("0"),
             "PU_Amort": Decimal("0"),
             "PU_Total_Pago": Decimal("0"),
             "PU_VNa_Fim": saldo_pu,
@@ -711,6 +749,8 @@ def calcular_fluxo(
             "PU_VNa_Atualizado": pu_vna_atualizado,
             "PU_Juros": pu_juros,
             "PU_Juros_Incorporado": Decimal("0"),
+            "PU_Premio_Incorporado": Decimal("0"),
+            "PU_Base_Premio": Decimal("0"),
             "PU_Amort": pu_amort,
             "PU_Total_Pago": trunc_dec(pu_juros + pu_amort, 8),
             "PU_VNa_Fim": pu_vna_fim,
@@ -733,13 +773,15 @@ def calcular_pu_diario_local(
 ) -> List[Dict[str, object]]:
     """Calcula o PU diario sem interpolar os valores entre os eventos contratuais."""
     data_fim = data_fim or date.today()
-    data_final_carencia = DATAS_INCORPORACAO_JUROS[-1]
+    # Preserva o historico anterior ao aditamento, inclusive suas convencoes de PU.
+    data_final_carencia = DATA_FIM_CARENCIA_ANTERIOR
     eventos_por_data = {
         datetime.strptime(str(item["Data_Ref"]), "%d/%m/%Y").date(): item
         for item in eventos
-        if item.get("Data_Ref")
+        if item.get("Data_Ref") and not item.get("PU_Premio_Incorporado")
     }
     evento_final_carencia = eventos_por_data[data_final_carencia]
+    evento_premio = next((item for item in eventos if item.get("PU_Premio_Incorporado")), None)
 
     linhas: List[Dict[str, object]] = []
     data_atual = DATA_INICIO_RENTABILIDADE
@@ -765,6 +807,17 @@ def calcular_pu_diario_local(
         du_juros = dias_uteis(data_base, data_atual)
         fator_juros = fator_juros_252(du_juros)
         valor_juros = trunc_dec(valor_nominal * (fator_juros - Decimal("1")), 8)
+        premio_dia = Decimal("0")
+        if evento_premio and data_base < DATA_PREMIO <= data_atual:
+            premio_atualizado = aplicar_ipca_ate_data(
+                Decimal(str(evento_premio["PU_Premio_Incorporado"])), DATA_PREMIO, data_atual, indices,
+            )
+            valor_nominal += premio_atualizado
+            valor_juros += trunc_dec(
+                premio_atualizado * (fator_juros_252(dias_uteis(DATA_PREMIO, data_atual)) - Decimal("1")), 8,
+            )
+            if data_atual == DATA_PREMIO:
+                premio_dia = premio_atualizado
         pu_cheio = trunc_dec(valor_nominal + valor_juros, 8)
 
         evento_dia = eventos_por_data.get(data_atual)
@@ -778,6 +831,8 @@ def calcular_pu_diario_local(
             elif pu_total > 0:
                 tipo = "PAGAMENTO_JUROS_E_AMORTIZACAO"
                 juros_pago = Decimal(str(evento_dia.get("PU_Juros", 0)))
+        if premio_dia:
+            tipo = "INCORPORACAO_PREMIO"
 
         linhas.append({
             "Data": data_atual.strftime("%d/%m/%Y"),
@@ -791,6 +846,8 @@ def calcular_pu_diario_local(
             "PU_Juros_Pago_Dia": juros_pago,
             "PU_Amort_Dia": pu_amort,
             "PU_Total_Pago_Dia": pu_total,
+            "PU_Premio_Incorporado": premio_dia,
+            "PU_Juros_Incorporado": Decimal(str(evento_dia.get("PU_Juros_Incorporado", 0))) if evento_dia else Decimal("0"),
             "Fonte_PU": "Calculo local IPCA pro rata e juros em 252 dias uteis",
         })
         data_atual += timedelta(days=1)
@@ -853,7 +910,7 @@ def calcular_fluxo_e_pu_diario() -> Tuple[List[Dict[str, object]], List[Dict[str
 def salvar_csv(linhas: List[Dict[str, object]], caminho: str) -> None:
     if not linhas:
         raise RuntimeError("Nenhuma linha calculada.")
-    campos = list(linhas[0].keys())
+    campos = list(dict.fromkeys(k for row in linhas for k in row))
     with open(caminho, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=campos, delimiter=";")
         w.writeheader()
@@ -890,7 +947,7 @@ def salvar_xlsx(linhas: List[Dict[str, object]], caminho: str, fonte_ipca: str) 
     ws.title = "Controle_Divida"
     ws.freeze_panes = "A2"
 
-    campos = list(linhas[0].keys())
+    campos = list(dict.fromkeys(k for row in linhas for k in row))
     ws.append(campos)
     for row in linhas:
         ws.append([_decimal_to_float(row.get(c, "")) for c in campos])
@@ -951,7 +1008,7 @@ def salvar_xlsx(linhas: List[Dict[str, object]], caminho: str, fonte_ipca: str) 
         if cell.value in ("Ultimo_Mes_NIk", "Ultimo_Mes_NIk_1", "Ultimo_Fator_C_IPCA"):
             cell.comment = Comment("Para eventos semestrais, mostra o ultimo mes de IPCA aplicado no bloco ate a data de aniversario.", "ChatGPT")
         if cell.value == "PU_Juros_Incorporado":
-            cell.comment = Comment("Juros do periodo de carencia incorporados ao VNA ate junho/2026, conforme escritura/aditivo.", "ChatGPT")
+            cell.comment = Comment("Juros incorporados ao VNA ate dezembro/2027, conforme AGD de 10/11/2026 e 2o aditamento.", "ChatGPT")
 
     ws2 = wb.create_sheet("Parametros")
     params = [

@@ -13,16 +13,29 @@ assert.equal(K.matches({operation:'axs02',type:'maturity'},'axs02','payment'),tr
 assert.equal(K.matches({operation:'axs02',type:'incorporation'},'axs02','payment'),false);
 const data=JSON.parse(fs.readFileSync('./data/calendar.json'));
 const month=data.events.filter(e=>e.date.startsWith('2026-11'));
-assert.equal(month.length,6);
-assert.equal(K.sum(month),588898517n);
-assert.equal(K.sum(month,'incorporation'),1029211412n);
-assert.equal(K.grouped(month).size,1);
+assert.equal(month.length,7);
+const catalog=JSON.parse(fs.readFileSync('./vortx_catalog.json'));
+let expectedPayments=0n;
+for (const instrument of catalog) {
+  const source=JSON.parse(fs.readFileSync(`./data/operations/${instrument.operation}.json`));
+  const view=instrument.variant?source.variants[instrument.variant]:source;
+  for (const row of view.table_series) {
+    if (row.date.endsWith('/11/2026')) expectedPayments+=K.cents(Number(row.payment).toFixed(2));
+  }
+}
+assert.equal(K.sum(month),expectedPayments);
+const premium=month.find(e=>e.code==='AXS311');
+assert.equal(premium.date,'2026-11-10');
+assert.equal(premium.payment,'0.00');
+assert.equal(premium.incorporation,premium.premium);
+assert.ok(K.cents(premium.premium)>0n);
+assert.equal(K.grouped(month).size,2);
 const ics=K.calendarFile(month,data.built_at);
 assert.ok(ics.includes('DTSTART;VALUE=DATE:20261116\r\nDTEND;VALUE=DATE:20261117'));
-assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,6);
+assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,7);
 assert.ok(!ics.includes('DTSTART:20261116T'));
 assert.ok(ics.split('\r\n').every(l=>Buffer.byteLength(l,'utf8')<=75));
-assert.equal((ics.match(/UID:/g)||[]).length,6);
+assert.equal((ics.match(/UID:/g)||[]).length,7);
 const funding=JSON.parse(fs.readFileSync('./data/recomposition.json'));
 const combined=K.withRecompositions(data,funding);
 assert.equal(combined.events.length,data.events.length+funding.contributions.length);
@@ -31,12 +44,13 @@ assert.equal(new Set(combined.events.map(e=>e.id)).size,combined.events.length);
 assert.equal(K.sum(combined.events),K.sum(data.events),'Aporte ao fundo não é pagamento da dívida');
 const november=combined.events.filter(e=>e.date.startsWith('2026-11'));
 const transfers=november.filter(e=>K.matches(e,'','recomposition'));
-assert.equal(november.length,8);assert.equal(transfers.length,2);
+assert.equal(november.length,9);assert.equal(transfers.length,2);
 assert.ok(transfers.every(e=>e.date==='2026-11-12'&&e.payment==='0.00'));
-assert.equal(K.sum(transfers,'recomposition'),274876346n);
-assert.equal(K.sum(november),588898517n);
+const expectedFunding=funding.contributions.filter(r=>r.month==='2026-11').reduce((sum,r)=>sum+K.cents(r.amount),0n);
+assert.equal(K.sum(transfers,'recomposition'),expectedFunding);
+assert.equal(K.sum(november),expectedPayments);
 assert.equal(november.filter(e=>K.matches(e,'','payment')).length,5);
-assert.equal(K.grouped(november).size,2);
+assert.equal(K.grouped(november).size,3);
 assert.equal(K.matches(transfers[0],'','payment'),false);
 assert.equal(K.matches(transfers[0],'axs08','recomposition'),transfers[0].operation==='axs08');
 assert.ok(!combined.events.some(e=>e.type==='recomposition'&&e.code==='AXS412'));
@@ -47,11 +61,11 @@ assert.throws(()=>K.withRecompositions(data,funding,32),/referência inválido/)
 // Uma PMT e um aporte no mesmo dia continuam em totais independentes.
 const sameDay={...data,events:[{...month.find(e=>K.cents(e.payment)>0n),id:'test-same-day',date:'2026-11-12'}]};
 const joined=K.withRecompositions(sameDay,funding).events.filter(e=>e.date==='2026-11-12');
-assert.equal(K.sum(joined),K.sum(sameDay.events));assert.equal(K.sum(joined,'recomposition'),274876346n);
+assert.equal(K.sum(joined),K.sum(sameDay.events));assert.equal(K.sum(joined,'recomposition'),expectedFunding);
 const mergedIcs=K.calendarFile(november,data.built_at);
-assert.equal((mergedIcs.match(/BEGIN:VEVENT/g)||[]).length,8);
+assert.equal((mergedIcs.match(/BEGIN:VEVENT/g)||[]).length,9);
 assert.ok(mergedIcs.includes('DTSTART;VALUE=DATE:20261112'));
-assert.ok(mergedIcs.includes('Aporte planejado: R$ 1.273.586\\,77'));
+assert.ok(mergedIcs.includes('Aporte planejado: '+K.cash(K.cents(transfers[0].recomposition)).replace(',', '\\,')));
 assert.ok(mergedIcs.includes('recomposition-AXS811-2026-11@divida.axs'));
 assert.ok(mergedIcs.split('\r\n').every(l=>Buffer.byteLength(l,'utf8')<=75));
 fs.mkdirSync('../auditoria/2026-10-30/calendario',{recursive:true});

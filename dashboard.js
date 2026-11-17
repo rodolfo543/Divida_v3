@@ -383,6 +383,14 @@ function createMonthlyVariationCard(summary) {
       className: summary.monthly_balance_amortization !== null && summary.monthly_balance_amortization !== undefined ? trendClass(-Math.abs(summary.monthly_balance_amortization)) : "neutral",
     },
   ];
+  if (summary.monthly_balance_premium > 0) {
+    breakdown.push({
+      label: "Prêmio incorporado",
+      value: summary.monthly_balance_premium,
+      displayValue: formatSignedCompactCurrency(summary.monthly_balance_premium),
+      className: trendClass(summary.monthly_balance_premium),
+    });
+  }
   const totalValue = summary.monthly_balance_variation !== null && summary.monthly_balance_variation !== undefined
     ? formatSignedCompactCurrency(summary.monthly_balance_variation)
     : "-";

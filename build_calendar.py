@@ -34,15 +34,20 @@ def calendar_event(row, instrument, quantity, sequence):
         pu = first(raw, 'PU_Juros_Incorporado', 'PU_Juros_Capitalizado', 'PU_Juros_Capitalizado_Dia', 'Juros_Capitalizado')
         incorporation = D(str(pu or 0)) * quantity
     incorporation = D(str(incorporation))
+    premium = D(str(raw.get('PU_Premio_Incorporado') or 0)) * quantity
     kind = normalized(row.get('label')) + normalized(raw.get('Evento'))
     if incorporation == 0 and payment == 0 and ('INCORPOR' in kind or 'CAPITAL' in kind):
-        incorporation = D(str(row.get('pu_juros') or 0)) * quantity
+        if premium == 0:
+            incorporation = D(str(row.get('pu_juros') or 0)) * quantity
+    incorporation += premium
     if payment == 0 and incorporation == 0:
         return None
     maturity = payment > 0 and amortization > 0 and D(str(row.get('balance') or 0)) == 0
     event_type = 'maturity' if maturity else 'payment' if payment > 0 else 'incorporation'
     title = ('Vencimento' if maturity else 'PMT · juros e amortização' if amortization > 0 and interest > 0 else
              'PMT · amortização' if amortization > 0 else 'PMT · juros') if payment > 0 else 'Incorporação de juros'
+    if premium > 0:
+        title = 'Incorporação de prêmio (1%)'
     extra = first(raw, 'Amort_Extraordinaria_R$', 'Amortizacao_Extraordinaria_R$')
     if extra is None:
         extra = D(str(first(raw, 'PU_Amort_Extraordinaria', 'Amortizacao_Extraordinaria', 'PU_Amex_Dia') or 0)) * quantity
@@ -55,6 +60,7 @@ def calendar_event(row, instrument, quantity, sequence):
         'code': instrument['code'], 'series': instrument['series'], 'type': event_type, 'title': title,
         'payment': money(payment), 'interest': money(interest), 'amortization': money(amortization),
         'extra': money(extra), 'ordinary': money(amortization - extra), 'incorporation': money(incorporation),
+        'premium': money(premium),
         'pu_full': str(row.get('pu_cheio')) if row.get('pu_cheio') is not None else None,
         'pu_payment': str(row.get('pu_total')) if row.get('pu_total') is not None else None,
         'reference_date': iso_date(reference) if reference else None,

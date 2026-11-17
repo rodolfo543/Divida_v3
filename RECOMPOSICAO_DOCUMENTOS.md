@@ -6,7 +6,7 @@ Recomposição de caixa planejada a partir de 1/6 das PMTs semestrais; sem acess
 
 ## Recomposição
 
-`recomposition_rules.json` registra aplicabilidade, natureza, início e encerramento por instrumento e as cláusulas de referência. O contrato refinanciado de março/2026 da AXS 06 abrange as duas emissões. A retenção de 1/6 começa no sexto mês anterior à primeira amortização programada; juros pagos durante a carência não antecipam esse início. Para Goiás, isso significa dezembro/2026, pois a primeira amortização é junho/2027; a PMT de juros de dezembro/2026 não é o marco inicial. As referências subordinadas de AXS 01/05 são sujeitas à cascata e não se confundem com exigência incondicional.
+`recomposition_rules.json` registra aplicabilidade, natureza, início e encerramento por instrumento e as cláusulas de referência. O contrato refinanciado de março/2026 da AXS 06 abrange as duas emissões. A retenção de 1/6 começa no sexto mês anterior à primeira amortização programada; juros pagos durante a carência não antecipam esse início. Para Goiás, após a AGD de 10/11/2026 e o 2º aditamento, isso significa dezembro/2027, pois a primeira amortização passa a junho/2028. As incorporações sem caixa não antecipam esse marco. As referências subordinadas de AXS 01/05 são sujeitas à cascata e não se confundem com exigência incondicional.
 
 `build_recomposition.py` lê `data/calendar.json`, já exportado pelos cálculos independentes, e gera `data/recomposition.json` mais o espelho em `docs`. Nenhum motor ou PU oficial é alterado. Dez instrumentos participam; sete ficam fora do rateio (mensais, bullet e AXS 10). O encerramento após a penúltima PMT é respeitado quando previsto; AXS 08 e as séries subordinadas mantêm a composição até a última PMT conforme a regra cadastrada.
 

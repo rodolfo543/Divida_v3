@@ -550,6 +550,15 @@ def build_return_cashflows(config: OperationConfig, series: list[dict[str, Any]]
         return []
 
     cashflows = [{"date": issue_dates[0].strftime("%d/%m/%Y"), "amount": -(pu_issue * quantity)}]
+    if config.id == "axsgoias" and module is not None:
+        # Fluxo sem inflacao calculado pelo proprio motor: premio e carencia
+        # nao sao recebimentos, nem reiniciam os juros ja acumulados.
+        indices = {f"{year}-{month:02d}": Decimal("1")
+                   for year in range(2024, 2042) for month in range(1, 13)}
+        rows, _ = module.calcular_fluxo(indices, {}, "IPCA neutro para TIR")
+        cashflows.extend({"date": row["Data_Pgto"], "amount": float(row["PMT_Total"])}
+                         for row in rows if row["PMT_Total"] > 0)
+        return compress_cashflows(cashflows)
     base_pu = pu_issue
     for row in series:
         payment_date = row.get("parsed_date")
@@ -660,13 +669,16 @@ def build_monthly_balance_summary(
     capitalized_interest = sum(capitalized_interest_amount(item, quantity) for item in period_rows)
     interest_component = capitalized_interest + (accrued_current - accrued_previous)
     amortization_component = sum(item.get("amortization") or 0.0 for item in period_rows)
-    update_component = total_variation - interest_component + amortization_component
+    premium_component = sum((first_number(item.get("raw", {}).get("PU_Premio_Incorporado")) or 0.0)
+                            * (quantity or 0.0) for item in period_rows)
+    update_component = total_variation - interest_component + amortization_component - premium_component
 
     return {
         "monthly_balance_variation": total_variation,
         "monthly_balance_update": update_component,
         "monthly_balance_interest": interest_component,
         "monthly_balance_amortization": amortization_component,
+        "monthly_balance_premium": premium_component,
         "monthly_balance_reference_date": previous_daily["date"],
         "monthly_balance_current_date": current_daily["date"],
         "monthly_balance_update_label": update_label,
@@ -949,6 +961,7 @@ def format_daily_pu_type(value: Any) -> str:
         "DATA_PAGAMENTO": "Pagamento",
         "PAGAMENTO_JUROS_E_AMORTIZACAO": "Pagamento",
         "CAPITALIZACAO": "Capitalização",
+        "INCORPORACAO_PREMIO": "Prêmio incorporado",
         "FECHAMENTO_PERIODO": "Fechamento",
     }.get(text, text.title() or "-")
 
@@ -1095,6 +1108,11 @@ def load_axs_goias(module: Any) -> dict[str, Any]:
             if text_or_default(raw.get("Evento")).startswith("Incorporacao")
             else "Pagamento"
         )
+        if raw.get("PU_Premio_Incorporado"):
+            item["label"] = "Prêmio incorporado (1%)"
+            item["pu_vazio"] = raw["PU_VNa_Fim"]
+            item["pu_cheio"] = item["pu_vazio"] + item["pu_juros"]
+            item["principal"] = item["pu_vazio"] * float(module.QUANTIDADE)
 
     quantity = number_or_none(getattr(module, "QUANTIDADE", None)) or 1.0
     daily_pu_rows: list[dict[str, Any]] = []
@@ -1158,7 +1176,7 @@ def load_axs_goias(module: Any) -> dict[str, Any]:
         "meta": {
             "primary_source": f"Fonte IPCA: {primary_source}",
             "secondary_source": daily_source,
-            "notes": "AXS Goiás com PU diário calculado por IPCA e juros contratuais.",
+            "notes": "AGD de 10/11/2026 e 2º aditamento: juros incorporados até 15/12/2027; primeiro pagamento de juros e amortização em 15/06/2028, em 28 parcelas até 15/12/2041. Prêmio de 1% sobre o saldo devedor em 10/11/2026 incorporado ao VNA, sem desembolso de caixa.",
         },
     }
 
@@ -2142,7 +2160,7 @@ OPERATIONS: dict[str, OperationConfig] = {
         badge="DEB",
         category="Debenture",
         indexer="IPCA + 10,40%",
-        description="Debênture sênior da operação AXS Goiás com carência inicial e amortização semestral longa.",
+        description="Debênture sênior de Goiás: juros incorporados até dezembro/2027 e pagamentos semestrais a partir de junho/2028, conforme AGD de 10/11/2026.",
         issuer="AXS ENERGIA UFV GOIAS SPE S.A.",
         code_if="AXS311",
         isin="",
@@ -2221,6 +2239,7 @@ def build_portfolio_payload() -> dict[str, Any]:
         "monthly_balance_update",
         "monthly_balance_interest",
         "monthly_balance_amortization",
+        "monthly_balance_premium",
     )
     for field in monthly_fields:
         values = [payload["summary"].get(field) for payload in payloads if payload["summary"].get(field) is not None]
