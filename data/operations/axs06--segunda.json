@@ -3325,8 +3325,8 @@
     "next_amortization_amount": 20979.63,
     "last_event_date": "19/11/2026",
     "final_balance": 0.0,
-    "duration_years": 9.940165827568672,
-    "wal_years": 11.689166617650374,
+    "duration_years": 9.937427976781539,
+    "wal_years": 11.686428766863243,
     "tir_annual_pct": 10.284163092536824,
     "tir_monthly_pct": 0.8190875634910055,
     "contracted_rate_label": "IPCA + 10,3849%",
@@ -137918,8 +137918,8 @@
         "next_amortization_amount": 137423.16,
         "last_event_date": "15/09/2026",
         "final_balance": 0.0,
-        "duration_years": 9.925827641264817,
-        "wal_years": 11.688658648268408,
+        "duration_years": 9.923089790477684,
+        "wal_years": 11.685920797481275,
         "tir_annual_pct": 11.158614903587416,
         "tir_monthly_pct": 0.8854635599125249,
         "contracted_rate_label": "13,90% até 14/03/2026; depois IPCA + 10,5607% / IPCA + 10,3849%",
@@ -328507,8 +328507,8 @@
         "next_amortization_amount": 116443.53,
         "last_event_date": "19/11/2026",
         "final_balance": 0.0,
-        "duration_years": 9.923267096040082,
-        "wal_years": 11.688567252089474,
+        "duration_years": 9.92052924525295,
+        "wal_years": 11.685829401302342,
         "tir_annual_pct": 11.284606010286213,
         "tir_monthly_pct": 0.8949875427592735,
         "contracted_rate_label": "13,90% até 14/03/2026; depois IPCA + 10,5607%",
@@ -498463,8 +498463,8 @@
         "next_amortization_amount": 20979.63,
         "last_event_date": "19/11/2026",
         "final_balance": 0.0,
-        "duration_years": 9.940165827568672,
-        "wal_years": 11.689166617650374,
+        "duration_years": 9.937427976781539,
+        "wal_years": 11.686428766863243,
         "tir_annual_pct": 10.284163092536824,
         "tir_monthly_pct": 0.8190875634910055,
         "contracted_rate_label": "IPCA + 10,3849%",
@@ -665240,6 +665240,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "19/11/2026 08:00:06",
-  "generated_at_iso": "2026-11-19T08:00:06"
+  "generated_at": "20/11/2026 10:54:55",
+  "generated_at_iso": "2026-11-20T10:54:55"
 }

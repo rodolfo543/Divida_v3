@@ -2539,7 +2539,7 @@
         "Mes_NIk_1": "2026-10",
         "NIk": 7735.875042,
         "NIk_1": 7706.59,
-        "Fonte_IPCA": "ANBIMA 18/11/2026 15:45 | https://www.anbima.com.br/informacoes/indicadores/",
+        "Fonte_IPCA": "ANBIMA 19/11/2026 18:22 | https://www.anbima.com.br/informacoes/indicadores/",
         "Fator_C_IPCA": 1.0038,
         "Fator_Juros": 1.008734594,
         "TAI_Amort": 0.003385,
@@ -10773,7 +10773,7 @@
         "Mes_NIk_1": "2026-10",
         "NIk": 7735.875042,
         "NIk_1": 7706.59,
-        "Fonte_IPCA": "ANBIMA 18/11/2026 15:45 | https://www.anbima.com.br/informacoes/indicadores/",
+        "Fonte_IPCA": "ANBIMA 19/11/2026 18:22 | https://www.anbima.com.br/informacoes/indicadores/",
         "Fator_C_IPCA": 1.0038,
         "Fator_Juros": 1.008734594,
         "TAI_Amort": 0.003385,
@@ -153173,8 +153173,8 @@
     "next_amortization_amount": 372816.79,
     "last_event_date": "19/11/2026",
     "final_balance": 0.0,
-    "duration_years": 5.494662377699506,
-    "wal_years": 6.36399408427191,
+    "duration_years": 5.491924526912374,
+    "wal_years": 6.361256233484778,
     "tir_annual_pct": 10.939602029118689,
     "tir_monthly_pct": 0.8688842530618635,
     "contracted_rate_label": "IPCA + 11%",
@@ -153947,7 +153947,7 @@
         "Mes_NIk_1": "2026-10",
         "NIk": 7735.875042,
         "NIk_1": 7706.59,
-        "Fonte_IPCA": "ANBIMA 18/11/2026 15:45 | https://www.anbima.com.br/informacoes/indicadores/",
+        "Fonte_IPCA": "ANBIMA 19/11/2026 18:22 | https://www.anbima.com.br/informacoes/indicadores/",
         "Fator_C_IPCA": 1.0038,
         "Fator_Juros": 1.008734594,
         "TAI_Amort": 0.003385,
@@ -154329,6 +154329,6 @@
       "badge": "DEB"
     }
   ],
-  "generated_at": "19/11/2026 08:00:06",
-  "generated_at_iso": "2026-11-19T08:00:06"
+  "generated_at": "20/11/2026 10:54:55",
+  "generated_at_iso": "2026-11-20T10:54:55"
 }

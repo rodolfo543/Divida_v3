@@ -10967,8 +10967,8 @@
     "next_amortization_amount": 3091610.99,
     "last_event_date": "19/11/2026",
     "final_balance": 0.0,
-    "duration_years": 8.074953347191688,
-    "wal_years": 9.316386989318694,
+    "duration_years": 8.072215496404555,
+    "wal_years": 9.313649138531561,
     "tir_annual_pct": 11.491526803154361,
     "tir_monthly_pct": 0.9106077774415855,
     "contracted_rate_annual_pct": 10.45788099320388,
@@ -11980,27 +11980,6 @@
   },
   "timeline": [
     {
-      "date": "19/11/2026",
-      "label": "Carteira consolidada",
-      "component": "total",
-      "component_label": "Total",
-      "payment": 0.0,
-      "interest": 0.0,
-      "amortization": 0.0,
-      "balance": 1896278986.5748494,
-      "principal": 0.0,
-      "pu_cheio": null,
-      "pu_vazio": null,
-      "pu_juros": null,
-      "pu_amort": null,
-      "pu_total": null,
-      "parsed_date": "19/11/2026",
-      "sort_key": "0-total",
-      "raw": {},
-      "total_interest_running": 219472947.80999997,
-      "total_amortization_running": 72545781.75
-    },
-    {
       "date": "15/12/2026",
       "label": "Carteira consolidada",
       "component": "total",
@@ -12104,12 +12083,33 @@
       "raw": {},
       "total_interest_running": 249759507.17999998,
       "total_amortization_running": 88986474.40999998
+    },
+    {
+      "date": "17/05/2027",
+      "label": "Carteira consolidada",
+      "component": "total",
+      "component_label": "Total",
+      "payment": 6225564.359999999,
+      "interest": 3595714.5100000002,
+      "amortization": 2629849.86,
+      "balance": 2000177616.62589,
+      "principal": 607217107.7099999,
+      "pu_cheio": 6271.66913314,
+      "pu_vazio": 6156.24813518,
+      "pu_juros": null,
+      "pu_amort": null,
+      "pu_total": null,
+      "parsed_date": "17/05/2027",
+      "sort_key": "0-total",
+      "raw": {},
+      "total_interest_running": 253355221.68999997,
+      "total_amortization_running": 91616324.26999998
     }
   ],
   "meta": {
     "primary_source": "Consolidado gerado a partir dos scripts individuais de cálculo.",
     "notes": "A visao geral soma eventos, saldos e metricas das operacoes individuais.",
-    "cdi_warning": "PAXS12: CDI de 18/11/2026 ainda não disponível; saldo atual estimado usando a última taxa publicada (17/11/2026). O consolidado também é afetado."
+    "cdi_warning": ""
   },
   "comparison": [
     {
@@ -12271,6 +12271,6 @@
   ],
   "variant_options": [],
   "selected_variant": "",
-  "generated_at": "19/11/2026 08:00:06",
-  "generated_at_iso": "2026-11-19T08:00:06"
+  "generated_at": "20/11/2026 10:54:55",
+  "generated_at_iso": "2026-11-20T10:54:55"
 }
