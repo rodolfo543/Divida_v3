@@ -46,6 +46,12 @@ As referências externas de PU servem à validação: `validate_pu_reference.py`
 
 Verificação local: `python -m unittest test_debt_corrections test_daily_pu test_paxs12` e `node test_daily_pu.js`.
 
+## AXS 02: amortizações mensais de 2026 e 2027
+
+As atas de novembro/2026 preveem R$ 211.764,80 por mês para o CRI e R$ 188.235,20 para a debênture, de novembro/2026 a outubro/2027. A Vórtx registra a primeira amortização em 16/11/2026. As minutas consolidadas anexas às atas indicam início em dezembro, mas a ordem do dia e o evento efetivamente registrado pela Vórtx indicam novembro. Cash sweep é adicional e depende de apuração; não foi presumido no fluxo.
+
+Em 24/11/2026, os PUs cheios calculados foram 1016,38628456 (CRI) e 1013,46443194 (debênture), ante 1016,38626617 e 1013,46426612 na Vórtx, respectivamente: coincidem em centavos, com diferenças nas casas posteriores. Valores externos são usados apenas para conferência.
+
 ## Goiás: AGD de 10/11/2026 e segundo aditamento
 
 O motor `Code final prontos/axs_goias_v1.py` incorpora os juros de 15/12/2026, 15/06/2027 e 15/12/2027, sem pagamento de juros ou amortização nessas datas. O novo Anexo VI prevê 28 pagamentos semestrais de 15/06/2028 a 15/12/2041; os percentuais incidem sobre o saldo remanescente.

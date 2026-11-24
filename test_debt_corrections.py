@@ -174,6 +174,18 @@ class DebtCorrectionTest(unittest.TestCase):
         self.assertEqual(by_day["15/10/2026"]["PU_VNa_Fim"], D("1014.84645840"))
         self.assertEqual(next(r for r in daily if r["Data"] == "03/11/2026")["PU_Cheio"], D("1024.67272435"))
 
+    def test_axs02_parcelas_extraordinarias_mensais(self):
+        m = module("axs02")
+        m.CRONOGRAMA = [(day, pct) for day, pct in m.CRONOGRAMA if day <= date(2027, 11, 16)]
+        indices = {month: D("7000") for month in m.iter_periodos("202210", "202711")}
+        for conf in m.INSTRUMENTOS:
+            events, _ = m.calcular_instrumento(conf, indices, {})
+            monthly = [e for e in events if date(2026, 11, 1) <= m.datetime.strptime(e["Data_Pgto"], "%d/%m/%Y").date() <= date(2027, 10, 31)]
+            expected = D("211764.80") if conf.tipo == "CRI" else D("188235.20")
+            self.assertEqual(len(monthly), 12)
+            self.assertTrue(all(e["Amort_Extraordinaria_R$"] == expected for e in monthly))
+            self.assertEqual(events[-1]["Amort_Extraordinaria_R$"], D(0))
+
     def test_axs02_deb_razao_integral_e_indice_projetado_duas_casas(self):
         m = module("axs02")
         indices = {k: D(v) for k, v in json.loads((ROOT / "tests/fixtures/ipca_indices_2026.json").read_text()).items()}
